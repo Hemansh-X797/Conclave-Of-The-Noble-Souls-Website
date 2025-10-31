@@ -1,0 +1,73 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",                     // Modern output
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",         // Recommended for Next.js 14 with App Router
+    "allowJs": true,                        // Allow JS files in TS project
+    "checkJs": false,                       // You can set this to true for stricter checking
+    "jsx": "preserve",                      // Let Next.js handle JSX
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "strict": true,                         // You can loosen this if needed
+    "skipLibCheck": true,
+
+    // 🛑 Suppress TS 6.x deprecation warnings
+    "ignoreDeprecations": "6.0",
+
+    // ✨ Path Aliases (same as your jsconfig)
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["./src/app/*"],
+      "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@data/*": ["./src/data/*"],
+      "@public/*": ["./public/*"],
+      "@assets/*": ["./public/Assets/*"],
+      "@images/*": ["./public/Assets/Images/*"],
+      "@fonts/*": ["./public/Assets/fonts/*"],
+      "@videos/*": ["./public/Assets/Videos/*"],
+      "@Aud/*": ["./public/Audio/*"],
+      "@cursors/*": ["./public/Assets/cursors/*"],
+      "@docs/*": ["./Docs/*"]
+    },
+
+    // Experimental decorators if you're using them (optional)
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+
+  // 🧠 Include files for compilation
+  "include": [
+    "next-env.d.ts",
+    "src/**/*",
+    "scripts/**/*",
+    "types/**/*",
+    "pages.d.ts",
+    "env.d.ts",
+    "**/*.js",
+    "**/*.jsx",
+    "src/components/layout/Footer.tsx"
+  ],
+
+  // ❌ Exclude heavy or irrelevant folders
+  "exclude": [
+    "node_modules",
+    ".next",
+    "dist",
+    "build",
+    ".vercel",
+    ".config",
+    "database",
+    "docs",
+    "blueprint",
+    "**/*.test.ts",
+    "**/*.test.js",
+    ".supabase"
+  ]
+}

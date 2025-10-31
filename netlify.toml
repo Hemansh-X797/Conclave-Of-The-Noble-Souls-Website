@@ -1,0 +1,262 @@
+# ----------------------------------------
+# Netlify TOML for The Conclave Realm
+# Enterprise-grade, multi-context, secure, scalable
+# ----------------------------------------
+
+# ======================
+# Global Settings
+# ======================
+[build]
+  # Build command for Next.js 14 app using npm (adjust if using yarn/pnpm)
+  command = "npm run build"
+
+  # Publish directory is the Next.js default output folder
+  publish = ".next"
+
+  # Environment files to be used on Netlify during builds
+  # You can add more environment variables in the UI or below
+  environment = { 
+    NODE_ENV = "production",
+    NEXT_PUBLIC_SUPABASE_URL = "${SUPABASE_URL}",
+    NEXT_PUBLIC_SUPABASE_ANON_KEY = "${SUPABASE_ANON_KEY}",
+    DISCORD_CLIENT_ID = "${DISCORD_CLIENT_ID}",
+    DISCORD_CLIENT_SECRET = "${DISCORD_CLIENT_SECRET}",
+    NEXTAUTH_SECRET = "${NEXTAUTH_SECRET}",
+    NEXTAUTH_URL = "https://theconclaverealm.com"
+  }
+
+  # Caching dependencies between builds for faster builds
+  # Note: This depends on Netlify's default cache, no manual cache paths needed usually
+
+# ======================
+# Context-based Overrides
+# ======================
+
+# --------
+# Production
+# --------
+[context.production.environment]
+  NODE_ENV = "production"
+  NEXTAUTH_URL = "https://theconclaverealm.com"
+  SUPABASE_URL = "${SUPABASE_URL_PROD}"
+  SUPABASE_ANON_KEY = "${SUPABASE_ANON_KEY_PROD}"
+  DISCORD_CLIENT_ID = "${DISCORD_CLIENT_ID_PROD}"
+  DISCORD_CLIENT_SECRET = "${DISCORD_CLIENT_SECRET_PROD}"
+
+[context.production]
+  command = "npm run build:prod"
+  publish = ".next"
+
+# --------
+# Deploy Preview (Pull Requests)
+# --------
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+  NEXTAUTH_URL = "https://deploy-preview--theconclaverealm.netlify.app"
+  SUPABASE_URL = "${SUPABASE_URL_STAGING}"
+  SUPABASE_ANON_KEY = "${SUPABASE_ANON_KEY_STAGING}"
+  DISCORD_CLIENT_ID = "${DISCORD_CLIENT_ID_STAGING}"
+  DISCORD_CLIENT_SECRET = "${DISCORD_CLIENT_SECRET_STAGING}"
+
+[context.deploy-preview]
+  command = "npm run build:dev"
+  publish = ".next"
+
+# --------
+# Branch Deploys (e.g., staging)
+# --------
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+  NEXTAUTH_URL = "https://branch-deploy--theconclaverealm.netlify.app"
+  SUPABASE_URL = "${SUPABASE_URL_STAGING}"
+  SUPABASE_ANON_KEY = "${SUPABASE_ANON_KEY_STAGING}"
+
+[context.branch-deploy]
+  command = "npm run build:dev"
+  publish = ".next"
+
+# ======================
+# Redirect Rules
+# ======================
+
+# Redirects from legacy or simpler URLs to Next.js paths
+[[redirects]]
+  from = "/throne"
+  to = "/throne-room"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hall"
+  to = "/hall-of-nobles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/chamber"
+  to = "/chambers/dashboard"
+  status = 302
+  force = true
+
+# Clean URLs without .html extension (if any static pages)
+[[redirects]]
+  from = "/*"
+  to = "/:splat"
+  status = 200
+
+# Catch all for SPA routing to Next.js app
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = { Language = ["en"] }
+
+# ======================
+# Custom Headers
+# ======================
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security Headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Content-Security-Policy = """
+      default-src 'self'; 
+      script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+      font-src 'self' https://fonts.gstatic.com; 
+      img-src 'self' data: https://images.unsplash.com; 
+      connect-src 'self' https://api.supabase.io https://discord.com;
+      frame-ancestors 'none'; 
+      base-uri 'self';
+      form-action 'self'
+    """
+
+    # Caching Headers
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/public/Assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/public/Assets/Images/**/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/public/Assets/Videos/**/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/public/Assets/Audio/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# ======================
+# Functions Settings
+# ======================
+
+# Define serverless functions path and settings
+[functions]
+  directory = "netlify/functions"    # Build output for functions
+
+  # Default function timeout (10 seconds)
+  timeout = 10
+
+  # Default function memory (512 MB)
+  memory = 512
+
+# Example specific function overrides
+[functions."sync-discord-roles"]
+  timeout = 20
+  memory = 1024
+
+[functions."backup-db"]
+  timeout = 60
+  memory = 2048
+
+# ======================
+# Plugins
+# ======================
+
+# Using official Next.js plugin for Netlify
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Image optimization plugin to compress images at build time
+[[plugins]]
+  package = "netlify-plugin-image-optim"
+  # Plugin configuration example (optional)
+  [plugins.inputs]
+    compress_level = 9
+    convert_to_webp = true
+
+# Sitemap generator plugin
+[[plugins]]
+  package = "netlify-plugin-sitemap"
+  [plugins.inputs]
+    exclude = ["/sanctum/*", "/throne-room/*"]
+
+# Content Security Policy generator plugin (auto generate headers)
+[[plugins]]
+  package = "netlify-plugin-csp-generator"
+  [plugins.inputs]
+    directives = """
+      default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';
+      img-src 'self' data:; connect-src 'self' https://api.supabase.io https://discord.com;
+    """
+
+# ======================
+# Edge Handlers / Edge Functions (Optional)
+# ======================
+
+[edge_functions]
+  # Example to protect /sanctum and /throne-room portals with auth edge function
+  "/sanctum/*" = "auth-protect"
+  "/throne-room/*" = "auth-protect"
+  "/chambers/dashboard/*" = "auth-protect"
+
+# ======================
+# Build Plugins hooks (Custom scripts/hooks)
+# ======================
+
+[build.processing]
+  skip_processing = false
+
+# ======================
+# Misc
+# ======================
+
+# Disable Large Media if unused
+[large_media]
+  enabled = false
+
+# =========================================
+# Debugging & Logging Settings (optional)
+# =========================================
+[logging]
+  level = "info"  # Could be 'debug', 'info', 'warn', 'error'
+
+# =========================================
+# Experimental features toggles
+# =========================================
+[experimental]
+  inline_functions = true
+  functions_splitting = true
+
+# ======================
+# Comments and Documentation
+# ======================
+
+# To customize more, see:
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+# https://docs.netlify.com/configure-builds/build-settings/
+# https://docs.netlify.com/functions/overview/
+# https://docs.netlify.com/edge-handlers/overview/

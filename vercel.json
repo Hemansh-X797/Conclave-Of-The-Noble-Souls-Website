@@ -1,0 +1,109 @@
+{
+  "version": 3,
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_SUPABASE_URL": "@supabase-url",
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase-anon-key",
+      "DISCORD_CLIENT_ID": "@discord-client-id",
+      "DISCORD_CLIENT_SECRET": "@discord-client-secret",
+      "NEXTAUTH_SECRET": "@nextauth-secret",
+      "NEXTAUTH_URL": "https://theconclaverealm.com",
+      "NODE_ENV": "production"
+    }
+  },
+  "routes": [
+    {
+      "src": "/throne",
+      "status": 301,
+      "headers": { "Location": "/throne-room" }
+    },
+    {
+      "src": "/hall",
+      "status": 301,
+      "headers": { "Location": "/hall-of-nobles" }
+    },
+    {
+      "src": "/chamber",
+      "status": 302,
+      "headers": { "Location": "/chambers/dashboard" }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://api.supabase.io https://discord.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+        },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/public/Assets/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/public/Assets/Images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/public/Assets/Videos/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/public/Assets/Audio/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ],
+  "functions": {
+    "memory": 512,
+    "maxDuration": 10,
+    "api/sync-discord-roles.js": {
+      "memory": 1024,
+      "maxDuration": 20
+    },
+    "api/backup-db.js": {
+      "memory": 2048,
+      "maxDuration": 60
+    }
+  },
+  "middleware": [
+    {
+      "source": "/sanctum/(.*)",
+      "function": "auth-protect"
+    },
+    {
+      "source": "/throne-room/(.*)",
+      "function": "auth-protect"
+    },
+    {
+      "source": "/chambers/dashboard/(.*)",
+      "function": "auth-protect"
+    }
+  ],
+  "experimental": {
+    "middlewarePrefetch": true,
+    "edgeFunctions": true
+  }
+}

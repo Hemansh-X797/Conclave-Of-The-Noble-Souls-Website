@@ -1,0 +1,1641 @@
+/* =============================================================================
+   THE CONCLAVE - NOBLE INPUT SYSTEM
+   Premium input components with pathway-specific theming
+   Version: 1.0 | Effortless Motion Philosophy | Performance Optimized
+   ============================================================================= */
+
+/* =============================================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================================= */
+
+:root {
+  /* Default Noble Colors */
+  --input-noble-primary: #FFD700;
+  --input-noble-secondary: #F4D03F;
+  --input-noble-border: rgba(255, 215, 0, 0.3);
+  --input-noble-glow: rgba(255, 215, 0, 0.4);
+  --input-noble-bg: rgba(0, 0, 0, 0.3);
+
+  /* Gaming Pathway */
+  --input-gaming-primary: #00BFFF;
+  --input-gaming-secondary: #1ABC9C;
+  --input-gaming-border: rgba(0, 191, 255, 0.3);
+  --input-gaming-glow: rgba(0, 191, 255, 0.4);
+  --input-gaming-accent: #FF4500;
+
+  /* Lorebound Pathway */
+  --input-lorebound-primary: #FF1493;
+  --input-lorebound-secondary: #E91E63;
+  --input-lorebound-border: rgba(255, 20, 147, 0.3);
+  --input-lorebound-glow: rgba(255, 20, 147, 0.4);
+  --input-lorebound-mystical: #9370DB;
+
+  /* Productive Pathway */
+  --input-productive-primary: #C0C0C0;
+  --input-productive-secondary: #95A5A6;
+  --input-productive-border: rgba(192, 192, 192, 0.3);
+  --input-productive-glow: rgba(192, 192, 192, 0.4);
+  --input-productive-accent: #3498DB;
+
+  /* News Pathway */
+  --input-news-primary: #E0115F;
+  --input-news-secondary: #E74C3C;
+  --input-news-border: rgba(224, 17, 95, 0.3);
+  --input-news-glow: rgba(224, 17, 95, 0.4);
+  --input-news-electric: #FF6B6B;
+
+  /* State Colors */
+  --input-error: #E74C3C;
+  --input-error-glow: rgba(231, 76, 60, 0.4);
+  --input-success: #2ECC71;
+  --input-success-glow: rgba(46, 204, 113, 0.4);
+  --input-warning: #F39C12;
+  --input-warning-glow: rgba(243, 156, 18, 0.4);
+  --input-disabled: rgba(255, 255, 255, 0.3);
+
+  /* Sizing */
+  --input-height-sm: 36px;
+  --input-height-md: 44px;
+  --input-height-lg: 52px;
+  --input-height-xl: 60px;
+
+  /* Spacing */
+  --input-padding-sm: 8px 12px;
+  --input-padding-md: 12px 16px;
+  --input-padding-lg: 14px 20px;
+  --input-padding-xl: 16px 24px;
+
+  /* Typography */
+  --input-font-size-sm: 14px;
+  --input-font-size-md: 16px;
+  --input-font-size-lg: 18px;
+  --input-font-size-xl: 20px;
+
+  /* Animation */
+  --input-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --input-transition-fast: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --input-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* =============================================================================
+   BASE INPUT STYLES
+   ============================================================================= */
+
+.noble-input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.noble-input-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--input-noble-primary);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: var(--input-transition);
+}
+
+.noble-input-label.required::after {
+  content: '*';
+  color: var(--input-error);
+  margin-left: 4px;
+}
+
+.noble-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.noble-input,
+.noble-textarea,
+.noble-select {
+  width: 100%;
+  padding: var(--input-padding-md);
+  font-size: var(--input-font-size-md);
+  font-family: 'Josefin Sans', sans-serif;
+  color: #FFFFFF;
+  background: var(--input-noble-bg);
+  border: 1px solid var(--input-noble-border);
+  border-radius: 8px;
+  outline: none;
+  transition: var(--input-transition);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 0 0 transparent,
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  will-change: box-shadow, border-color;
+}
+
+.noble-input:focus,
+.noble-textarea:focus,
+.noble-select:focus {
+  border-color: var(--input-noble-primary);
+  box-shadow: 
+    0 0 20px var(--input-noble-glow),
+    0 0 40px rgba(255, 215, 0, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.noble-input::placeholder,
+.noble-textarea::placeholder {
+  color: var(--input-noble-border);
+  opacity: 0.6;
+  letter-spacing: 0.3px;
+  transition: var(--input-transition);
+}
+
+.noble-input:focus::placeholder,
+.noble-textarea:focus::placeholder {
+  opacity: 0.4;
+  transform: translateX(4px);
+}
+
+/* =============================================================================
+   INPUT SIZES
+   ============================================================================= */
+
+.noble-input-sm,
+.noble-input-container.size-sm .noble-input {
+  height: var(--input-height-sm);
+  padding: var(--input-padding-sm);
+  font-size: var(--input-font-size-sm);
+}
+
+.noble-input-md,
+.noble-input-container.size-md .noble-input {
+  height: var(--input-height-md);
+  padding: var(--input-padding-md);
+  font-size: var(--input-font-size-md);
+}
+
+.noble-input-lg,
+.noble-input-container.size-lg .noble-input {
+  height: var(--input-height-lg);
+  padding: var(--input-padding-lg);
+  font-size: var(--input-font-size-lg);
+}
+
+.noble-input-xl,
+.noble-input-container.size-xl .noble-input {
+  height: var(--input-height-xl);
+  padding: var(--input-padding-xl);
+  font-size: var(--input-font-size-xl);
+}
+
+/* =============================================================================
+   TEXTAREA SPECIFIC
+   ============================================================================= */
+
+.noble-textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+  padding: 12px 16px;
+}
+
+.noble-textarea.auto-resize {
+  resize: none;
+  overflow: hidden;
+}
+
+.noble-textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.noble-textarea::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.noble-textarea::-webkit-scrollbar-thumb {
+  background: var(--input-noble-primary);
+  border-radius: 4px;
+  transition: var(--input-transition);
+}
+
+.noble-textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--input-noble-secondary);
+}
+
+/* =============================================================================
+   SELECT DROPDOWN
+   ============================================================================= */
+
+.noble-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FFD700' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.noble-select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FFD700' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+.noble-select option {
+  background: #1a1a1a;
+  color: #FFFFFF;
+  padding: 12px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* =============================================================================
+   INPUT ICONS
+   ============================================================================= */
+
+.noble-input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--input-noble-border);
+  transition: var(--input-transition);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.noble-input-icon.icon-left {
+  left: 14px;
+}
+
+.noble-input-icon.icon-right {
+  right: 14px;
+}
+
+.noble-input-wrapper.has-icon-left .noble-input {
+  padding-left: 44px;
+}
+
+.noble-input-wrapper.has-icon-right .noble-input {
+  padding-right: 44px;
+}
+
+.noble-input:focus ~ .noble-input-icon {
+  color: var(--input-noble-primary);
+}
+
+/* =============================================================================
+   FLOATING LABELS
+   ============================================================================= */
+
+.noble-input-floating-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--input-font-size-md);
+  color: var(--input-noble-border);
+  pointer-events: none;
+  transition: var(--input-transition);
+  background: linear-gradient(to bottom, transparent 50%, var(--input-noble-bg) 50%);
+  padding: 0 4px;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.noble-input:focus ~ .noble-input-floating-label,
+.noble-input.has-value ~ .noble-input-floating-label,
+.noble-textarea:focus ~ .noble-input-floating-label,
+.noble-textarea.has-value ~ .noble-input-floating-label {
+  top: 0;
+  font-size: 12px;
+  color: var(--input-noble-primary);
+  background: var(--input-noble-bg);
+  padding: 0 6px;
+}
+
+/* =============================================================================
+   VALIDATION STATES
+   ============================================================================= */
+
+/* Error State */
+.noble-input-container.error .noble-input-label {
+  color: var(--input-error);
+}
+
+.noble-input-container.error .noble-input,
+.noble-input-container.error .noble-textarea,
+.noble-input-container.error .noble-select {
+  border-color: var(--input-error);
+}
+
+.noble-input-container.error .noble-input:focus,
+.noble-input-container.error .noble-textarea:focus,
+.noble-input-container.error .noble-select:focus {
+  box-shadow: 
+    0 0 20px var(--input-error-glow),
+    0 0 40px rgba(231, 76, 60, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.noble-input-container.error .noble-input-icon {
+  color: var(--input-error);
+}
+
+/* Success State */
+.noble-input-container.success .noble-input-label {
+  color: var(--input-success);
+}
+
+.noble-input-container.success .noble-input,
+.noble-input-container.success .noble-textarea,
+.noble-input-container.success .noble-select {
+  border-color: var(--input-success);
+}
+
+.noble-input-container.success .noble-input:focus,
+.noble-input-container.success .noble-textarea:focus,
+.noble-input-container.success .noble-select:focus {
+  box-shadow: 
+    0 0 20px var(--input-success-glow),
+    0 0 40px rgba(46, 204, 113, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.noble-input-container.success .noble-input-icon {
+  color: var(--input-success);
+}
+
+/* Warning State */
+.noble-input-container.warning .noble-input-label {
+  color: var(--input-warning);
+}
+
+.noble-input-container.warning .noble-input,
+.noble-input-container.warning .noble-textarea,
+.noble-input-container.warning .noble-select {
+  border-color: var(--input-warning);
+}
+
+.noble-input-container.warning .noble-input:focus,
+.noble-input-container.warning .noble-textarea:focus,
+.noble-input-container.warning .noble-select:focus {
+  box-shadow: 
+    0 0 20px var(--input-warning-glow),
+    0 0 40px rgba(243, 156, 18, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled State */
+.noble-input:disabled,
+.noble-textarea:disabled,
+.noble-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.noble-input-container.disabled .noble-input-label {
+  opacity: 0.5;
+}
+
+/* Read-only State */
+.noble-input:read-only,
+.noble-textarea:read-only {
+  cursor: default;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* =============================================================================
+   HELPER TEXT & VALIDATION MESSAGES
+   ============================================================================= */
+
+.noble-input-helper {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--input-noble-border);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.3px;
+  transition: var(--input-transition);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.noble-input-container.error .noble-input-helper {
+  color: var(--input-error);
+  animation: helperShake 0.3s ease-in-out;
+}
+
+.noble-input-container.success .noble-input-helper {
+  color: var(--input-success);
+  animation: helperSlideIn 0.3s ease-out;
+}
+
+.noble-input-container.warning .noble-input-helper {
+  color: var(--input-warning);
+}
+
+@keyframes helperShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@keyframes helperSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+   CHARACTER COUNTER
+   ============================================================================= */
+
+.noble-input-counter {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--input-noble-border);
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: right;
+  transition: var(--input-transition);
+}
+
+.noble-input-counter.approaching-limit {
+  color: var(--input-warning);
+}
+
+.noble-input-counter.at-limit {
+  color: var(--input-error);
+  font-weight: 600;
+}
+
+/* =============================================================================
+   PASSWORD INPUT SPECIFIC
+   ============================================================================= */
+
+.noble-password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--input-noble-border);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  transition: var(--input-transition);
+  z-index: 2;
+}
+
+.noble-password-toggle:hover {
+  color: var(--input-noble-primary);
+}
+
+.noble-password-toggle:focus {
+  outline: none;
+  color: var(--input-noble-primary);
+}
+
+/* Password Strength Meter */
+.noble-password-strength {
+  margin-top: 8px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.noble-password-strength-bar {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  border-radius: 2px;
+  position: relative;
+}
+
+.noble-password-strength-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: passwordStrengthShimmer 2s infinite;
+}
+
+@keyframes passwordStrengthShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.noble-password-strength-bar.weak {
+  background: var(--input-error);
+  width: 33%;
+}
+
+.noble-password-strength-bar.medium {
+  background: var(--input-warning);
+  width: 66%;
+}
+
+.noble-password-strength-bar.strong {
+  background: var(--input-success);
+  width: 100%;
+}
+
+.noble-password-strength-label {
+  margin-top: 4px;
+  font-size: 11px;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.noble-password-strength-label.weak {
+  color: var(--input-error);
+}
+
+.noble-password-strength-label.medium {
+  color: var(--input-warning);
+}
+
+.noble-password-strength-label.strong {
+  color: var(--input-success);
+}
+
+/* =============================================================================
+   FILE UPLOAD
+   ============================================================================= */
+
+.noble-file-upload {
+  position: relative;
+  min-height: 120px;
+  border: 2px dashed var(--input-noble-border);
+  border-radius: 8px;
+  background: var(--input-noble-bg);
+  backdrop-filter: blur(10px);
+  transition: var(--input-transition);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.noble-file-upload:hover {
+  border-color: var(--input-noble-primary);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.noble-file-upload.drag-over {
+  border-color: var(--input-noble-primary);
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 
+    0 0 20px var(--input-noble-glow),
+    inset 0 0 40px var(--input-noble-glow);
+  animation: fileDragPulse 1s ease-in-out infinite;
+}
+
+@keyframes fileDragPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.noble-file-upload-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+.noble-file-upload-icon {
+  font-size: 48px;
+  color: var(--input-noble-primary);
+  transition: var(--input-transition);
+}
+
+.noble-file-upload:hover .noble-file-upload-icon {
+  transform: scale(1.1);
+}
+
+.noble-file-upload-text {
+  font-size: 14px;
+  color: var(--input-noble-border);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.noble-file-upload.has-file .noble-file-upload-text {
+  color: var(--input-noble-primary);
+  font-weight: 500;
+}
+
+.noble-file-upload-hint {
+  font-size: 11px;
+  color: var(--input-noble-border);
+  font-family: 'Josefin Sans', sans-serif;
+  opacity: 0.7;
+}
+
+/* File Preview */
+.noble-file-preview {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.noble-file-preview-item {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--input-noble-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noble-file-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noble-file-preview-icon {
+  font-size: 32px;
+  color: var(--input-noble-primary);
+}
+
+.noble-file-preview-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(231, 76, 60, 0.9);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: var(--input-transition);
+  opacity: 0;
+}
+
+.noble-file-preview-item:hover .noble-file-preview-remove {
+  opacity: 1;
+}
+
+.noble-file-preview-remove:hover {
+  background: var(--input-error);
+  transform: scale(1.1);
+}
+
+/* Upload Progress */
+.noble-file-upload-progress {
+  width: 100%;
+  margin-top: 12px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.noble-file-upload-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--input-noble-primary), var(--input-noble-secondary));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px var(--input-noble-glow);
+  position: relative;
+}
+
+.noble-file-upload-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: uploadProgressShimmer 1.5s infinite;
+}
+
+@keyframes uploadProgressShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* =============================================================================
+   SEARCH INPUT
+   ============================================================================= */
+
+.noble-search-wrapper {
+  position: relative;
+}
+
+.noble-search-clear {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--input-noble-border);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 50%;
+  transition: var(--input-transition);
+  display: none;
+  z-index: 2;
+}
+
+.noble-search-wrapper.has-value .noble-search-clear {
+  display: block;
+}
+
+.noble-search-clear:hover {
+  color: var(--input-error);
+  background: rgba(231, 76, 60, 0.1);
+}
+
+/* =============================================================================
+   TAG INPUT / MULTI-SELECT
+   ============================================================================= */
+
+.noble-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+  min-height: var(--input-height-md);
+  border: 1px solid var(--input-noble-border);
+  border-radius: 8px;
+  background: var(--input-noble-bg);
+  backdrop-filter: blur(10px);
+  transition: var(--input-transition);
+  cursor: text;
+}
+
+.noble-tags-container:focus-within {
+  border-color: var(--input-noble-primary);
+  box-shadow: 
+    0 0 20px var(--input-noble-glow),
+    0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+.noble-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--input-noble-primary);
+  color: #000000;
+  border-radius: 16px;
+  font-size: 13px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  animation: tagSlideIn 0.2s ease-out;
+  transition: var(--input-transition);
+}
+
+@keyframes tagSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.noble-tag-remove {
+  background: none;
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  transition: var(--input-transition);
+}
+
+.noble-tag-remove:hover {
+  color: #000000;
+  transform: scale(1.2);
+}
+
+.noble-tags-input {
+  flex: 1;
+  min-width: 120px;
+  border: none;
+  background: none;
+  outline: none;
+  color: #FFFFFF;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: var(--input-font-size-md);
+  padding: 4px;
+}
+
+.noble-tags-input::placeholder {
+  color: var(--input-noble-border);
+  opacity: 0.6;
+}
+
+/* =============================================================================
+   PATHWAY-SPECIFIC THEMING
+   ============================================================================= */
+
+/* Gaming Pathway */
+.gaming-realm .noble-input-label,
+.gaming-realm .noble-input-icon,
+.gaming-realm .noble-input-floating-label {
+  color: var(--input-gaming-primary);
+}
+
+.gaming-realm .noble-input,
+.gaming-realm .noble-textarea,
+.gaming-realm .noble-select {
+  border-color: var(--input-gaming-border);
+}
+
+.gaming-realm .noble-input:focus,
+.gaming-realm .noble-textarea:focus,
+.gaming-realm .noble-select:focus {
+  border-color: var(--input-gaming-primary);
+  box-shadow: 
+    0 0 20px var(--input-gaming-glow),
+    0 0 40px rgba(0, 191, 255, 0.2);
+}
+
+.gaming-realm .noble-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300BFFF' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+.gaming-realm .noble-tag {
+  background: var(--input-gaming-primary);
+}
+
+.gaming-realm .noble-file-upload:hover,
+.gaming-realm .noble-file-upload.drag-over {
+  border-color: var(--input-gaming-primary);
+}
+
+/* Lorebound Pathway */
+.lorebound-realm .noble-input-label,
+.lorebound-realm .noble-input-icon,
+.lorebound-realm .noble-input-floating-label {
+  color: var(--input-lorebound-primary);
+}
+
+.lorebound-realm .noble-input,
+.lorebound-realm .noble-textarea,
+.lorebound-realm .noble-select {
+  border-color: var(--input-lorebound-border);
+}
+
+.lorebound-realm .noble-input:focus,
+.lorebound-realm .noble-textarea:focus,
+.lorebound-realm .noble-select:focus {
+  border-color: var(--input-lorebound-primary);
+  box-shadow: 
+    0 0 20px var(--input-lorebound-glow),
+    0 0 40px rgba(255, 20, 147, 0.2);
+}
+
+.lorebound-realm .noble-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FF1493' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+.lorebound-realm .noble-tag {
+  background: var(--input-lorebound-primary);
+}
+
+.lorebound-realm .noble-file-upload:hover,
+.lorebound-realm .noble-file-upload.drag-over {
+  border-color: var(--input-lorebound-primary);
+}
+
+/* Productive Pathway */
+.productive-realm .noble-input-label,
+.productive-realm .noble-input-icon,
+.productive-realm .noble-input-floating-label {
+  color: var(--input-productive-primary);
+}
+
+.productive-realm .noble-input,
+.productive-realm .noble-textarea,
+.productive-realm .noble-select {
+  border-color: var(--input-productive-border);
+}
+
+.productive-realm .noble-input:focus,
+.productive-realm .noble-textarea:focus,
+.productive-realm .noble-select:focus {
+  border-color: var(--input-productive-primary);
+  box-shadow: 
+    0 0 20px var(--input-productive-glow),
+    0 0 40px rgba(192, 192, 192, 0.2);
+}
+
+.productive-realm .noble-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C0C0C0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+.productive-realm .noble-tag {
+  background: var(--input-productive-primary);
+}
+
+.productive-realm .noble-file-upload:hover,
+.productive-realm .noble-file-upload.drag-over {
+  border-color: var(--input-productive-primary);
+}
+
+/* News Pathway */
+.news-realm .noble-input-label,
+.news-realm .noble-input-icon,
+.news-realm .noble-input-floating-label {
+  color: var(--input-news-primary);
+}
+
+.news-realm .noble-input,
+.news-realm .noble-textarea,
+.news-realm .noble-select {
+  border-color: var(--input-news-border);
+}
+
+.news-realm .noble-input:focus,
+.news-realm .noble-textarea:focus,
+.news-realm .noble-select:focus {
+  border-color: var(--input-news-primary);
+  box-shadow: 
+    0 0 20px var(--input-news-glow),
+    0 0 40px rgba(224, 17, 95, 0.2);
+}
+
+.news-realm .noble-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23E0115F' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+.news-realm .noble-tag {
+  background: var(--input-news-primary);
+}
+
+.news-realm .noble-file-upload:hover,
+.news-realm .noble-file-upload.drag-over {
+  border-color: var(--input-news-primary);
+}
+
+/* =============================================================================
+   INPUT MASKING STYLES
+   ============================================================================= */
+
+.noble-input-masked {
+  letter-spacing: 0.5px;
+}
+
+.noble-input-masked.phone {
+  font-variant-numeric: tabular-nums;
+}
+
+.noble-input-masked.credit-card {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+}
+
+.noble-input-masked.date {
+  font-variant-numeric: tabular-nums;
+}
+
+/* =============================================================================
+   CHECKBOX & RADIO INPUTS
+   ============================================================================= */
+
+.noble-checkbox-wrapper,
+.noble-radio-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+  padding: 8px 0;
+}
+
+.noble-checkbox,
+.noble-radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.noble-checkbox-custom,
+.noble-radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--input-noble-border);
+  background: var(--input-noble-bg);
+  backdrop-filter: blur(10px);
+  transition: var(--input-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.noble-checkbox-custom {
+  border-radius: 4px;
+}
+
+.noble-radio-custom {
+  border-radius: 50%;
+}
+
+.noble-checkbox:checked ~ .noble-checkbox-custom,
+.noble-radio:checked ~ .noble-radio-custom {
+  border-color: var(--input-noble-primary);
+  background: var(--input-noble-primary);
+  box-shadow: 0 0 12px var(--input-noble-glow);
+}
+
+.noble-checkbox-custom::after {
+  content: '✓';
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  transform: scale(0);
+  transition: var(--input-transition);
+}
+
+.noble-checkbox:checked ~ .noble-checkbox-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.noble-radio-custom::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000000;
+  opacity: 0;
+  transform: scale(0);
+  transition: var(--input-transition);
+}
+
+.noble-radio:checked ~ .noble-radio-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.noble-checkbox-label,
+.noble-radio-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0.3px;
+  user-select: none;
+}
+
+.noble-checkbox:focus ~ .noble-checkbox-custom,
+.noble-radio:focus ~ .noble-radio-custom {
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.noble-checkbox:disabled ~ .noble-checkbox-custom,
+.noble-radio:disabled ~ .noble-radio-custom {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.noble-checkbox:disabled ~ .noble-checkbox-label,
+.noble-radio:disabled ~ .noble-radio-label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =============================================================================
+   RANGE SLIDER
+   ============================================================================= */
+
+.noble-range-wrapper {
+  width: 100%;
+}
+
+.noble-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--input-noble-bg);
+  outline: none;
+  transition: var(--input-transition);
+}
+
+.noble-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--input-noble-primary);
+  cursor: pointer;
+  border: 2px solid var(--input-noble-primary);
+  box-shadow: 0 0 12px var(--input-noble-glow);
+  transition: var(--input-transition);
+}
+
+.noble-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--input-noble-primary);
+  cursor: pointer;
+  border: 2px solid var(--input-noble-primary);
+  box-shadow: 0 0 12px var(--input-noble-glow);
+  transition: var(--input-transition);
+}
+
+.noble-range:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--input-noble-glow);
+}
+
+.noble-range:hover::-moz-range-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--input-noble-glow);
+}
+
+.noble-range:focus::-webkit-slider-thumb {
+  box-shadow: 
+    0 0 20px var(--input-noble-glow),
+    0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+.noble-range:focus::-moz-range-thumb {
+  box-shadow: 
+    0 0 20px var(--input-noble-glow),
+    0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+.noble-range-value {
+  margin-top: 8px;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  color: var(--input-noble-primary);
+  font-weight: 500;
+}
+
+/* =============================================================================
+   COLOR PICKER
+   ============================================================================= */
+
+.noble-color-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.noble-color-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 60px;
+  height: 44px;
+  border: 2px solid var(--input-noble-border);
+  border-radius: 8px;
+  cursor: pointer;
+  background: none;
+  transition: var(--input-transition);
+  overflow: hidden;
+}
+
+.noble-color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.noble-color-input::-webkit-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
+
+.noble-color-input::-moz-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
+
+.noble-color-input:hover {
+  border-color: var(--input-noble-primary);
+  box-shadow: 0 0 12px var(--input-noble-glow);
+}
+
+.noble-color-input:focus {
+  outline: none;
+  border-color: var(--input-noble-primary);
+  box-shadow: 0 0 20px var(--input-noble-glow);
+}
+
+.noble-color-value {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* =============================================================================
+   SWITCH / TOGGLE
+   ============================================================================= */
+
+.noble-switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.noble-switch {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.noble-switch-track {
+  width: 48px;
+  height: 24px;
+  background: var(--input-noble-bg);
+  border: 2px solid var(--input-noble-border);
+  border-radius: 24px;
+  position: relative;
+  transition: var(--input-transition);
+}
+
+.noble-switch:checked ~ .noble-switch-track {
+  background: var(--input-noble-primary);
+  border-color: var(--input-noble-primary);
+  box-shadow: 0 0 12px var(--input-noble-glow);
+}
+
+.noble-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  transition: var(--input-transition);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.noble-switch:checked ~ .noble-switch-track .noble-switch-thumb {
+  transform: translateX(24px);
+  background: #000000;
+}
+
+.noble-switch:focus ~ .noble-switch-track {
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.noble-switch:disabled ~ .noble-switch-track {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.noble-switch-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0.3px;
+  user-select: none;
+}
+
+/* =============================================================================
+   DATE & TIME PICKERS
+   ============================================================================= */
+
+.noble-date-input,
+.noble-time-input,
+.noble-datetime-input {
+  font-variant-numeric: tabular-nums;
+}
+
+.noble-date-input::-webkit-calendar-picker-indicator,
+.noble-time-input::-webkit-calendar-picker-indicator,
+.noble-datetime-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(1);
+  opacity: 0.6;
+  transition: var(--input-transition);
+}
+
+.noble-date-input:hover::-webkit-calendar-picker-indicator,
+.noble-time-input:hover::-webkit-calendar-picker-indicator,
+.noble-datetime-input:hover::-webkit-calendar-picker-indicator {
+  opacity: 1;
+}
+
+/* =============================================================================
+   OTP / PIN INPUT
+   ============================================================================= */
+
+.noble-otp-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.noble-otp-input {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #FFFFFF;
+  background: var(--input-noble-bg);
+  border: 2px solid var(--input-noble-border);
+  border-radius: 8px;
+  outline: none;
+  transition: var(--input-transition);
+  backdrop-filter: blur(10px);
+}
+
+.noble-otp-input:focus {
+  border-color: var(--input-noble-primary);
+  box-shadow: 
+    0 0 20px var(--input-noble-glow),
+    0 0 40px rgba(255, 215, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.noble-otp-input.filled {
+  border-color: var(--input-success);
+  background: rgba(46, 204, 113, 0.1);
+}
+
+/* =============================================================================
+   AUTOCOMPLETE / SUGGESTIONS
+   ============================================================================= */
+
+.noble-autocomplete-wrapper {
+  position: relative;
+}
+
+.noble-autocomplete-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid var(--input-noble-border);
+  border-radius: 8px;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 20px var(--input-noble-glow);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 1000;
+  animation: autocompleteSlideDown 0.2s ease-out;
+}
+
+@keyframes autocompleteSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.noble-autocomplete-item {
+  padding: 12px 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: var(--input-transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.noble-autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.noble-autocomplete-item:hover,
+.noble-autocomplete-item.highlighted {
+  background: var(--input-noble-primary);
+  color: #000000;
+}
+
+.noble-autocomplete-item.selected {
+  background: rgba(255, 215, 0, 0.2);
+  font-weight: 500;
+}
+
+.noble-autocomplete-empty {
+  padding: 16px;
+  text-align: center;
+  color: var(--input-noble-border);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* =============================================================================
+   FORM GROUPS & LAYOUTS
+   ============================================================================= */
+
+.noble-form-group {
+  margin-bottom: 24px;
+}
+
+.noble-form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.noble-form-row > * {
+  flex: 1;
+}
+
+.noble-form-section {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--input-noble-border);
+}
+
+.noble-form-section:last-child {
+  border-bottom: none;
+}
+
+.noble-form-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--input-noble-primary);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* =============================================================================
+   LOADING STATES
+   ============================================================================= */
+
+.noble-input-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.noble-input-loading::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--input-noble-border);
+  border-top-color: var(--input-noble-primary);
+  border-radius: 50%;
+  animation: inputSpinner 0.6s linear infinite;
+}
+
+@keyframes inputSpinner {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .noble-input,
+  .noble-textarea,
+  .noble-select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px 14px;
+  }
+
+  .noble-form-row {
+    flex-direction: column;
+  }
+
+  .noble-file-upload {
+    min-height: 100px;
+    padding: 16px;
+  }
+
+  .noble-otp-input {
+    width: 40px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .noble-otp-container {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .noble-input-container {
+    margin-bottom: 16px;
+  }
+
+  .noble-form-group {
+    margin-bottom: 20px;
+  }
+
+  .noble-file-preview-item {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY FEATURES
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .noble-input,
+  .noble-textarea,
+  .noble-select {
+    border-width: 2px;
+  }
+
+  .noble-input:focus,
+  .noble-textarea:focus,
+  .noble-select:focus {
+    border-width: 3px;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.noble-input:focus-visible,
+.noble-textarea:focus-visible,
+.noble-select:focus-visible,
+.noble-checkbox:focus-visible ~ .noble-checkbox-custom,
+.noble-radio:focus-visible ~ .noble-radio-custom,
+.noble-switch:focus-visible ~ .noble-switch-track {
+  outline: 2px solid var(--input-noble-primary);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
+
+@media print {
+  .noble-input,
+  .noble-textarea,
+  .noble-select {
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    box-shadow: none;
+  }
+
+  .noble-password-toggle,
+  .noble-search-clear,
+  .noble-file-preview-remove {
+    display: none;
+  }
+}
+
+/* =============================================================================
+   END OF INPUT SYSTEM
+   ============================================================================= */

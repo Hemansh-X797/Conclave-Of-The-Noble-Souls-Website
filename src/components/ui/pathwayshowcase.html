@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Custom Cursor Centered</title>
+    <style>
+        :root {
+            --cursor-noble-primary: #FFD700;
+            --cursor-noble-glow: rgba(255, 215, 0, 0.6);
+            --cursor-noble-shadow: rgba(255, 215, 0, 0.3);
+
+            --cursor-size-default: 28px;
+
+            --cursor-transition-fast: 0.15s;
+            --cursor-transition-normal: 0.3s;
+            --cursor-spring-tension: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --cursor-smooth-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            cursor: none !important;
+        }
+
+        body {
+            cursor: none !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #121212;
+            color: #FFF;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #FFD700;
+            outline: none;
+        }
+
+        .cursor-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 999999;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .conclave-cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--cursor-noble-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999999;
+            transition: all var(--cursor-transition-fast) var(--cursor-smooth-ease);
+            box-shadow:
+                0 0 10px var(--cursor-noble-glow),
+                0 0 20px var(--cursor-noble-shadow),
+                inset 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .conclave-cursor-ring {
+            position: fixed;
+            width: var(--cursor-size-default);
+            height: var(--cursor-size-default);
+            border: 2px solid var(--cursor-noble-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999998;
+            transition: all var(--cursor-transition-normal) var(--cursor-spring-tension);
+            box-shadow:
+                0 0 15px var(--cursor-noble-glow),
+                0 0 30px var(--cursor-noble-shadow),
+                inset 0 0 10px rgba(255, 215, 0, 0.1);
+        }
+
+        .conclave-cursor-ring.hover {
+            width: 50px;
+            height: 50px;
+            border-width: 3px;
+            box-shadow:
+                0 0 25px var(--cursor-noble-glow),
+                0 0 50px var(--cursor-noble-shadow),
+                0 0 75px rgba(255, 215, 0, 0.2);
+            animation: nobleHoverPulse 2s ease-in-out infinite;
+        }
+
+        .conclave-cursor-dot.hover {
+            width: 4px;
+            height: 4px;
+            background: #F8F8FF;
+            box-shadow:
+                0 0 15px rgba(248, 248, 255, 0.8),
+                0 0 30px var(--cursor-noble-glow);
+        }
+
+        .conclave-cursor-ring.text {
+            width: 3px;
+            height: 30px;
+            border-radius: 2px;
+            border-width: 1px;
+            animation: textCursorBlink 1.2s ease-in-out infinite;
+        }
+
+        .conclave-cursor-dot.text {
+            display: none;
+        }
+
+        .conclave-cursor-ring.loading {
+            border: 3px solid transparent;
+            border-top: 3px solid var(--cursor-noble-primary);
+            border-right: 3px solid var(--cursor-noble-primary);
+            animation: loadingSpin 1s linear infinite;
+            box-shadow:
+                0 0 20px var(--cursor-noble-glow),
+                0 0 40px var(--cursor-noble-shadow);
+        }
+
+        .conclave-cursor-dot.loading {
+            animation: loadingPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes nobleHoverPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes textCursorBlink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
+        @keyframes loadingSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes loadingPulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Custom Cursor Properly Centered</h1>
+    <button>Hover Me</button>
+    <input type="text" placeholder="Type something..." />
+
+    <div class="cursor-container">
+        <div class="conclave-cursor-ring"></div>
+        <div class="conclave-cursor-dot"></div>
+    </div>
+
+    <script>
+        const cursorDot = document.querySelector('.conclave-cursor-dot');
+        const cursorRing = document.querySelector('.conclave-cursor-ring');
+
+        document.addEventListener('mousemove', e => {
+            const dotRect = cursorDot.getBoundingClientRect();
+            const ringRect = cursorRing.getBoundingClientRect();
+
+            cursorDot.style.left = `${e.clientX - dotRect.width / 2}px`;
+            cursorDot.style.top = `${e.clientY - dotRect.height / 2}px`;
+            cursorRing.style.left = `${e.clientX - ringRect.width / 2}px`;
+            cursorRing.style.top = `${e.clientY - ringRect.height / 2}px`;
+        });
+
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                cursorDot.classList.add('hover');
+                cursorRing.classList.add('hover');
+            });
+            btn.addEventListener('mouseleave', () => {
+                cursorDot.classList.remove('hover');
+                cursorRing.classList.remove('hover');
+            });
+        });
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                cursorDot.classList.add('text');
+                cursorRing.classList.add('text');
+            });
+            input.addEventListener('blur', () => {
+                cursorDot.classList.remove('text');
+                cursorRing.classList.remove('text');
+            });
+        });
+
+        // Example loading state after 3 seconds
+        setTimeout(() => {
+            cursorDot.classList.add('loading');
+            cursorRing.classList.add('loading');
+        }, 3000);
+    </script>
+</body>
+
+</html>

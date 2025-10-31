@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conclave Pathways - Glass Cards</title>
+  <style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap');
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+
+    /* Container for all cards */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* Glass Card Base Style */
+    .glass-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 450px;
+      cursor: pointer;
+      transition: box-shadow 0.4s ease, transform 0.3s ease;
+    }
+
+    .glass-card:hover,
+    .glass-card:focus-within {
+      box-shadow:
+        0 8px 40px rgba(255, 215, 0, 0.6),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+      transform: translateY(-10px) scale(1.03);
+      outline: none;
+    }
+
+    /* Background image inside the card */
+    .glass-card__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.65;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+      filter: brightness(0.7);
+    }
+
+    .glass-card:hover .glass-card__bg,
+    .glass-card:focus-within .glass-card__bg {
+      opacity: 0.85;
+      filter: brightness(0.9);
+    }
+
+    /* Overlay gradient for readability */
+    .glass-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.6) 10%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.8) 100%);
+      z-index: 1;
+      pointer-events: none;
+      border-radius: 24px;
+    }
+
+    /* Content container */
+    .glass-card__content {
+      position: relative;
+      z-index: 2;
+      padding: 28px 32px 36px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    /* Card Title */
+    .glass-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: #FFD700;
+      text-shadow:
+        0 2px 6px rgba(255, 215, 0, 0.6),
+        0 0 12px rgba(255, 215, 0, 0.3);
+      user-select: none;
+    }
+
+    /* Card Description */
+    .glass-card__desc {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #eee;
+      flex-grow: 1;
+      margin-bottom: 36px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+      user-select: text;
+    }
+
+    /* Button style */
+    .glass-card__button {
+      background: linear-gradient(90deg, #facc15, #eab308);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #1a1a1a;
+      cursor: pointer;
+      box-shadow:
+        0 4px 12px rgba(234, 179, 8, 0.6);
+      transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
+      user-select: none;
+      align-self: flex-start;
+    }
+
+    .glass-card__button:hover,
+    .glass-card__button:focus {
+      background: linear-gradient(90deg, #eab308, #ca8a04);
+      box-shadow:
+        0 6px 20px rgba(202, 138, 4, 0.8);
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .glass-card {
+        height: 400px;
+      }
+
+      .glass-card__title {
+        font-size: 1.8rem;
+      }
+      .glass-card__desc {
+        font-size: 0.95rem;
+      }
+      .glass-card__button {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .glass-card {
+        height: 360px;
+      }
+      .glass-card__title {
+        font-size: 1.6rem;
+      }
+      .glass-card__desc {
+        font-size: 0.9rem;
+      }
+      .glass-card__button {
+        font-size: 0.95rem;
+        padding: 10px 20px;
+      }
+    }
+
+    /* Accessibility focus styles */
+    .glass-card:focus-visible {
+      outline: 3px solid #FFD700;
+      outline-offset: 4px;
+    }
+
+    .glass-card__button:focus-visible {
+      outline: 3px solid #FFD700;
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <main class="cards-container" role="main" aria-label="Conclave Pathway Cards">
+
+    <!-- Card 1: News Nexus -->
+    <article class="glass-card" tabindex="0" aria-labelledby="title-news" aria-describedby="desc-news">
+      <img
+        src="Assets/Images/Pathways/PathwayButtons/news_button.jpg"
+        alt="Stack of newspapers and books"
+        class="glass-card__bg"
+        aria-hidden="true"
+      />
+      <div class="glass-card__overlay"></div>
+      <div class="glass-card__content">
+        <h2 id="title-news" class="glass-card__title">News Nexus</h2>
+        <p id="desc-news" class="glass-card__desc">
+          Stay updated with the latest real-time news, deep dives, and vibrant discussions.
+        </p>
+        <button
+          class="glass-card__button"
+          type="button"
+          aria-label="Enter News Nexus pathway"
+          onclick="alert('Entering News Nexus Pathway')"
+        >
+          Enter News Nexus
+        </button>
+      </div>
+    </article>
+
+    <!-- Card 2: Lorebound Sanctuary -->
+    <article class="glass-card" tabindex="0" aria-labelledby="title-lore" aria-describedby="desc-lore">
+      <img
+        src="Assets/Images/Pathways/PathwayButtons/Otaku_button.jpg"
+        alt="Silhouette in colorful sunset cave"
+        class="glass-card__bg"
+        aria-hidden="true"
+      />
+      <div class="glass-card__overlay"></div>
+      <div class="glass-card__content">
+        <h2 id="title-lore" class="glass-card__title">Lorebound Sanctuary</h2>
+        <p id="desc-lore" class="glass-card__desc">
+          Explore anime and manga aesthetics in a serene sanctuary of stories and knowledge.
+        </p>
+        <button
+          class="glass-card__button"
+          type="button"
+          aria-label="Enter Lorebound Sanctuary pathway"
+          onclick="alert('Entering Lorebound Sanctuary Pathway')"
+        >
+          Enter Lorebound
+        </button>
+      </div>
+    </article>
+
+    <!-- Card 3: Gaming Realm -->
+    <article class="glass-card" tabindex="0" aria-labelledby="title-gaming" aria-describedby="desc-gaming">
+      <img
+        src="Assets/Images/Pathways/PathwayButtons/pexels-pixabay-159393.jpg"
+        alt="Gaming controller on dark surface"
+        class="glass-card__bg"
+        aria-hidden="true"
+      />
+      <div class="glass-card__overlay"></div>
+      <div class="glass-card__content">
+        <h2 id="title-gaming" class="glass-card__title">Gaming Realm</h2>
+        <p id="desc-gaming" class="glass-card__desc">
+          Dive into immersive challenges, eSports, and strategy quests in our dynamic gaming hub.
+        </p>
+        <button
+          class="glass-card__button"
+          type="button"
+          aria-label="Enter Gaming Realm pathway"
+          onclick="alert('Entering Gaming Realm Pathway')"
+        >
+          Enter Gaming Realm
+        </button>
+      </div>
+    </article>
+
+    <!-- Card 4: Productivity Palace -->
+    <article class="glass-card" tabindex="0" aria-labelledby="title-productive" aria-describedby="desc-productive">
+      <img
+        src="Assets/Images/Pathways/PathwayButtons/Productive_button.jpg"
+        alt="Luxurious golden throne room"
+        class="glass-card__bg"
+        aria-hidden="true"
+      />
+      <div class="glass-card__overlay"></div>
+      <div class="glass-card__content">
+        <h2 id="title-productive" class="glass-card__title">Productivity Palace</h2>
+        <p id="desc-productive" class="glass-card__desc">
+          Command your time with elite tools, focus modes, and powerful workflow strategies.
+        </p>
+        <button
+          class="glass-card__button"
+          type="button"
+          aria-label="Enter Productivity Palace pathway"
+          onclick="alert('Entering Productivity Palace Pathway')"
+        >
+          Enter Productivity Palace
+        </button>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

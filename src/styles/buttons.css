@@ -1,0 +1,1496 @@
+/* =============================================================================
+   THE CONCLAVE REALM - ADVANCED BUTTON SYSTEM
+   Luxury button collection with pathway-specific theming & cursor integration
+   Version: 1.0 | Noble Minimalism + Pathway Grandeur
+   ============================================================================= */
+
+/* =============================================================================
+   BUTTON SYSTEM VARIABLES & FOUNDATIONS
+   ============================================================================= */
+
+:root {
+  /* Base Button Variables */
+  --btn-font-primary: 'Josefin Sans', sans-serif;
+  --btn-font-decorative: 'Cinzel Decorative', serif;
+  --btn-font-gaming: 'Orbitron', monospace;
+  --btn-font-mystical: 'Ring of Kerry', serif;
+  
+  /* Noble Color System */
+  --btn-noble-gold: #FFD700;
+  --btn-noble-gold-light: #FFED4E;
+  --btn-noble-gold-dark: #B8860B;
+  --btn-noble-white: #F8F8FF;
+  --btn-noble-cream: #FFF8DC;
+  --btn-noble-silver: #C0C0C0;
+  --btn-noble-platinum: #E5E4E2;
+  
+  /* Text Aura Colors */
+  --btn-text-aura: #F8F8F8;
+  --btn-text-dim: rgba(192, 192, 192, 0.6);
+  --btn-text-dim-hover: rgba(248, 248, 248, 0.9);
+  --btn-text-glow: rgba(248, 248, 248, 0.8);
+  
+  /* Gaming Pathway Colors */
+  --btn-gaming-primary: #00BFFF;
+  --btn-gaming-secondary: #1ABC9C;
+  --btn-gaming-accent: #FF4500;
+  --btn-gaming-neon: #00FFFF;
+  --btn-gaming-dark: #0A0A0F;
+  --btn-gaming-glow: rgba(0, 191, 255, 0.6);
+  
+  /* Lorebound Pathway Colors */
+  --btn-lorebound-primary: #6A0DAD;
+  --btn-lorebound-secondary: #9932CC;
+  --btn-lorebound-tertiary: #DDA0DD;
+  --btn-lorebound-mystical: #FF1493;
+  --btn-lorebound-dark: #2E0854;
+  --btn-lorebound-glow: rgba(106, 13, 173, 0.7);
+  
+  /* News Pathway Colors */
+  --btn-news-primary: #E0115F;
+  --btn-news-secondary: #DC143C;
+  --btn-news-electric: #FF6B6B;
+  --btn-news-dark: #8B0000;
+  --btn-news-glow: rgba(224, 17, 95, 0.6);
+  
+  /* Productive Pathway Colors */
+  --btn-productive-primary: #C0C0C0;
+  --btn-productive-secondary: #95A5A6;
+  --btn-productive-accent: #3498DB;
+  --btn-productive-dark: #2C3E50;
+  
+  /* Admin/Mod Hierarchy Colors */
+  --btn-admin-owner: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF4500 100%);
+  --btn-admin-admin: linear-gradient(135deg, #DC143C 0%, #B22222 50%, #8B0000 100%);
+  --btn-admin-mod: linear-gradient(135deg, #4169E1 0%, #0000CD 50%, #191970 100%);
+  
+  /* Button Sizing System */
+  --btn-size-sm: 0.75rem;
+  --btn-size-md: 1rem;
+  --btn-size-lg: 1.25rem;
+  --btn-padding-sm: 0.5rem 1rem;
+  --btn-padding-md: 0.75rem 1.5rem;
+  --btn-padding-lg: 1rem 2rem;
+  
+  /* Animation & Transition Variables */
+  --btn-transition-fast: 0.15s;
+  --btn-transition-normal: 0.3s;
+  --btn-transition-slow: 0.6s;
+  --btn-ease-noble: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --btn-ease-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --btn-ease-gaming: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Elevation & Shadow System */
+  --btn-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --btn-shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --btn-shadow-floating: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --btn-shadow-divine: 0 8px 32px rgba(255, 215, 0, 0.3);
+}
+
+/* =============================================================================
+   BASE BUTTON FOUNDATION & RESET
+   ============================================================================= */
+
+.conclave-btn {
+  /* Base Structure */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: none;
+  
+  /* Typography Base */
+  font-family: var(--btn-font-primary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  
+  /* Interaction States */
+  border: none;
+  outline: none;
+  background: none;
+  
+  /* Transitions */
+  transition: all var(--btn-transition-normal) var(--btn-ease-noble);
+  
+  /* Performance Optimizations */
+  will-change: transform, opacity, box-shadow;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  
+  /* Accessibility */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.conclave-btn:focus-visible {
+  outline: 2px solid var(--btn-noble-gold);
+  outline-offset: 2px;
+}
+
+.conclave-btn:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  filter: grayscale(50%);
+}
+
+/* Cursor Integration Classes */
+.conclave-btn {
+  cursor: none !important;
+}
+
+.conclave-btn.cursor-hover-target::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  transition: opacity var(--btn-transition-fast) ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.conclave-btn:hover.cursor-hover-target::before {
+  opacity: 1;
+}
+
+/* =============================================================================
+   TEXT-ONLY BUTTONS (MINIMALISTIC NOBLE LUXURY)
+   ============================================================================= */
+
+/* Primary Text-Only Button - White Flame Aura */
+.btn-text-flame {
+  font-family: var(--btn-font-primary);
+  font-size: var(--btn-size-md);
+  font-weight: 500;
+  color: var(--btn-noble-white);
+  padding: var(--btn-padding-md);
+  border: none;
+  background: none;
+  position: relative;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all var(--btn-transition-normal) var(--btn-ease-noble);
+  overflow: hidden;
+}
+
+.btn-text-flame::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--btn-text-aura) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--btn-transition-slow) var(--btn-ease-noble);
+  opacity: 0;
+  z-index: -1;
+}
+
+.btn-text-flame:hover {
+  color: var(--btn-noble-gold);
+  text-shadow: 
+    0 0 10px var(--btn-text-glow),
+    0 0 20px rgba(248, 248, 248, 0.5),
+    0 0 30px rgba(248, 248, 248, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-text-flame:hover::before {
+  width: 120px;
+  height: 120px;
+  opacity: 0.15;
+}
+
+.btn-text-flame:active {
+  transform: translateY(0);
+  transition-duration: var(--btn-transition-fast);
+}
+
+/* Secondary Text-Only Button - Dim to Shine Effect */
+.btn-text-dim {
+  font-family: var(--btn-font-primary);
+  font-size: var(--btn-size-md);
+  font-weight: 400;
+  color: var(--btn-text-dim);
+  padding: var(--btn-padding-md);
+  border: none;
+  background: none;
+  position: relative;
+  letter-spacing: 0.5px;
+  transition: all var(--btn-transition-normal) var(--btn-ease-noble);
+  text-transform: capitalize;
+}
+
+.btn-text-dim::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--btn-noble-gold) 50%, transparent 100%);
+  transform: translateX(-50%);
+  transition: width var(--btn-transition-normal) var(--btn-ease-noble);
+}
+
+.btn-text-dim:hover {
+  color: var(--btn-text-dim-hover);
+  text-shadow: 0 0 15px rgba(248, 248, 248, 0.4);
+  letter-spacing: 1px;
+}
+
+.btn-text-dim:hover::after {
+  width: 100%;
+}
+
+.btn-text-dim:active {
+  color: var(--btn-noble-white);
+  transform: scale(0.98);
+}
+
+/* Tertiary Text-Only Button - Subtle Elegant */
+.btn-text-subtle {
+  font-family: var(--btn-font-primary);
+  font-size: var(--btn-size-sm);
+  font-weight: 300;
+  color: var(--btn-noble-silver);
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  text-transform: lowercase;
+  letter-spacing: 0.3px;
+  transition: all var(--btn-transition-normal) var(--btn-ease-noble);
+  position: relative;
+}
+
+.btn-text-subtle:hover {
+  color: var(--btn-noble-cream);
+  letter-spacing: 0.8px;
+  transform: translateY(-1px);
+}
+
+.btn-text-subtle:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Size Variants for Text Buttons */
+.btn-text-sm {
+  font-size: var(--btn-size-sm);
+  padding: 0.5rem 1rem;
+  letter-spacing: 0.3px;
+}
+
+.btn-text-lg {
+  font-size: var(--btn-size-lg);
+  padding: 1rem 2.5rem;
+  letter-spacing: 1.2px;
+}
+
+/* =============================================================================
+   PRIMARY BUTTONS (MODERN NOBLE - DEFAULT & PRODUCTIVE)
+   ============================================================================= */
+
+/* Default Noble Primary Button */
+.btn-primary-noble {
+  font-family: var(--btn-font-primary);
+  font-size: var(--btn-size-md);
+  font-weight: 600;
+  color: var(--btn-noble-dark);
+  background: linear-gradient(135deg, var(--btn-noble-gold) 0%, var(--btn-noble-gold-light) 100%);
+  padding: var(--btn-padding-md);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: var(--btn-shadow-subtle);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary-noble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  transition: left var(--btn-transition-slow) var(--btn-ease-noble);
+}
+
+.btn-primary-noble:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--btn-shadow-divine);
+  background: linear-gradient(135deg, var(--btn-noble-gold-light) 0%, var(--btn-noble-gold) 100%);
+}
+
+.btn-primary-noble:hover::before {
+  left: 100%;
+}
+
+.btn-primary-noble:active {
+  transform: translateY(-1px);
+  box-shadow: var(--btn-shadow-elevated);
+  transition-duration: var(--btn-transition-fast);
+}
+
+/* Productive Pathway Primary Button */
+.btn-primary-productive {
+  font-family: var(--btn-font-primary);
+  font-size: var(--btn-size-md);
+  font-weight: 500;
+  color: var(--btn-productive-dark);
+  background: linear-gradient(135deg, var(--btn-productive-primary) 0%, var(--btn-productive-secondary) 100%);
+  padding: var(--btn-padding-md);
+  border-radius: 6px;
+  border: 1px solid rgba(192, 192, 192, 0.2);
+  box-shadow: var(--btn-shadow-subtle);
+  position: relative;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary-productive::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(52, 152, 219, 0.1) 50%, transparent 100%);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--btn-transition-normal) var(--btn-ease-noble);
+}
+
+.btn-primary-productive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+  color: var(--btn-noble-white);
+}
+
+.btn-primary-productive:hover::after {
+  opacity: 1;
+}
+
+.btn-primary-productive:active {
+  transform: translateY(0);
+  box-shadow: var(--btn-shadow-subtle);
+}
+
+/* =============================================================================
+   SECONDARY BUTTONS (SUPPORTING ACTIONS)
+   ============================================================================= */
+
+.btn-secondary-noble {
+  font-family: var(--btn-font-primary);
+  font-size: var(--btn-size-md);
+  font-weight: 400;
+  color: var(--btn-noble-gold);
+  background: rgba(255, 215, 0, 0.1);
+  padding: var(--btn-padding-md);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.btn-secondary-noble:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.btn-secondary-noble:active {
+  transform: translateY(0);
+  background: rgba(255, 215, 0, 0.15);
+}
+
+.btn-secondary-glass {
+  font-family: var(--btn-font-primary);
+  font-size: var(--btn-size-md);
+  font-weight: 400;
+  color: var(--btn-noble-white);
+  background: rgba(248, 248, 255, 0.05);
+  padding: var(--btn-padding-md);
+  border-radius: 8px;
+  border: 1px solid rgba(248, 248, 255, 0.1);
+  backdrop-filter: blur(15px);
+  position: relative;
+}
+
+.btn-secondary-glass:hover {
+  background: rgba(248, 248, 255, 0.1);
+  border-color: rgba(248, 248, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================================================
+   GAMING PATHWAY BUTTONS (SCI-FI CYBER AESTHETIC)
+   ============================================================================= */
+
+.btn-gaming-primary {
+  font-family: var(--btn-font-gaming);
+  font-size: var(--btn-size-md);
+  font-weight: 700;
+  color: var(--btn-gaming-neon);
+  background: linear-gradient(135deg, var(--btn-gaming-dark) 0%, rgba(0, 191, 255, 0.1) 50%, var(--btn-gaming-dark) 100%);
+  padding: var(--btn-padding-md);
+  border-radius: 0;
+  border: 2px solid var(--btn-gaming-primary);
+  box-shadow: 
+    inset 0 0 20px rgba(0, 191, 255, 0.1),
+    0 0 20px rgba(0, 191, 255, 0.2);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  overflow: hidden;
+}
+
+.btn-gaming-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 255, 0.3) 30%, rgba(0, 255, 255, 0.6) 50%, rgba(0, 255, 255, 0.3) 70%, transparent 100%);
+  transition: left 0.8s var(--btn-ease-gaming);
+  z-index: 1;
+}
+
+.btn-gaming-primary::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: var(--btn-gaming-dark);
+  clip-path: inherit;
+  z-index: -1;
+}
+
+.btn-gaming-primary:hover {
+  color: #FFFFFF;
+  border-color: var(--btn-gaming-neon);
+  box-shadow: 
+    inset 0 0 30px rgba(0, 255, 255, 0.2),
+    0 0 40px rgba(0, 191, 255, 0.4),
+    0 0 80px rgba(0, 191, 255, 0.2);
+  text-shadow: 0 0 10px currentColor;
+  transform: translateY(-2px);
+}
+
+.btn-gaming-primary:hover::before {
+  left: 100%;
+}
+
+.btn-gaming-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    inset 0 0 40px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 191, 255, 0.6);
+}
+
+/* Gaming Secondary Button */
+.btn-gaming-secondary {
+  font-family: var(--btn-font-gaming);
+  font-size: var(--btn-size-sm);
+  font-weight: 600;
+  color: var(--btn-gaming-secondary);
+  background: rgba(26, 188, 156, 0.1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0;
+  border: 1px solid var(--btn-gaming-secondary);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.btn-gaming-secondary:hover {
+  background: rgba(26, 188, 156, 0.2);
+  color: #FFFFFF;
+  border-color: #1ABC9C;
+  box-shadow: 
+    0 0 15px rgba(26, 188, 156, 0.3),
+    inset 0 0 15px rgba(26, 188, 156, 0.1);
+  transform: translateY(-1px);
+}
+
+.btn-gaming-secondary:active {
+  transform: translateY(0) scale(0.97);
+  background: rgba(26, 188, 156, 0.3);
+}
+
+/* Gaming Accent Button (for special actions) */
+.btn-gaming-accent {
+  font-family: var(--btn-font-gaming);
+  font-size: var(--btn-size-md);
+  font-weight: 700;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--btn-gaming-accent) 0%, #FF6500 100%);
+  padding: var(--btn-padding-md);
+  border-radius: 0;
+  border: 2px solid var(--btn-gaming-accent);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  clip-path: polygon(0% 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 0% 100%);
+  overflow: hidden;
+}
+
+.btn-gaming-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--btn-ease-gaming);
+}
+
+.btn-gaming-accent:hover {
+  box-shadow: 
+    0 0 25px rgba(255, 69, 0, 0.4),
+    0 0 50px rgba(255, 69, 0, 0.2);
+  transform: translateY(-3px);
+  text-shadow: 0 0 8px currentColor;
+}
+
+.btn-gaming-accent:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-gaming-accent:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
+}
+
+/* =============================================================================
+   LOREBOUND PATHWAY BUTTONS (MYSTICAL MAGICAL AESTHETIC)
+   ============================================================================= */
+
+.btn-lorebound-primary {
+  font-family: var(--btn-font-mystical);
+  font-size: var(--btn-size-md);
+  font-weight: 600;
+  color: var(--btn-lorebound-tertiary);
+  background: linear-gradient(135deg, var(--btn-lorebound-dark) 0%, rgba(106, 13, 173, 0.2) 50%, var(--btn-lorebound-dark) 100%);
+  padding: var(--btn-padding-md);
+  border-radius: 12px;
+  border: 2px solid var(--btn-lorebound-primary);
+  box-shadow: 
+    inset 0 0 20px rgba(106, 13, 173, 0.2),
+    0 0 25px rgba(106, 13, 173, 0.3);
+  position: relative;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+
+.btn-lorebound-primary::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(from 0deg, var(--btn-lorebound-primary), var(--btn-lorebound-mystical), var(--btn-lorebound-secondary), var(--btn-lorebound-primary));
+  border-radius: 14px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--btn-transition-normal) var(--btn-ease-noble);
+}
+
+.btn-lorebound-primary::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%) rotate(0deg);
+  font-size: 1.2em;
+  color: var(--btn-lorebound-mystical);
+  transition: all var(--btn-transition-normal) var(--btn-ease-noble);
+  opacity: 0.7;
+}
+
+.btn-lorebound-primary:hover {
+  color: #FFFFFF;
+  border-color: var(--btn-lorebound-mystical);
+  box-shadow: 
+    inset 0 0 30px rgba(255, 20, 147, 0.2),
+    0 0 40px rgba(106, 13, 173, 0.5),
+    0 0 80px rgba(106, 13, 173, 0.3);
+  text-shadow: 0 0 15px var(--btn-lorebound-glow);
+  transform: translateY(-3px);
+}
+
+.btn-lorebound-primary:hover::before {
+  opacity: 1;
+  animation: mysticalRotate 3s linear infinite;
+}
+
+.btn-lorebound-primary:hover::after {
+  transform: translateY(-50%) rotate(180deg);
+  color: #FFFFFF;
+  opacity: 1;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.btn-lorebound-primary:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 
+    inset 0 0 40px rgba(255, 20, 147, 0.3),
+    0 0 20px rgba(106, 13, 173, 0.7);
+}
+
+/* Lorebound Secondary Button */
+.btn-lorebound-secondary {
+  font-family: var(--btn-font-mystical);
+  font-size: var(--btn-size-sm);
+  font-weight: 500;
+  color: var(--btn-lorebound-secondary);
+  background: rgba(153, 50, 204, 0.1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--btn-lorebound-secondary);
+  position: relative;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(5px);
+}
+
+.btn-lorebound-secondary::before {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  color: var(--btn-lorebound-mystical);
+  opacity: 0;
+  transition: all var(--btn-transition-normal) var(--btn-ease-noble);
+}
+
+.btn-lorebound-secondary:hover {
+  background: rgba(153, 50, 204, 0.2);
+  color: var(--btn-lorebound-tertiary);
+  border-color: var(--btn-lorebound-mystical);
+  box-shadow: 
+    0 0 20px rgba(153, 50, 204, 0.3),
+    inset 0 0 20px rgba(255, 20, 147, 0.1);
+  transform: translateY(-2px);
+  padding-left: 2rem;
+}
+
+.btn-lorebound-secondary:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.btn-lorebound-secondary:active {
+  transform: translateY(0) scale(0.97);
+  background: rgba(153, 50, 204, 0.3);
+}
+
+/* Lorebound Mystical Button (for special magical actions) */
+.btn-lorebound-mystical {
+  font-family: var(--btn-font-mystical);
+  font-size: var(--btn-size-md);
+  font-weight: 600;
+  color: #FFFFFF;
+  background: radial-gradient(circle at center, var(--btn-lorebound-mystical) 0%, var(--btn-lorebound-primary) 70%, var(--btn-lorebound-dark) 100%);
+  padding: var(--btn-padding-md);
+  border-radius: 16px;
+  border: 2px solid var(--btn-lorebound-mystical);
+  position: relative;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+
+.btn-lorebound-mystical::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 0 10px #FFFFFF,
+    0 0 20px var(--btn-lorebound-mystical),
+    0 0 30px var(--btn-lorebound-mystical);
+  opacity: 0;
+  transition: all var(--btn-transition-normal) var(--btn-ease-noble);
+}
+
+.btn-lorebound-mystical:hover {
+  box-shadow: 
+    0 0 30px rgba(255, 20, 147, 0.6),
+    0 0 60px rgba(106, 13, 173, 0.4),
+    inset 0 0 25px rgba(255, 20, 147, 0.2);
+  transform: translateY(-3px);
+  text-shadow: 0 0 15px currentColor;
+}
+
+.btn-lorebound-mystical:hover::before {
+  opacity: 1;
+  animation: mysticalPulse 2s ease-in-out infinite;
+}
+
+.btn-lorebound-mystical:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 
+    0 0 20px rgba(255, 20, 147, 0.8),
+    inset 0 0 30px rgba(255, 20, 147, 0.3);
+}
+
+/* =============================================================================
+   NEWS PATHWAY BUTTONS (ELECTRIC DYNAMIC AESTHETIC)
+   ============================================================================= */
+
+.btn-news-primary {
+  font-family: var(--btn-font-decorative);
+  font-size: var(--btn-size-md);
+  font-weight: 700;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--btn-news-dark) 0%, rgba(224, 17, 95, 0.2) 50%, var(--btn-news-dark) 100%);
+  padding: var(--btn-padding-md);
+  border-radius: 4px;
+  border: 2px solid var(--btn-news-primary);
+  box-shadow: 
+    inset 0 0 15px rgba(224, 17, 95, 0.2),
+    0 0 20px rgba(224, 17, 95, 0.3);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  overflow: hidden;
+}
+
+.btn-news-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 0%, 
+    rgba(255, 107, 107, 0.3) 25%, 
+    transparent 50%, 
+    rgba(255, 107, 107, 0.3) 75%, 
+    transparent 100%);
+  animation: newsStaticScan 0.1s linear infinite;
+  opacity: 0;
+  transition: opacity var(--btn-transition-normal) ease;
+}
+
+.btn-news-primary::after {
+  content: '⚡';
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+  color: var(--btn-news-electric);
+  opacity: 0.8;
+  transition: all var(--btn-transition-fast) var(--btn-ease-noble);
+}
+
+.btn-news-primary:hover {
+  color: var(--btn-news-electric);
+  border-color: var(--btn-news-electric);
+  box-shadow: 
+    inset 0 0 25px rgba(255, 107, 107, 0.3),
+    0 0 30px rgba(224, 17, 95, 0.5),
+    0 0 60px rgba(224, 17, 95, 0.3);
+  text-shadow: 0 0 10px currentColor;
+  transform: translateY(-2px);
+}
+
+.btn-news-primary:hover::before {
+  opacity: 1;
+  animation-duration: 0.05s;
+}
+
+.btn-news-primary:hover::after {
+  color: #FFFFFF;
+  text-shadow: 0 0 15px var(--btn-news-electric);
+  transform: translateY(-50%) scale(1.2);
+}
+
+.btn-news-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    inset 0 0 30px rgba(255, 107, 107, 0.4),
+    0 0 15px rgba(224, 17, 95, 0.7);
+}
+
+/* News Secondary Button */
+.btn-news-secondary {
+  font-family: var(--btn-font-decorative);
+  font-size: var(--btn-size-sm);
+  font-weight: 600;
+  color: var(--btn-news-secondary);
+  background: rgba(220, 20, 60, 0.1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--btn-news-secondary);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-news-secondary:hover {
+  background: rgba(220, 20, 60, 0.2);
+  color: var(--btn-news-electric);
+  border-color: var(--btn-news-electric);
+  box-shadow: 
+    0 0 15px rgba(220, 20, 60, 0.3),
+    inset 0 0 15px rgba(255, 107, 107, 0.1);
+  transform: translateY(-1px);
+}
+
+.btn-news-secondary:active {
+  transform: translateY(0) scale(0.97);
+  background: rgba(220, 20, 60, 0.3);
+}
+
+/* =============================================================================
+   ADMIN/MODERATOR HIERARCHY BUTTONS
+   ============================================================================= */
+
+/* Owner Button - Supreme Authority */
+.btn-admin-owner {
+  font-family: var(--btn-font-decorative);
+  font-size: var(--btn-size-lg);
+  font-weight: 800;
+  color: #FFFFFF;
+  background: var(--btn-admin-owner);
+  padding: var(--btn-padding-lg);
+  border-radius: 10px;
+  border: 2px solid #FFD700;
+  box-shadow: 
+    0 0 25px rgba(255, 215, 0, 0.4),
+    0 0 50px rgba(255, 165, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+}
+
+.btn-admin-owner::before {
+  content: '♔';
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  color: #FFD700;
+  text-shadow: 0 0 10px currentColor;
+  animation: crownGlow 3s ease-in-out infinite;
+}
+
+.btn-admin-owner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  transition: left 0.8s var(--btn-ease-noble);
+}
+
+.btn-admin-owner:hover {
+  box-shadow: 
+    0 0 35px rgba(255, 215, 0, 0.6),
+    0 0 70px rgba(255, 165, 0, 0.4),
+    0 0 100px rgba(255, 69, 0, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.btn-admin-owner:hover::after {
+  left: 100%;
+}
+
+.btn-admin-owner:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.8),
+    inset 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Admin Button - High Authority */
+.btn-admin-admin {
+  font-family: var(--btn-font-decorative);
+  font-size: var(--btn-size-md);
+  font-weight: 700;
+  color: #FFFFFF;
+  background: var(--btn-admin-admin);
+  padding: var(--btn-padding-md);
+  border-radius: 8px;
+  border: 2px solid #DC143C;
+  box-shadow: 
+    0 0 20px rgba(220, 20, 60, 0.4),
+    0 0 40px rgba(178, 34, 34, 0.3),
+    inset 0 0 15px rgba(255, 255, 255, 0.1);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.btn-admin-admin::before {
+  content: '♖';
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.3em;
+  color: #DC143C;
+  text-shadow: 0 0 8px currentColor;
+}
+
+.btn-admin-admin:hover {
+  box-shadow: 
+    0 0 30px rgba(220, 20, 60, 0.6),
+    0 0 60px rgba(178, 34, 34, 0.4),
+    inset 0 0 25px rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  text-shadow: 0 0 12px rgba(220, 20, 60, 0.8);
+}
+
+.btn-admin-admin:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 
+    0 0 15px rgba(220, 20, 60, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Moderator Button - Standard Authority */
+.btn-admin-mod {
+  font-family: var(--btn-font-decorative);
+  font-size: var(--btn-size-md);
+  font-weight: 600;
+  color: #FFFFFF;
+  background: var(--btn-admin-mod);
+  padding: var(--btn-padding-md);
+  border-radius: 6px;
+  border: 2px solid #4169E1;
+  box-shadow: 
+    0 0 15px rgba(65, 105, 225, 0.4),
+    0 0 30px rgba(0, 0, 205, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-admin-mod::before {
+  content: '♗';
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  color: #4169E1;
+  text-shadow: 0 0 6px currentColor;
+}
+
+.btn-admin-mod:hover {
+  box-shadow: 
+    0 0 25px rgba(65, 105, 225, 0.6),
+    0 0 50px rgba(0, 0, 205, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(65, 105, 225, 0.8);
+}
+
+.btn-admin-mod:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    0 0 12px rgba(65, 105, 225, 0.8),
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* =============================================================================
+   ANIMATED BUTTONS (SPECIAL INTERACTIVE EFFECTS)
+   ============================================================================= */
+
+.btn-animated-pulse {
+  animation: btnPulse 2s ease-in-out infinite;
+}
+
+.btn-animated-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-animated-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  animation: glowRotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity var(--btn-transition-normal) ease;
+}
+
+.btn-animated-glow:hover::before {
+  opacity: 1;
+}
+
+.btn-animated-float {
+  animation: btnFloat 3s ease-in-out infinite;
+}
+
+.btn-animated-wiggle {
+  transition: transform var(--btn-transition-fast) var(--btn-ease-bounce);
+}
+
+.btn-animated-wiggle:hover {
+  animation: btnWiggle 0.5s ease-in-out;
+}
+
+.btn-animated-shake {
+  transition: transform var(--btn-transition-fast) ease;
+}
+
+.btn-animated-shake:hover {
+  animation: btnShake 0.6s ease-in-out;
+}
+
+/* =============================================================================
+   SIZE VARIANTS FOR ALL BUTTON TYPES
+   ============================================================================= */
+
+/* Small Size Variants */
+.btn-sm {
+  font-size: var(--btn-size-sm);
+  padding: var(--btn-padding-sm);
+  letter-spacing: 0.5px;
+}
+
+.btn-sm.btn-gaming-primary,
+.btn-sm.btn-lorebound-primary,
+.btn-sm.btn-news-primary {
+  padding: 0.5rem 1rem;
+  border-width: 1px;
+}
+
+.btn-sm.btn-admin-owner::before,
+.btn-sm.btn-admin-admin::before,
+.btn-sm.btn-admin-mod::before {
+  left: 0.5rem;
+  font-size: 1em;
+}
+
+/* Large Size Variants */
+.btn-lg {
+  font-size: var(--btn-size-lg);
+  padding: var(--btn-padding-lg);
+  letter-spacing: 1.5px;
+}
+
+.btn-lg.btn-gaming-primary,
+.btn-lg.btn-lorebound-primary,
+.btn-lg.btn-news-primary {
+  padding: 1rem 2.5rem;
+  border-width: 3px;
+}
+
+.btn-lg.btn-admin-owner::before,
+.btn-lg.btn-admin-admin::before,
+.btn-lg.btn-admin-mod::before {
+  left: 1.5rem;
+  font-size: 1.8em;
+}
+
+/* =============================================================================
+   CLICK INTERACTION EFFECTS
+   ============================================================================= */
+
+.btn-click-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-click-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+}
+
+.btn-click-ripple:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+  transition: all 0.1s ease-out;
+}
+
+.btn-click-flash {
+  transition: all var(--btn-transition-fast) ease;
+}
+
+.btn-click-flash:active {
+  filter: brightness(1.5) saturate(1.3);
+  transform: scale(0.95);
+}
+
+.btn-click-bounce {
+  transition: transform var(--btn-transition-fast) var(--btn-ease-bounce);
+}
+
+.btn-click-bounce:active {
+  transform: scale(0.9) translateY(2px);
+}
+
+/* =============================================================================
+   LOADING STATES
+   ============================================================================= */
+
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn-loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: btnLoadingSpin 1s linear infinite;
+}
+
+.btn-loading.btn-gaming-primary::before {
+  border-top-color: var(--btn-gaming-neon);
+  box-shadow: 0 0 10px var(--btn-gaming-glow);
+}
+
+.btn-loading.btn-lorebound-primary::before {
+  border-top-color: var(--btn-lorebound-mystical);
+  box-shadow: 0 0 10px var(--btn-lorebound-glow);
+}
+
+.btn-loading.btn-news-primary::before {
+  border-top-color: var(--btn-news-electric);
+  box-shadow: 0 0 10px var(--btn-news-glow);
+}
+
+/* =============================================================================
+   DISABLED STATES
+   ============================================================================= */
+
+.conclave-btn:disabled,
+.conclave-btn.disabled {
+  opacity: 0.4;
+  filter: grayscale(60%) blur(0.5px);
+  pointer-events: none;
+  transform: none !important;
+  animation: none !important;
+}
+
+.conclave-btn:disabled::before,
+.conclave-btn:disabled::after,
+.conclave-btn.disabled::before,
+.conclave-btn.disabled::after {
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+/* =============================================================================
+   KEYFRAME ANIMATIONS
+   ============================================================================= */
+
+@keyframes mysticalRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes mysticalPulse {
+  0%, 100% { 
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 0 10px #FFFFFF, 0 0 20px var(--btn-lorebound-mystical);
+  }
+  50% { 
+    transform: translateY(-50%) scale(1.3);
+    box-shadow: 0 0 15px #FFFFFF, 0 0 30px var(--btn-lorebound-mystical), 0 0 45px var(--btn-lorebound-mystical);
+  }
+}
+
+@keyframes newsStaticScan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes crownGlow {
+  0%, 100% { 
+    color: #FFD700;
+    text-shadow: 0 0 10px currentColor;
+  }
+  50% { 
+    color: #FFFFFF;
+    text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700;
+  }
+}
+
+@keyframes btnPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes glowRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes btnFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes btnWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
+}
+
+@keyframes btnShake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes btnLoadingSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* =============================================================================
+   PATHWAY AREA INTEGRATION
+   ============================================================================= */
+
+/* Gaming Pathway Context */
+.pathway-gaming .conclave-btn:not(.btn-gaming-primary):not(.btn-gaming-secondary):not(.btn-gaming-accent) {
+  border-color: rgba(0, 191, 255, 0.2);
+  background: rgba(0, 191, 255, 0.05);
+}
+
+.pathway-gaming .btn-text-flame:hover {
+  color: var(--btn-gaming-neon);
+  text-shadow: 0 0 15px var(--btn-gaming-glow);
+}
+
+/* Lorebound Pathway Context */
+.pathway-lorebound .conclave-btn:not(.btn-lorebound-primary):not(.btn-lorebound-secondary):not(.btn-lorebound-mystical) {
+  border-color: rgba(106, 13, 173, 0.2);
+  background: rgba(106, 13, 173, 0.05);
+}
+
+.pathway-lorebound .btn-text-flame:hover {
+  color: var(--btn-lorebound-tertiary);
+  text-shadow: 0 0 15px var(--btn-lorebound-glow);
+}
+
+/* News Pathway Context */
+.pathway-news .conclave-btn:not(.btn-news-primary):not(.btn-news-secondary) {
+  border-color: rgba(224, 17, 95, 0.2);
+  background: rgba(224, 17, 95, 0.05);
+}
+
+.pathway-news .btn-text-flame:hover {
+  color: var(--btn-news-electric);
+  text-shadow: 0 0 15px var(--btn-news-glow);
+}
+
+/* Productive Pathway Context */
+.pathway-productive .conclave-btn:not(.btn-primary-productive) {
+  border-color: rgba(52, 152, 219, 0.2);
+  background: rgba(52, 152, 219, 0.05);
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Tablet and Mobile Adjustments */
+@media (max-width: 768px) {
+  :root {
+    --btn-size-sm: 0.7rem;
+    --btn-size-md: 0.9rem;
+    --btn-size-lg: 1.1rem;
+    --btn-padding-sm: 0.4rem 0.8rem;
+    --btn-padding-md: 0.6rem 1.2rem;
+    --btn-padding-lg: 0.8rem 1.6rem;
+  }
+  
+  .btn-admin-owner::before,
+  .btn-admin-admin::before,
+  .btn-admin-mod::before {
+    left: 0.5rem;
+    font-size: 1em;
+  }
+  
+  .btn-lorebound-primary::after,
+  .btn-news-primary::after {
+    right: 0.5rem;
+    font-size: 1em;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .conclave-btn {
+    min-width: auto;
+    padding: 0.5rem 1rem;
+  }
+  
+  .btn-lg {
+    font-size: var(--btn-size-md);
+    padding: var(--btn-padding-md);
+  }
+  
+  .btn-admin-owner,
+  .btn-admin-admin,
+  .btn-admin-mod {
+    letter-spacing: 1px;
+  }
+}
+
+/* Reduce Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .conclave-btn,
+  .conclave-btn::before,
+  .conclave-btn::after {
+    animation: none !important;
+    transition-duration: 0.1s !important;
+  }
+  
+  .btn-animated-pulse,
+  .btn-animated-float,
+  .btn-animated-glow::before {
+    animation: none !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .conclave-btn {
+    border-width: 2px;
+    border-style: solid;
+  }
+  
+  .btn-text-flame,
+  .btn-text-dim,
+  .btn-text-subtle {
+    border: 1px solid currentColor;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* =============================================================================
+   UTILITY CLASSES & MODIFIERS
+   ============================================================================= */
+
+.btn-full-width {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-icon-left .conclave-btn-icon {
+  margin-right: 0.5rem;
+}
+
+.btn-icon-right .conclave-btn-icon {
+  margin-left: 0.5rem;
+}
+
+.btn-icon-only {
+  padding: 0.5rem;
+  aspect-ratio: 1;
+}
+
+.btn-no-shadow {
+  box-shadow: none !important;
+}
+
+.btn-no-hover:hover {
+  transform: none !important;
+  box-shadow: var(--btn-shadow-subtle) !important;
+}
+
+.btn-force-caps {
+  text-transform: uppercase !important;
+}
+
+.btn-force-normal {
+  text-transform: none !important;
+}
+
+/* =============================================================================
+   DEBUG AND DEVELOPMENT UTILITIES
+   ============================================================================= */
+
+.btn-debug {
+  outline: 2px dashed rgba(255, 0, 0, 0.3) !important;
+  outline-offset: 2px;
+}
+
+.btn-debug::before {
+  content: attr(class);
+  position: absolute;
+  top: -25px;
+  left: 0;
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* =============================================================================
+                           END OF BUTTON SYSTEM
+   ============================================================================= */

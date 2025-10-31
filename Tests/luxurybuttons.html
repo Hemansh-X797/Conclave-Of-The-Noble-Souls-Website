@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noble Button Preview</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+      color: #f8f8ff;
+      font-family: 'Times New Roman', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .noble-button {
+      background: rgba(255, 215, 0, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      color: #ffd700;
+      padding: 0.75rem 2rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.05);
+      font-weight: 500;
+    }
+
+    .noble-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 215, 0, 0.2),
+        transparent
+      );
+      transition: all 0.5s ease;
+    }
+
+    .noble-button:hover::before {
+      left: 100%;
+    }
+
+    .noble-button:hover {
+      border-color: #ffd700;
+      background: rgba(255, 215, 0, 0.12);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .noble-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="noble-button" onclick="alert('You have chosen wisely.')">
+    Enter the Conclave
+  </button>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royal Crest Button</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+      color: #f8f8ff;
+      font-family: 'Times New Roman', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .royal-crest-button {
+      position: relative;
+      padding: 1rem 3rem;
+      font-size: 1.3rem;
+      font-family: 'Times New Roman', serif;
+      color: #ffd700;
+      background: transparent;
+      border: 2px solid #ffd700;
+      border-radius: 50px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px rgba(255, 215, 0, 0.2);
+      transition: all 0.4s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .royal-crest-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent 70%);
+      transform: rotate(25deg);
+      transition: opacity 0.5s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .royal-crest-button:hover::before {
+      opacity: 1;
+      animation: shimmerRotate 2s linear infinite;
+    }
+
+    .royal-crest-button:hover {
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .royal-crest-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+    }
+
+    @keyframes shimmerRotate {
+      0% {
+        transform: rotate(0deg) scale(1);
+      }
+      100% {
+        transform: rotate(360deg) scale(1.2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="royal-crest-button" onclick="alert('The seal is accepted.')">
+    Seal the Pact
+  </button>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Futuristic HUD Button</title>
+
+  <!-- Custom Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global reset and dark theme */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0f1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+    }
+
+    .hud-container {
+      position: relative;
+    }
+
+    .hud-button {
+      position: relative;
+      display: inline-block;
+      padding: 1.5rem 3rem;
+      background: rgba(5, 15, 30, 0.5);
+      border: 2px solid #00f0ff;
+      border-radius: 8px;
+      color: #00f0ff;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 1;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Text Glow */
+    .hud-button::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #00f0ff;
+      filter: blur(2px);
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    /* Neon Border Glow */
+    .hud-button:hover {
+      box-shadow:
+        0 0 10px #00f0ff,
+        0 0 20px #00f0ff,
+        0 0 40px rgba(0, 240, 255, 0.7),
+        inset 0 0 10px rgba(0, 240, 255, 0.3);
+      background: rgba(10, 25, 40, 0.7);
+    }
+
+    /* Animated Scan Line */
+    .hud-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(0, 240, 255, 0.1),
+        transparent
+      );
+      animation: scanEffect 4s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes scanEffect {
+      0% {
+        transform: translateY(-100%) rotate(45deg);
+      }
+      100% {
+        transform: translateY(100%) rotate(45deg);
+      }
+    }
+
+    /* SVG Corner Overlays */
+    .hud-corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      fill: #00f0ff;
+    }
+
+    .corner-tl {
+      top: -1px;
+      left: -1px;
+      transform: rotate(0deg);
+    }
+
+    .corner-tr {
+      top: -1px;
+      right: -1px;
+      transform: rotate(90deg);
+    }
+
+    .corner-br {
+      bottom: -1px;
+      right: -1px;
+      transform: rotate(180deg);
+    }
+
+    .corner-bl {
+      bottom: -1px;
+      left: -1px;
+      transform: rotate(270deg);
+    }
+
+    /* Pulse glow around button */
+    .hud-pulse {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #00f0ff66;
+      animation: pulseRing 3s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes pulseRing {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.2;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hud-container">
+    <div class="hud-pulse"></div>
+    <button class="hud-button" data-text="Engage System">Engage System</button>
+
+    <!-- Corners -->
+    <svg class="hud-corner corner-tl" viewBox="0 0 10 10">
+      <path d="M10 0 H0 V10" stroke="#00f0ff" stroke-width="2" fill="none"/>
+    </svg>
+    <svg class="hud-corner corner-tr" viewBox="0 0 10 10">
+      <path d="M0 0 H10 V10" stroke="#00f0ff" stroke-width="2" fill="none"/>
+    </svg>
+    <svg class="hud-corner corner-br" viewBox="0 0 10 10">
+      <path d="M0 10 H10 V0" stroke="#00f0ff" stroke-width="2" fill="none"/>
+    </svg>
+    <svg class="hud-corner corner-bl" viewBox="0 0 10 10">
+      <path d="M10 10 H0 V0" stroke="#00f0ff" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+
+  <script>
+    // Adding subtle click ripple effect for more interactivity
+    const button = document.querySelector('.hud-button');
+
+    button.addEventListener('click', (e) => {
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      button.appendChild(ripple);
+
+      const rect = button.getBoundingClientRect();
+      ripple.style.left = `${e.clientX - rect.left}px`;
+      ripple.style.top = `${e.clientY - rect.top}px`;
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+  </script>
+
+  <style>
+    /* Ripple effect */
+    .hud-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple {
+      position: absolute;
+      background: #00f0ff88;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: rippleEffect 0.6s linear;
+      pointer-events: none;
+      width: 100px;
+      height: 100px;
+      opacity: 0.75;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Additional subtle glow on active */
+    .hud-button:active {
+      box-shadow:
+        0 0 15px #00ffff,
+        0 0 30px #00ffff,
+        inset 0 0 15px #00ffff;
+      background: rgba(10, 40, 70, 0.85);
+      color: #00ffff;
+      transition: none;
+    }
+
+    /* Focus outline for accessibility */
+    .hud-button:focus-visible {
+      outline: 2px solid #00f0ff;
+      outline-offset: 4px;
+    }
+
+    /* Adding a subtle background grid behind the button */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Adding subtle flicker animation on the button text glow */
+    @keyframes textFlicker {
+      0%, 100% {
+        opacity: 0.7;
+        filter: blur(2px);
+      }
+      50% {
+        opacity: 0.9;
+        filter: blur(3px);
+      }
+    }
+
+    .hud-button::after {
+      animation: textFlicker 3s infinite ease-in-out;
+    }
+  </style>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Output #1 - Modern Interactive Button</title>
+<style>
+  /* Reset base styles */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Container for the button */
+  .button-wrapper {
+    text-align: center;
+  }
+
+  /* Button base styles */
+  .btn-modern {
+    position: relative;
+    display: inline-block;
+    padding: 1.2rem 3.2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+    box-shadow:
+      0 4px 15px rgba(107, 115, 255, 0.6),
+      inset 0 0 10px rgba(255, 255, 255, 0.15);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    outline-offset: 4px;
+  }
+
+  /* Accessible focus ring */
+  .btn-modern:focus-visible {
+    outline: 3px solid #ffe600;
+    outline-offset: 4px;
+  }
+
+  /* Hover state */
+  .btn-modern:hover {
+    background: linear-gradient(135deg, #7d88ff 0%, #0010ff 100%);
+    box-shadow:
+      0 6px 20px rgba(125, 136, 255, 0.8),
+      inset 0 0 15px rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+  }
+
+  /* Active (pressed) state */
+  .btn-modern:active {
+    background: linear-gradient(135deg, #5360d8 0%, #0009cc 100%);
+    box-shadow:
+      0 3px 8px rgba(83, 96, 216, 0.7),
+      inset 0 0 8px rgba(255, 255, 255, 0.1);
+    transform: translateY(1px);
+  }
+
+  /* Text glow effect */
+  .btn-modern span {
+    position: relative;
+    z-index: 10;
+    text-shadow:
+      0 0 5px rgba(255, 255, 255, 0.7),
+      0 0 10px rgba(255, 255, 255, 0.4);
+  }
+
+  /* Ripple effect span */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-animation 600ms linear;
+    background-color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Ripple keyframes */
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  /* Responsive: scale down on small devices */
+  @media (max-width: 480px) {
+    .btn-modern {
+      padding: 0.9rem 2.5rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Extra styling below for demonstration and filler lines */
+  /* Adding a subtle animated background behind button */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, #3a3fdd, #121212 70%);
+    opacity: 0.3;
+    z-index: -1;
+    animation: pulse-bg 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-bg {
+    0% {
+      opacity: 0.3;
+      background-position: center center;
+    }
+    50% {
+      opacity: 0.5;
+      background-position: center 10%;
+    }
+    100% {
+      opacity: 0.3;
+      background-position: center center;
+    }
+  }
+
+  /* Additional utility styles */
+  h1 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  p.description {
+    color: #ccc;
+    max-width: 400px;
+    margin: 0 auto 3rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Add a subtle shadow to container */
+  .button-wrapper {
+    background: #1a1a1a;
+    padding: 3rem 4rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(107, 115, 255, 0.5);
+  }
+</style>
+</head>
+<body>
+  <div class="button-wrapper" role="main">
+    <h1>Modern Interactive Button</h1>
+    <p class="description">
+      This button features a smooth gradient background, glowing text, ripple effect on click,
+      and is fully accessible with keyboard support and focus outlines.
+    </p>
+    <button class="btn-modern" aria-label="Click me button">
+      <span>Click Me</span>
+    </button>
+  </div>
+
+  <script>
+    // Select the button element
+    const modernButton = document.querySelector('.btn-modern');
+
+    // Function to create and animate ripple effect
+    modernButton.addEventListener('click', function (event) {
+      // Create ripple element
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+
+      // Get button bounding rectangle for size & position
+      const rect = button.getBoundingClientRect();
+
+      // Set size of ripple to cover button fully
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + 'px';
+
+      // Calculate position for ripple (centered on click)
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
+
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+
+      // Append ripple to button
+      button.appendChild(ripple);
+
+      // Remove ripple after animation ends to keep DOM clean
+      ripple.addEventListener('animationend', () => {
+        ripple.remove();
+      });
+    });
+
+    // Keyboard accessibility: simulate click on Enter/Space keypress
+    modernButton.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        modernButton.click();
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Output #2 - Glassmorphic Button</title>
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      padding: 3rem 4rem;
+      box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        0 0 0 1px rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      text-align: center;
+      width: 360px;
+      user-select: none;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2.25rem;
+      text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.7),
+        0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    p.description {
+      font-size: 1rem;
+      color: #ddd;
+      margin-bottom: 2.5rem;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    /* Glassmorphic Button Base */
+    .btn-glass {
+      position: relative;
+      padding: 1.1rem 3rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffffdd;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 18px;
+      cursor: pointer;
+      transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        color 0.35s ease;
+      overflow: hidden;
+      user-select: none;
+      outline-offset: 5px;
+      box-shadow:
+        0 4px 15px rgba(255, 255, 255, 0.2);
+      text-shadow:
+        0 0 3px rgba(255, 255, 255, 0.7);
+    }
+
+    /* Focus styles for accessibility */
+    .btn-glass:focus-visible {
+      outline: 3px solid #ffffffbb;
+      outline-offset: 5px;
+    }
+
+    /* Hover and Active */
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow:
+        0 0 25px 5px rgba(255, 255, 255, 0.45),
+        inset 0 0 15px 2px rgba(255, 255, 255, 0.3);
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    .btn-glass:active {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow:
+        0 0 10px 1px rgba(255, 255, 255, 0.25),
+        inset 0 0 10px 1px rgba(255, 255, 255, 0.2);
+      transform: translateY(1px);
+    }
+
+    /* Animated shine effect */
+    .btn-glass::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -75%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.2) 100%
+      );
+      transform: skewX(-25deg);
+      transition: transform 0.5s ease;
+      pointer-events: none;
+      border-radius: 18px;
+    }
+
+    .btn-glass:hover::before {
+      transform: translateX(300%) skewX(-25deg);
+    }
+
+    /* Text wrapper for z-index */
+    .btn-glass span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Responsive scaling */
+    @media (max-width: 400px) {
+      .container {
+        width: 90vw;
+        padding: 2rem 2.5rem;
+      }
+      .btn-glass {
+        padding: 0.9rem 2.4rem;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Glassmorphic Button</h1>
+    <p class="description">
+      This button uses glassmorphism style with frosted glass effect, subtle glowing borders,
+      and a smooth animated shine on hover. It is accessible and responsive.
+    </p>
+    <button class="btn-glass" aria-label="Glassmorphic style button">
+      <span>Press Here</span>
+    </button>
+  </div>
+
+  <script>
+    /* Accessibility: Keyboard click simulation for Enter/Space keys */
+    const glassBtn = document.querySelector('.btn-glass');
+
+    glassBtn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        glassBtn.click();
+      }
+    });
+
+    // Optional: Click handler showing an alert for demo purposes
+    glassBtn.addEventListener('click', () => {
+      alert('Glassmorphic Button Clicked!');
+    });
+
+    /* No extra ripple needed here as the shine effect is enough,
+       but you could add ripple if desired */
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Output #3 - Neumorphic Button</title>
+  <style>
+    /* Reset and base styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      background: #e0e0e0; /* Light gray base */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: none;
+    }
+
+    .container {
+      background: #e0e0e0;
+      padding: 3rem 4rem;
+      border-radius: 20px;
+      box-shadow:
+        8px 8px 16px #bebebe,
+        -8px -8px 16px #ffffff;
+      text-align: center;
+      width: 400px;
+      max-width: 90vw;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      color: #333;
+      user-select: text;
+    }
+
+    p.description {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 3rem;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    /* Neumorphic button base */
+    .btn-neumorphic {
+      position: relative;
+      padding: 1.1rem 3.2rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #444;
+      background: #e0e0e0;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      box-shadow:
+        8px 8px 16px #bebebe,
+        -8px -8px 16px #ffffff;
+      transition:
+        box-shadow 0.3s ease,
+        color 0.3s ease,
+        transform 0.2s ease;
+      outline-offset: 5px;
+      user-select: none;
+      overflow: hidden;
+    }
+
+    /* Focus visible for accessibility */
+    .btn-neumorphic:focus-visible {
+      outline: 3px solid #a0a0a0;
+      outline-offset: 5px;
+    }
+
+    /* Hover state - elevate button */
+    .btn-neumorphic:hover {
+      box-shadow:
+        12px 12px 24px #b0b0b0,
+        -12px -12px 24px #ffffff;
+      color: #222;
+      transform: translateY(-3px);
+    }
+
+    /* Active (pressed) state - inset emboss effect */
+    .btn-neumorphic:active {
+      box-shadow:
+        inset 6px 6px 12px #bebebe,
+        inset -6px -6px 12px #ffffff;
+      color: #000;
+      transform: translateY(1px);
+    }
+
+    /* Text styling */
+    .btn-neumorphic span {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Add subtle icon for flair (SVG) */
+    .btn-neumorphic svg {
+      position: relative;
+      top: 3px;
+      margin-left: 10px;
+      fill: #777;
+      width: 20px;
+      height: 20px;
+      transition: fill 0.3s ease;
+      vertical-align: middle;
+    }
+
+    .btn-neumorphic:hover svg {
+      fill: #333;
+    }
+
+    .btn-neumorphic:active svg {
+      fill: #111;
+    }
+
+    /* Responsive scaling */
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 2.5rem;
+        width: 90vw;
+      }
+      .btn-neumorphic {
+        padding: 0.9rem 2.5rem;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <h1>Neumorphic Button</h1>
+    <p class="description">
+      This button uses neumorphism design with soft shadows and subtle 3D embossing. It includes
+      smooth hover and press effects for tactile interaction and a simple icon flair.
+    </p>
+    <button class="btn-neumorphic" aria-label="Neumorphic style button with icon">
+      <span>Submit</span>
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </main>
+
+  <script>
+    // Keyboard accessibility: simulate click on Enter or Space keys
+    const neumorphicBtn = document.querySelector('.btn-neumorphic');
+
+    neumorphicBtn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        neumorphicBtn.click();
+      }
+    });
+
+    // Click handler demo alert
+    neumorphicBtn.addEventListener('click', () => {
+      alert('Neumorphic Button Clicked!');
+    });
+
+    // Optional: add some subtle shadow animation on press (if desired)
+    // This is handled via CSS transitions here for smoothness
+  </script>
+</body>
+</html>
+
+
+
+

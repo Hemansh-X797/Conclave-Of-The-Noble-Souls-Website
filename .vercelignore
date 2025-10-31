@@ -1,0 +1,60 @@
+*.test.js
+*.md
+/docs/*
+/tests/*
+
+
+# =============================
+# Ignore dev & local files
+# =============================
+.env
+.env.local
+.env.example
+.nvmrc
+.vscode/
+.idea/
+.DS_Store
+
+# =============================
+# Ignore scripts (not needed at runtime)
+# =============================
+/scripts/
+/database/
+/blueprint/
+/docs/
+
+# =============================
+# Ignore GitHub-related files
+# =============================
+/.github/
+
+# =============================
+# Ignore test configurations
+# =============================
+/.config/jest.config.js
+/config/vitest.config.js
+*.test.js
+*.spec.js
+coverage/
+
+# =============================
+# Ignore tooling configs
+# =============================
+.prettier.config.js
+.stylelintrc.js
+.eslintrc.js
+.cspell.config.js
+.postcss.config.js
+tailwind.config.js
+
+# =============================
+# Ignore build artifacts (just in case)
+/.next/
+/out/
+/node_modules/
+
+# =============================
+# Ignore assets not needed for production
+# =============================
+/public/Assets/Videos/hero-loop.mp4
+/public/Assets/Videos/pathway-intros/

@@ -1,0 +1,330 @@
+/* ============================================================================
+   GLOBALS.CSS - Master CSS Import File
+   The Conclave Realm - /src/styles/globals.css
+   Version: 1.0 | Master File | Import Optimized
+   ============================================================================ */
+
+/* Tailwind Base Layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts Imports */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+/* Custom Font Files (if using local fonts) */
+/* Ring of Kerry font should be in /public/Assets/fonts/Ring_Of_Kerry/ */
+@font-face {
+  font-family: 'Ring of Kerry';
+  src: url('/Assets/fonts/Ring_Of_Kerry/RingOfKerry.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Import Design System (Core Variables & Utilities) */
+@import './design_system.css';
+
+/* Import Typography System */
+@import './typography.css';
+
+/* Import Component Styles */
+@import './navbar.css';
+@import './forms.css';
+@import './navigation.css';
+@import './buttons.css';
+@import './glasscard.css';
+@import './inputs.css';
+@import './navbar.css';
+@import './superbuttons.css';
+
+/* Import Interactive Styles */
+@import './interactive.css';
+@import './animations.css';
+@import './cursors.css';
+
+/* Import Pathway-Specific Styles */
+@import './pathways.css';
+
+/* Import Content Styles */
+@import './content.css';
+
+/* ============================================================================
+   BASE STYLES & RESETS
+   ============================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Remove default link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Image defaults */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Button reset */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Form elements */
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Remove default focus outline (we have custom focus states) */
+*:focus {
+  outline: none;
+}
+
+/* Better focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--cns-gold);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   SCROLLBAR STYLING
+   ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--cns-gold) 0%, var(--royal-purple) 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FFD700 0%, #9932CC 100%);
+  box-shadow: 0 0 10px var(--glow-gold);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cns-gold) rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================================
+   SELECTION STYLING
+   ============================================================================ */
+
+::selection {
+  background: var(--cns-gold);
+  color: var(--bg-primary);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--cns-gold);
+  color: var(--bg-primary);
+  text-shadow: none;
+}
+
+/* ============================================================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Manual reduced motion class */
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ============================================================================
+   RESPONSIVE CONTAINER WIDTHS
+   ============================================================================ */
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* ============================================================================
+   UTILITY CLASSES (Additional to Tailwind)
+   ============================================================================ */
+
+/* Hide element but keep accessible for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Loading state */
+.loading {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Disabled state */
+.disabled,
+[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print,
+  nav,
+  footer,
+  button,
+  .cursor-custom {
+    display: none !important;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+}
+
+/* ============================================================================
+   DARK MODE SUPPORT (Future Enhancement)
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  /* Already dark by default, but can add overrides here */
+}
+
+/* ============================================================================
+   NEXT.JS SPECIFIC FIXES
+   ============================================================================ */
+
+/* Fix Next.js image priority warning */
+img[loading="eager"] {
+  content-visibility: auto;
+}
+
+/* Fix hydration mismatch */
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================================
+   CRITICAL LAYOUT CLASSES
+   ============================================================================ */
+
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+  padding-top: 80px; /* Account for fixed navbar */
+}
+
+.section-padding {
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 8rem 0;
+  }
+}

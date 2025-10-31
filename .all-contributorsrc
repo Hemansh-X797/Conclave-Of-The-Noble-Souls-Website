@@ -1,0 +1,30 @@
+{
+  "projectName": "Conclave",
+  "projectOwner": "HEMANSH_X797",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "HEMANSH_X797",
+      "name": "Hemansh",
+      "avatar_url": "https://avatars.githubusercontent.com/HEMANSH_X797",
+      "profile": "https://github.com/HEMANSH_X797",
+      "contributions": [
+        "code",
+        "design",
+        "ideas",
+        "doc",
+        "infra",
+        "maintenance",
+        "projectManagement",
+        "test",
+        "platform"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "name": "the-conclave-realm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "🌟 Premium Discord community platform with luxury theming, cinematic design, and pathway-based experiences — built with Next.js 14 and Supabase.",
+  "author": "Hemansh Kumar Mishra",
+  "homepage": "https://theconclaverealm.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hemansh-X797/the-conclave-realm.git"
+  },
+
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "preview": "next start -p 4000",
+
+
+    "vercel:preview": "vercel dev",
+
+
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "stylelint": "stylelint \"**/*.{css,scss}\" --fix",
+
+
+    "test": "vitest run",
+    "test:ui": "playwright test",
+    "test:watch": "vitest watch",
+
+
+    "db:migrate": "node scripts/migrate.js",
+    "db:seed": "node scripts/seed-data.js",
+    "db:setup": "node scripts/setup-db.js",
+    "db:backup": "node scripts/backup-db.js",
+
+
+    "discord:sync": "node scripts/sync-discord-roles.js",
+    "discord:stats": "node scripts/discord-stats.js",
+
+
+    "cache:clear": "node scripts/clear-cache.js",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
+    "optimize:images": "node scripts/optimize-images.js",
+
+
+    "prepare": "husky install",
+    "prebuild": "npm run lint && npm run test",
+
+
+    "audit": "npm audit --audit-level=moderate"
+  },
+
+
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+
+
+    "next-auth": "^4.24.5",
+    "@supabase/supabase-js": "^2.39.3",
+    "@supabase/auth-helpers-nextjs": "^0.8.7",
+    "@supabase/auth-helpers-react": "^0.4.2",
+
+
+    "discord.js": "^14.14.1",
+    "discord-oauth2": "^2.11.0",
+    "@discordjs/rest": "^2.2.0",
+
+
+    "framer-motion": "^10.18.0",
+    "lottie-react": "^2.4.0",
+    "three": "^0.160.0",
+    "@react-three/fiber": "^8.15.14",
+    "@react-three/drei": "^9.96.1",
+
+
+    "axios": "^1.6.5",
+    "swr": "^2.2.4",
+    "@tanstack/react-query": "^5.17.9",
+    "lodash": "^4.17.21",
+    "uuid": "^9.0.1",
+    "date-fns": "^3.2.0",
+
+
+    "howler": "^2.2.4",
+
+
+    "zustand": "^4.4.7",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.2.0",
+
+
+    "react-hot-toast": "^2.4.1",
+    "react-intersection-observer": "^9.5.3",
+    "react-use": "^17.4.2",
+    "react-parallax": "^3.5.1",
+
+
+    "lucide-react": "^0.312.0",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "@radix-ui/react-progress": "^1.0.3",
+
+
+    "sharp": "^0.33.2"
+  },
+
+
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+
+
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.1.0",
+
+
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.33",
+    "autoprefixer": "^10.4.17",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+
+
+    "prettier": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+
+
+    "vitest": "^1.2.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "jsdom": "^24.0.0",
+
+
+    "playwright": "^1.43.1",
+
+
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-prettier": "^9.0.5",
+
+
+    "cspell": "^8.0.0",
+
+
+    "husky": "^9.0.9",
+    "lint-staged": "^15.2.0"
+  },
+
+
+  "engines": {
+    "node": ">=18.17.0",
+    "npm": ">=9.0.0"
+  },
+
+
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+    "**/*.{css,scss}": ["stylelint --fix", "prettier --write"],
+    "**/*.{json,md,mdx}": ["prettier --write"]
+  }
+}

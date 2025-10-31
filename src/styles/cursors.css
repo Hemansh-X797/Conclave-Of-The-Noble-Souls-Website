@@ -1,0 +1,1459 @@
+/* =============================================================================
+   THE CONCLAVE - ADVANCED NOBLE CURSOR SYSTEM
+   Premium luxury cursor experience with pathway-specific themes
+   Version: 1.0 | Theme-Noble | Advanced animations & interactions
+   ============================================================================= */
+
+/* =============================================================================
+   CSS CUSTOM PROPERTIES & VARIABLES
+   ============================================================================= */
+
+:root {
+  /* Noble Default Colors */
+  --cursor-noble-primary: #FFD700;
+  --cursor-noble-secondary: #F4D03F;
+  --cursor-noble-tertiary: #B8860B;
+  --cursor-noble-glow: rgba(255, 215, 0, 0.6);
+  --cursor-noble-shadow: rgba(255, 215, 0, 0.3);
+  --cursor-noble-trail: rgba(255, 215, 0, 0.8);
+
+  /* Pathway Color Systems */
+  --cursor-gaming-primary: #00BFFF;
+  --cursor-gaming-secondary: #1ABC9C;
+  --cursor-gaming-tertiary: #00CED1;
+  --cursor-gaming-glow: rgba(0, 191, 255, 0.7);
+  --cursor-gaming-shadow: rgba(0, 191, 255, 0.4);
+  --cursor-gaming-accent: #FF4500;
+
+  --cursor-lorebound-primary: #FF1493;
+  --cursor-lorebound-secondary: #E91E63;
+  --cursor-lorebound-tertiary: #C71585;
+  --cursor-lorebound-glow: rgba(255, 20, 147, 0.6);
+  --cursor-lorebound-shadow: rgba(255, 20, 147, 0.3);
+  --cursor-lorebound-mystical: #9370DB;
+
+  --cursor-productive-primary: #C0C0C0;
+  --cursor-productive-secondary: #95A5A6;
+  --cursor-productive-tertiary: #BDC3C7;
+  --cursor-productive-glow: rgba(192, 192, 192, 0.5);
+  --cursor-productive-shadow: rgba(192, 192, 192, 0.2);
+  --cursor-productive-accent: #3498DB;
+
+  --cursor-news-primary: #E0115F;
+  --cursor-news-secondary: #E74C3C;
+  --cursor-news-tertiary: #DC143C;
+  --cursor-news-glow: rgba(224, 17, 95, 0.8);
+  --cursor-news-shadow: rgba(224, 17, 95, 0.4);
+  --cursor-news-electric: #FF6B6B;
+
+  /* Cursor Sizing System */
+  --cursor-size-small: 20px;
+  --cursor-size-default: 28px;
+  --cursor-size-medium: 36px;
+  --cursor-size-large: 44px;
+  --cursor-size-xlarge: 52px;
+
+  /* Animation Timings */
+  --cursor-transition-fast: 0.15s;
+  --cursor-transition-normal: 0.3s;
+  --cursor-transition-slow: 0.6s;
+  --cursor-animation-duration: 1.2s;
+
+  /* Physics Values */
+  --cursor-spring-tension: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --cursor-smooth-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --cursor-bounce-ease: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+/* =============================================================================
+   BASE CURSOR SYSTEM RESET
+   ============================================================================= */
+
+* {
+  cursor: none !important;
+}
+
+body {
+  cursor: none !important;
+}
+
+/* Cursor container for all custom cursors */
+.cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999999;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* =============================================================================
+   NOBLE DEFAULT CURSOR SYSTEM (JSX COMPATIBLE)
+   ============================================================================= */
+
+/* Default Noble Cursor Dot */
+.conclave-cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--cursor-noble-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: all var(--cursor-transition-fast) var(--cursor-smooth-ease);
+  box-shadow: 
+    0 0 10px var(--cursor-noble-glow),
+    0 0 20px var(--cursor-noble-shadow),
+    inset 0 0 5px rgba(255, 255, 255, 0.3);
+  will-change: transform, opacity;
+}
+
+/* Default Noble Cursor Ring */
+.conclave-cursor-ring {
+  position: fixed;
+  width: var(--cursor-size-default);
+  height: var(--cursor-size-default);
+  border: 2px solid var(--cursor-noble-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999998;
+  transform: translate(-50%, -50%);
+  transition: all var(--cursor-transition-normal) var(--cursor-spring-tension);
+  box-shadow: 
+    0 0 15px var(--cursor-noble-glow),
+    0 0 30px var(--cursor-noble-shadow),
+    inset 0 0 10px rgba(255, 215, 0, 0.1);
+  will-change: transform, width, height;
+}
+
+/* Default Hover State */
+.conclave-cursor-ring.hover {
+  width: 50px;
+  height: 50px;
+  border-width: 3px;
+  box-shadow: 
+    0 0 25px var(--cursor-noble-glow),
+    0 0 50px var(--cursor-noble-shadow),
+    0 0 75px rgba(255, 215, 0, 0.2);
+  animation: nobleHoverPulse 2s ease-in-out infinite;
+}
+
+.conclave-cursor-dot.hover {
+  width: 4px;
+  height: 4px;
+  background: #F8F8FF;
+  box-shadow: 
+    0 0 15px rgba(248, 248, 255, 0.8),
+    0 0 30px var(--cursor-noble-glow);
+}
+
+/* Text Cursor State */
+.conclave-cursor-ring.text {
+  width: 3px;
+  height: 30px;
+  border-radius: 2px;
+  border-width: 1px;
+  animation: textCursorBlink 1.2s ease-in-out infinite;
+}
+
+.conclave-cursor-dot.text {
+  display: none;
+}
+
+/* Loading State */
+.conclave-cursor-ring.loading {
+  border: 3px solid transparent;
+  border-top: 3px solid var(--cursor-noble-primary);
+  border-right: 3px solid var(--cursor-noble-primary);
+  animation: loadingSpin 1s linear infinite;
+  box-shadow: 
+    0 0 20px var(--cursor-noble-glow),
+    0 0 40px var(--cursor-noble-shadow);
+}
+
+.conclave-cursor-dot.loading {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+/* =============================================================================
+   PATHWAY-SPECIFIC CURSOR SYSTEMS
+   ============================================================================= */
+
+/* GAMING PATHWAY CURSOR SYSTEM */
+.conclave-cursor-gaming {
+  background-image: url('/Assets/cursors/Gamingcursor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: var(--cursor-size-medium);
+  height: var(--cursor-size-medium);
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: all var(--cursor-transition-normal) var(--cursor-smooth-ease);
+  filter: 
+    drop-shadow(0 0 10px var(--cursor-gaming-glow))
+    drop-shadow(0 0 20px var(--cursor-gaming-shadow));
+  will-change: transform, filter;
+}
+
+.conclave-cursor-gaming.hover-button {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.1);
+  filter: 
+    drop-shadow(0 0 15px var(--cursor-gaming-glow))
+    drop-shadow(0 0 30px var(--cursor-gaming-shadow))
+    hue-rotate(15deg);
+  transition: all var(--cursor-transition-fast) var(--cursor-bounce-ease);
+}
+
+.conclave-cursor-gaming.clicking {
+  transform: translate(-50%, -50%) rotate(45deg) scale(0.9);
+  filter: 
+    drop-shadow(0 0 20px var(--cursor-gaming-accent))
+    drop-shadow(0 0 40px var(--cursor-gaming-glow))
+    brightness(1.3)
+    saturate(1.5);
+  animation: gamingClickPulse 0.2s ease-out;
+}
+
+/* Gaming cursor corner animation elements */
+.conclave-cursor-gaming::before,
+.conclave-cursor-gaming::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--cursor-gaming-accent);
+  border-radius: 2px;
+  opacity: 0.8;
+  transition: all var(--cursor-transition-fast) var(--cursor-bounce-ease);
+  box-shadow: 0 0 8px var(--cursor-gaming-glow);
+}
+
+.conclave-cursor-gaming::before {
+  top: -4px;
+  left: -4px;
+  transform: translate(0, 0);
+}
+
+.conclave-cursor-gaming::after {
+  bottom: -4px;
+  right: -4px;
+  transform: translate(0, 0);
+}
+
+.conclave-cursor-gaming.clicking::before {
+  transform: translate(8px, 8px);
+  opacity: 1;
+}
+
+.conclave-cursor-gaming.clicking::after {
+  transform: translate(-8px, -8px);
+  opacity: 1;
+}
+
+/* LOREBOUND PATHWAY CURSOR SYSTEM */
+.conclave-cursor-lorebound {
+  background-image: url('/Assets/cursors/Loreboundcursor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: var(--cursor-size-medium);
+  height: var(--cursor-size-medium);
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: all var(--cursor-transition-normal) var(--cursor-smooth-ease);
+  filter: 
+    drop-shadow(0 0 12px var(--cursor-lorebound-glow))
+    drop-shadow(0 0 24px var(--cursor-lorebound-shadow));
+  will-change: transform, filter;
+  animation: loreboundFloat 3s ease-in-out infinite;
+}
+
+.conclave-cursor-lorebound.hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  filter: 
+    drop-shadow(0 0 18px var(--cursor-lorebound-glow))
+    drop-shadow(0 0 36px var(--cursor-lorebound-shadow))
+    hue-rotate(10deg)
+    saturate(1.2);
+  animation: loreboundFloat 3s ease-in-out infinite, loreboundMysticalGlow 2s ease-in-out infinite;
+}
+
+/* Mystical particle system for Lorebound */
+.lorebound-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: var(--cursor-lorebound-mystical);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999997;
+  opacity: 0;
+  box-shadow: 
+    0 0 8px var(--cursor-lorebound-glow),
+    0 0 16px var(--cursor-lorebound-shadow);
+  animation: loreboundParticleLife 2s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+.lorebound-particle:nth-child(2n) {
+  background: var(--cursor-lorebound-primary);
+  animation-delay: 0.3s;
+  animation-duration: 2.5s;
+}
+
+.lorebound-particle:nth-child(3n) {
+  background: var(--cursor-lorebound-secondary);
+  animation-delay: 0.6s;
+  animation-duration: 1.8s;
+}
+
+.lorebound-particle:nth-child(4n) {
+  background: var(--cursor-lorebound-tertiary);
+  animation-delay: 0.9s;
+  animation-duration: 2.2s;
+}
+
+/* PRODUCTIVE PATHWAY CURSOR SYSTEM */
+.conclave-cursor-productive {
+  background-image: url('/Assets/cursors/Productivecursor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: var(--cursor-size-default);
+  height: var(--cursor-size-default);
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: all var(--cursor-transition-normal) var(--cursor-smooth-ease);
+  filter: 
+    drop-shadow(0 0 8px var(--cursor-productive-glow))
+    drop-shadow(0 0 16px var(--cursor-productive-shadow));
+  will-change: transform, filter;
+}
+
+.conclave-cursor-productive.hover {
+  transform: translate(-50%, -50%) scale(1.25);
+  filter: 
+    drop-shadow(0 0 12px var(--cursor-productive-glow))
+    drop-shadow(0 0 24px var(--cursor-productive-shadow))
+    drop-shadow(0 0 36px var(--cursor-productive-accent))
+    brightness(1.1);
+  transition: all var(--cursor-transition-fast) var(--cursor-spring-tension);
+}
+
+.conclave-cursor-productive.clicking {
+  transform: translate(-50%, -50%) scale(1.1);
+  filter: 
+    drop-shadow(0 0 15px var(--cursor-productive-accent))
+    drop-shadow(0 0 30px var(--cursor-productive-glow))
+    brightness(1.2)
+    contrast(1.1);
+  animation: productiveClickRipple 0.3s ease-out;
+}
+
+/* Productive cursor efficiency indicator */
+.conclave-cursor-productive::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--cursor-productive-accent);
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+  opacity: 0;
+  transition: all var(--cursor-transition-normal) var(--cursor-smooth-ease);
+  box-shadow: 0 0 8px var(--cursor-productive-accent);
+}
+
+.conclave-cursor-productive.hover::before {
+  width: 20px;
+  opacity: 0.8;
+  animation: productiveEfficiencyPulse 1.5s ease-in-out infinite;
+}
+
+/* NEWS PATHWAY CURSOR SYSTEM */
+.conclave-cursor-news {
+  background-image: url('/Assets/cursors/Newscursor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: var(--cursor-size-medium);
+  height: var(--cursor-size-medium);
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: all var(--cursor-transition-normal) var(--cursor-smooth-ease);
+  filter: 
+    drop-shadow(0 0 10px var(--cursor-news-glow))
+    drop-shadow(0 0 20px var(--cursor-news-shadow));
+  will-change: transform, filter;
+  animation: newsStaticEffect 0.1s linear infinite;
+}
+
+.conclave-cursor-news.hover {
+  background-image: url('/Assets/cursors/Newscursorhover.png');
+  transform: translate(-50%, -50%) scale(1.1);
+  filter: 
+    drop-shadow(0 0 15px var(--cursor-news-glow))
+    drop-shadow(0 0 30px var(--cursor-news-shadow))
+    drop-shadow(0 0 45px var(--cursor-news-electric))
+    hue-rotate(5deg)
+    brightness(1.15);
+  animation: newsStaticEffect 0.05s linear infinite, newsElectricPulse 1.5s ease-in-out infinite;
+  transition: all var(--cursor-transition-fast) var(--cursor-smooth-ease);
+}
+
+.conclave-cursor-news.clicking {
+  transform: translate(-50%, -50%) scale(0.95);
+  filter: 
+    drop-shadow(0 0 20px var(--cursor-news-electric))
+    drop-shadow(0 0 40px var(--cursor-news-glow))
+    brightness(1.3)
+    saturate(1.4)
+    contrast(1.2);
+  animation: newsBreakingFlash 0.2s ease-out;
+}
+
+/* News cursor electric energy effect */
+.conclave-cursor-news::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--cursor-news-electric);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: newsShockwave 2s ease-out infinite;
+  box-shadow: 
+    0 0 10px var(--cursor-news-glow),
+    inset 0 0 10px var(--cursor-news-shadow);
+}
+
+.conclave-cursor-news.hover::before {
+  opacity: 0.6;
+  animation-duration: 1s;
+}
+
+/* =============================================================================
+   ADVANCED CURSOR ANIMATIONS & KEYFRAMES
+   ============================================================================= */
+
+/* Noble Default Animations */
+@keyframes nobleHoverPulse {
+  0%, 100% { 
+    box-shadow: 
+      0 0 25px var(--cursor-noble-glow),
+      0 0 50px var(--cursor-noble-shadow),
+      0 0 75px rgba(255, 215, 0, 0.2);
+  }
+  50% { 
+    box-shadow: 
+      0 0 35px var(--cursor-noble-glow),
+      0 0 70px var(--cursor-noble-shadow),
+      0 0 100px rgba(255, 215, 0, 0.4);
+  }
+}
+
+@keyframes textCursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+@keyframes loadingSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes loadingPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 10px var(--cursor-noble-glow);
+  }
+  50% { 
+    transform: scale(1.4); 
+    box-shadow: 0 0 20px var(--cursor-noble-glow), 0 0 40px var(--cursor-noble-shadow);
+  }
+}
+
+/* Gaming Pathway Animations */
+@keyframes gamingClickPulse {
+  0% { 
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.9);
+    filter: 
+      drop-shadow(0 0 20px var(--cursor-gaming-accent))
+      brightness(1.3);
+  }
+  50% { 
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.8);
+    filter: 
+      drop-shadow(0 0 30px var(--cursor-gaming-accent))
+      brightness(1.5);
+  }
+  100% { 
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.9);
+    filter: 
+      drop-shadow(0 0 20px var(--cursor-gaming-accent))
+      brightness(1.3);
+  }
+}
+
+@keyframes gamingTargetScan {
+  0% { 
+    box-shadow: 0 0 0 0 var(--cursor-gaming-glow);
+    opacity: 1;
+  }
+  70% { 
+    box-shadow: 0 0 0 20px rgba(0, 191, 255, 0);
+    opacity: 0.7;
+  }
+  100% { 
+    box-shadow: 0 0 0 0 rgba(0, 191, 255, 0);
+    opacity: 1;
+  }
+}
+
+/* Lorebound Pathway Animations */
+@keyframes loreboundFloat {
+  0%, 100% { 
+    transform: translate(-50%, -50%) translateY(0px) rotate(0deg);
+  }
+  33% { 
+    transform: translate(-50%, -50%) translateY(-2px) rotate(1deg);
+  }
+  66% { 
+    transform: translate(-50%, -50%) translateY(2px) rotate(-1deg);
+  }
+}
+
+@keyframes loreboundMysticalGlow {
+  0%, 100% { 
+    filter: 
+      drop-shadow(0 0 18px var(--cursor-lorebound-glow))
+      drop-shadow(0 0 36px var(--cursor-lorebound-shadow))
+      hue-rotate(10deg)
+      saturate(1.2);
+  }
+  50% { 
+    filter: 
+      drop-shadow(0 0 25px var(--cursor-lorebound-glow))
+      drop-shadow(0 0 50px var(--cursor-lorebound-shadow))
+      hue-rotate(15deg)
+      saturate(1.4)
+      brightness(1.1);
+  }
+}
+
+@keyframes loreboundParticleLife {
+  0% { 
+    opacity: 0; 
+    transform: scale(0) rotate(0deg);
+  }
+  10% { 
+    opacity: 0.8; 
+    transform: scale(1) rotate(45deg);
+  }
+  90% { 
+    opacity: 0.3; 
+    transform: scale(1.2) rotate(315deg) translateX(15px) translateY(-10px);
+  }
+  100% { 
+    opacity: 0; 
+    transform: scale(0) rotate(360deg) translateX(25px) translateY(-20px);
+  }
+}
+
+/* Productive Pathway Animations */
+@keyframes productiveClickRipple {
+  0% { 
+    transform: translate(-50%, -50%) scale(1.1);
+    filter: 
+      drop-shadow(0 0 15px var(--cursor-productive-accent))
+      brightness(1.2);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: 
+      drop-shadow(0 0 25px var(--cursor-productive-accent))
+      brightness(1.3);
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(1.1);
+    filter: 
+      drop-shadow(0 0 15px var(--cursor-productive-accent))
+      brightness(1.2);
+  }
+}
+
+@keyframes productiveEfficiencyPulse {
+  0%, 100% { 
+    width: 20px; 
+    opacity: 0.8; 
+    box-shadow: 0 0 8px var(--cursor-productive-accent);
+  }
+  50% { 
+    width: 24px; 
+    opacity: 1; 
+    box-shadow: 0 0 12px var(--cursor-productive-accent);
+  }
+}
+
+@keyframes productiveFocusRing {
+  0% { 
+    box-shadow: 0 0 0 0 var(--cursor-productive-glow);
+    opacity: 1;
+  }
+  70% { 
+    box-shadow: 0 0 0 15px rgba(192, 192, 192, 0);
+    opacity: 0.7;
+  }
+  100% { 
+    box-shadow: 0 0 0 0 rgba(192, 192, 192, 0);
+    opacity: 1;
+  }
+}
+
+/* News Pathway Animations */
+@keyframes newsStaticEffect {
+  0% { filter-brightness: 1; }
+  100% { filter: hue-rotate(1deg) brightness(1.01); }
+}
+
+@keyframes newsElectricPulse {
+  0%, 100% { 
+    filter: 
+      drop-shadow(0 0 15px var(--cursor-news-glow))
+      drop-shadow(0 0 30px var(--cursor-news-shadow))
+      brightness(1.15);
+  }
+  50% { 
+    filter: 
+      drop-shadow(0 0 25px var(--cursor-news-glow))
+      drop-shadow(0 0 50px var(--cursor-news-shadow))
+      drop-shadow(0 0 75px var(--cursor-news-electric))
+      brightness(1.25)
+      saturate(1.3);
+  }
+}
+
+@keyframes newsBreakingFlash {
+  0% { 
+    filter: 
+      drop-shadow(0 0 20px var(--cursor-news-electric))
+      brightness(1.3);
+  }
+  25% { 
+    filter: 
+      drop-shadow(0 0 40px var(--cursor-news-electric))
+      brightness(1.6)
+      saturate(2);
+  }
+  50% { 
+    filter: 
+      drop-shadow(0 0 35px var(--cursor-news-electric))
+      brightness(1.4)
+      saturate(1.7);
+  }
+  100% { 
+    filter: 
+      drop-shadow(0 0 20px var(--cursor-news-electric))
+      brightness(1.3);
+  }
+}
+
+@keyframes newsShockwave {
+  0% { 
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+    border-width: 2px;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+    border-width: 1px;
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+    border-width: 0px;
+  }
+}
+
+/* =============================================================================
+   PATHWAY AREA DETECTION & AUTO-SWITCHING
+   ============================================================================= */
+
+/* Gaming Pathway Areas */
+.pathway-gaming,
+.pathway-gaming *,
+[data-pathway="gaming"],
+[data-pathway="gaming"] * {
+  cursor: none !important;
+}
+
+.pathway-gaming .cursor-target,
+.pathway-gaming button,
+.pathway-gaming a,
+.pathway-gaming [data-cursor="hover"],
+[data-pathway="gaming"] button,
+[data-pathway="gaming"] a {
+  cursor: none !important;
+}
+
+/* Lorebound Pathway Areas */
+.pathway-lorebound,
+.pathway-lorebound *,
+[data-pathway="lorebound"],
+[data-pathway="lorebound"] * {
+  cursor: none !important;
+}
+
+/* Productive Pathway Areas */
+.pathway-productive,
+.pathway-productive *,
+[data-pathway="productive"],
+[data-pathway="productive"] * {
+  cursor: none !important;
+}
+
+/* News Pathway Areas */
+.pathway-news,
+.pathway-news *,
+[data-pathway="news"],
+[data-pathway="news"] * {
+  cursor: none !important;
+}
+
+/* =============================================================================
+   CURSOR INTERACTION STATES & TRIGGERS
+   ============================================================================= */
+
+/* Hover State Triggers */
+.cursor-hover-target {
+  position: relative;
+}
+
+.cursor-hover-target::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--cursor-transition-fast) ease;
+  pointer-events: none;
+}
+
+.cursor-hover-target:hover::before {
+  opacity: 0.1;
+  background: radial-gradient(circle, transparent 60%, rgba(255, 215, 0, 0.2) 100%);
+}
+
+/* Click State Indicators */
+.cursor-click-feedback {
+  position: relative;
+  overflow: hidden;
+}
+
+.cursor-click-feedback::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+}
+
+.cursor-click-feedback:active::after {
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+  transition: all 0.1s ease-out;
+}
+
+/* =============================================================================
+   CURSOR TRAIL SYSTEMS
+   ============================================================================= */
+
+/* Noble Default Trail */
+.cursor-trail-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: var(--cursor-noble-trail);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999996;
+  opacity: 0;
+  box-shadow: 0 0 8px var(--cursor-noble-glow);
+  animation: trailFade 1s ease-out forwards;
+}
+
+.cursor-trail-particle.gaming {
+  background: var(--cursor-gaming-glow);
+  box-shadow: 0 0 8px var(--cursor-gaming-shadow);
+}
+
+.cursor-trail-particle.lorebound {
+  background: var(--cursor-lorebound-glow);
+  box-shadow: 0 0 8px var(--cursor-lorebound-shadow);
+}
+
+.cursor-trail-particle.productive {
+  background: var(--cursor-productive-glow);
+  box-shadow: 0 0 8px var(--cursor-productive-shadow);
+}
+
+.cursor-trail-particle.news {
+  background: var(--cursor-news-glow);
+  box-shadow: 0 0 8px var(--cursor-news-shadow);
+}
+
+@keyframes trailFade {
+  0% { 
+    opacity: 0.8; 
+    transform: scale(1);
+  }
+  100% { 
+    opacity: 0; 
+    transform: scale(0.2);
+  }
+}
+
+/* =============================================================================
+   SPECIALIZED CURSOR EFFECTS & MICRO-INTERACTIONS
+   ============================================================================= */
+
+/* Magnetic Effect for Interactive Elements */
+.cursor-magnetic {
+  position: relative;
+  transition: transform var(--cursor-transition-fast) var(--cursor-spring-tension);
+}
+
+.cursor-magnetic:hover {
+  transform: scale(1.02);
+}
+
+.cursor-magnetic::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all var(--cursor-transition-normal) ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cursor-magnetic:hover::before {
+  width: 120%;
+  height: 120%;
+}
+
+/* Ripple Effect System */
+.cursor-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.cursor-ripple::after {
+  content: '';
+  position: absolute;
+  top: var(--ripple-y, 50%);
+  left: var(--ripple-x, 50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  animation: rippleExpand 0.6s ease-out;
+}
+
+@keyframes rippleExpand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+/* =============================================================================
+   CURSOR PARTICLE SYSTEMS
+   ============================================================================= */
+
+/* Advanced Particle System for All Pathways */
+.cursor-particle-system {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999995;
+  overflow: hidden;
+}
+
+/* Gaming Pathway Particles */
+.gaming-energy-particle {
+  position: absolute;
+  width: 3px;
+  height: 8px;
+  background: linear-gradient(180deg, var(--cursor-gaming-primary) 0%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: gamingEnergyFlow 1.5s ease-out infinite;
+}
+
+.gaming-energy-particle:nth-child(2n) {
+  width: 6px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cursor-gaming-secondary) 0%, transparent 100%);
+  animation-delay: 0.3s;
+}
+
+.gaming-energy-particle:nth-child(3n) {
+  width: 4px;
+  height: 4px;
+  background: var(--cursor-gaming-accent);
+  border-radius: 50%;
+  animation-delay: 0.6s;
+  animation-duration: 2s;
+}
+
+@keyframes gamingEnergyFlow {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  20% {
+    opacity: 0.8;
+    transform: scale(1) rotate(90deg);
+  }
+  80% {
+    opacity: 0.3;
+    transform: scale(1.2) rotate(270deg) translateX(20px) translateY(-15px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg) translateX(30px) translateY(-25px);
+  }
+}
+
+/* Lorebound Mystical Particles (Enhanced) */
+.lorebound-mystical-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--cursor-lorebound-mystical);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 
+    0 0 10px var(--cursor-lorebound-glow),
+    0 0 20px var(--cursor-lorebound-shadow),
+    inset 0 0 5px rgba(255, 255, 255, 0.3);
+  animation: loreboundMysticalDance 3s ease-in-out infinite;
+}
+
+.lorebound-mystical-particle:nth-child(2n) {
+  background: var(--cursor-lorebound-primary);
+  animation-delay: 0.5s;
+  animation-duration: 2.5s;
+}
+
+.lorebound-mystical-particle:nth-child(3n) {
+  background: var(--cursor-lorebound-secondary);
+  animation-delay: 1s;
+  animation-duration: 4s;
+  width: 3px;
+  height: 3px;
+}
+
+.lorebound-mystical-particle:nth-child(4n) {
+  background: radial-gradient(circle, var(--cursor-lorebound-tertiary) 0%, transparent 70%);
+  animation-delay: 1.5s;
+  animation-duration: 3.5s;
+  width: 7px;
+  height: 7px;
+}
+
+@keyframes loreboundMysticalDance {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg) translateX(0) translateY(0);
+  }
+  10% {
+    opacity: 0.9;
+    transform: scale(1) rotate(45deg) translateX(5px) translateY(-5px);
+  }
+  25% {
+    opacity: 0.7;
+    transform: scale(1.1) rotate(135deg) translateX(12px) translateY(-8px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9) rotate(225deg) translateX(18px) translateY(-12px);
+  }
+  75% {
+    opacity: 0.3;
+    transform: scale(1.2) rotate(315deg) translateX(22px) translateY(-18px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(405deg) translateX(25px) translateY(-25px);
+  }
+}
+
+/* Productive Pathway Efficiency Indicators */
+.productive-efficiency-particle {
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  background: linear-gradient(180deg, var(--cursor-productive-primary) 0%, var(--cursor-productive-accent) 50%, transparent 100%);
+  border-radius: 1px;
+  opacity: 0;
+  animation: productiveEfficiencyRise 2s ease-out infinite;
+}
+
+.productive-efficiency-particle:nth-child(2n) {
+  width: 8px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cursor-productive-secondary) 0%, var(--cursor-productive-accent) 50%, transparent 100%);
+  animation-delay: 0.4s;
+}
+
+.productive-efficiency-particle:nth-child(3n) {
+  width: 4px;
+  height: 4px;
+  background: var(--cursor-productive-accent);
+  border-radius: 50%;
+  animation-delay: 0.8s;
+  animation-duration: 1.5s;
+}
+
+@keyframes productiveEfficiencyRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0) rotate(0deg);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translateY(-8px) scale(1) rotate(15deg);
+  }
+  80% {
+    opacity: 0.2;
+    transform: translateY(-20px) scale(1.1) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0) rotate(90deg);
+  }
+}
+
+/* News Pathway Electric Particles */
+.news-electric-particle {
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  background: linear-gradient(180deg, var(--cursor-news-electric) 0%, var(--cursor-news-primary) 50%, transparent 100%);
+  border-radius: 1px;
+  opacity: 0;
+  animation: newsElectricSpark 0.8s ease-out infinite;
+  box-shadow: 0 0 6px var(--cursor-news-glow);
+}
+
+.news-electric-particle:nth-child(2n) {
+  width: 6px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cursor-news-secondary) 0%, var(--cursor-news-electric) 50%, transparent 100%);
+  animation-delay: 0.2s;
+  animation-duration: 1.2s;
+}
+
+.news-electric-particle:nth-child(3n) {
+  width: 3px;
+  height: 3px;
+  background: var(--cursor-news-electric);
+  border-radius: 50%;
+  animation-delay: 0.4s;
+  animation-duration: 1s;
+}
+
+@keyframes newsElectricSpark {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.2) rotate(45deg);
+  }
+  30% {
+    opacity: 0.8;
+    transform: scale(1) rotate(90deg) translateX(8px) translateY(-5px);
+  }
+  60% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(180deg) translateX(15px) translateY(-12px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(270deg) translateX(20px) translateY(-20px);
+  }
+}
+
+/* =============================================================================
+   RESPONSIVE CURSOR SYSTEM
+   ============================================================================= */
+
+/* Large Desktop Screens (1440px+) */
+@media screen and (min-width: 1440px) {
+  :root {
+    --cursor-size-small: 24px;
+    --cursor-size-default: 32px;
+    --cursor-size-medium: 40px;
+    --cursor-size-large: 48px;
+    --cursor-size-xlarge: 56px;
+  }
+  
+  .conclave-cursor-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .conclave-cursor-ring {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Standard Desktop (1024px - 1439px) */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  :root {
+    --cursor-size-small: 20px;
+    --cursor-size-default: 28px;
+    --cursor-size-medium: 36px;
+    --cursor-size-large: 44px;
+    --cursor-size-xlarge: 52px;
+  }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --cursor-size-small: 18px;
+    --cursor-size-default: 24px;
+    --cursor-size-medium: 30px;
+    --cursor-size-large: 36px;
+    --cursor-size-xlarge: 42px;
+  }
+  
+  .conclave-cursor-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .conclave-cursor-ring {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Mobile & Touch Devices */
+@media (pointer: coarse), (hover: none) {
+  * {
+    cursor: auto !important;
+  }
+  
+  .conclave-cursor-dot,
+  .conclave-cursor-ring,
+  .conclave-cursor-gaming,
+  .conclave-cursor-lorebound,
+  .conclave-cursor-productive,
+  .conclave-cursor-news {
+    display: none !important;
+  }
+  
+  .cursor-particle-system,
+  .cursor-trail-particle,
+  .lorebound-particle,
+  .gaming-energy-particle,
+  .lorebound-mystical-particle,
+  .productive-efficiency-particle,
+  .news-electric-particle {
+    display: none !important;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY & PERFORMANCE OPTIMIZATIONS
+   ============================================================================= */
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .conclave-cursor-dot,
+  .conclave-cursor-ring,
+  .conclave-cursor-gaming,
+  .conclave-cursor-lorebound,
+  .conclave-cursor-productive,
+  .conclave-cursor-news {
+    animation: none !important;
+    transition: opacity var(--cursor-transition-normal) ease !important;
+  }
+  
+  .cursor-trail-particle,
+  .lorebound-particle,
+  .gaming-energy-particle,
+  .lorebound-mystical-particle,
+  .productive-efficiency-particle,
+  .news-electric-particle {
+    display: none !important;
+  }
+  
+  .conclave-cursor-gaming.hover-button {
+    transform: translate(-50%, -50%) scale(1.1) !important;
+  }
+  
+  .conclave-cursor-productive.hover {
+    transform: translate(-50%, -50%) scale(1.25) !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --cursor-noble-primary: #FFFFFF;
+    --cursor-noble-glow: rgba(255, 255, 255, 0.8);
+    --cursor-gaming-primary: #FFFFFF;
+    --cursor-lorebound-primary: #FFFFFF;
+    --cursor-productive-primary: #FFFFFF;
+    --cursor-news-primary: #FFFFFF;
+  }
+  
+  .conclave-cursor-dot {
+    background: #FFFFFF;
+    border: 2px solid #000000;
+  }
+  
+  .conclave-cursor-ring {
+    border-color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Performance Optimizations */
+.cursor-performance-mode .conclave-cursor-dot,
+.cursor-performance-mode .conclave-cursor-ring,
+.cursor-performance-mode .conclave-cursor-gaming,
+.cursor-performance-mode .conclave-cursor-lorebound,
+.cursor-performance-mode .conclave-cursor-productive,
+.cursor-performance-mode .conclave-cursor-news {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* GPU Acceleration */
+.cursor-gpu-accelerated {
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* =============================================================================
+   CURSOR DEBUGGING & DEVELOPMENT TOOLS
+   ============================================================================= */
+
+.cursor-debug-mode {
+  position: relative;
+}
+
+.cursor-debug-mode::before {
+  content: attr(data-cursor-state);
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  z-index: 1000000;
+  pointer-events: none;
+}
+
+.cursor-debug-hitbox {
+  outline: 2px dashed rgba(255, 0, 0, 0.5) !important;
+  outline-offset: 2px;
+}
+
+.cursor-debug-pathway::before {
+  content: 'Pathway: ' attr(data-pathway);
+  position: absolute;
+  top: -25px;
+  left: 0;
+  background: rgba(255, 215, 0, 0.9);
+  color: black;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* =============================================================================
+   CURSOR PRELOADING SYSTEM
+   ============================================================================= */
+
+.cursor-preloader {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  background-image:
+    url('/Assets/cursors/Gamingcursor.png'),
+    url('/Assets/cursors/Loreboundcursor.png'),
+    url('/Assets/cursors/Productivecursor.png'),
+    url('/Assets/cursors/Newscursor.png'),
+    url('/Assets/cursors/Newscursorhover.png');
+}
+
+/* =============================================================================
+   ADVANCED CURSOR STATES & MICRO-INTERACTIONS
+   ============================================================================= */
+
+/* Disabled State for All Cursors */
+.conclave-cursor-disabled {
+  opacity: 0.4;
+  filter: grayscale(100%) blur(0.5px);
+  animation: none !important;
+  transition: opacity var(--cursor-transition-slow) ease;
+}
+
+/* Loading States */
+.conclave-cursor-loading-state {
+  animation: cursorLoadingSpinner 2s linear infinite;
+}
+
+@keyframes cursorLoadingSpinner {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Error State */
+.conclave-cursor-error {
+  filter: hue-rotate(0deg) saturate(200%) brightness(150%);
+  animation: cursorErrorShake 0.5s ease-in-out infinite;
+}
+
+@keyframes cursorErrorShake {
+  0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+  25% { transform: translate(-50%, -50%) translateX(-2px); }
+  75% { transform: translate(-50%, -50%) translateX(2px); }
+}
+
+/* Success State */
+.conclave-cursor-success {
+  filter: hue-rotate(120deg) saturate(150%) brightness(120%);
+  animation: cursorSuccessPulse 1s ease-in-out;
+}
+
+@keyframes cursorSuccessPulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* =============================================================================
+   CURSOR INTERACTION FEEDBACK SYSTEMS
+   ============================================================================= */
+
+/* Click Feedback Rings */
+.cursor-click-ring {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--cursor-noble-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999997;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: clickRingExpand 0.6s ease-out;
+}
+
+@keyframes clickRingExpand {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+  }
+}
+
+/* Pathway-specific Click Rings */
+.cursor-click-ring.gaming {
+  border-color: var(--cursor-gaming-primary);
+  box-shadow: 0 0 10px var(--cursor-gaming-glow);
+}
+
+.cursor-click-ring.lorebound {
+  border-color: var(--cursor-lorebound-primary);
+  box-shadow: 0 0 10px var(--cursor-lorebound-glow);
+}
+
+.cursor-click-ring.productive {
+  border-color: var(--cursor-productive-primary);
+  box-shadow: 0 0 10px var(--cursor-productive-glow);
+}
+
+.cursor-click-ring.news {
+  border-color: var(--cursor-news-primary);
+  box-shadow: 0 0 10px var(--cursor-news-glow);
+}
+
+/* =============================================================================
+                        END OF CURSOR SYSTEM 
+   ============================================================================= */

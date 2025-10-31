@@ -1,0 +1,2033 @@
+/* =============================================================================
+   CNS DIVINE ANIMATIONS SYSTEM
+   Ultra-luxury animations with 60fps performance optimization
+   GPU-accelerated, accessible, and production-ready
+   Version: 1.0 | 2000+ lines of pure elegance
+   ============================================================================= */
+
+/* =============================================================================
+   PERFORMANCE OPTIMIZATION BASE
+   ============================================================================= */
+
+/* Hardware acceleration for animated elements */
+.gpu-accelerated,
+.will-animate {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+/* Optimize expensive properties */
+.optimize-opacity {
+  will-change: opacity;
+}
+
+.optimize-transform {
+  will-change: transform;
+}
+
+.optimize-filter {
+  will-change: filter;
+  contain: layout style paint;
+}
+
+/* =============================================================================
+   FADE ANIMATIONS
+   ============================================================================= */
+
+/* Basic Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--timing-base) var(--ease-divine) forwards;
+}
+
+/* Fade In with Scale */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in-scale {
+  animation: fadeInScale var(--timing-base) var(--ease-luxury) forwards;
+}
+
+/* Fade In Up (Divine Ascend) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-down {
+  animation: fadeInDown var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+  animation: fadeInLeft var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-right {
+  animation: fadeInRight var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Fade Out */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fadeOut var(--timing-base) var(--ease-divine) forwards;
+}
+
+/* =============================================================================
+   SLIDE ANIMATIONS
+   ============================================================================= */
+
+/* Slide In Up */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-in-up {
+  animation: slideInUp var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Slide In Down */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-in-down {
+  animation: slideInDown var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Slide In Left */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Slide In Right */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* =============================================================================
+   SCALE ANIMATIONS
+   ============================================================================= */
+
+/* Scale In */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scale-in {
+  animation: scaleIn var(--timing-base) var(--ease-bounce) forwards;
+}
+
+/* Scale In Center */
+@keyframes scaleInCenter {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scale-in-center {
+  animation: scaleInCenter var(--timing-divine) var(--ease-bounce) forwards;
+}
+
+/* Scale Out */
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.scale-out {
+  animation: scaleOut var(--timing-base) var(--ease-divine) forwards;
+}
+
+/* Pulse Scale */
+@keyframes pulseScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-scale {
+  animation: pulseScale 2s var(--ease-divine) infinite;
+}
+
+/* =============================================================================
+   ROTATION ANIMATIONS
+   ============================================================================= */
+
+/* Rotate In */
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.rotate-in {
+  animation: rotateIn var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Rotate 360 */
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-360 {
+  animation: rotate360 var(--timing-cinematic) linear infinite;
+}
+
+/* Gentle Rotate */
+@keyframes gentleRotate {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.gentle-rotate {
+  animation: gentleRotate 8s var(--ease-divine) infinite;
+}
+
+/* =============================================================================
+   GLOW & SHINE ANIMATIONS
+   ============================================================================= */
+
+/* Divine Glow Pulse */
+@keyframes divineGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--cns-gold-40),
+                0 0 40px var(--cns-gold-20);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--cns-gold-60),
+                0 0 60px var(--cns-gold-40),
+                0 0 80px var(--cns-gold-20);
+  }
+}
+
+.divine-glow-pulse {
+  animation: divineGlowPulse 3s var(--ease-divine) infinite;
+}
+
+/* Text Glow Pulse */
+@keyframes textGlowPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--cns-gold-60),
+                 0 0 20px var(--cns-gold-40);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--cns-gold-80),
+                 0 0 40px var(--cns-gold-60),
+                 0 0 60px var(--cns-gold-40);
+  }
+}
+
+.text-glow-pulse {
+  animation: textGlowPulse 3s var(--ease-divine) infinite;
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cns-gold-20) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Shine Sweep */
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+.shine-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shineSweep 3s ease-in-out infinite;
+}
+
+/* =============================================================================
+   FLOATING & LEVITATION ANIMATIONS
+   ============================================================================= */
+
+/* Divine Float */
+@keyframes divineFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.divine-float {
+  animation: divineFloat 4s var(--ease-divine) infinite;
+}
+
+/* Gentle Float */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-8px) translateX(4px);
+  }
+  50% {
+    transform: translateY(-12px) translateX(0px);
+  }
+  75% {
+    transform: translateY(-8px) translateX(-4px);
+  }
+}
+
+.gentle-float {
+  animation: gentleFloat 6s var(--ease-divine) infinite;
+}
+
+/* Levitate */
+@keyframes levitate {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+.levitate {
+  animation: levitate 5s var(--ease-divine) infinite;
+}
+
+/* =============================================================================
+   BOUNCE ANIMATIONS
+   ============================================================================= */
+
+/* Bounce In */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce-in {
+  animation: bounceIn var(--timing-divine) var(--ease-bounce) forwards;
+}
+
+/* Gentle Bounce */
+@keyframes gentleBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.gentle-bounce {
+  animation: gentleBounce 1.5s var(--ease-divine) infinite;
+}
+
+/* Bounce Hover */
+@keyframes bounceHover {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce-hover:hover {
+  animation: bounceHover 0.6s var(--ease-bounce);
+}
+
+/* =============================================================================
+   SHAKE & VIBRATE ANIMATIONS
+   ============================================================================= */
+
+/* Gentle Shake */
+@keyframes gentleShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.gentle-shake {
+  animation: gentleShake 0.5s var(--ease-divine);
+}
+
+/* Shake Error */
+@keyframes shakeError {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-8px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(8px);
+  }
+}
+
+.shake-error {
+  animation: shakeError 0.6s var(--ease-divine);
+}
+
+/* Vibrate */
+@keyframes vibrate {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+}
+
+.vibrate {
+  animation: vibrate 0.3s linear infinite;
+}
+
+/* =============================================================================
+   BLUR & FOCUS ANIMATIONS
+   ============================================================================= */
+
+/* Blur In */
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.blur-in {
+  animation: blurIn var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Blur Out */
+@keyframes blurOut {
+  from {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    filter: blur(20px);
+  }
+}
+
+.blur-out {
+  animation: blurOut var(--timing-base) var(--ease-divine) forwards;
+}
+
+/* Focus Pulse */
+@keyframes focusPulse {
+  0%, 100% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(2px);
+  }
+}
+
+.focus-pulse {
+  animation: focusPulse 2s var(--ease-divine) infinite;
+}
+
+/* =============================================================================
+   GRADIENT ANIMATIONS
+   ============================================================================= */
+
+/* Gradient Shift */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 4s var(--ease-divine) infinite;
+}
+
+/* Rainbow Gradient */
+@keyframes rainbowGradient {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.rainbow-gradient {
+  animation: rainbowGradient 10s linear infinite;
+}
+
+/* Divine Gradient Flow */
+@keyframes divineGradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.2);
+  }
+}
+
+.divine-gradient-flow {
+  background-size: 400% 400%;
+  animation: divineGradientFlow 8s var(--ease-luxury) infinite;
+}
+
+/* =============================================================================
+   FLIP & 3D ANIMATIONS
+   ============================================================================= */
+
+/* Flip In X */
+@keyframes flipInX {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg);
+  }
+}
+
+.flip-in-x {
+  animation: flipInX var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Flip In Y */
+@keyframes flipInY {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg);
+  }
+}
+
+.flip-in-y {
+  animation: flipInY var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Card Flip */
+@keyframes cardFlip {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(180deg);
+  }
+}
+
+.card-flip {
+  animation: cardFlip var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* 3D Tilt */
+@keyframes tilt3D {
+  0%, 100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  75% {
+    transform: perspective(1000px) rotateX(-5deg) rotateY(5deg);
+  }
+}
+
+.tilt-3d {
+  animation: tilt3D 8s var(--ease-divine) infinite;
+}
+
+/* =============================================================================
+   RIPPLE & WAVE ANIMATIONS
+   ============================================================================= */
+
+/* Ripple Effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  animation: ripple 0.6s var(--ease-out) forwards;
+}
+
+/* Wave */
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+  50% {
+    transform: translateX(0) translateY(-10px);
+  }
+  75% {
+    transform: translateX(10px) translateY(-5px);
+  }
+}
+
+.wave {
+  animation: wave 3s var(--ease-divine) infinite;
+}
+
+/* Water Ripple */
+@keyframes waterRipple {
+  0% {
+    box-shadow: 0 0 0 0 var(--cns-gold-60),
+                0 0 0 10px var(--cns-gold-40),
+                0 0 0 20px var(--cns-gold-20);
+  }
+  100% {
+    box-shadow: 0 0 0 10px var(--cns-gold-40),
+                0 0 0 20px var(--cns-gold-20),
+                0 0 0 30px transparent;
+  }
+}
+
+.water-ripple {
+  animation: waterRipple 1.5s var(--ease-out) infinite;
+}
+
+/* =============================================================================
+   PATHWAY-SPECIFIC ANIMATIONS
+   ============================================================================= */
+
+/* Gaming Realm - Electric Energy */
+@keyframes gamingEnergy {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.4),
+                0 0 40px rgba(0, 191, 255, 0.2);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 191, 255, 0.6),
+                0 0 60px rgba(0, 191, 255, 0.4),
+                0 0 80px rgba(138, 43, 226, 0.2);
+    transform: translateY(-5px);
+  }
+}
+
+.gaming-energy {
+  animation: gamingEnergy 2s var(--ease-divine) infinite;
+}
+
+/* Gaming Glitch */
+@keyframes gamingGlitch {
+  0%, 100% {
+    transform: translate(0, 0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(5deg);
+  }
+  40% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(-5deg);
+  }
+  60% {
+    transform: translate(-1px, 1px);
+    filter: hue-rotate(3deg);
+  }
+  80% {
+    transform: translate(1px, -1px);
+    filter: hue-rotate(-3deg);
+  }
+}
+
+.gaming-glitch {
+  animation: gamingGlitch 0.3s linear infinite;
+}
+
+/* Lorebound - Mystical Float */
+@keyframes loreboundMystical {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(2deg);
+    filter: hue-rotate(10deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-2deg);
+    filter: hue-rotate(-10deg);
+  }
+}
+
+.lorebound-mystical {
+  animation: loreboundMystical 6s var(--ease-divine) infinite;
+}
+
+/* Lorebound Shimmer */
+@keyframes loreboundShimmer {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(255, 20, 147, 0.5),
+                 0 0 40px rgba(153, 50, 204, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(255, 20, 147, 0.8),
+                 0 0 60px rgba(153, 50, 204, 0.5),
+                 0 0 80px rgba(255, 105, 180, 0.3);
+  }
+}
+
+.lorebound-shimmer {
+  animation: loreboundShimmer 4s var(--ease-divine) infinite;
+}
+
+/* Productive - Efficiency Pulse */
+@keyframes productiveEfficiency {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(80, 200, 120, 0.7);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(80, 200, 120, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(80, 200, 120, 0);
+  }
+}
+
+.productive-efficiency {
+  animation: productiveEfficiency 2s var(--ease-divine) infinite;
+}
+
+/* Productive Progress */
+@keyframes productiveProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.productive-progress {
+  animation: productiveProgress 2s linear infinite;
+}
+
+/* News - Breaking Alert */
+@keyframes newsBreaking {
+  0%, 100% {
+    background-color: rgba(224, 17, 95, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    background-color: rgba(224, 17, 95, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+.news-breaking {
+  animation: newsBreaking 1s var(--ease-divine) infinite;
+}
+
+/* News Flash */
+@keyframes newsFlash {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.4;
+  }
+}
+
+.news-flash {
+  animation: newsFlash 1.5s linear infinite;
+}
+
+/* =============================================================================
+   LOADING & SPINNER ANIMATIONS
+   ============================================================================= */
+
+/* Spin */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Divine Spinner */
+@keyframes divineSpinner {
+  0% {
+    transform: rotate(0deg);
+    border-top-color: var(--cns-gold);
+    border-right-color: var(--royal-purple);
+  }
+  50% {
+    border-top-color: var(--royal-purple);
+    border-right-color: var(--cns-gold);
+  }
+  100% {
+    transform: rotate(360deg);
+    border-top-color: var(--cns-gold);
+    border-right-color: var(--royal-purple);
+  }
+}
+
+.divine-spinner {
+  animation: divineSpinner 1.5s var(--ease-divine) infinite;
+}
+
+/* Pulse Loader */
+@keyframes pulseLoader {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+.pulse-loader {
+  animation: pulseLoader 1.5s var(--ease-divine) infinite;
+}
+
+/* Dots Loader */
+@keyframes dotsLoader {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.dots-loader span {
+  animation: dotsLoader 1.4s infinite ease-in-out both;
+}
+
+.dots-loader span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dots-loader span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+/* =============================================================================
+   SKELETON LOADING ANIMATIONS
+   ============================================================================= */
+
+/* Skeleton Shimmer */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--noble-black-60) 25%,
+    var(--noble-white-10) 50%,
+    var(--noble-black-60) 75%
+  );
+  background-size: 1000px 100%;
+  animation: skeletonShimmer 2s infinite linear;
+}
+
+/* Skeleton Pulse */
+@keyframes skeletonPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.skeleton-pulse {
+  animation: skeletonPulse 2s var(--ease-divine) infinite;
+}
+
+/* =============================================================================
+   NOTIFICATION & TOAST ANIMATIONS
+   ============================================================================= */
+
+/* Toast Slide In */
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-slide-in {
+  animation: toastSlideIn var(--timing-base) var(--ease-luxury) forwards;
+}
+
+/* Toast Slide Out */
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.toast-slide-out {
+  animation: toastSlideOut var(--timing-base) var(--ease-divine) forwards;
+}
+
+/* Notification Bounce */
+@keyframes notificationBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateY(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateY(0);
+  }
+}
+
+.notification-bounce {
+  animation: notificationBounce 1s var(--ease-bounce);
+}
+
+/* =============================================================================
+   MODAL & OVERLAY ANIMATIONS
+   ============================================================================= */
+
+/* Modal Fade In */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-fade-in {
+  animation: modalFadeIn var(--timing-base) var(--ease-divine) forwards;
+}
+
+/* Modal Scale Up */
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-scale-up {
+  animation: modalScaleUp var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Modal Slide Down */
+@keyframes modalSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-slide-down {
+  animation: modalSlideDown var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Backdrop Fade */
+@keyframes backdropFade {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+.backdrop-fade {
+  animation: backdropFade var(--timing-base) var(--ease-divine) forwards;
+}
+
+/* =============================================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================================= */
+
+/* Reveal From Bottom */
+@keyframes revealFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-from-bottom {
+  opacity: 0;
+  animation: revealFromBottom var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Reveal From Left */
+@keyframes revealFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reveal-from-left {
+  opacity: 0;
+  animation: revealFromLeft var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Reveal From Right */
+@keyframes revealFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reveal-from-right {
+  opacity: 0;
+  animation: revealFromRight var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Reveal Scale */
+@keyframes revealScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal-scale {
+  opacity: 0;
+  animation: revealScale var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* =============================================================================
+   PARALLAX ANIMATIONS
+   ============================================================================= */
+
+/* Parallax Float */
+@keyframes parallaxFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+.parallax-float {
+  animation: parallaxFloat 10s var(--ease-divine) infinite;
+}
+
+/* Parallax Drift */
+@keyframes parallaxDrift {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.parallax-drift {
+  animation: parallaxDrift 40s linear infinite;
+}
+
+/* =============================================================================
+   HOVER EFFECTS
+   ============================================================================= */
+
+/* Hover Lift */
+.hover-lift {
+  transition: transform var(--timing-base) var(--ease-luxury),
+              box-shadow var(--timing-base) var(--ease-luxury);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-divine-intense);
+}
+
+/* Hover Scale */
+.hover-scale {
+  transition: transform var(--timing-base) var(--ease-luxury);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Hover Glow */
+.hover-glow {
+  transition: box-shadow var(--timing-base) var(--ease-divine),
+              text-shadow var(--timing-base) var(--ease-divine);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px var(--cns-gold-60);
+  text-shadow: 0 0 20px var(--cns-gold-60);
+}
+
+/* Hover Rotate */
+.hover-rotate {
+  transition: transform var(--timing-base) var(--ease-luxury);
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+/* Hover Shine */
+.hover-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left var(--timing-divine) var(--ease-luxury);
+}
+
+.hover-shine:hover::before {
+  left: 100%;
+}
+
+/* =============================================================================
+   CLICK/ACTIVE EFFECTS
+   ============================================================================= */
+
+/* Click Ripple */
+@keyframes clickRipple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.click-ripple::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: var(--cns-gold-40);
+  pointer-events: none;
+  animation: clickRipple 0.6s var(--ease-out);
+}
+
+/* Active Press */
+.active-press:active {
+  transform: scale(0.95);
+  transition: transform var(--timing-fast) var(--ease-in);
+}
+
+/* Active Glow */
+.active-glow:active {
+  box-shadow: 0 0 20px var(--cns-gold-80),
+              0 0 40px var(--cns-gold-60);
+  transition: box-shadow var(--timing-fast) var(--ease-in);
+}
+
+/* =============================================================================
+   FOCUS EFFECTS
+   ============================================================================= */
+
+/* Focus Ring */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--cns-gold-40),
+              0 0 0 6px var(--cns-gold-20);
+  transition: box-shadow var(--timing-base) var(--ease-divine);
+}
+
+/* Focus Glow */
+.focus-glow:focus-visible {
+  outline: none;
+  box-shadow: 0 0 20px var(--cns-gold-60),
+              0 0 40px var(--cns-gold-40);
+  text-shadow: 0 0 10px var(--cns-gold-60);
+  transition: all var(--timing-base) var(--ease-divine);
+}
+
+/* =============================================================================
+   TEXT ANIMATIONS
+   ============================================================================= */
+
+/* Typewriter */
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 3s steps(40) forwards;
+}
+
+/* Text Slide In */
+@keyframes textSlideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.text-slide-in {
+  animation: textSlideIn var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Text Fade In Word */
+.text-fade-word span {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 0.6s var(--ease-divine) forwards;
+}
+
+.text-fade-word span:nth-child(1) { animation-delay: 0.1s; }
+.text-fade-word span:nth-child(2) { animation-delay: 0.2s; }
+.text-fade-word span:nth-child(3) { animation-delay: 0.3s; }
+.text-fade-word span:nth-child(4) { animation-delay: 0.4s; }
+.text-fade-word span:nth-child(5) { animation-delay: 0.5s; }
+.text-fade-word span:nth-child(6) { animation-delay: 0.6s; }
+.text-fade-word span:nth-child(7) { animation-delay: 0.7s; }
+.text-fade-word span:nth-child(8) { animation-delay: 0.8s; }
+
+/* =============================================================================
+   STAGGER ANIMATIONS
+   ============================================================================= */
+
+/* Stagger Fade Up */
+.stagger-fade-up > * {
+  opacity: 0;
+  animation: fadeInUp var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+.stagger-fade-up > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-fade-up > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-fade-up > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-fade-up > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-fade-up > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-fade-up > *:nth-child(6) { animation-delay: 0.6s; }
+.stagger-fade-up > *:nth-child(7) { animation-delay: 0.7s; }
+.stagger-fade-up > *:nth-child(8) { animation-delay: 0.8s; }
+
+/* Stagger Scale */
+.stagger-scale > * {
+  opacity: 0;
+  animation: scaleIn var(--timing-divine) var(--ease-bounce) forwards;
+}
+
+.stagger-scale > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-scale > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-scale > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-scale > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-scale > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* =============================================================================
+   PAGE TRANSITION ANIMATIONS
+   ============================================================================= */
+
+/* Page Fade In */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-fade-in {
+  animation: pageFadeIn var(--timing-slow) var(--ease-divine) forwards;
+}
+
+/* Page Slide */
+@keyframes pageSlide {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.page-slide {
+  animation: pageSlide var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Page Scale */
+@keyframes pageScale {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.page-scale {
+  animation: pageScale var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* =============================================================================
+   NAVIGATION ANIMATIONS
+   ============================================================================= */
+
+/* Nav Item Slide */
+@keyframes navItemSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-item-slide {
+  animation: navItemSlide var(--timing-base) var(--ease-luxury) forwards;
+}
+
+/* Sidebar Slide */
+@keyframes sidebarSlide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.sidebar-slide {
+  animation: sidebarSlide var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Dropdown Fade */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-fade {
+  animation: dropdownFade var(--timing-base) var(--ease-luxury) forwards;
+}
+
+/* =============================================================================
+   CARD ANIMATIONS
+   ============================================================================= */
+
+/* Card Hover Lift */
+.card-hover-lift {
+  transition: transform var(--timing-base) var(--ease-luxury),
+              box-shadow var(--timing-base) var(--ease-luxury);
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-divine-epic);
+}
+
+/* Card Flip */
+.card-flip-container {
+  perspective: 1000px;
+}
+
+.card-flip-inner {
+  transition: transform var(--timing-divine) var(--ease-luxury);
+  transform-style: preserve-3d;
+}
+
+.card-flip-container:hover .card-flip-inner {
+  transform: rotateY(180deg);
+}
+
+/* Card Expand */
+@keyframes cardExpand {
+  from {
+    max-height: 200px;
+  }
+  to {
+    max-height: 1000px;
+  }
+}
+
+.card-expand {
+  animation: cardExpand var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* =============================================================================
+   BUTTON ANIMATIONS
+   ============================================================================= */
+
+/* Button Pulse */
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--cns-gold-60);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+  }
+}
+
+.button-pulse {
+  animation: buttonPulse 2s var(--ease-divine) infinite;
+}
+
+/* Button Shake */
+@keyframes buttonShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.button-shake {
+  animation: buttonShake 0.5s var(--ease-divine);
+}
+
+/* Button Gradient Slide */
+@keyframes buttonGradientSlide {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.button-gradient-slide {
+  background-size: 200% 100%;
+  transition: background-position var(--timing-divine) var(--ease-luxury);
+}
+
+.button-gradient-slide:hover {
+  background-position: 100% 50%;
+}
+
+/* =============================================================================
+   FORM ANIMATIONS
+   ============================================================================= */
+
+/* Input Focus */
+.input-focus {
+  transition: all var(--timing-base) var(--ease-divine);
+}
+
+.input-focus:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px var(--cns-gold-20),
+              0 0 20px var(--cns-gold-20);
+}
+
+/* Label Float */
+@keyframes labelFloat {
+  from {
+    transform: translateY(0);
+    font-size: 1rem;
+  }
+  to {
+    transform: translateY(-24px);
+    font-size: 0.875rem;
+  }
+}
+
+.label-float {
+  animation: labelFloat var(--timing-base) var(--ease-divine) forwards;
+}
+
+/* Checkbox Check */
+@keyframes checkboxCheck {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.checkbox-check {
+  animation: checkboxCheck var(--timing-base) var(--ease-bounce) forwards;
+}
+
+/* =============================================================================
+   BADGE & TAG ANIMATIONS
+   ============================================================================= */
+
+/* Badge Bounce In */
+@keyframes badgeBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.badge-bounce-in {
+  animation: badgeBounceIn var(--timing-base) var(--ease-bounce) forwards;
+}
+
+/* Badge Pulse */
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.badge-pulse {
+  animation: badgePulse 2s var(--ease-divine) infinite;
+}
+
+/* =============================================================================
+   PROGRESS BAR ANIMATIONS
+   ============================================================================= */
+
+/* Progress Fill */
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress-value, 100%);
+  }
+}
+
+.progress-fill {
+  animation: progressFill var(--timing-cinematic) var(--ease-luxury) forwards;
+}
+
+/* Progress Shimmer */
+@keyframes progressShimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.progress-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: progressShimmer 2s linear infinite;
+}
+
+/* =============================================================================
+   ICON ANIMATIONS
+   ============================================================================= */
+
+/* Icon Spin */
+.icon-spin {
+  animation: spin 2s linear infinite;
+}
+
+/* Icon Bounce */
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.icon-bounce {
+  animation: iconBounce 1s var(--ease-divine) infinite;
+}
+
+/* Icon Wiggle */
+@keyframes iconWiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+.icon-wiggle {
+  animation: iconWiggle 0.5s var(--ease-divine);
+}
+
+/* =============================================================================
+   AVATAR ANIMATIONS
+   ============================================================================= */
+
+/* Avatar Glow */
+@keyframes avatarGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--cns-gold-60),
+                0 0 20px var(--cns-gold-40);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 215, 0, 0),
+                0 0 30px var(--cns-gold-60);
+  }
+}
+
+.avatar-glow {
+  animation: avatarGlow 2s var(--ease-divine) infinite;
+}
+
+/* Avatar Float */
+.avatar-float {
+  animation: gentleFloat 4s var(--ease-divine) infinite;
+}
+
+/* =============================================================================
+   TIMELINE ANIMATIONS
+   ============================================================================= */
+
+/* Timeline Item Reveal */
+@keyframes timelineReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.timeline-reveal {
+  opacity: 0;
+  animation: timelineReveal var(--timing-divine) var(--ease-luxury) forwards;
+}
+
+/* Timeline Line Draw */
+@keyframes timelineDraw {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.timeline-draw {
+  animation: timelineDraw var(--timing-epic) var(--ease-luxury) forwards;
+}
+
+/* =============================================================================
+   CHART & GRAPH ANIMATIONS
+   ============================================================================= */
+
+/* Bar Chart Grow */
+@keyframes barGrow {
+  from {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+.bar-grow {
+  animation: barGrow var(--timing-divine) var(--ease-bounce) forwards;
+}
+
+/* Line Chart Draw */
+@keyframes lineDraw {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.line-draw {
+  stroke-dasharray: 1000;
+  animation: lineDraw var(--timing-epic) var(--ease-luxury) forwards;
+}
+
+/* =============================================================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Keep essential animations but simplify them */
+  .skeleton {
+    animation: none;
+    opacity: 0.7;
+  }
+  
+  .divine-float,
+  .gentle-float,
+  .levitate,
+  .parallax-float {
+    animation: none;
+  }
+  
+  .hover-lift:hover,
+  .card-hover-lift:hover {
+    transform: none;
+    box-shadow: var(--shadow-divine-medium);
+  }
+}
+
+/* =============================================================================
+   ANIMATION DELAY UTILITIES
+   ============================================================================= */
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* =============================================================================
+   ANIMATION DURATION UTILITIES
+   ============================================================================= */
+
+.duration-fast { animation-duration: var(--timing-fast) !important; }
+.duration-base { animation-duration: var(--timing-base) !important; }
+.duration-slow { animation-duration: var(--timing-slow) !important; }
+.duration-divine { animation-duration: var(--timing-divine) !important; }
+.duration-cinematic { animation-duration: var(--timing-cinematic) !important; }
+.duration-epic { animation-duration: var(--timing-epic) !important; }
+
+/* =============================================================================
+   END OF ANIMATIONS SYSTEM
+   ============================================================================= */

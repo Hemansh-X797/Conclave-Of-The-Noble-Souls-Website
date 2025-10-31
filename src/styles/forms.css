@@ -1,0 +1,1158 @@
+/* =============================================================================
+   THE CONCLAVE - FORMS SYSTEM
+   Dark modern noble themed form styling
+   Simplistic luxury aesthetic
+   Version: 1.0 | Premium Form Experience
+   ============================================================================= */
+
+/* =============================================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================================= */
+
+:root {
+  /* Form Colors */
+  --form-bg: rgba(0, 0, 0, 0.6);
+  --form-bg-dark: rgba(0, 0, 0, 0.8);
+  --form-border: rgba(255, 255, 255, 0.1);
+  --form-border-focus: rgba(255, 215, 0, 0.5);
+  --form-text: rgba(255, 255, 255, 0.9);
+  --form-text-secondary: rgba(255, 255, 255, 0.6);
+  --form-placeholder: rgba(255, 255, 255, 0.4);
+  
+  /* Input States */
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-bg-hover: rgba(255, 255, 255, 0.08);
+  --input-bg-focus: rgba(255, 255, 255, 0.1);
+  --input-border: rgba(255, 255, 255, 0.15);
+  --input-border-hover: rgba(255, 255, 255, 0.25);
+  --input-border-focus: var(--cns-gold);
+  
+  /* Validation Colors */
+  --form-success: #2ECC71;
+  --form-error: #E74C3C;
+  --form-warning: #F39C12;
+  --form-info: #3498DB;
+  
+  /* Transitions */
+  --form-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* =============================================================================
+   FORM CONTAINER
+   ============================================================================= */
+
+.noble-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background: var(--form-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--form-border);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.noble-form-wide {
+  max-width: 800px;
+}
+
+.noble-form-narrow {
+  max-width: 400px;
+}
+
+/* Form Header */
+.noble-form-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--form-border);
+}
+
+.noble-form-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cns-gold);
+  margin: 0 0 8px 0;
+  font-family: 'Cinzel Decorative', serif;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.noble-form-subtitle {
+  font-size: 14px;
+  color: var(--form-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* =============================================================================
+   FORM FIELDS
+   ============================================================================= */
+
+.noble-form-field {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.noble-form-field-inline {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.noble-form-field-inline .noble-form-field {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Field Label */
+.noble-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--form-text);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.noble-form-label-required::after {
+  content: '*';
+  color: var(--form-error);
+  margin-left: 4px;
+}
+
+.noble-form-label-optional {
+  font-weight: 400;
+  color: var(--form-text-secondary);
+  text-transform: none;
+  font-size: 11px;
+  margin-left: 6px;
+}
+
+/* =============================================================================
+   INPUT FIELDS
+   ============================================================================= */
+
+.noble-form-input,
+.noble-form-textarea,
+.noble-form-select {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  color: var(--form-text);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  transition: var(--form-transition);
+  outline: none;
+}
+
+.noble-form-input::placeholder,
+.noble-form-textarea::placeholder {
+  color: var(--form-placeholder);
+}
+
+.noble-form-input:hover,
+.noble-form-textarea:hover,
+.noble-form-select:hover {
+  background: var(--input-bg-hover);
+  border-color: var(--input-border-hover);
+}
+
+.noble-form-input:focus,
+.noble-form-textarea:focus,
+.noble-form-select:focus {
+  background: var(--input-bg-focus);
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+/* Textarea */
+.noble-form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Select */
+.noble-form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+/* Input with Icon */
+.noble-form-input-wrapper {
+  position: relative;
+}
+
+.noble-form-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--form-text-secondary);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.noble-form-input-wrapper .noble-form-input {
+  padding-left: 44px;
+}
+
+/* =============================================================================
+   VALIDATION STATES
+   ============================================================================= */
+
+.noble-form-input.error,
+.noble-form-textarea.error,
+.noble-form-select.error {
+  border-color: var(--form-error);
+}
+
+.noble-form-input.success,
+.noble-form-textarea.success,
+.noble-form-select.success {
+  border-color: var(--form-success);
+}
+
+.noble-form-input.warning,
+.noble-form-textarea.warning,
+.noble-form-select.warning {
+  border-color: var(--form-warning);
+}
+
+/* Validation Messages */
+.noble-form-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.noble-form-message-error {
+  color: var(--form-error);
+}
+
+.noble-form-message-success {
+  color: var(--form-success);
+}
+
+.noble-form-message-warning {
+  color: var(--form-warning);
+}
+
+.noble-form-message-info {
+  color: var(--form-info);
+}
+
+.noble-form-help-text {
+  font-size: 11px;
+  color: var(--form-text-secondary);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* =============================================================================
+   CHECKBOX & RADIO
+   ============================================================================= */
+
+.noble-form-checkbox,
+.noble-form-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 8px;
+  transition: var(--form-transition);
+  margin-bottom: 8px;
+}
+
+.noble-form-checkbox:hover,
+.noble-form-radio:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.noble-form-checkbox-input,
+.noble-form-radio-input {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+  background: var(--input-bg);
+  cursor: pointer;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--form-transition);
+  margin-top: 2px;
+}
+
+.noble-form-radio-input {
+  border-radius: 50%;
+}
+
+.noble-form-checkbox-input:checked,
+.noble-form-radio-input:checked {
+  background: var(--cns-gold);
+  border-color: var(--cns-gold);
+}
+
+.noble-form-checkbox-input:checked::after {
+  content: '✓';
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.noble-form-radio-input:checked::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000000;
+}
+
+.noble-form-checkbox-label,
+.noble-form-radio-label {
+  flex: 1;
+  font-size: 14px;
+  color: var(--form-text);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+/* Checkbox Group */
+.noble-form-checkbox-group,
+.noble-form-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* =============================================================================
+   FILE UPLOAD
+   ============================================================================= */
+
+.noble-form-file-upload {
+  position: relative;
+}
+
+.noble-form-file-input {
+  display: none;
+}
+
+.noble-form-file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  border: 2px dashed var(--input-border);
+  border-radius: 12px;
+  background: var(--input-bg);
+  cursor: pointer;
+  transition: var(--form-transition);
+  text-align: center;
+}
+
+.noble-form-file-label:hover {
+  border-color: var(--input-border-hover);
+  background: var(--input-bg-hover);
+}
+
+.noble-form-file-label.active {
+  border-color: var(--cns-gold);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.noble-form-file-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+.noble-form-file-text {
+  font-size: 14px;
+  color: var(--form-text);
+  margin-bottom: 4px;
+}
+
+.noble-form-file-hint {
+  font-size: 12px;
+  color: var(--form-text-secondary);
+}
+
+/* File Preview */
+.noble-form-file-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.noble-form-file-item {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+}
+
+.noble-form-file-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noble-form-file-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--form-transition);
+}
+
+.noble-form-file-remove:hover {
+  background: var(--form-error);
+  transform: scale(1.1);
+}
+
+/* =============================================================================
+   FORM ACTIONS
+   ============================================================================= */
+
+.noble-form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--form-border);
+}
+
+.noble-form-actions-centered {
+  justify-content: center;
+}
+
+.noble-form-actions-spaced {
+  justify-content: space-between;
+}
+
+/* =============================================================================
+   FORM SECTIONS
+   ============================================================================= */
+
+.noble-form-section {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--form-border);
+}
+
+.noble-form-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.noble-form-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cns-gold);
+  margin: 0 0 16px 0;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.noble-form-section-description {
+  font-size: 13px;
+  color: var(--form-text-secondary);
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+/* =============================================================================
+   SPECIAL INPUT TYPES
+   ============================================================================= */
+
+/* Range Slider */
+.noble-form-range {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--input-bg);
+  border-radius: 3px;
+  outline: none;
+}
+
+.noble-form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--cns-gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  transition: var(--form-transition);
+}
+
+.noble-form-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.noble-form-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--cns-gold);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  transition: var(--form-transition);
+}
+
+.noble-form-range::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+.noble-form-range-value {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cns-gold);
+  margin-top: 8px;
+}
+
+/* Tag Input */
+.noble-form-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  min-height: 44px;
+  transition: var(--form-transition);
+}
+
+.noble-form-tags:focus-within {
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.noble-form-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  font-size: 12px;
+  color: var(--cns-gold);
+}
+
+.noble-form-tag-remove {
+  background: none;
+  border: none;
+  color: var(--cns-gold);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--form-transition);
+}
+
+.noble-form-tag-remove:hover {
+  color: var(--form-error);
+  transform: scale(1.2);
+}
+
+.noble-form-tags-input {
+  flex: 1;
+  min-width: 120px;
+  border: none;
+  background: none;
+  outline: none;
+  color: var(--form-text);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+}
+
+.noble-form-tags-input::placeholder {
+  color: var(--form-placeholder);
+}
+
+/* =============================================================================
+   LOADING STATES
+   ============================================================================= */
+
+.noble-form.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.noble-form-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  z-index: 100;
+}
+
+.noble-form-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 215, 0, 0.2);
+  border-top-color: var(--cns-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =============================================================================
+   SUCCESS/ERROR STATES
+   ============================================================================= */
+
+.noble-form-alert {
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.noble-form-alert-success {
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  color: var(--form-success);
+}
+
+.noble-form-alert-error {
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  color: var(--form-error);
+}
+
+.noble-form-alert-warning {
+  background: rgba(243, 156, 18, 0.15);
+  border: 1px solid rgba(243, 156, 18, 0.3);
+  color: var(--form-warning);
+}
+
+.noble-form-alert-info {
+  background: rgba(52, 152, 219, 0.15);
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  color: var(--form-info);
+}
+
+.noble-form-alert-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .noble-form {
+    padding: 24px;
+    border-radius: 16px;
+  }
+  
+  .noble-form-field-inline {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .noble-form-field-inline .noble-form-field {
+    margin-bottom: 24px;
+  }
+  
+  .noble-form-actions {
+    flex-direction: column;
+  }
+  
+  .noble-form-actions button {
+    width: 100%;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .noble-form-input,
+  .noble-form-textarea,
+  .noble-form-select,
+  .noble-form-checkbox,
+  .noble-form-radio,
+  .noble-form-range::-webkit-slider-thumb,
+  .noble-form-range::-moz-range-thumb {
+    transition: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .noble-form {
+    border-width: 2px;
+  }
+  
+  .noble-form-input,
+  .noble-form-textarea,
+  .noble-form-select {
+    border-width: 2px;
+  }
+}
+
+/* Focus visible indicators */
+.noble-form-input:focus-visible,
+.noble-form-textarea:focus-visible,
+.noble-form-select:focus-visible,
+.noble-form-checkbox-input:focus-visible,
+.noble-form-radio-input:focus-visible {
+  outline: 2px solid var(--cns-gold);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
+
+@media print {
+  .noble-form {
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    box-shadow: none;
+  }
+  
+  .noble-form-actions {
+    display: none;
+  }
+}
+
+/* =============================================================================
+   APPEAL FORM SPECIFIC STYLES
+   ============================================================================= */
+
+/* Appeal Type Cards */
+.appeal-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.appeal-type-card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--form-transition);
+  text-align: center;
+}
+
+.appeal-type-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.appeal-type-card.selected {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: var(--form-error);
+  box-shadow: 0 0 20px rgba(231, 76, 60, 0.2);
+}
+
+.appeal-type-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.appeal-type-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--form-text);
+  margin: 0 0 8px 0;
+}
+
+.appeal-type-description {
+  font-size: 12px;
+  color: var(--form-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* =============================================================================
+   COMPLAINT FORM SPECIFIC STYLES
+   ============================================================================= */
+
+.complaint-violation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.complaint-violation-card {
+  padding: 16px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--form-transition);
+  text-align: center;
+}
+
+.complaint-violation-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.complaint-violation-card.selected {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: var(--form-error);
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.2);
+}
+
+.complaint-violation-card.severity-critical.selected {
+  background: rgba(139, 0, 0, 0.15);
+  border-color: var(--priority-emergency);
+}
+
+.complaint-violation-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.complaint-violation-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--form-text);
+  line-height: 1.3;
+}
+
+/* =============================================================================
+   SUBMISSION FORM SPECIFIC STYLES
+   ============================================================================= */
+
+.submission-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.submission-type-card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--form-transition);
+  text-align: center;
+}
+
+.submission-type-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.submission-type-card.selected {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: var(--cns-gold);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.submission-type-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.submission-type-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--form-text);
+  margin: 0 0 6px 0;
+}
+
+.submission-type-description {
+  font-size: 11px;
+  color: var(--form-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+/* =============================================================================
+   APPLICATION FORM SPECIFIC STYLES
+   ============================================================================= */
+
+/* Step Indicator */
+.application-step-indicator {
+  margin-bottom: 40px;
+}
+
+.application-progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.application-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cns-gold), #FFED4E);
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.application-steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.application-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.5;
+  transition: var(--form-transition);
+}
+
+.application-step.active,
+.application-step.completed {
+  opacity: 1;
+}
+
+.application-step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--form-text-secondary);
+  transition: var(--form-transition);
+}
+
+.application-step.active .application-step-circle {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: var(--cns-gold);
+  color: var(--cns-gold);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.application-step.completed .application-step-circle {
+  background: var(--cns-gold);
+  border-color: var(--cns-gold);
+  color: #000000;
+}
+
+.application-step-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--form-text-secondary);
+}
+
+.application-step.active .application-step-label {
+  color: var(--cns-gold);
+}
+
+/* Role Cards */
+.application-role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.application-role-card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--form-transition);
+  text-align: center;
+}
+
+.application-role-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.application-role-card.selected {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: var(--cns-gold);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.application-role-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.application-role-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--form-text);
+  margin: 0 0 8px 0;
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.application-role-description {
+  font-size: 13px;
+  color: var(--form-text-secondary);
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.application-role-requirements {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  color: var(--form-text-secondary);
+  text-align: left;
+}
+
+.application-role-requirements li {
+  margin-bottom: 4px;
+}
+
+/* Skills Grid */
+.application-skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.application-skill-chip {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--form-text);
+  cursor: pointer;
+  transition: var(--form-transition);
+  user-select: none;
+}
+
+.application-skill-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.application-skill-chip.selected {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: var(--cns-gold);
+  color: var(--cns-gold);
+}
+
+/* Days Grid */
+.application-days-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.application-day-chip {
+  flex: 1;
+  min-width: 80px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--form-text);
+  cursor: pointer;
+  transition: var(--form-transition);
+  user-select: none;
+}
+
+.application-day-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.application-day-chip.selected {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: var(--cns-gold);
+  color: var(--cns-gold);
+}
+
+/* Review Summary */
+.application-review-summary {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.application-review-summary h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cns-gold);
+  margin: 0 0 16px 0;
+  font-family: 'Cinzel',serif;
+}
+/* =============================================================================
+   END OF FORMS SYSTEM
+   ============================================================================= */

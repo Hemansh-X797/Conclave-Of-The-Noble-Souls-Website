@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+.vercel
+.vscode
+.next
+out
+dist
+coverage
+
+# Environment
+.env*
+*.log
+
+# Public/media
+/public/Assets/*
+/public/Videos/*
+/public/Audio/*
+/public/fonts/*
+/public/favicons/*
+
+# Generated
+build/
+scripts/generated/
+scripts/backup/
+database/migrations/*.sql
+database/functions/*.sql

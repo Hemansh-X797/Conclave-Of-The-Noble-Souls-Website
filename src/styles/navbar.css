@@ -1,0 +1,1207 @@
+/* =============================================================================
+   THE CONCLAVE REALM - NAVIGATION SYSTEM
+   Luxury floating navigation with pathway-aware theming & premium interactions
+   Version: 1.0 | Rolls-Royce Inspired Elegance
+   ============================================================================= */
+
+/* =============================================================================
+   NAVIGATION SYSTEM VARIABLES & FOUNDATIONS
+   ============================================================================= */
+
+:root {
+  /* Navigation Base Variables */
+  --nav-font-primary: 'Josefin Sans', sans-serif;
+  --nav-font-decorative: 'Cinzel Decorative', serif;
+  --nav-font-gaming: 'Orbitron', monospace;
+  --nav-font-mystical: 'Ring of Kerry', serif;
+  
+  /* Noble Navigation Colors */
+  --nav-noble-gold: #FFD700;
+  --nav-noble-gold-light: #FFED4E;
+  --nav-noble-gold-dark: #B8860B;
+  --nav-noble-white: #F8F8FF;
+  --nav-noble-cream: #FFF8DC;
+  --nav-noble-black: #0A0A0F;
+  --nav-noble-silver: #C0C0C0;
+  --nav-noble-platinum: #E5E4E2;
+  
+  /* Pathway Navigation Colors */
+  --nav-gaming-primary: #00BFFF;
+  --nav-gaming-secondary: #1ABC9C;
+  --nav-gaming-accent: #FF4500;
+  --nav-gaming-glow: rgba(0, 191, 255, 0.6);
+  --nav-gaming-bg: linear-gradient(135deg, rgba(10, 10, 15, 0.95) 0%, rgba(0, 17, 34, 0.95) 100%);
+  
+  --nav-lorebound-primary: #6A0DAD;
+  --nav-lorebound-secondary: #9932CC;
+  --nav-lorebound-mystical: #FF1493;
+  --nav-lorebound-glow: rgba(106, 13, 173, 0.7);
+  --nav-lorebound-bg: linear-gradient(135deg, rgba(46, 8, 84, 0.95) 0%, rgba(106, 13, 173, 0.95) 100%);
+  
+  --nav-productive-primary: #C0C0C0;
+  --nav-productive-accent: #3498DB;
+  --nav-productive-glow: rgba(192, 192, 192, 0.5);
+  --nav-productive-bg: linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(52, 73, 94, 0.95) 100%);
+  
+  --nav-news-primary: #E0115F;
+  --nav-news-electric: #FF6B6B;
+  --nav-news-glow: rgba(224, 17, 95, 0.6);
+  --nav-news-bg: linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(220, 20, 60, 0.95) 100%);
+  
+  /* Glass & Material System */
+  --nav-glass-bg: rgba(248, 248, 255, 0.08);
+  --nav-glass-border: rgba(248, 248, 255, 0.12);
+  --nav-glass-hover: rgba(248, 248, 255, 0.15);
+  --nav-glass-active: rgba(255, 215, 0, 0.1);
+  --nav-glass-blur: 20px;
+  
+  /* Navigation Sizing */
+  --nav-height: 80px;
+  --nav-height-mobile: 70px;
+  --nav-padding: 0 2rem;
+  --nav-item-padding: 0.75rem 1.25rem;
+  --nav-border-radius: 16px;
+  
+  /* Animation Variables */
+  --nav-transition-fast: 0.2s;
+  --nav-transition-normal: 0.4s;
+  --nav-transition-slow: 0.8s;
+  --nav-ease-noble: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --nav-ease-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --nav-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Elevation & Shadow System */
+  --nav-shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --nav-shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --nav-shadow-floating: 0 16px 48px rgba(0, 0, 0, 0.2);
+  --nav-shadow-divine: 0 16px 48px rgba(255, 215, 0, 0.3);
+  
+  /* Mobile Breakpoints */
+  --nav-mobile-breakpoint: 768px;
+  --nav-tablet-breakpoint: 1024px;
+}
+
+/* =============================================================================
+   BASE NAVIGATION CONTAINER
+   ============================================================================= */
+
+.conclave-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  
+  /* Glass Morphism Foundation */
+  background: var(--nav-glass-bg);
+  backdrop-filter: blur(var(--nav-glass-blur));
+  border-bottom: 1px solid var(--nav-glass-border);
+  
+  /* Luxury Elevation */
+  box-shadow: var(--nav-shadow-floating);
+  
+  /* Performance Optimization */
+  will-change: transform, opacity, backdrop-filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  
+  /* Smooth Transitions */
+  transition: all var(--nav-transition-normal) var(--nav-ease-noble);
+  
+  /* Cursor Integration */
+  cursor: none;
+}
+
+.conclave-navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 50%, 
+    rgba(255, 215, 0, 0.05) 100%);
+  opacity: 0;
+  transition: opacity var(--nav-transition-normal) ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.conclave-navbar:hover::before {
+  opacity: 1;
+}
+
+/* Pathway-Specific Navbar Theming */
+.conclave-navbar.pathway-gaming {
+  background: var(--nav-gaming-bg);
+  border-bottom-color: rgba(0, 191, 255, 0.3);
+  box-shadow: 
+    var(--nav-shadow-floating),
+    0 0 30px rgba(0, 191, 255, 0.2);
+}
+
+.conclave-navbar.pathway-lorebound {
+  background: var(--nav-lorebound-bg);
+  border-bottom-color: rgba(106, 13, 173, 0.3);
+  box-shadow: 
+    var(--nav-shadow-floating),
+    0 0 30px rgba(106, 13, 173, 0.3);
+}
+
+.conclave-navbar.pathway-productive {
+  background: var(--nav-productive-bg);
+  border-bottom-color: rgba(52, 152, 219, 0.3);
+  box-shadow: 
+    var(--nav-shadow-floating),
+    0 0 30px rgba(52, 152, 219, 0.2);
+}
+
+.conclave-navbar.pathway-news {
+  background: var(--nav-news-bg);
+  border-bottom-color: rgba(224, 17, 95, 0.3);
+  box-shadow: 
+    var(--nav-shadow-floating),
+    0 0 30px rgba(224, 17, 95, 0.2);
+}
+
+/* Navigation Container Layout */
+.nav-container {
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--nav-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* =============================================================================
+   LOGO & BRANDING SECTION
+   ============================================================================= */
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: none;
+  transition: all var(--nav-transition-normal) var(--nav-ease-noble);
+  position: relative;
+  z-index: 10;
+}
+
+.nav-brand:hover {
+  transform: translateY(-2px);
+}
+
+.nav-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  filter: 
+    drop-shadow(0 0 10px rgba(255, 215, 0, 0.5))
+    drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
+  transition: all var(--nav-transition-normal) var(--nav-ease-noble);
+}
+
+.nav-brand:hover .nav-logo {
+  filter: 
+    drop-shadow(0 0 15px rgba(255, 215, 0, 0.8))
+    drop-shadow(0 0 30px rgba(255, 215, 0, 0.4))
+    drop-shadow(0 0 45px rgba(255, 215, 0, 0.2));
+  transform: scale(1.05);
+}
+
+.nav-brand-text {
+  margin-left: 1rem;
+  font-family: var(--nav-font-decorative);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--nav-noble-gold);
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.6),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  transition: all var(--nav-transition-normal) var(--nav-ease-noble);
+}
+
+.nav-brand:hover .nav-brand-text {
+  text-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.8),
+    0 0 30px rgba(255, 215, 0, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translateX(3px);
+}
+
+/* =============================================================================
+   MAIN NAVIGATION MENU
+   ============================================================================= */
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: var(--nav-item-padding);
+  font-family: var(--nav-font-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(248, 248, 255, 0.8);
+  text-decoration: none;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  border-radius: 12px;
+  
+  /* Glass Button Effect */
+  background: rgba(248, 248, 255, 0.05);
+  border: 1px solid rgba(248, 248, 255, 0.08);
+  backdrop-filter: blur(10px);
+  
+  /* Transitions */
+  transition: all var(--nav-transition-normal) var(--nav-ease-noble);
+  position: relative;
+  cursor: none;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.1) 50%, transparent 100%);
+  transition: left var(--nav-transition-slow) var(--nav-ease-smooth);
+  z-index: -1;
+}
+
+.nav-link:hover {
+  color: var(--nav-noble-white);
+  background: rgba(248, 248, 255, 0.12);
+  border-color: rgba(255, 215, 0, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.nav-link:hover::before {
+  left: 100%;
+}
+
+.nav-link:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Active/Current Page Styling */
+.nav-link.active {
+  color: var(--nav-noble-gold);
+  background: var(--nav-glass-active);
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.3),
+    inset 0 0 20px rgba(255, 215, 0, 0.1);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--nav-noble-gold) 50%, transparent 100%);
+  border-radius: 1px;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+}
+
+/* Pathway-Specific Active States */
+.pathway-gaming .nav-link.active {
+  color: var(--nav-gaming-primary);
+  border-color: rgba(0, 191, 255, 0.4);
+  box-shadow: 
+    0 0 15px rgba(0, 191, 255, 0.3),
+    inset 0 0 20px rgba(0, 191, 255, 0.1);
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.6);
+}
+
+.pathway-gaming .nav-link.active::after {
+  background: linear-gradient(90deg, transparent 0%, var(--nav-gaming-primary) 50%, transparent 100%);
+  box-shadow: 0 0 5px rgba(0, 191, 255, 0.6);
+}
+
+.pathway-lorebound .nav-link.active {
+  color: var(--nav-lorebound-primary);
+  border-color: rgba(106, 13, 173, 0.4);
+  box-shadow: 
+    0 0 15px rgba(106, 13, 173, 0.4),
+    inset 0 0 20px rgba(106, 13, 173, 0.1);
+  text-shadow: 0 0 10px rgba(106, 13, 173, 0.7);
+}
+
+.pathway-lorebound .nav-link.active::after {
+  background: linear-gradient(90deg, transparent 0%, var(--nav-lorebound-primary) 50%, transparent 100%);
+  box-shadow: 0 0 5px rgba(106, 13, 173, 0.7);
+}
+
+.pathway-productive .nav-link.active {
+  color: var(--nav-productive-accent);
+  border-color: rgba(52, 152, 219, 0.4);
+  box-shadow: 
+    0 0 15px rgba(52, 152, 219, 0.3),
+    inset 0 0 20px rgba(52, 152, 219, 0.1);
+  text-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+}
+
+.pathway-productive .nav-link.active::after {
+  background: linear-gradient(90deg, transparent 0%, var(--nav-productive-accent) 50%, transparent 100%);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.6);
+}
+
+.pathway-news .nav-link.active {
+  color: var(--nav-news-primary);
+  border-color: rgba(224, 17, 95, 0.4);
+  box-shadow: 
+    0 0 15px rgba(224, 17, 95, 0.4),
+    inset 0 0 20px rgba(224, 17, 95, 0.1);
+  text-shadow: 0 0 10px rgba(224, 17, 95, 0.6);
+}
+
+.pathway-news .nav-link.active::after {
+  background: linear-gradient(90deg, transparent 0%, var(--nav-news-primary) 50%, transparent 100%);
+  box-shadow: 0 0 5px rgba(224, 17, 95, 0.6);
+}
+
+/* Navigation Icons */
+.nav-icon {
+  margin-right: 0.5rem;
+  font-size: 1.1em;
+  opacity: 0.8;
+  transition: all var(--nav-transition-fast) ease;
+}
+
+.nav-link:hover .nav-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.nav-link.active .nav-icon {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* =============================================================================
+   USER PROFILE & AUTH SECTION
+   ============================================================================= */
+
+.nav-user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Discord Join Button (when not logged in) */
+.nav-discord-join {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #5865F2 0%, #404EED 100%);
+  border: 2px solid #5865F2;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  font-family: var(--nav-font-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  
+  box-shadow: 
+    0 4px 15px rgba(88, 101, 242, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  
+  transition: all var(--nav-transition-normal) var(--nav-ease-noble);
+}
+
+.nav-discord-join::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: discordOrb 6s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.nav-discord-join:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 6px 25px rgba(88, 101, 242, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.nav-discord-icon {
+  margin-right: 0.5rem;
+  font-size: 1.2em;
+}
+
+/* User Profile (when logged in) */
+.nav-user-profile {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 1rem 0.4rem 0.4rem;
+  background: var(--nav-glass-bg);
+  border: 1px solid var(--nav-glass-border);
+  border-radius: 30px;
+  cursor: none;
+  text-decoration: none;
+  backdrop-filter: blur(15px);
+  transition: all var(--nav-transition-normal) var(--nav-ease-noble);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-user-profile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.1) 50%, transparent 100%);
+  transition: left var(--nav-transition-slow) ease;
+}
+
+.nav-user-profile:hover {
+  background: var(--nav-glass-hover);
+  border-color: rgba(255, 215, 0, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.nav-user-profile:hover::before {
+  left: 100%;
+}
+
+.nav-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--nav-noble-gold);
+  object-fit: cover;
+  transition: all var(--nav-transition-fast) ease;
+  box-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.nav-user-profile:hover .nav-user-avatar {
+  border-color: var(--nav-noble-white);
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.5),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.nav-user-info {
+  margin-left: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-user-name {
+  font-family: var(--nav-font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--nav-noble-white);
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-user-role {
+  font-family: var(--nav-font-primary);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(248, 248, 255, 0.6);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Role-Specific Styling */
+.nav-user-role.owner {
+  color: var(--nav-noble-gold);
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.nav-user-role.admin {
+  color: #DC143C;
+  text-shadow: 0 0 5px rgba(220, 20, 60, 0.5);
+}
+
+.nav-user-role.mod {
+  color: #4169E1;
+  text-shadow: 0 0 5px rgba(65, 105, 225, 0.5);
+}
+
+/* =============================================================================
+   MOBILE MENU SYSTEM
+   ============================================================================= */
+
+.nav-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--nav-glass-bg);
+  border: 1px solid var(--nav-glass-border);
+  border-radius: 10px;
+  cursor: none;
+  backdrop-filter: blur(10px);
+  transition: all var(--nav-transition-normal) var(--nav-ease-noble);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-mobile-toggle:hover {
+  background: var(--nav-glass-hover);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.nav-mobile-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--nav-noble-gold);
+  margin: 0 auto 3px auto;
+  border-radius: 1px;
+  transition: all var(--nav-transition-fast) var(--nav-ease-bounce);
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.nav-mobile-toggle span:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile Toggle Animation */
+.nav-mobile-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-mobile-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.nav-mobile-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Overlay Menu */
+.nav-mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(10, 10, 15, 0.98) 0%, 
+    rgba(0, 0, 0, 0.95) 50%, 
+    rgba(10, 10, 15, 0.98) 100%);
+  backdrop-filter: blur(30px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--nav-transition-slow) var(--nav-ease-noble);
+  overflow-y: auto;
+}
+
+.nav-mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-mobile-content {
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Mobile Header */
+.nav-mobile-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.nav-mobile-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-mobile-brand .nav-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.nav-mobile-brand .nav-brand-text {
+  font-size: 1.8rem;
+  margin-left: 1rem;
+}
+
+/* Mobile SuperButton Portals */
+.nav-mobile-portals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.nav-mobile-portal {
+  width: 100%;
+  height: 120px;
+  position: relative;
+}
+
+/* Mobile Actions Section */
+.nav-mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.nav-mobile-action {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Mobile User Section */
+.nav-mobile-user {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  text-align: center;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Tablet Landscape (768px - 1023px) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --nav-height: 75px;
+    --nav-padding: 0 1.5rem;
+  }
+  
+  .nav-menu {
+    gap: 0.25rem;
+  }
+  
+  .nav-link {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .nav-brand-text {
+    font-size: 1.3rem;
+  }
+  
+  .nav-logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Mobile Portrait (max-width: 767px) */
+@media screen and (max-width: 767px) {
+  :root {
+    --nav-height: var(--nav-height-mobile);
+    --nav-padding: 0 1rem;
+  }
+  
+  .nav-menu {
+    display: none;
+  }
+  
+  .nav-mobile-toggle {
+    display: flex;
+  }
+  
+  .nav-brand-text {
+    font-size: 1.2rem;
+  }
+  
+  .nav-logo {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .nav-user-section {
+    gap: 0.5rem;
+  }
+  
+  .nav-discord-join {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .nav-user-profile {
+    padding: 0.3rem 0.8rem 0.3rem 0.3rem;
+  }
+  
+  .nav-user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .nav-user-name {
+    font-size: 0.8rem;
+  }
+  
+  .nav-user-role {
+    font-size: 0.65rem;
+  }
+}
+
+/* Ultra Mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  :root {
+    --nav-height: 60px;
+    --nav-padding: 0 0.75rem;
+  }
+  
+  .nav-brand-text {
+    display: none; /* Hide text on very small screens, logo only */
+  }
+  
+  .nav-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .nav-mobile-content {
+    padding: 1.5rem;
+  }
+  
+  .nav-mobile-portals {
+    gap: 1rem;
+  }
+  
+  .nav-mobile-portal {
+    height: 100px;
+  }
+}
+
+/* =============================================================================
+   SCROLLED STATE ANIMATIONS
+   ============================================================================= */
+
+.conclave-navbar.scrolled {
+  height: calc(var(--nav-height) - 10px);
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(25px);
+  box-shadow: 
+    var(--nav-shadow-floating),
+    0 0 50px rgba(255, 215, 0, 0.1);
+}
+
+.conclave-navbar.scrolled .nav-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.conclave-navbar.scrolled .nav-brand-text {
+  font-size: 1.3rem;
+}
+
+/* =============================================================================
+   KEYFRAME ANIMATIONS
+   ============================================================================= */
+
+@keyframes discordOrb {
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg); 
+    opacity: 0.7; 
+  }
+  25% { 
+    transform: translate(-15px, -15px) rotate(90deg); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: translate(15px, -15px) rotate(180deg); 
+    opacity: 0.5; 
+  }
+  75% { 
+    transform: translate(15px, 15px) rotate(270deg); 
+    opacity: 1; 
+  }
+}
+
+@keyframes navItemFloat {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-2px); 
+  }
+}
+
+@keyframes navGlow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 15px rgba(255, 215, 0, 0.3),
+      inset 0 0 20px rgba(255, 215, 0, 0.1); 
+  }
+  50% { 
+    box-shadow: 
+      0 0 25px rgba(255, 215, 0, 0.5),
+      inset 0 0 30px rgba(255, 215, 0, 0.2); 
+  }
+}
+
+@keyframes mobileSlideIn {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.nav-mobile-overlay.active .nav-mobile-portals > * {
+  animation: mobileSlideIn 0.6s var(--nav-ease-noble) forwards;
+}
+
+.nav-mobile-overlay.active .nav-mobile-portals > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.nav-mobile-overlay.active .nav-mobile-portals > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.nav-mobile-overlay.active .nav-mobile-portals > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.nav-mobile-overlay.active .nav-mobile-portals > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* =============================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================================================= */
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--nav-noble-gold);
+  outline-offset: 2px;
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.nav-mobile-toggle:focus-visible {
+  outline: 2px solid var(--nav-noble-gold);
+  outline-offset: 2px;
+}
+
+.nav-user-profile:focus-visible {
+  outline: 2px solid var(--nav-noble-gold);
+  outline-offset: 2px;
+}
+
+.nav-discord-join:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =============================================================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================================================= */
+
+@media (prefers-contrast: high) {
+  .conclave-navbar {
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid #FFFFFF;
+  }
+  
+  .nav-link {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #FFFFFF;
+  }
+  
+  .nav-brand-text {
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  }
+}
+
+/* =============================================================================
+   REDUCED MOTION SUPPORT
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .conclave-navbar,
+  .nav-link,
+  .nav-brand,
+  .nav-logo,
+  .nav-brand-text,
+  .nav-mobile-toggle,
+  .nav-mobile-overlay,
+  .nav-user-profile,
+  .nav-discord-join {
+    animation: none !important;
+    transition-duration: 0.1s !important;
+  }
+  
+  .nav-mobile-overlay.active .nav-mobile-portals > * {
+    animation: none !important;
+  }
+  
+  .nav-discord-join::before {
+    animation: none !important;
+  }
+}
+
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
+
+@media print {
+  .conclave-navbar {
+    display: none;
+  }
+}
+
+/* =============================================================================
+   UTILITY CLASSES & MODIFIERS
+   ============================================================================= */
+
+.nav-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.nav-transparent {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.nav-solid {
+  background: rgba(10, 10, 15, 0.98) !important;
+  backdrop-filter: blur(30px) !important;
+}
+
+.nav-floating {
+  animation: navItemFloat 3s ease-in-out infinite;
+}
+
+.nav-glow-active {
+  animation: navGlow 2s ease-in-out infinite;
+}
+
+.nav-no-blur {
+  backdrop-filter: none !important;
+}
+
+.nav-force-mobile {
+  .nav-menu {
+    display: none !important;
+  }
+  
+  .nav-mobile-toggle {
+    display: flex !important;
+  }
+}
+
+/* =============================================================================
+   DEBUGGING UTILITIES
+   ============================================================================= */
+
+.nav-debug {
+  outline: 2px dashed rgba(255, 0, 0, 0.5) !important;
+  outline-offset: 2px;
+}
+
+.nav-debug::before {
+  content: 'NAV DEBUG';
+  position: absolute;
+  top: -25px;
+  left: 0;
+  font-size: 10px;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  font-family: monospace;
+}
+
+/* =============================================================================
+   CURSOR INTEGRATION ENHANCEMENTS
+   ============================================================================= */
+
+.conclave-navbar * {
+  cursor: none !important;
+}
+
+.nav-magnetic {
+  transition: transform var(--nav-transition-fast) var(--nav-ease-bounce);
+}
+
+.nav-magnetic:hover {
+  animation: navItemFloat 2s ease-in-out infinite;
+}
+
+/* Pathway-specific cursor hints */
+.conclave-navbar[data-cursor-pathway="gaming"] {
+  cursor: none !important;
+}
+
+.conclave-navbar[data-cursor-pathway="lorebound"] {
+  cursor: none !important;
+}
+
+.conclave-navbar[data-cursor-pathway="productive"] {
+  cursor: none !important;
+}
+
+.conclave-navbar[data-cursor-pathway="news"] {
+  cursor: none !important;
+}
+
+/* =============================================================================
+   ADVANCED VISUAL EFFECTS
+   ============================================================================= */
+
+/* Particle system background for special occasions */
+.nav-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.nav-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 215, 0, 0.3);
+  border-radius: 50%;
+  animation: particleFloat 8s ease-in-out infinite;
+}
+
+.nav-particle:nth-child(2n) {
+  background: rgba(248, 248, 255, 0.2);
+  animation-duration: 12s;
+  animation-delay: 2s;
+}
+
+.nav-particle:nth-child(3n) {
+  background: rgba(255, 215, 0, 0.5);
+  animation-duration: 6s;
+  animation-delay: 4s;
+}
+
+@keyframes particleFloat {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-20px) translateX(10px) rotate(180deg);
+    opacity: 0.7;
+  }
+}
+
+/* Luxury shine effect */
+.nav-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 30%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.2) 70%, transparent 100%);
+  transition: left 2s ease;
+}
+
+.nav-shine:hover::after {
+  left: 100%;
+}
+
+/* =============================================================================
+                        END OF NAVIGATION SYSTEM
+   ============================================================================= */

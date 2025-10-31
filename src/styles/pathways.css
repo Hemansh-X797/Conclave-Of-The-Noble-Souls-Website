@@ -1,0 +1,1295 @@
+/* =============================================================================
+   CNS PATHWAY THEMING SYSTEM
+   Comprehensive pathway-specific styles for Gaming, Lorebound, Productive, News
+   Version: 1.0 | 2000+ lines of pathway excellence
+   ============================================================================= */
+
+/* =============================================================================
+   PATHWAY COLOR VARIABLES
+   ============================================================================= */
+
+:root {
+  /* Gaming Realm - Electric Cyan */
+  --gaming-primary: #00bfff;
+  --gaming-secondary: #1abc9c;
+  --gaming-tertiary: #00ced1;
+  --gaming-accent: #8a2be2;
+  --gaming-dark: #004d66;
+  --gaming-light: #7ddef8;
+  --gaming-glow: rgba(0, 191, 255, 0.7);
+  --gaming-shadow: rgba(0, 191, 255, 0.4);
+  --gaming-gradient: linear-gradient(135deg, #00bfff 0%, #8a2be2 100%);
+  --gaming-gradient-reverse: linear-gradient(135deg, #8a2be2 0%, #00bfff 100%);
+  --gaming-radial: radial-gradient(circle, #00bfff 0%, #004d66 100%);
+  
+  /* Lorebound Sanctum - Deep Royal Purple */
+  --lorebound-primary: #6a0dad;
+  --lorebound-secondary: #9932cc;
+  --lorebound-tertiary: #8b008b;
+  --lorebound-accent: #da70d6;
+  --lorebound-dark: #4b0082;
+  --lorebound-light: #ba55d3;
+  --lorebound-glow: rgba(106, 13, 173, 0.7);
+  --lorebound-shadow: rgba(106, 13, 173, 0.4);
+  --lorebound-gradient: linear-gradient(135deg, #6a0dad 0%, #9932cc 100%);
+  --lorebound-gradient-reverse: linear-gradient(135deg, #9932cc 0%, #6a0dad 100%);
+  --lorebound-radial: radial-gradient(circle, #6a0dad 0%, #4b0082 100%);
+  
+  /* Productive Nexus - Professional Grey */
+  --productive-primary: #c0c0c0;
+  --productive-secondary: #95a5a6;
+  --productive-tertiary: #bdc3c7;
+  --productive-accent: #3498db;
+  --productive-dark: #7f8c8d;
+  --productive-light: #ecf0f1;
+  --productive-glow: rgba(192, 192, 192, 0.6);
+  --productive-shadow: rgba(192, 192, 192, 0.3);
+  --productive-gradient: linear-gradient(135deg, #c0c0c0 0%, #95a5a6 100%);
+  --productive-gradient-reverse: linear-gradient(135deg, #95a5a6 0%, #c0c0c0 100%);
+  --productive-radial: radial-gradient(circle, #c0c0c0 0%, #7f8c8d 100%);
+  
+  /* News Nexus - Light Platinum Grey */
+  --news-primary: #e5e4e2;
+  --news-secondary: #bdc3c7;
+  --news-tertiary: #d3d3d3;
+  --news-accent: #ff6b6b;
+  --news-dark: #95a5a6;
+  --news-light: #f8f8ff;
+  --news-glow: rgba(229, 228, 226, 0.8);
+  --news-shadow: rgba(229, 228, 226, 0.4);
+  --news-gradient: linear-gradient(135deg, #e5e4e2 0%, #bdc3c7 100%);
+  --news-gradient-reverse: linear-gradient(135deg, #bdc3c7 0%, #e5e4e2 100%);
+  --news-radial: radial-gradient(circle, #e5e4e2 0%, #95a5a6 100%);
+}
+
+/* =============================================================================
+   GAMING REALM STYLES
+   ============================================================================= */
+
+/* Gaming Base Styles */
+.pathway-gaming,
+[data-pathway="gaming"] {
+  --pathway-primary: var(--gaming-primary);
+  --pathway-secondary: var(--gaming-secondary);
+  --pathway-gradient: var(--gaming-gradient);
+  --pathway-glow: var(--gaming-glow);
+  --pathway-shadow: var(--gaming-shadow);
+}
+
+/* Gaming Background */
+.gaming-realm {
+  background: linear-gradient(
+    135deg,
+    var(--noble-black) 0%,
+    #001a2e 50%,
+    var(--noble-black) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.gaming-realm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gaming-realm > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Gaming Typography */
+.gaming-realm h1,
+.gaming-realm h2,
+.gaming-realm h3,
+.gaming-realm .gaming-title {
+  font-family: var(--font-gaming);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: linear-gradient(45deg, #00bfff, #8a2be2, #00ffff);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gamingGradientFlow 3s ease-in-out infinite;
+}
+
+@keyframes gamingGradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gaming-realm p,
+.gaming-realm span,
+.gaming-realm div {
+  color: var(--noble-white-90);
+}
+
+/* Gaming Text Glow */
+.gaming-text-glow {
+  text-shadow: 
+    0 0 10px var(--gaming-glow),
+    0 0 20px var(--gaming-shadow),
+    0 0 30px rgba(0, 191, 255, 0.2);
+  animation: gamingTextPulse 2s ease-in-out infinite;
+}
+
+@keyframes gamingTextPulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px var(--gaming-glow),
+      0 0 20px var(--gaming-shadow);
+  }
+  50% {
+    text-shadow: 
+      0 0 20px var(--gaming-glow),
+      0 0 40px var(--gaming-shadow),
+      0 0 60px rgba(0, 191, 255, 0.3);
+  }
+}
+
+/* Gaming Buttons */
+.gaming-realm .btn,
+.btn-gaming {
+  background: var(--gaming-gradient);
+  color: var(--noble-white);
+  border: 2px solid var(--gaming-primary);
+  box-shadow: 0 0 20px var(--gaming-shadow);
+  transition: all var(--timing-base) var(--ease-divine);
+  font-family: var(--font-gaming);
+  text-transform: uppercase;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+}
+
+.gaming-realm .btn:hover,
+.btn-gaming:hover {
+  background: var(--gaming-gradient-reverse);
+  box-shadow: 
+    0 0 30px var(--gaming-glow),
+    0 0 50px var(--gaming-shadow),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  border-color: var(--gaming-light);
+}
+
+.gaming-realm .btn:active,
+.btn-gaming:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px var(--gaming-glow);
+}
+
+/* Gaming Cards */
+.gaming-realm .card,
+.card-gaming {
+  background: rgba(0, 77, 102, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 191, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(0, 191, 255, 0.1);
+  transition: all var(--timing-base) var(--ease-luxury);
+}
+
+.gaming-realm .card:hover,
+.card-gaming:hover {
+  border-color: var(--gaming-primary);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 0 40px var(--gaming-shadow),
+    inset 0 1px 0 rgba(0, 191, 255, 0.2);
+  transform: translateY(-8px);
+}
+
+/* Gaming Glitch Effect */
+.gaming-glitch {
+  position: relative;
+  animation: gamingGlitch 0.3s linear infinite;
+}
+
+@keyframes gamingGlitch {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    transform: translate(1px, -1px);
+  }
+}
+
+/* Gaming Scan Lines */
+.gaming-scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.gaming-scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 191, 255, 0.05) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 191, 255, 0.05) 3px
+  );
+  pointer-events: none;
+  z-index: 10;
+  animation: scanlinesMove 8s linear infinite;
+}
+
+@keyframes scanlinesMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+/* Gaming Grid */
+.gaming-grid {
+  background-image: 
+    linear-gradient(rgba(0, 191, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 191, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridScroll 20s linear infinite;
+}
+
+@keyframes gridScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Gaming Energy Pulse */
+.gaming-energy-pulse {
+  position: relative;
+}
+
+.gaming-energy-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: var(--gaming-radial);
+  opacity: 0;
+  border-radius: inherit;
+  animation: energyPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes energyPulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+/* =============================================================================
+   LOREBOUND SANCTUM STYLES
+   ============================================================================= */
+
+/* Lorebound Base Styles */
+.pathway-lorebound,
+[data-pathway="lorebound"] {
+  --pathway-primary: var(--lorebound-primary);
+  --pathway-secondary: var(--lorebound-secondary);
+  --pathway-gradient: var(--lorebound-gradient);
+  --pathway-glow: var(--lorebound-glow);
+  --pathway-shadow: var(--lorebound-shadow);
+}
+
+/* Lorebound Background */
+.lorebound-realm {
+  background: linear-gradient(
+    135deg,
+    var(--noble-black) 0%,
+    #1a0033 50%,
+    var(--noble-black) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.lorebound-realm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(106, 13, 173, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(153, 50, 204, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: loreboundAmbient 10s ease-in-out infinite;
+}
+
+@keyframes loreboundAmbient {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.lorebound-realm > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Lorebound Typography */
+.lorebound-realm h1,
+.lorebound-realm h2,
+.lorebound-realm h3,
+.lorebound-realm .lorebound-title {
+  font-family: var(--font-mystical);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.05em;
+  background: linear-gradient(45deg, #6a0dad, #9932cc, #ba55d3);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: loreboundShimmer 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(106, 13, 173, 0.6));
+}
+
+@keyframes loreboundShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 20px rgba(106, 13, 173, 0.5)) hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 30px rgba(153, 50, 204, 0.7)) hue-rotate(10deg);
+  }
+}
+
+.lorebound-realm h4,
+.lorebound-realm h5,
+.lorebound-realm h6,
+.lorebound-realm p,
+.lorebound-realm span {
+  font-family: var(--font-primary);
+  color: var(--noble-white-90);
+}
+
+/* Lorebound Text Effects */
+.lorebound-text-mystical {
+  text-shadow: 
+    0 0 15px var(--lorebound-glow),
+    0 0 30px var(--lorebound-shadow);
+  animation: mysticalGlow 3s ease-in-out infinite;
+}
+
+@keyframes mysticalGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 15px var(--lorebound-glow),
+      0 0 30px var(--lorebound-shadow);
+  }
+  50% {
+    text-shadow: 
+      0 0 25px var(--lorebound-glow),
+      0 0 50px var(--lorebound-shadow),
+      0 0 75px rgba(106, 13, 173, 0.3);
+  }
+}
+
+/* Lorebound Buttons */
+.lorebound-realm .btn,
+.btn-lorebound {
+  background: var(--lorebound-gradient);
+  color: var(--noble-white);
+  border: 2px solid var(--lorebound-primary);
+  box-shadow: 0 0 20px var(--lorebound-shadow);
+  transition: all var(--timing-base) var(--ease-divine);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.05em;
+}
+
+.lorebound-realm .btn:hover,
+.btn-lorebound:hover {
+  background: var(--lorebound-gradient-reverse);
+  box-shadow: 
+    0 0 30px var(--lorebound-glow),
+    0 0 50px var(--lorebound-shadow);
+  transform: translateY(-3px) scale(1.02);
+  border-color: var(--lorebound-light);
+}
+
+/* Lorebound Cards */
+.lorebound-realm .card,
+.card-lorebound {
+  background: rgba(75, 0, 130, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(106, 13, 173, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(106, 13, 173, 0.1);
+  transition: all var(--timing-base) var(--ease-luxury);
+}
+
+.lorebound-realm .card:hover,
+.card-lorebound:hover {
+  border-color: var(--lorebound-primary);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 0 40px var(--lorebound-shadow);
+  transform: translateY(-8px);
+  background: rgba(75, 0, 130, 0.4);
+}
+
+/* Lorebound Floating Animation */
+.lorebound-float {
+  animation: loreboundFloat 6s ease-in-out infinite;
+}
+
+@keyframes loreboundFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+/* Lorebound Mystical Particles */
+.lorebound-particles {
+  position: relative;
+}
+
+.lorebound-particles::before,
+.lorebound-particles::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--lorebound-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--lorebound-glow);
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.lorebound-particles::before {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.lorebound-particles::after {
+  top: 60%;
+  right: 30%;
+  animation-delay: 2s;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(20px, -30px);
+    opacity: 0;
+  }
+}
+
+/* Lorebound Book Effect */
+.lorebound-book-page {
+  position: relative;
+  background: rgba(106, 13, 173, 0.05);
+  border-left: 3px solid var(--lorebound-primary);
+  padding-left: var(--space-6);
+  transition: all var(--timing-base) var(--ease-divine);
+}
+
+.lorebound-book-page:hover {
+  background: rgba(106, 13, 173, 0.1);
+  border-left-width: 5px;
+  box-shadow: 
+    -5px 0 20px var(--lorebound-shadow),
+    inset 5px 0 10px rgba(106, 13, 173, 0.1);
+}
+
+/* =============================================================================
+   PRODUCTIVE NEXUS STYLES
+   ============================================================================= */
+
+/* Productive Base Styles */
+.pathway-productive,
+[data-pathway="productive"] {
+  --pathway-primary: var(--productive-primary);
+  --pathway-secondary: var(--productive-secondary);
+  --pathway-gradient: var(--productive-gradient);
+  --pathway-glow: var(--productive-glow);
+  --pathway-shadow: var(--productive-shadow);
+}
+
+/* Productive Background */
+.productive-realm {
+  background: linear-gradient(
+    135deg,
+    var(--noble-black) 0%,
+    #1a1a1a 50%,
+    var(--noble-black) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.productive-realm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(192, 192, 192, 0.03) 50%, transparent 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(192, 192, 192, 0.02) 2px,
+      rgba(192, 192, 192, 0.02) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.productive-realm > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Productive Typography */
+.productive-realm h1,
+.productive-realm h2,
+.productive-realm h3,
+.productive-realm .productive-title {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.03em;
+  color: var(--productive-light);
+  text-shadow: 
+    0 2px 10px rgba(192, 192, 192, 0.3),
+    0 0 20px var(--productive-shadow);
+}
+
+.productive-realm p,
+.productive-realm span {
+  color: var(--noble-white-90);
+  line-height: 1.7;
+}
+
+/* Productive Accent Text */
+.productive-accent {
+  color: var(--productive-accent);
+  font-weight: var(--weight-semibold);
+  text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* Productive Buttons */
+.productive-realm .btn,
+.btn-productive {
+  background: var(--productive-gradient);
+  color: var(--noble-black);
+  border: 2px solid var(--productive-primary);
+  box-shadow: 0 4px 15px var(--productive-shadow);
+  transition: all var(--timing-base) var(--ease-divine);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.productive-realm .btn:hover,
+.btn-productive:hover {
+  background: var(--productive-gradient-reverse);
+  box-shadow: 
+    0 6px 25px var(--productive-glow),
+    0 0 40px var(--productive-shadow);
+  transform: translateY(-2px);
+  border-color: var(--productive-light);
+}
+
+/* Productive Cards */
+.productive-realm .card,
+.card-productive {
+  background: rgba(127, 140, 141, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(192, 192, 192, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(192, 192, 192, 0.1);
+  transition: all var(--timing-base) var(--ease-luxury);
+}
+
+.productive-realm .card:hover,
+.card-productive:hover {
+  border-color: var(--productive-primary);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 0 30px var(--productive-shadow);
+  transform: translateY(-6px);
+  background: rgba(127, 140, 141, 0.25);
+}
+
+/* Productive Progress Bar */
+.productive-progress {
+  position: relative;
+  height: 8px;
+  background: rgba(127, 140, 141, 0.3);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.productive-progress-bar {
+  height: 100%;
+  background: var(--productive-gradient);
+  border-radius: inherit;
+  transition: width var(--timing-divine) var(--ease-luxury);
+  position: relative;
+  overflow: hidden;
+}
+
+.productive-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progressShimmer 2s linear infinite;
+}
+
+@keyframes progressShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Productive Checklist */
+.productive-checklist-item {
+  position: relative;
+  padding-left: var(--space-8);
+  transition: all var(--timing-base) var(--ease-divine);
+}
+
+.productive-checklist-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--productive-primary);
+  border-radius: var(--radius-sm);
+  transition: all var(--timing-base) var(--ease-divine);
+}
+
+.productive-checklist-item.completed::before {
+  background: var(--productive-gradient);
+  border-color: var(--productive-accent);
+}
+
+.productive-checklist-item.completed::after {
+  content: '✓';
+  position: absolute;
+  left: 5px;
+  top: 4px;
+  color: var(--noble-black);
+  font-weight: var(--weight-bold);
+  font-size: 14px;
+}
+
+.productive-checklist-item.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+/* Productive Metrics */
+.productive-metric {
+  background: rgba(192, 192, 192, 0.1);
+  border: 1px solid rgba(192, 192, 192, 0.2);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  text-align: center;
+  transition: all var(--timing-base) var(--ease-divine);
+}
+
+.productive-metric:hover {
+  background: rgba(192, 192, 192, 0.15);
+  border-color: var(--productive-primary);
+  box-shadow: 0 0 30px var(--productive-shadow);
+  transform: translateY(-4px);
+}
+
+.productive-metric-value {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  color: var(--productive-primary);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.productive-metric-label {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Productive Grid Lines */
+.productive-grid {
+  background-image: 
+    linear-gradient(rgba(192, 192, 192, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 192, 192, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Productive Clean Lines */
+.productive-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--productive-primary),
+    transparent
+  );
+  margin: var(--space-8) 0;
+  opacity: 0.3;
+}
+
+/* =============================================================================
+   NEWS NEXUS STYLES
+   ============================================================================= */
+
+/* News Base Styles */
+.pathway-news,
+[data-pathway="news"] {
+  --pathway-primary: var(--news-primary);
+  --pathway-secondary: var(--news-secondary);
+  --pathway-gradient: var(--news-gradient);
+  --pathway-glow: var(--news-glow);
+  --pathway-shadow: var(--news-shadow);
+}
+
+/* News Background */
+.news-realm {
+  background: linear-gradient(
+    135deg,
+    var(--noble-black) 0%,
+    #0f0f0f 50%,
+    var(--noble-black) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.news-realm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 10px,
+      rgba(229, 228, 226, 0.02) 10px,
+      rgba(229, 228, 226, 0.02) 20px
+    );
+  pointer-events: none;
+  z-index: 0;
+  animation: newsScroll 30s linear infinite;
+}
+
+@keyframes newsScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+.news-realm > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* News Typography */
+.news-realm h1,
+.news-realm h2,
+.news-realm h3,
+.news-realm .news-title {
+  font-family: var(--font-decorative);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.05em;
+  color: var(--news-primary);
+  text-shadow: 
+    0 2px 10px rgba(229, 228, 226, 0.3),
+    0 0 20px var(--news-shadow);
+}
+
+.news-realm p,
+.news-realm span {
+  color: var(--noble-white-85);
+  line-height: 1.8;
+}
+
+/* News Accent */
+.news-accent {
+  color: var(--news-accent);
+  font-weight: var(--weight-bold);
+}
+
+/* News Breaking Badge */
+.news-breaking-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: var(--news-accent);
+  color: var(--noble-white);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius-sm);
+  animation: newsBreakingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes newsBreakingPulse {
+  0%, 100% {
+    background: var(--news-accent);
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  50% {
+    background: #ff8585;
+    box-shadow: 0 0 0 8px rgba(255, 107, 107, 0);
+  }
+}
+
+/* News Buttons */
+.news-realm .btn,
+.btn-news {
+  background: var(--news-gradient);
+  color: var(--noble-black);
+  border: 2px solid var(--news-primary);
+  box-shadow: 0 4px 15px var(--news-shadow);
+  transition: all var(--timing-base) var(--ease-divine);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.news-realm .btn:hover,
+.btn-news:hover {
+  background: var(--news-gradient-reverse);
+  box-shadow: 
+    0 6px 25px var(--news-glow),
+    0 0 40px var(--news-shadow);
+  transform: translateY(-2px);
+  border-color: var(--news-light);
+}
+
+/* News Cards */
+.news-realm .card,
+.card-news {
+  background: rgba(149, 165, 166, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(229, 228, 226, 0.2);
+  border-left: 4px solid var(--news-primary);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(229, 228, 226, 0.05);
+  transition: all var(--timing-base) var(--ease-luxury);
+}
+
+.news-realm .card:hover,
+.card-news:hover {
+  border-left-color: var(--news-accent);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 0 30px var(--news-shadow),
+    -5px 0 20px rgba(229, 228, 226, 0.1);
+  transform: translateX(8px);
+  background: rgba(149, 165, 166, 0.2);
+}
+
+/* News Article Meta */
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  margin: var(--space-3) 0;
+}
+
+.news-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.news-meta-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--news-secondary);
+  opacity: 0.5;
+}
+
+/* News Ticker */
+.news-ticker {
+  background: rgba(229, 228, 226, 0.1);
+  border-top: 2px solid var(--news-primary);
+  border-bottom: 2px solid var(--news-primary);
+  padding: var(--space-2) 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-ticker-content {
+  display: flex;
+  gap: var(--space-12);
+  animation: tickerScroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.news-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--news-primary);
+  font-weight: var(--weight-semibold);
+}
+
+/* News Timeline */
+.news-timeline {
+  position: relative;
+  padding-left: var(--space-10);
+}
+
+.news-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--news-gradient);
+}
+
+.news-timeline-item {
+  position: relative;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid rgba(229, 228, 226, 0.1);
+}
+
+.news-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -46px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--news-primary);
+  border: 3px solid var(--noble-black);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(229, 228, 226, 0.3);
+}
+
+.news-timeline-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* News Flash Effect */
+.news-flash {
+  animation: newsFlashEffect 2s ease-in-out infinite;
+}
+
+@keyframes newsFlashEffect {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.5;
+  }
+}
+
+/* News Highlight */
+.news-highlight {
+  background: linear-gradient(
+    120deg,
+    rgba(229, 228, 226, 0.1) 0%,
+    rgba(229, 228, 226, 0.2) 100%
+  );
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: all var(--timing-base) var(--ease-divine);
+}
+
+.news-highlight:hover {
+  background: linear-gradient(
+    120deg,
+    rgba(229, 228, 226, 0.2) 0%,
+    rgba(229, 228, 226, 0.3) 100%
+  );
+}
+
+/* =============================================================================
+   PATHWAY TRANSITIONS
+   ============================================================================= */
+
+/* Smooth transition between pathways */
+[data-pathway] {
+  transition: 
+    background-color var(--timing-divine) var(--ease-luxury),
+    color var(--timing-divine) var(--ease-luxury);
+}
+
+/* Pathway fade transition */
+.pathway-transition-fade {
+  animation: pathwayFade var(--timing-divine) var(--ease-divine);
+}
+
+@keyframes pathwayFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Pathway slide transition */
+.pathway-transition-slide {
+  animation: pathwaySlide var(--timing-divine) var(--ease-luxury);
+}
+
+@keyframes pathwaySlide {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =============================================================================
+   PATHWAY NAVIGATION COMPONENTS
+   ============================================================================= */
+
+/* Pathway selector */
+.pathway-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+}
+
+.pathway-selector-card {
+  position: relative;
+  padding: var(--space-8);
+  border-radius: var(--radius-2xl);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--timing-base) var(--ease-luxury);
+  overflow: hidden;
+}
+
+.pathway-selector-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  transition: opacity var(--timing-base) var(--ease-divine);
+  z-index: 0;
+}
+
+.pathway-selector-card.gaming::before {
+  background: var(--gaming-gradient);
+}
+
+.pathway-selector-card.lorebound::before {
+  background: var(--lorebound-gradient);
+}
+
+.pathway-selector-card.productive::before {
+  background: var(--productive-gradient);
+}
+
+.pathway-selector-card.news::before {
+  background: var(--news-gradient);
+}
+
+.pathway-selector-card:hover::before {
+  opacity: 0.2;
+}
+
+.pathway-selector-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-divine-intense);
+}
+
+.pathway-selector-card.gaming:hover {
+  border-color: var(--gaming-primary);
+  box-shadow: 0 12px 48px var(--gaming-shadow);
+}
+
+.pathway-selector-card.lorebound:hover {
+  border-color: var(--lorebound-primary);
+  box-shadow: 0 12px 48px var(--lorebound-shadow);
+}
+
+.pathway-selector-card.productive:hover {
+  border-color: var(--productive-primary);
+  box-shadow: 0 12px 48px var(--productive-shadow);
+}
+
+.pathway-selector-card.news:hover {
+  border-color: var(--news-primary);
+  box-shadow: 0 12px 48px var(--news-shadow);
+}
+
+/* Pathway badge */
+.pathway-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pathway-badge.gaming {
+  background: rgba(0, 191, 255, 0.2);
+  color: var(--gaming-light);
+  border: 1px solid var(--gaming-primary);
+}
+
+.pathway-badge.lorebound {
+  background: rgba(106, 13, 173, 0.2);
+  color: var(--lorebound-light);
+  border: 1px solid var(--lorebound-primary);
+}
+
+.pathway-badge.productive {
+  background: rgba(192, 192, 192, 0.2);
+  color: var(--productive-light);
+  border: 1px solid var(--productive-primary);
+}
+
+.pathway-badge.news {
+  background: rgba(229, 228, 226, 0.2);
+  color: var(--news-light);
+  border: 1px solid var(--news-primary);
+}
+
+/* =============================================================================
+   PATHWAY-SPECIFIC UTILITIES
+   ============================================================================= */
+
+/* Pathway borders */
+.border-gaming {
+  border-color: var(--gaming-primary) !important;
+}
+
+.border-lorebound {
+  border-color: var(--lorebound-primary) !important;
+}
+
+.border-productive {
+  border-color: var(--productive-primary) !important;
+}
+
+.border-news {
+  border-color: var(--news-primary) !important;
+}
+
+/* Pathway backgrounds */
+.bg-gaming-subtle {
+  background: rgba(0, 191, 255, 0.1);
+}
+
+.bg-lorebound-subtle {
+  background: rgba(106, 13, 173, 0.1);
+}
+
+.bg-productive-subtle {
+  background: rgba(192, 192, 192, 0.1);
+}

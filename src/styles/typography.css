@@ -1,0 +1,1258 @@
+/* ===============================================
+   CNS DIVINE TYPOGRAPHY SYSTEM
+   World-Class Typography Foundation
+   Integrates with design_system.css
+   Version: 1.0 | Luxury Typography System
+   =============================================== */
+
+/* ===== FONT FACE DECLARATIONS ===== */
+
+/* Josefin Sans Family */
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./fonts/Josefin_Sans/static/JosefinSans-Light.ttf') format('ttf');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./fonts/Josefin_Sans/static/JosefinSans-Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./fonts/Josefin_Sans/static/JosefinSans-Bold.ttf') format('ttf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Cinzel Decorative */
+@font-face {
+  font-family: 'Cinzel Decorative';
+  src: url('./fonts/cinzel-decorative/CinzelDecorative-Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cinzel Decorative';
+  src: url('./fonts/cinzel-decorative/CinzelDecorative-Bold.ttf') format('ttf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Orbitron */
+@font-face {
+  font-family: 'Orbitron';
+  src: url('./fonts/orbitron/Orbitron-Bold.ttf') format('ttf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Ring of Kerry */
+@font-face {
+  font-family: 'Ring of Kerry';
+  src: url('./fonts/ring-of-kerry/RingOfKerry-Regular.otf') format('otf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== DIVINE TYPOGRAPHY VARIABLES ===== */
+
+:root {
+  /* Primary Font Stacks */
+  --font-primary: 'Josefin Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-decorative: 'Cinzel Decorative', serif;
+  --font-gaming: 'Orbitron', 'Josefin Sans', sans-serif;
+  --font-mystical: 'Ring of Kerry', 'Josefin Sans', serif;
+  
+  /* Typography Scale (Desktop-First) */
+  --typography-display: clamp(6rem, 12vw, 12rem);     /* 96-192px */
+  --typography-h1: clamp(3.5rem, 8vw, 8rem);         /* 56-128px */
+  --typography-h2: clamp(2.5rem, 6vw, 5rem);         /* 40-80px */
+  --typography-h3: clamp(2rem, 4vw, 3.5rem);         /* 32-56px */
+  --typography-h4: clamp(1.5rem, 3vw, 2.5rem);       /* 24-40px */
+  --typography-h5: clamp(1.25rem, 2.5vw, 2rem);      /* 20-32px */
+  --typography-h6: clamp(1.125rem, 2vw, 1.5rem);     /* 18-24px */
+  --typography-body-large: clamp(1.125rem, 2vw, 1.25rem);  /* 18-20px */
+  --typography-body: clamp(1rem, 1.5vw, 1.125rem);         /* 16-18px */
+  --typography-body-small: clamp(0.875rem, 1vw, 1rem);     /* 14-16px */
+  --typography-caption: clamp(0.75rem, 1vw, 0.875rem);     /* 12-14px */
+  --typography-overline: clamp(0.625rem, 1vw, 0.75rem);    /* 10-12px */
+
+  /* Letter Spacing Scale */
+  --tracking-display: 0.15em;
+  --tracking-headline: 0.1em;
+  --tracking-subhead: 0.05em;
+  --tracking-body: 0.025em;
+  --tracking-caption: 0.03em;
+  --tracking-overline: 0.2em;
+
+  /* Line Height Scale */
+  --leading-display: 1.1;
+  --leading-headline: 1.2;
+  --leading-subhead: 1.3;
+  --leading-body: 1.6;
+  --leading-body-large: 1.7;
+  --leading-caption: 1.4;
+
+  /* Font Weight Scale */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+}
+
+/* ===== BASE TYPOGRAPHY HIERARCHY ===== */
+
+/* Default Site Typography (Josefin Sans) */
+body {
+  font-family: var(--font-primary);
+  font-size: var(--typography-body);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--text-primary);
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Divine Display Text */
+.text-display {
+  font-size: var(--typography-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-shadow: var(--glow-divine-gold);
+  background: var(--gradient-divine-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: mysticPulse 3s ease-in-out infinite;
+}
+
+/* Heading Hierarchy */
+h1, .text-h1 {
+  font-size: var(--typography-h1);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-headline);
+  color: var(--text-accent);
+  text-shadow: var(--glow-divine-gold);
+  margin-bottom: var(--space-6);
+}
+
+h2, .text-h2 {
+  font-size: var(--typography-h2);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-headline);
+  color: var(--text-primary);
+  text-shadow: var(--glow-soft);
+  margin-bottom: var(--space-5);
+}
+
+h3, .text-h3 {
+  font-size: var(--typography-h3);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-subhead);
+  letter-spacing: var(--tracking-subhead);
+  color: var(--text-accent);
+  margin-bottom: var(--space-4);
+}
+
+h4, .text-h4 {
+  font-size: var(--typography-h4);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-subhead);
+  letter-spacing: var(--tracking-subhead);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+h5, .text-h5 {
+  font-size: var(--typography-h5);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-subhead);
+  letter-spacing: var(--tracking-subhead);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+h6, .text-h6 {
+  font-size: var(--typography-h6);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-subhead);
+  letter-spacing: var(--tracking-subhead);
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+}
+
+/* Body Text Variants */
+p, .text-body {
+  font-size: var(--typography-body);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.text-body-large {
+  font-size: var(--typography-body-large);
+  line-height: var(--leading-body-large);
+  font-weight: var(--weight-regular);
+}
+
+.text-body-small {
+  font-size: var(--typography-body-small);
+  font-weight: var(--weight-regular);
+}
+
+.text-caption {
+  font-size: var(--typography-caption);
+  line-height: var(--leading-caption);
+  letter-spacing: var(--tracking-caption);
+  color: var(--text-tertiary);
+  font-weight: var(--weight-regular);
+}
+
+.text-overline {
+  font-size: var(--typography-overline);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+}
+
+/* ===== PATHWAY-SPECIFIC TYPOGRAPHY ===== */
+
+/* Gaming Realm - Orbitron Bold Everything */
+.gaming-realm,
+.gaming-realm * {
+  font-family: var(--font-gaming) !important;
+  font-weight: var(--weight-bold) !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gaming-realm h1 {
+  background: linear-gradient(45deg, #00bfff, #8a2be2, #00ffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(0, 191, 255, 0.8);
+  animation: gamingGlow 2s ease-in-out infinite alternate;
+}
+
+.gaming-realm h2, .gaming-realm h3 {
+  color: #00bfff;
+  text-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+}
+
+.gaming-realm p {
+  color: var(--noble-white-90);
+  font-weight: var(--weight-semibold) !important;
+  letter-spacing: 0.05em;
+}
+
+@keyframes gamingGlow {
+  from { 
+    text-shadow: 0 0 30px rgba(0, 191, 255, 0.6);
+    filter: brightness(1);
+  }
+  to { 
+    text-shadow: 0 0 50px rgba(0, 191, 255, 1);
+    filter: brightness(1.2);
+  }
+}
+
+/* Lorebound Sanctum - Ring of Kerry + Josefin Sans */
+.lorebound-realm h1,
+.lorebound-realm h2,
+.lorebound-realm h3 {
+  font-family: var(--font-mystical) !important;
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.03em;
+  background: linear-gradient(45deg, #ff1493, #9932cc, #ff69b4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(255, 20, 147, 0.7);
+  animation: loreboundShimmer 3s ease-in-out infinite;
+}
+
+.lorebound-realm h4,
+.lorebound-realm h5,
+.lorebound-realm h6,
+.lorebound-realm p,
+.lorebound-realm span,
+.lorebound-realm div {
+  font-family: var(--font-primary) !important;
+  color: var(--noble-white-90);
+}
+
+.lorebound-realm .text-accent {
+  color: #ff1493;
+  text-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
+}
+
+@keyframes loreboundShimmer {
+  0%, 100% { 
+    text-shadow: 0 0 25px rgba(255, 20, 147, 0.5);
+    filter: hue-rotate(0deg);
+  }
+  33% { 
+    text-shadow: 0 0 35px rgba(153, 50, 204, 0.7);
+    filter: hue-rotate(15deg);
+  }
+  66% { 
+    text-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+    filter: hue-rotate(-15deg);
+  }
+}
+
+/* News Realm - Cinzel Decorative Everything */
+.news-realm,
+.news-realm * {
+  font-family: var(--font-decorative) !important;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.06em;
+}
+
+.news-realm h1 {
+  background: linear-gradient(45deg, #dc143c, #ff4500, #e0115f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 35px rgba(220, 20, 60, 0.9);
+  animation: newsEnergy 1.5s ease-in-out infinite;
+}
+
+.news-realm h2, .news-realm h3 {
+  color: #e0115f;
+  text-shadow: 0 0 20px rgba(224, 17, 95, 0.6);
+  animation: newsFlicker 2s ease-in-out infinite alternate;
+}
+
+.news-realm p {
+  color: var(--noble-white-85);
+  font-weight: var(--weight-regular) !important;
+  line-height: 1.8;
+}
+
+@keyframes newsEnergy {
+  0%, 100% { 
+    text-shadow: 0 0 35px rgba(220, 20, 60, 0.7);
+    transform: scale(1);
+  }
+  50% { 
+    text-shadow: 0 0 50px rgba(220, 20, 60, 1);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes newsFlicker {
+  from { text-shadow: 0 0 20px rgba(224, 17, 95, 0.4); }
+  to { text-shadow: 0 0 30px rgba(224, 17, 95, 0.8); }
+}
+
+/* Productive Nexus - Clean Josefin Sans */
+.productive-realm h1 {
+  background: linear-gradient(45deg, #50c878, #20b2aa, #4169e1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(80, 200, 120, 0.6);
+  animation: productiveShine 4s ease-in-out infinite;
+}
+
+.productive-realm h2, .productive-realm h3 {
+  color: #50c878;
+  text-shadow: 0 0 15px rgba(80, 200, 120, 0.5);
+}
+
+.productive-realm p {
+  color: var(--noble-white-90);
+  line-height: 1.7;
+}
+
+@keyframes productiveShine {
+  0%, 100% { 
+    text-shadow: 0 0 25px rgba(80, 200, 120, 0.4);
+    filter: brightness(1);
+  }
+  50% { 
+    text-shadow: 0 0 35px rgba(80, 200, 120, 0.8);
+    filter: brightness(1.1);
+  }
+}
+
+/* ===== DIVINE GRADIENT TEXT EFFECTS ===== */
+
+/* Primary Divine Gradient Text */
+.text-gradient-divine {
+  background: var(--gradient-divine-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--glow-divine-gold);
+  position: relative;
+}
+
+.text-gradient-divine::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--gradient-divine-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: blur(2px);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Pathway Gradient Texts */
+.text-gradient-gaming {
+  background: linear-gradient(45deg, #00bfff, #8a2be2, #00ffff, #1e90ff);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 3s linear infinite;
+}
+
+.text-gradient-lorebound {
+  background: linear-gradient(45deg, #ff1493, #9932cc, #ff69b4, #da70d6);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 4s ease-in-out infinite;
+}
+
+.text-gradient-productive {
+  background: linear-gradient(45deg, #50c878, #20b2aa, #4169e1, #32cd32);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 5s linear infinite;
+}
+
+.text-gradient-news {
+  background: linear-gradient(45deg, #dc143c, #ff4500, #e0115f, #ff6347);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 2s ease-in-out infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== SPECIALIZED TEXT TREATMENTS ===== */
+
+/* Divine Glow Text */
+.text-glow-soft {
+  text-shadow: var(--glow-soft);
+  transition: text-shadow var(--timing-base) var(--ease-divine);
+}
+
+.text-glow-soft:hover {
+  text-shadow: var(--glow-medium);
+}
+
+.text-glow-intense {
+  text-shadow: var(--glow-intense);
+  animation: intensePulse 2s ease-in-out infinite;
+}
+
+@keyframes intensePulse {
+  0%, 100% { text-shadow: var(--glow-intense); }
+  50% { text-shadow: var(--hover-glow-legendary); }
+}
+
+/* Floating Text Animation */
+.text-float {
+  animation: divineFloat 6s ease-in-out infinite;
+}
+
+@keyframes divineFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Typewriter Effect */
+.text-typewriter {
+  overflow: hidden;
+  border-right: 2px solid var(--cns-gold);
+  white-space: nowrap;
+  animation: typewriter 4s steps(40, end), blink-cursor 0.8s infinite;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-cursor {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--cns-gold); }
+}
+
+/* Text Reveal Animation */
+.text-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--timing-divine) var(--ease-luxury);
+}
+
+.text-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== SPECIAL TYPOGRAPHY COMPONENTS ===== */
+
+/* Divine Quote Block */
+.quote-divine {
+  font-size: var(--typography-h4);
+  font-style: italic;
+  color: var(--text-accent);
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  border-left: 4px solid var(--cns-gold);
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  margin: var(--space-8) 0;
+  position: relative;
+}
+
+.quote-divine::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--cns-gold-40);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  line-height: 1;
+}
+
+.quote-divine::after {
+  content: '"';
+  font-size: 4rem;
+  color: var(--cns-gold-40);
+  position: absolute;
+  bottom: -40px;
+  right: 20px;
+  line-height: 1;
+}
+
+/* Navigation Typography */
+.nav-text {
+  font-size: var(--typography-body);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-subhead);
+  text-transform: uppercase;
+  transition: all var(--timing-base) var(--ease-divine);
+}
+
+.nav-text:hover {
+  text-shadow: var(--glow-soft);
+  letter-spacing: 0.08em;
+}
+
+/* Button Typography */
+.btn-text {
+  font-size: var(--typography-body);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-subhead);
+  text-transform: uppercase;
+}
+
+.btn-text-large {
+  font-size: var(--typography-body-large);
+  letter-spacing: 0.08em;
+}
+
+.btn-text-small {
+  font-size: var(--typography-body-small);
+  letter-spacing: 0.04em;
+}
+
+/* Form Typography */
+.label-divine {
+  font-size: var(--typography-body-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-caption);
+  color: var(--text-accent);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.input-text {
+  font-size: var(--typography-body);
+  font-weight: var(--weight-light);
+  letter-spacing: var(--tracking-body);
+  line-height: var(--leading-body);
+}
+
+.placeholder-divine::placeholder {
+  color: var(--text-tertiary);
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* ===== RESPONSIVE TYPOGRAPHY ===== */
+
+/* Mobile Typography Adjustments */
+@media (max-width: 768px) {
+  :root {
+    --typography-display: clamp(4rem, 12vw, 6rem);
+    --typography-h1: clamp(2.5rem, 8vw, 4rem);
+    --typography-h2: clamp(2rem, 6vw, 3rem);
+    --typography-h3: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  body {
+    font-size: clamp(1rem, 4vw, 1.125rem);
+    line-height: 1.7;
+  }
+
+  /* Reduce letter spacing on mobile */
+  .gaming-realm * {
+    letter-spacing: 0.05em !important;
+  }
+
+  .news-realm * {
+    letter-spacing: 0.04em !important;
+  }
+}
+
+/* Tablet Typography */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --typography-display: clamp(5rem, 10vw, 8rem);
+    --typography-h1: clamp(3rem, 7vw, 6rem);
+  }
+}
+
+/* Large Desktop Typography */
+@media (min-width: 1440px) {
+  :root {
+    --typography-display: clamp(8rem, 12vw, 14rem);
+    --typography-h1: clamp(5rem, 8vw, 10rem);
+  }
+}
+
+/* ===== ACCESSIBILITY TYPOGRAPHY ===== */
+
+/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .text-display,
+  .text-gradient-gaming,
+  .text-gradient-lorebound,
+  .text-gradient-productive,
+  .text-gradient-news,
+  .text-glow-intense,
+  .text-typewriter {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode typography */
+@media (prefers-contrast: high) {
+  .text-gradient-divine,
+  .text-gradient-gaming,
+  .text-gradient-lorebound,
+  .text-gradient-productive,
+  .text-gradient-news {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: var(--text-primary) !important;
+    text-shadow: none !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: none !important;
+  }
+}
+
+/* Focus indicators for typography */
+[contenteditable]:focus,
+.editable-text:focus {
+  outline: 2px solid var(--cns-gold);
+  outline-offset: 4px;
+  background: var(--noble-white-5);
+  border-radius: var(--radius-sm);
+}
+
+/* ===== READING EXPERIENCE OPTIMIZATIONS ===== */
+
+/* Optimal reading width */
+.text-content {
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+.text-content-wide {
+  max-width: 80ch;
+  margin: 0 auto;
+}
+
+/* Paragraph spacing optimization */
+.text-content p + p {
+  margin-top: var(--space-6);
+}
+
+.text-content h2 + p,
+.text-content h3 + p,
+.text-content h4 + p {
+  margin-top: var(--space-3);
+}
+
+/* List styling */
+.list-divine {
+  padding-left: var(--space-6);
+}
+
+.list-divine li {
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+  line-height: var(--leading-body);
+}
+
+.list-divine li::marker {
+  color: var(--cns-gold);
+}
+
+/* Ordered list with divine numbering */
+.list-noble {
+  counter-reset: noble-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-noble li {
+  counter-increment: noble-counter;
+  position: relative;
+  padding-left: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.list-noble li::before {
+  content: counter(noble-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--space-6);
+  height: var(--space-6);
+  background: var(--gradient-divine-gold);
+  color: var(--noble-black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--weight-bold);
+  font-size: var(--typography-caption);
+  text-shadow: none;
+}
+
+/* ===== SPECIAL TEXT EFFECTS ===== */
+
+/* Divine Text Stroke */
+.text-stroke {
+  -webkit-text-stroke: 1px var(--cns-gold-60);
+  color: transparent;
+  font-weight: var(--weight-extrabold);
+}
+
+/* Outlined Text */
+.text-outline {
+  color: var(--noble-black);
+  text-shadow: 
+    -1px -1px 0 var(--cns-gold),
+    1px -1px 0 var(--cns-gold),
+    -1px 1px 0 var(--cns-gold),
+    1px 1px 0 var(--cns-gold);
+}
+
+/* 3D Text Effect */
+.text-3d {
+  color: var(--cns-gold);
+  text-shadow: 
+    0 1px 0 #b8860b,
+    0 2px 0 #a0750a,
+    0 3px 0 #8b6508,
+    0 4px 0 #765506,
+    0 5px 0 #614504,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25);
+}
+
+/* Neon Text Effect */
+.text-neon {
+  color: var(--noble-white);
+  text-shadow: 
+    0 0 5px var(--cns-gold),
+    0 0 10px var(--cns-gold),
+    0 0 20px var(--cns-gold),
+    0 0 40px var(--cns-gold);
+  animation: neonFlicker 2s infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px var(--cns-gold),
+      0 0 10px var(--cns-gold),
+      0 0 20px var(--cns-gold),
+      0 0 40px var(--cns-gold);
+  }
+  50% {
+    text-shadow: 
+      0 0 2px var(--cns-gold),
+      0 0 5px var(--cns-gold),
+      0 0 8px var(--cns-gold),
+      0 0 12px var(--cns-gold);
+  }
+}
+
+/* ===== UTILITY TYPOGRAPHY CLASSES ===== */
+
+/* Font Weight Utilities */
+.font-light { font-weight: var(--weight-light); }
+.font-regular { font-weight: var(--weight-regular); }
+.font-medium { font-weight: var(--weight-medium); }
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-bold { font-weight: var(--weight-bold); }
+.font-extrabold { font-weight: var(--weight-extrabold); }
+
+/* Text Alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* Text Transform */
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+.text-normal-case { text-transform: none; }
+
+/* Text Decoration */
+.text-underline { text-decoration: underline; }
+.text-line-through { text-decoration: line-through; }
+.text-no-underline { text-decoration: none; }
+
+/* Font Style */
+.text-italic { font-style: italic; }
+.text-not-italic { font-style: normal; }
+
+/* Letter Spacing Utilities */
+.tracking-tighter { letter-spacing: var(--tracking-tighter); }
+.tracking-tight { letter-spacing: var(--tracking-tight); }
+.tracking-normal { letter-spacing: var(--tracking-normal); }
+.tracking-wide { letter-spacing: var(--tracking-wide); }
+.tracking-wider { letter-spacing: var(--tracking-wider); }
+.tracking-widest { letter-spacing: var(--tracking-widest); }
+
+/* Line Height Utilities */
+.leading-none { line-height: var(--leading-none); }
+.leading-tight { line-height: var(--leading-tight); }
+.leading-snug { line-height: var(--leading-snug); }
+.leading-normal { line-height: var(--leading-normal); }
+.leading-relaxed { line-height: var(--leading-relaxed); }
+.leading-loose { line-height: var(--leading-loose); }
+
+/* ===== INTERACTIVE TYPOGRAPHY ===== */
+
+/* Hover Text Effects */
+.text-hover-glow {
+  transition: text-shadow var(--timing-base) var(--ease-divine);
+}
+
+.text-hover-glow:hover {
+  text-shadow: var(--glow-medium);
+}
+
+.text-hover-scale {
+  transition: transform var(--timing-base) var(--ease-divine);
+  display: inline-block;
+}
+
+.text-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.text-hover-gradient {
+  background: var(--gradient-divine-gold);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position var(--timing-base) var(--ease-divine);
+}
+
+.text-hover-gradient:hover {
+  background-position: 100% 0;
+}
+
+/* Selection Styling */
+::selection {
+  background: var(--cns-gold-40);
+  color: var(--noble-black);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--cns-gold-40);
+  color: var(--noble-black);
+  text-shadow: none;
+}
+
+/* ===== TYPOGRAPHY ANIMATIONS ===== */
+
+/* Stagger Animation for Text Lines */
+.text-stagger-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: staggerUp 0.6s ease-out forwards;
+}
+
+.text-stagger-up:nth-child(1) { animation-delay: 0.1s; }
+.text-stagger-up:nth-child(2) { animation-delay: 0.2s; }
+.text-stagger-up:nth-child(3) { animation-delay: 0.3s; }
+.text-stagger-up:nth-child(4) { animation-delay: 0.4s; }
+.text-stagger-up:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes staggerUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Text Wave Animation */
+.text-wave {
+  display: inline-block;
+  animation: wave 2s ease-in-out infinite;
+}
+
+.text-wave:nth-child(1) { animation-delay: 0.1s; }
+.text-wave:nth-child(2) { animation-delay: 0.2s; }
+.text-wave:nth-child(3) { animation-delay: 0.3s; }
+.text-wave:nth-child(4) { animation-delay: 0.4s; }
+.text-wave:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== ADVANCED TYPOGRAPHY FEATURES ===== */
+
+/* Drop Caps */
+.drop-cap::first-letter {
+  float: left;
+  font-size: 5em;
+  line-height: 0.8;
+  margin: 0.1em 0.1em 0.1em 0;
+  color: var(--cns-gold);
+  font-family: var(--font-decorative);
+  text-shadow: var(--glow-divine-gold);
+}
+
+/* Highlight Text */
+.text-highlight {
+  background: linear-gradient(120deg, var(--cns-gold-20) 0%, var(--cns-gold-20) 100%);
+  background-size: 100% 0.2em;
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  transition: background-size var(--timing-base) var(--ease-divine);
+}
+
+.text-highlight:hover {
+  background-size: 100% 100%;
+}
+
+/* Keyboard Key Styling */
+.kbd {
+  background: var(--noble-black-80);
+  border: 1px solid var(--noble-white-20);
+  border-radius: var(--radius-sm);
+  padding: 0.2em 0.4em;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85em;
+  color: var(--text-primary);
+  box-shadow: 0 2px 4px var(--noble-black-40);
+  display: inline-block;
+  min-width: 1.5em;
+  text-align: center;
+}
+
+/* Code Text Styling */
+.code-inline {
+  background: var(--noble-black-60);
+  color: var(--cns-gold);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--noble-white-10);
+}
+
+/* ===== BRAND TYPOGRAPHY SYSTEM ===== */
+
+/* CNS Logo Typography */
+.logo-primary {
+  font-family: var(--font-decorative);
+  font-size: var(--typography-h1);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.15em;
+  background: var(--gradient-divine-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--glow-divine-gold);
+  text-transform: uppercase;
+}
+
+.logo-secondary {
+  font-family: var(--font-primary);
+  font-size: var(--typography-body);
+  font-weight: var(--weight-light);
+  letter-spacing: 0.3em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* Tagline Typography */
+.tagline {
+  font-family: var(--font-primary);
+  font-size: var(--typography-h5);
+  font-weight: var(--weight-light);
+  font-style: italic;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+/* ===== CONTENT-SPECIFIC TYPOGRAPHY ===== */
+
+/* Article Typography */
+.article-title {
+  font-size: var(--typography-h1);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-headline);
+  color: var(--text-accent);
+  text-shadow: var(--glow-soft);
+  margin-bottom: var(--space-6);
+}
+
+.article-subtitle {
+  font-size: var(--typography-h3);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.article-meta {
+  font-size: var(--typography-caption);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-6);
+}
+
+.article-body {
+  font-size: var(--typography-body);
+  line-height: var(--leading-body-large);
+  color: var(--text-primary);
+}
+
+.article-body h2 {
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-6);
+}
+
+.article-body h3 {
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-4);
+}
+
+/* Card Typography */
+.card-title {
+  font-size: var(--typography-h4);
+  font-weight: var(--weight-semibold);
+  color: var(--text-accent);
+  margin-bottom: var(--space-3);
+}
+
+.card-description {
+  font-size: var(--typography-body);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.card-meta {
+  font-size: var(--typography-caption);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caption);
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Font Loading Optimization */
+.font-display-swap {
+  font-display: swap;
+}
+
+/* Prevent Layout Shift */
+.text-size-adjust {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* GPU Acceleration for Animations */
+.text-gpu-accelerated {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ===== DEBUGGING & DEVELOPMENT ===== */
+
+/* Typography Debug Mode */
+.typography-debug * {
+  background: rgba(255, 0, 0, 0.1) !important;
+  outline: 1px solid red !important;
+}
+
+.typography-debug h1,
+.typography-debug h2,
+.typography-debug h3,
+.typography-debug h4,
+.typography-debug h5,
+.typography-debug h6 {
+  background: rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Baseline Grid */
+.baseline-grid {
+  background-image: linear-gradient(to bottom, transparent 23px, rgba(255, 215, 0, 0.2) 24px);
+  background-size: 100% 24px;
+}
+
+/* ===== IMPLEMENTATION GUIDE ===== */
+
+/*
+DIVINE TYPOGRAPHY SYSTEM - IMPLEMENTATION GUIDE
+
+📁 File Structure:
+/src/styles/
+├── design_system.css      ← Your existing file
+├── typography.css         ← This file
+└── fonts/
+    ├── josefin-sans/
+    ├── cinzel-decorative/
+    ├── orbitron/
+    └── ring-of-kerry/
+
+📋 Integration Steps:
+
+1. IMPORT IN YOUR MAIN CSS:
+   @import './design_system.css';
+   @import './typography.css';
+
+2. ADD TO YOUR HTML:
+   <html lang="en" class="font-display-swap">
+
+3. PATHWAY IMPLEMENTATION:
+   <!-- Gaming Realm -->
+   <section class="gaming-realm">
+     <h1 class="text-gradient-gaming">GAMING REALM</h1>
+     <p>All text uses Orbitron Bold with electric blue effects</p>
+   </section>
+
+   <!-- Lorebound Sanctum -->
+   <section class="lorebound-realm">
+     <h1>Mystical Heading</h1> <!-- Ring of Kerry -->
+     <p>Body text in Josefin Sans</p>
+   </section>
+
+   <!-- News Realm -->
+   <section class="news-realm">
+     <h1 class="text-gradient-news">BREAKING NEWS</h1>
+     <p>Everything in Cinzel Decorative</p>
+   </section>
+
+   <!-- Productive Nexus -->
+   <section class="productive-realm">
+     <h1 class="text-gradient-productive">Productivity Hub</h1>
+     <p>Clean Josefin Sans typography</p>
+   </section>
+
+4. SPECIAL EFFECTS:
+   <h1 class="text-display text-glow-intense">Divine Title</h1>
+   <p class="text-gradient-divine">Gradient text</p>
+   <span class="text-neon">Neon effect</span>
+   <blockquote class="quote-divine">Elegant quotes</blockquote>
+
+5. RESPONSIVE USAGE:
+   Typography automatically scales with clamp() functions
+   Mobile optimizations included for all pathway fonts
+
+6. ACCESSIBILITY FEATURES:
+   - WCAG 2.1 AA compliant contrast ratios
+   - Reduced motion support
+   - High contrast mode compatibility
+   - Focus indicators for editable text
+   - Screen reader optimizations
+
+7. PERFORMANCE FEATURES:
+   - Font-display: swap for faster loading
+   - GPU acceleration for animations
+   - Will-change optimizations
+   - Efficient gradient animations
+
+🎯 Key Classes:
+.text-display        → Massive display text with divine glow
+.text-h1 through .text-h6 → Heading hierarchy
+.text-gradient-[pathway] → Pathway-specific gradient text
+.text-glow-[intensity] → Various glow effects
+.gaming-realm        → Orbitron Bold everything
+.lorebound-realm     → Ring of Kerry + Josefin Sans
+.news-realm          → Cinzel Decorative everything
+.productive-realm    → Clean Josefin Sans
+
+This typography system transforms your CNS website into a premium,
+luxury experience that rivals the world's finest design systems.
+Each pathway feels distinct while maintaining overall cohesion.
+*/

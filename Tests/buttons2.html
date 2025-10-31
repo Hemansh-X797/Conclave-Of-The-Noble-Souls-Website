@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Luxury Button</title>
+<style>
+/* ------------------------------------- */
+/* Reset and Base Styles */
+/* ------------------------------------- */
+
+/* Reset margin and padding */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set smooth font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #1e1e2f, #121212);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ------------------------------------- */
+/* Import Luxury Fonts */
+/* ------------------------------------- */
+
+/* Using Google Fonts - Playfair Display for luxury serif, and Montserrat for sans */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+/* ------------------------------------- */
+/* Base Button Container */
+/* ------------------------------------- */
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 480px;
+  padding: 2rem;
+}
+
+/* ------------------------------------- */
+/* Base Luxury Button Styles */
+/* ------------------------------------- */
+
+.luxury-btn {
+  position: relative;
+  display: inline-block;
+  padding: 1.3rem 3.2rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fefefe;
+  background: linear-gradient(145deg, #b4975a, #5a4225);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 10px rgba(180, 130, 40, 0.6),
+    inset 0 -3px 6px rgba(255, 230, 180, 0.4);
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.2s ease;
+  user-select: none;
+  overflow: hidden;
+  z-index: 1;
+  outline-offset: 6px;
+}
+
+/* ------------------------------------- */
+/* Accessibility Focus Styles */
+/* ------------------------------------- */
+.luxury-btn:focus-visible {
+  outline: 3px solid #f2e6b8;
+  outline-offset: 8px;
+  box-shadow:
+    0 0 12px 4px rgba(255, 215, 0, 0.9);
+}
+
+/* ------------------------------------- */
+/* Hover and Active base states */
+/* ------------------------------------- */
+.luxury-btn:hover {
+  background: linear-gradient(145deg, #d4b45b, #7f5a2b);
+  box-shadow:
+    0 6px 15px rgba(220, 170, 40, 0.8),
+    inset 0 -4px 8px rgba(255, 240, 180, 0.6);
+  transform: translateY(-2px);
+}
+
+.luxury-btn:active {
+  background: linear-gradient(145deg, #7f5a2b, #b4975a);
+  box-shadow:
+    inset 0 3px 6px rgba(100, 65, 20, 0.9);
+  transform: translateY(1px);
+}
+
+/* ------------------------------------- */
+/* Base Span for Decorative Lines */
+/* ------------------------------------- */
+.luxury-btn span {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* End of Part 1 */
+</style>
+</head>
+<body>
+  <div class="container">
+    <button class="luxury-btn"><span>EXPLORE</span></button>
+  </div>
+</body>
+</html>
+<style>
+/* ------------------------------------- */
+/* Part 2: Decorative Borders & Glow Effects */
+/* ------------------------------------- */
+
+/* Decorative border layers with before and after */
+.luxury-btn::before,
+.luxury-btn::after {
+  content: "";
+  position: absolute;
+  border-radius: 14px;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  pointer-events: none;
+  opacity: 0.75;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+/* Outer glowing border */
+.luxury-btn::before {
+  border: 2.5px solid;
+  border-image-slice: 1;
+  border-width: 2.5px;
+  border-image-source: linear-gradient(
+    135deg,
+    #ffef9f,
+    #fbbf24,
+    #f59e0b,
+    #b45309,
+    #78350f
+  );
+  filter: drop-shadow(0 0 6px #fbbf24);
+}
+
+/* Inner subtle shadow border */
+.luxury-btn::after {
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 8px 1.5px rgba(255, 255, 255, 0.15),
+    inset 0 0 10px rgba(255, 255, 255, 0.07);
+}
+
+/* Hover states increase glow intensity */
+.luxury-btn:hover::before {
+  opacity: 1;
+  filter:
+    drop-shadow(0 0 10px #fbbf24)
+    drop-shadow(0 0 15px #f59e0b);
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* Active states dim the glow */
+.luxury-btn:active::before {
+  opacity: 0.65;
+  filter: drop-shadow(0 0 5px #b45309);
+  animation: none;
+}
+
+/* Keyframes for subtle pulse glow animation */
+@keyframes pulseGlow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 10px #fbbf24)
+      drop-shadow(0 0 15px #f59e0b);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 20px #ffd54f)
+      drop-shadow(0 0 25px #fbbf24);
+  }
+}
+
+/* ------------------------------------- */
+/* Additional subtle shine effect with a pseudo-element */
+/* ------------------------------------- */
+
+.luxury-btn .shine {
+  position: absolute;
+  top: -40%;
+  left: -60%;
+  width: 220%;
+  height: 180%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.05) 40%,
+    rgba(255, 255, 255, 0.15) 60%,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.18)
+  );
+  transform: rotate(-25deg);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  border-radius: 18px;
+}
+
+/* Show the shine on hover */
+.luxury-btn:hover .shine {
+  opacity: 1;
+  animation: shineMove 2.5s linear infinite;
+}
+
+/* Animate the shine moving across the button */
+@keyframes shineMove {
+  0% {
+    transform: translateX(-100%) rotate(-25deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(-25deg);
+  }
+}
+</style>
+<style>
+/* ------------------------------------- */
+/* Part 3: Text Effects & Sparkle Animations */
+/* ------------------------------------- */
+
+/* Layered gradient text with shine effect */
+.luxury-btn span {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    45deg,
+    #f3e2a9,
+    #fbe89e,
+    #d4b44f,
+    #f3e2a9
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, 0.7),
+    0 2px 6px rgba(0, 0, 0, 0.8),
+    0 4px 10px rgba(0, 0, 0, 0.9);
+  user-select: none;
+  transition: filter 0.4s ease;
+}
+
+/* Slight glow on text hover */
+.luxury-btn:hover span {
+  filter: drop-shadow(0 0 6px #ffd54f);
+}
+
+/* Sparkle container */
+.luxury-btn .sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 3;
+}
+
+/* Each sparkle */
+.luxury-btn .sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(
+    ellipse at center,
+    #fff8b8 0%,
+    #ffd700 60%,
+    rgba(255, 215, 0, 0) 80%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  filter: drop-shadow(0 0 4px #fff8b8);
+  animation-name: sparkleAnimation;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Individual sparkle animation with different delays and positions */
+.luxury-btn .sparkle:nth-child(1) {
+  top: 10%;
+  left: 15%;
+  animation-duration: 3.5s;
+  animation-delay: 0s;
+}
+
+.luxury-btn .sparkle:nth-child(2) {
+  top: 25%;
+  left: 80%;
+  animation-duration: 4.2s;
+  animation-delay: 1s;
+}
+
+.luxury-btn .sparkle:nth-child(3) {
+  top: 60%;
+  left: 50%;
+  animation-duration: 5.1s;
+  animation-delay: 2s;
+}
+
+.luxury-btn .sparkle:nth-child(4) {
+  top: 80%;
+  left: 20%;
+  animation-duration: 3.8s;
+  animation-delay: 1.5s;
+}
+
+.luxury-btn .sparkle:nth-child(5) {
+  top: 35%;
+  left: 35%;
+  animation-duration: 4.5s;
+  animation-delay: 2.8s;
+}
+
+/* Sparkle animation keyframes */
+@keyframes sparkleAnimation {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(20deg);
+  }
+}
+
+/* ------------------------------------- */
+/* Responsive Text Sizing for button */
+/* ------------------------------------- */
+@media (max-width: 480px) {
+  .luxury-btn {
+    font-size: 1.4rem;
+    padding: 1rem 2.5rem;
+  }
+
+  .luxury-btn span {
+    font-size: 1.4rem;
+  }
+}
+</style>
+<style>
+/* ------------------------------------- */
+/* Part 4: Complex Background Gradients, Noise Texture & 3D Bevel */
+/* ------------------------------------- */
+
+/* Layered complex background with multiple gradients */
+.luxury-btn {
+  background:
+    linear-gradient(145deg, #b4975a, #5a4225),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.15), transparent 70%),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255, 255, 255, 0.05) 0deg 5deg,
+      transparent 5deg 10deg
+    );
+  background-blend-mode: overlay, overlay, normal;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle noise texture overlay using base64 encoded SVG */
+/* Noise pattern source: tiny random grain */
+.luxury-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjIiIGN5PSIyIiByPSIwLjUiIGZpbGw9InJnYmEoMTI4LCAxMjgsIDEyOCwgMC4xKSIgLz4KPC9zdmc+");
+  opacity: 0.07;
+  z-index: 5;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  animation: noiseShift 30s linear infinite;
+}
+
+/* Slow subtle movement for noise effect */
+@keyframes noiseShift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 200%;
+  }
+}
+
+/* 3D Bevel edges using multiple inset shadows */
+.luxury-btn {
+  box-shadow:
+    inset 0 4px 6px rgba(255, 255, 255, 0.25),
+    inset 0 -4px 6px rgba(80, 55, 20, 0.7),
+    0 6px 15px rgba(180, 130, 40, 0.65);
+}
+
+/* On hover, deepen the bevel shadows */
+.luxury-btn:hover {
+  box-shadow:
+    inset 0 6px 8px rgba(255, 255, 255, 0.35),
+    inset 0 -6px 8px rgba(100, 70, 25, 0.8),
+    0 8px 20px rgba(220, 170, 40, 0.85);
+}
+
+/* On active, press bevel effect */
+.luxury-btn:active {
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 4px rgba(50, 30, 10, 0.7),
+    0 3px 8px rgba(140, 90, 20, 0.6);
+  transform: translateY(1px);
+}
+
+/* Rounded border enhancements */
+.luxury-btn {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Smooth transition for all changes */
+.luxury-btn {
+  transition:
+    background 0.5s ease,
+    box-shadow 0.4s ease,
+    transform 0.15s ease,
+    border-radius 0.4s ease;
+}
+
+/* Make sure pseudo-elements are layered correctly */
+.luxury-btn::before {
+  border-radius: 16px;
+}
+
+/* End of Part 4 */
+</style>
+<style>
+/* ------------------------------------- */
+/* Part 5: Multi-layered Animated Glows & Particle Effects */
+/* ------------------------------------- */
+
+/* Multi-layered glowing rings with pseudo-elements */
+
+.luxury-btn::before,
+.luxury-btn::after {
+  content: "";
+  position: absolute;
+  border-radius: 16px;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+  box-shadow:
+    0 0 8px 2px #f7e78b,
+    0 0 20px 6px #f2c94c,
+    0 0 30px 12px #d3a40b;
+}
+
+.luxury-btn::after {
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  opacity: 0.45;
+  box-shadow:
+    0 0 15px 5px #f9e97c,
+    0 0 30px 10px #f2c94c,
+    0 0 40px 18px #b47a05;
+}
+
+/* Animate glowing intensity on hover */
+.luxury-btn:hover::before,
+.luxury-btn:hover::after {
+  animation: glowPulse 3s ease-in-out infinite alternate;
+  opacity: 1;
+}
+
+.luxury-btn:active::before,
+.luxury-btn:active::after {
+  animation-play-state: paused;
+  opacity: 0.6;
+}
+
+/* Glow pulse animation */
+@keyframes glowPulse {
+  0% {
+    box-shadow:
+      0 0 8px 2px #f7e78b,
+      0 0 20px 6px #f2c94c,
+      0 0 30px 12px #d3a40b;
+  }
+  50% {
+    box-shadow:
+      0 0 15px 5px #fff9a1,
+      0 0 35px 12px #f4d35e,
+      0 0 45px 20px #deb347;
+  }
+  100% {
+    box-shadow:
+      0 0 8px 2px #f7e78b,
+      0 0 20px 6px #f2c94c,
+      0 0 30px 12px #d3a40b;
+  }
+}
+
+/* ------------------------------------- */
+/* Particle effects container */
+/* ------------------------------------- */
+
+.particles-container {
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+  z-index: 0;
+}
+
+/* Each particle */
+.particle {
+  position: absolute;
+  background: radial-gradient(circle at center, #fff9c4 0%, #fbc02d 70%, transparent 90%);
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 2px #fff9c4);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Particle sizes and animation delays */
+.particle:nth-child(1) {
+  width: 6px;
+  height: 6px;
+  top: 15%;
+  left: 20%;
+  animation-name: particleFloat1;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  width: 4px;
+  height: 4px;
+  top: 70%;
+  left: 35%;
+  animation-name: particleFloat2;
+  animation-duration: 5.5s;
+  animation-delay: 1.3s;
+}
+
+.particle:nth-child(3) {
+  width: 5px;
+  height: 5px;
+  top: 40%;
+  left: 80%;
+  animation-name: particleFloat3;
+  animation-duration: 7s;
+  animation-delay: 2.1s;
+}
+
+.particle:nth-child(4) {
+  width: 3px;
+  height: 3px;
+  top: 60%;
+  left: 60%;
+  animation-name: particleFloat4;
+  animation-duration: 4.8s;
+  animation-delay: 3.4s;
+}
+
+.particle:nth-child(5) {
+  width: 7px;
+  height: 7px;
+  top: 25%;
+  left: 75%;
+  animation-name: particleFloat5;
+  animation-duration: 6.8s;
+  animation-delay: 1.7s;
+}
+
+/* Particle float animations */
+@keyframes particleFloat1 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-6px) translateX(4px) scale(1.2); opacity: 1; }
+}
+
+@keyframes particleFloat2 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.75; }
+  50% { transform: translateY(4px) translateX(-5px) scale(1.1); opacity: 0.9; }
+}
+
+@keyframes particleFloat3 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.85; }
+  50% { transform: translateY(-7px) translateX(-3px) scale(1.15); opacity: 1; }
+}
+
+@keyframes particleFloat4 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(5px) translateX(5px) scale(1.1); opacity: 0.9; }
+}
+
+@keyframes particleFloat5 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-4px) translateX(6px) scale(1.2); opacity: 1; }
+}
+
+/* ------------------------------------- */
+/* Insert particles container inside the button */
+/* ------------------------------------- */
+
+/* Ensure button is relative positioned */
+.luxury-btn {
+  position: relative;
+  overflow: visible;
+}
+
+/* ------------------------------------- */
+/* Refined layered shadow enhancements */
+/* ------------------------------------- */
+
+.luxury-btn {
+  box-shadow:
+    inset 0 6px 10px rgba(255, 255, 255, 0.35),
+    inset 0 -6px 12px rgba(100, 70, 20, 0.8),
+    0 8px 25px rgba(245, 186, 48, 0.85),
+    0 0 12px 3px rgba(255, 215, 0, 0.6);
+}
+
+/* On hover intensify shadows */
+.luxury-btn:hover {
+  box-shadow:
+    inset 0 8px 14px rgba(255, 255, 255, 0.45),
+    inset 0 -8px 16px rgba(120, 80, 25, 0.95),
+    0 12px 35px rgba(255, 210, 50, 1),
+    0 0 18px 5px rgba(255, 215, 0, 0.9);
+}
+
+/* On active reduce shadows */
+.luxury-btn:active {
+  box-shadow:
+    inset 0 4px 8px rgba(255, 255, 255, 0.25),
+    inset 0 -4px 8px rgba(90, 50, 15, 0.7),
+    0 5px 15px rgba(160, 120, 30, 0.6),
+    0 0 8px 2px rgba(255, 180, 0, 0.5);
+}
+
+/* ------------------------------------- */
+/* Accessibility: Focus visible glow */
+/* ------------------------------------- */
+.luxury-btn:focus-visible {
+  outline: 3px solid #ffeb7f;
+  outline-offset: 8px;
+  box-shadow:
+    0 0 18px 8px #ffd54f,
+    inset 0 6px 12px rgba(255, 255, 255, 0.5);
+}
+
+/* ------------------------------------- */
+/* End of Part 5 */
+/* ------------------------------------- */
+</style>

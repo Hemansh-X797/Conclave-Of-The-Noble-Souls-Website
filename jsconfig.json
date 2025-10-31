@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "checkJs": false
+  },
+  "exclude": [
+    "node_modules",
+    ".next",
+    ".vercel",
+    "dist",
+    "build",
+    "scripts",
+    "database"
+  ]
+}
