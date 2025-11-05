@@ -208,6 +208,10 @@
 │       ├── events.js              # Event templates
 │       └── lore.js                # Server lore & codex
 │ 
+├── /context
+│   ├── AppProvider.jsx            # Provides app state to entire application 
+│   └── index.jsx                  # Index file for exporting
+│
 ├── /scripts
 │   ├── setup-db.js                # Initialize database
 │   ├── seed-data.js               # Populate with sample data
