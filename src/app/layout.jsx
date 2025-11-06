@@ -20,6 +20,7 @@ import { AppProvider, useAppContext } from '@/contexts/AppProvider';
 // UI COMPONENTS
 // ============================================================================
 import AdvancedNobleCursor from '@/components/ui/NobleCursor';
+
 import LuxuryButton, { 
   TextFlameButton, 
   NobleButton,
@@ -31,6 +32,28 @@ import LuxuryButton, {
   AdminButton,
   ModButton
 } from '@/components/ui/LuxuryButton';
+
+import SuperButton, {
+  GamingPortal,
+  LoreboundPortal,
+  ProductivePortal,
+  NewsPortal,
+  EventShowcase,
+  AchievementShowcase,
+  GalleryShowcase,
+  DiscordJoinButton,
+  CommunityStats,
+  ImageGallery,
+  CompactAction,
+  HeroWelcome,
+  MagneticGamingPortal,
+  MysticalLoreboundPortal,
+  SuperButtonGroup,
+  SuperButtonIcons,
+  SuperButtonPresets,
+  useSuperButtonState
+} from '@/components/ui/SuperButton';
+
 import GlassCard, {
   ProfileCard,
   StatsCard,
@@ -43,6 +66,7 @@ import GlassCard, {
   ProductiveCard,
   NewsCard
 } from '@/components/ui/GlassCard';
+
 import LoadingCrest, { LoadingOverlay } from '@/components/ui/LoadingCrest';
 import NobleInput, {
   NobleTextInput,
@@ -250,6 +274,7 @@ export const metadata = {
   ],
   creator: 'Hemansh Kumar Mishra',
   publisher: 'The Conclave',
+  private: true,
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -266,6 +291,23 @@ export const metadata = {
         type: 'image/png'
       }
     ]
+  },
+    social: {
+    discord: "darkpower797",  
+    email: "kundansmishra@gmail.com",
+    twitter: "@YourTwitterHandle",  // Your Twitter handle (optional)
+  },
+    schemaOrg: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "The Conclave Of The Noble Souls",
+    url: "https://yourwebsite.com",  // Replace with your actual URL
+    logo: "/assets/Images/CNS_logo1.jpg",  // Add your logo image URL (optional)
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Customer Service",
+      email: "kundansmishra@gmail.com",
+    },
   },
   twitter: {
     card: 'summary_large_image',
@@ -308,6 +350,12 @@ export const metadata = {
     google: 'your-google-verification-code',
     yandex: 'your-yandex-verification-code'
   },
+  repository: {
+    type: "git",
+    user: "Hemansh-X797",
+    url: "https://github.com/Hemansh-X797/Conclave-Of-The-Noble-Souls-Website.git"
+  },
+
   category: 'community',
   classification: 'Community & Social',
   referrer: 'origin-when-cross-origin'

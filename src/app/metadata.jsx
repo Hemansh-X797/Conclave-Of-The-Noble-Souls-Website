@@ -1,8 +1,8 @@
 export const metadata = {
 
   title: "The Conclave Of The Noble Souls",
-  description: "A noble, multi-pathway community that connects like-minded individuals in gaming, productivity, knowledge-sharing, and intellectual growth.",
-  keywords: "Noble Souls, luxury community, gaming, productivity, anime, manga, manhua, manhwa, novels, light novels, web novels, webtoons, donghua, books, investing, self-improvement, skill development, personal growth, education, learning, elite communities, intellectual growth, technology, entrepreneurship, philosophy, mindfulness, creative writing, art, digital art, storytelling, leadership, mental wellness",
+  description: "A noble, multi-pathway community that connects like-minded individuals in anime, comics, novels, gaming, productivity, knowledge-sharing, and intellectual growth.",
+  keywords: "Noble Souls, Discord server, Discord Community, The Conclave, Conclave Of The Noble Souls, luxury community, gaming, productivity, anime, manga, manhua, manhwa, novels, light novels, web novels, webtoons, donghua, books, investing, self-improvement, skill development, personal growth, education, learning, elite communities, intellectual growth, technology, entrepreneurship, philosophy, mindfulness, creative writing, art, digital art, storytelling, leadership, mental wellness",
   author: "Hemansh Kumar Mishra",
   creator: "Hemansh Kumar Mishra",
   email: "kundansmishra@gmail.com",
