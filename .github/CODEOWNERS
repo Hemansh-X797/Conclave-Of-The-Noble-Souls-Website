@@ -1,42 +1,42 @@
 # 🔐 Hemansh is the sole CODEOWNER and maintainer
-* @HEMANSH_X797
+* @Hemansh-X797
 
 # GitHub metadata, CI/CD workflows, PR/issue templates, funding
-.github/ @HEMANSH_X797
+.github/ @Hemansh-X797
 
 # Production codebase
-/src/ @HEMANSH_X797
-/middleware/ @HEMANSH_X797
-/constants/ @HEMANSH_X797
-/hooks/ @HEMANSH_X797
-/components/ @HEMANSH_X797
-/lib/ @HEMANSH_X797
-/styles/ @HEMANSH_X797
-/data/ @HEMANSH_X797
+/src/ @Hemansh-X797
+/middleware/ @Hemansh-X797
+/constants/ @Hemansh-X797
+/hooks/ @Hemansh-X797
+/components/ @Hemansh-X797
+/lib/ @Hemansh-X797
+/styles/ @Hemansh-X797
+/data/ @Hemansh-X797
 
 # Database logic
-/database/ @HEMANSH_X797
+/database/ @Hemansh-X797
 
 # Scripts that affect infrastructure, deployments, backups
-/scripts/ @HEMANSH_X797
+/scripts/ @Hemansh-X797
 
 # Documentation (project docs, API, design, structure, etc.)
-/docs/ @HEMANSH_X797
-/blueprint/ @HEMANSH_X797
+/docs/ @Hemansh-X797
+/blueprint/ @Hemansh-X797
 
 # Vercel, Supabase, Tailwind, and other project-level configs
-/vercel.json @HEMANSH_X797
-/supabase.config.js @HEMANSH_X797
-/next.config.js @HEMANSH_X797
-/tailwind.config.js @HEMANSH_X797
-/prettier.config.js @HEMANSH_X797
-/.stylelintrc.js @HEMANSH_X797
-/.eslintrc.js @HEMANSH_X797
-/postcss.config.js @HEMANSH_X797
-/jsconfig.json @HEMANSH_X797
+/vercel.json @Hemansh-X797
+/supabase.config.js @Hemansh-X797
+/next.config.js @Hemansh-X797
+/tailwind.config.js @Hemansh-X797
+/prettier.config.js @Hemansh-X797
+/.stylelintrc.js @Hemansh-X797
+/.eslintrc.js @Hemansh-X797
+/postcss.config.js @Hemansh-X797
+/jsconfig.json @Hemansh-X797
 
 # Environment & secrets handling
-.env* @HEMANSH_X797
+.env* @Hemansh-X797
 
 # Catch-all fallback
-* @HEMANSH_X797
+* @Hemansh-X797

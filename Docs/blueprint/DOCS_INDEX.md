@@ -1,5 +1,58 @@
 # Documentation Overview
 
+## Vannila
+
+### .github
+
+1. ISSUE_TEMPLATE  
+2. workflows  
+3. CODE_OF_CONDUCT.md  
+4. CODEOWNERS  
+5. FUNDING.yml  
+6. PULL_REQUEST_TEMPLATE.md  
+7. SECURITY.md  
+8. SUPPORT.md  
+
+---
+
+### Docs
+
+#### Blueprint
+
+- **Folder Structure**
+-
+  1. [ASSETS_STRUCTURE.md](ASSETS_STRUCTURE)
+  2. [FOLDER_STRUCTURE.md](FOLDER_STRUCTURE)
+  3. [MERMAID.md](Docs/blueprint/Folder.Structure/MERMAID.md)
+- [ACCESS_CONTROL.md](Docs/blueprint/ACCESS_CONTROL.md)
+- [API_ENDPOINTS.md](Docs/blueprint/API_ENDPOINTS.md)
+- [AUTH.md](Docs/blueprint/AUTH.md)
+- [COMPONENT_HIERARCHY.md](Docs/blueprint/COMPONENT_HIERARCHY.md)
+- [DATABASE_SCHEMA.md](DATABASE_SCHEMA)
+- [DESIGN_TOKENS.md](Docs/blueprint/DESIGN_TOKENS.md)
+- [DISCORD_INFO.md](Docs/blueprint/DISCORD_INFO.md)
+- [DOCS_INDEX.md](Docs/blueprint/DOCS_INDEX.md)
+- [USER_FLOWS.md](Docs/blueprint/USER_FLOWS.md)
+
+#### Source Code Guide
+
+- [API_PATH.md](Docs/source-code-guide/API_PATH.md)
+- [ARCITECTURE.md](Docs/source-code-guide/ARCITECTURE.md)
+- [DEPLOYMENT.md](Docs/source-code-guide/DEPLOYMENT.md)
+- [LUXURY_DESIGN_GUIDE.md](Docs/source-code-guide/LUXURY_DESIGN_GUIDE.md)
+- [PATHWAY_SYSTEM.md](source-code-guide/PATHWAY_SYSTEM)
+
+---
+
+### Miscellaneous Documents
+
+- [AUDIT LETTER (Word)](Docs/~$aude_letter.docx)
+- [CLAUDE LETTER (Word)](Docs/Claude_letter.docx)
+- [PLAN (Word)](Docs/plan.docx)
+- [LICENSE](Docs/LICENSE)
+- [README.md](Docs/README.md)
+- [AGENTS.md](Docs/AGENTS.md)
+
 ## MarkMap utilized
 
 ### Blueprint Files
