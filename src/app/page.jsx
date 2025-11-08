@@ -1,6 +1,6 @@
 // ============================================================================
-// HOMEPAGE - The Conclave Realm - ULTIMATE ROLLS-ROYCE LUXURY EXPERIENCE
-// Better than Rolls-Royce - Maximum elegance, smooth scrolling, cinematic
+// HOMEPAGE - The Conclave Realm - ULTIMATE LUXURY EXPERIENCE
+// Luxury Mode - Maximum elegance, smooth scrolling, cinematic background
 // Location: /src/app/page.jsx
 // ============================================================================
 
