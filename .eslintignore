@@ -21,6 +21,8 @@ logs/
 .env.example
 .env.*.local
 .env.local
+.env.production
+.env.webhooks
 .env.production.local
 .env.development.local
 

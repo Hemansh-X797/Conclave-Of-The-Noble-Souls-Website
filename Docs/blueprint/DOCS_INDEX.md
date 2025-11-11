@@ -46,8 +46,6 @@
 
 ### Miscellaneous Documents
 
-- [AUDIT LETTER (Word)](Docs/~$aude_letter.docx)
-- [CLAUDE LETTER (Word)](Docs/Claude_letter.docx)
 - [PLAN (Word)](Docs/plan.docx)
 - [LICENSE](Docs/LICENSE)
 - [README.md](Docs/README.md)

@@ -1,10 +1,55 @@
 export const metadata = {
 
-  title: "The Conclave Of The Noble Souls",
-  description: "A noble, multi-pathway community that connects like-minded individuals in anime, comics, novels, gaming, productivity, knowledge-sharing, and intellectual growth.",
-  keywords: "Noble Souls, Discord server, Discord Community, The Conclave, Conclave Of The Noble Souls, luxury community, gaming, productivity, anime, manga, manhua, manhwa, novels, light novels, web novels, webtoons, donghua, books, investing, self-improvement, skill development, personal growth, education, learning, elite communities, intellectual growth, technology, entrepreneurship, philosophy, mindfulness, creative writing, art, digital art, storytelling, leadership, mental wellness",
-  author: "Hemansh Kumar Mishra",
-  creator: "Hemansh Kumar Mishra",
+  title: {
+    default: 'The Conclave Of The Noble Souls',
+    template: '%s | The Conclave'
+  },
+  description: 'A noble, multi-pathway community that connects like-minded individuals in gaming, productivity, knowledge-sharing, and intellectual growth.',
+  
+  keywords: [
+    'Noble Souls',
+    'luxury community',
+    'gaming',
+    'productivity',
+    'anime',
+    'manga',
+    'manhua',
+    'manhwa',
+    'novels',
+    'light novels',
+    'web novels',
+    'webtoons',
+    'donghua',
+    'self-improvement',
+    'skill development',
+    'personal growth',
+    'education',
+    'learning',
+    'elite communities',
+    'intellectual growth',
+    'technology',
+    'entrepreneurship',
+    'philosophy',
+    'mindfulness',
+    'creative writing',
+    'art',
+    'digital art',
+    'storytelling',
+    'leadership',
+    'mental wellness',
+    'Discord community'
+  ],
+
+  authors: [
+    { 
+      name: 'Hemansh Kumar Mishra', 
+      email: 'kundansmishra@gmail.com',
+      url: process.env.NEXT_PUBLIC_SITE_URL 
+    }
+
+  ],
+  creator: 'Hemansh Kumar Mishra',
+  publisher: 'The Conclave',
   email: "kundansmishra@gmail.com",
   private: true, 
 
@@ -25,21 +70,30 @@ export const metadata = {
   themeColor: "#ffd700",  // Luxurious gold for mobile devices
 
   openGraph: {
-    title: "The Conclave Of The Noble Souls",
-    description: "A noble, multi-pathway community that fosters creativity, growth, and collaboration across various domains.",
-    url: "https://yourwebsite.com",  // Replace with your actual URL
-    image: "C:/Users/SSC/Desktop/Project-conclave website/public/Assets/Images/logo-main.jpg",  
-    type: "website",
-    locale: "en_US",  
-    site_name: "The Conclave",  
+    type: 'website',
+    locale: 'en_US',
+    url: process.env.NEXT_PUBLIC_SITE_URL,
+    siteName: 'The Conclave Of The Noble Souls',
+    title: 'The Conclave Of The Noble Souls',
+    description: 'A noble, multi-pathway community fostering creativity, growth, and collaboration across various domains.',
+    images: [
+      {
+        url: '/Assets/Images/CNS_logo1.png',
+        width: 1200,
+        height: 630,
+        alt: 'The Conclave Logo',
+        type: 'image/png'
+      }
+    ]
   },
 
   twitter: {
-    card: "summary_large_image",  // Twitter card with large image
-    site: "@YourTwitterHandle",  // Your Twitter handle (optional)
-    creator: "@CreatorTwitterHandle",  // Your creator handle (optional)
-    image: "/assets/images/nobility/hero-image.jpg",  // Image for Twitter shares
-    description: "Join The Conclave Of The Noble Souls, where community members from diverse backgrounds unite to share knowledge, passions, and ideas.",
+    card: 'summary_large_image',
+    title: 'The Conclave Of The Noble Souls',
+    description: 'Join The Conclave Of The Noble Souls, where community members from diverse backgrounds unite to share knowledge, passions, and ideas.',
+    images: ['/Assets/Images/CNS_logo1.png'],
+    creator: '@YourTwitterHandle',
+    site: '@YourTwitterHandle'
   },
 
   schemaOrg: {
@@ -47,7 +101,7 @@ export const metadata = {
     "@type": "Organization",
     name: "The Conclave Of The Noble Souls",
     url: "https://yourwebsite.com",  // Replace with your actual URL
-    logo: "/assets/Images/CNS_logo1.jpg",  // Add your logo image URL (optional)
+    logo: "/assets/Images/CNS_logo1.jpg",  
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Service",
@@ -55,15 +109,48 @@ export const metadata = {
     },
   },
 
+  robots: {
+    index: true,
+    follow: true,
+    noarchive: true,
+    nocache: false,
+    noimageindex: false,
+    nosnippet: false
+  },
+  icons: {
+    icon: [
+      { url: '/favicon/favicon.ico', sizes: 'any' },
+      { url: '/favicon/icon.svg', type: 'image/svg+xml' }
+    ],
+    apple: [
+      { url: '/Assets/Images/CNS_logo1.png', sizes: '180x180', type: 'image/png' }
+    ]
+  },
+  manifest: '/manifest.json',
+  applicationName: 'The Conclave',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'The Conclave'
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false
+  },
+  verification: {
+    google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code'
+  },
   repository: {
     type: "git",
     user: "Hemansh-X797",
     url: "https://github.com/Hemansh-X797/Conclave-Of-The-Noble-Souls-Website.git"
   },
 
-  icons: {
-    icon: "@public/favicon/favicon.ico"
-  }
+  category: 'community',
+  classification: 'Community & Social',
+  referrer: 'origin-when-cross-origin'
 };
 
 export default metadata;

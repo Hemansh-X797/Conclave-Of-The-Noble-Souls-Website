@@ -1,32 +1,86 @@
-# Conclave Of The Noble Souls Website Guide
+# **Conclave Of The Noble Souls Website Guide**
 
-## Creator's story-
+## **Creator's Story:**
 
-i have recently observed a trend among people where they are making websites using *Artificial Intelligence*. and some claiming that we can do it without any prior knowledge of any form of programming. Leading to the famous question **"Will A.I. take over my job?"** to which i also wrote a book on. that aside for now, one day, out of utter curiosity, i saw one of the youtube video guides explaining "How make a website with AI without learning programming". and the website worked just fine, honestly speaking, i was intrigruied by this spectacular performance by a mere robot, and suddenly, a thought came into my mind, i first ignored it out of absolute laziness, but my mindkept screaming, it won't let me sleep, when i got to bed, i was thinking of the same thought for the entire night "if a newbie canmake a working digital product with AI, what will happen when an Expert in that field utilizes AI" and hence, i decided on embarking upon a path to see what happens when a expert utilizes A.I for his job. i wrote down many projects on a paper, a website, an application, an E-Book, a template, and much more, this one you are seeing is my website, i decided on a website, but i was confused, a website on what? a website for what? a website where? a website for whom? , all this thoughts rumbling over one another causing chaos in my brain while my body was calmly sitting on a chair talking with people in discord, i found an intrigruing botin a server and decided to add it in my discord server too, "the conclave of the noble souls", which i made for talking with my friends but it is dead now, i added and configured all bots and permissions needed for a high-end, production-grade discord server, i created and named the channels,roles and categories, i did a lot of things , i got inspiration from other servers and implemented it into mine, but my entrepreneurial-gene won't let me be normal, it wanted
-me to do something new, something different, something unique, to innovate something, and hence i did innovate not 1 but 2 ideas.
+Recently, I noticed a growing trend where people are using *Artificial Intelligence* to create digital products, with many claiming you can do it *without any prior knowledge of it*. This led to the familiar question: **"Will AI take over my job?"** In fact, I even wrote a book on that very topic, but let's set that aside for now.
 
-### First idea {Pathways}-
+One day, for an experiment, i asked my friend who is a complete newbie at web developing to make a website with AI, that was just a simple calculator, But even though it was simple, To my surprise, the website worked perfectly fine. Honestly speaking, I was intrigued by the performance of this "robot," and suddenly, a thought hit me. I initially tried to ignore it, out of sheer laziness, but my mind wouldn’t let go. That thought kept echoing in my head even as I tried to sleep: *"If a complete newbie can create a functional digital product with AI, what could happen if an expert in the field utilized AI?"*
 
-covering the flaw of my discord server not being a community(i did not upgrade because my people did not want it to be a community server).which was, **pathways**, i observed what people do in discord servers, i met 3 major types of people, which were:
+That thought was so persistent that I couldn’t shake it off. So, I decided to embark on a journey to find out what happens when an expert uses AI to its fullest potential. I wrote down several project ideas on paper—ideas for a website, an application, an e-book, a template, and much more. This website, the one you're visiting right now, was my chosen project. the third smallest of them all.
 
-- people intrested in just talking
-- people intrested in gaming with friends
-- people intrested in anime/manhwas/mangas/manhuas/donghuas/webtoons/webnovels/light novels and books
-- people who liked to share useful information with others
+But here’s where I got stuck. A website for *what*? A website for *whom*? What should the purpose be? All these questions began to bombard my mind. Meanwhile, my body was sitting in a chair, chatting with people on Discord. I’d created a server for my friends called "The Conclave of the Noble Souls," but the server had become quiet and inactive over time. I wanted to breathe life into it again.
 
-And so, i decided on the main pathways(i wanted to make it like LOTM system but one individual can take as many pathways as possible[till they fulfill the entering criteria]), i decided on the pathways "gaming", "lorebound" and  "productive" abd named them "The BIG 3 Pathways", but then, my nerves started to reject it again, they wanted something new again, and hence, afte that, i added the "News" pathway and named them "4 major pathways" which i included in my wensite, i then started adding more side-pathways.
+One day, I added an interesting bot to my server and began configuring it for a high-end, production-grade Discord setup. I created and named the channels, roles, and categories, integrating inspiration from other successful servers. But, as my entrepreneurial instincts kicked in, I realized my server needed something *unique*, something *innovative*.
 
-### Second idea {A custom Website For My Discord server}-
+And so, I came up with not one, but two major ideas.
 
-My second idea, a custom website for my server, which i ws talking in the start, i finally got an idea for my website. but a website for a discord server made for just yapping? what should the website do, is it just a banner website for my server's advertisment? no, i did not want it to be that bland, so i started finding out ideas for my website, what could i include, and i found some, noted them on a paper, they were:
+---
 
-- including forms like staff application form, appeal form etc.
-- including some fun things like a musicplayer, a MBTI test etc.
-- members able to see their discord stats
-- a place for mods and admins
-- an art gallery
-- pathway integration
-- a discord bot made exclusively for my server
+### **First Idea: "Pathways"**
 
-and i started, i knew that this was not enough webpages, so i decided to cover thaat flaw with a luxurious frontend, i started this project being aware of the fact that it might take months, and it did take, because AI my friend, is not absolute, it will do the manual labour for you, but the tasks which require creativity, you have to do yourself, not including the errors AI makes and how fabricated and detailed intricrate prompt you have to feed it, along with files making sure thata it is not too much for the AI so it does not forget what you did, and i still made, persevered, and never do our 100% work"
- more info in my book "will A.I. take my job?" also tells how to adapt yourself to work with AI.
+I noticed a key flaw in my Discord server—it wasn't really a *community* (I never upgraded it to a community server because my friends weren’t interested). But, I also realized that the server could be a space for people with different interests.
+
+Through observation, I discovered that Discord servers tend to attract four main types of people:
+
+* Those who just want to chat and socialize.
+* Those who are there for gaming with friends/discord gaming bot users.
+* Fans of anime, manga, manhwa, webtoons, and novels.
+* People who want to share useful information and knowledge with others.
+
+So, I created something I called *Pathways*—a system that allows people to explore their individual interests. The idea was inspired by the “LOTM” system, where individuals could pursue multiple pathways, but with the flexibility to choose how far they want to go down each one. I named the three main pathways *The Big 3*:
+
+* **Gaming** – For gamers who want to connect and play.
+* **Lorebound** – For fans of anime, manga, and all things lore-related.
+* **Productive** – For those interested in learning, improving, and sharing productivity tips.
+
+However, just as I thought I was done, I couldn’t shake the feeling that there was room for more. So, I added a fourth pathway, *News*, and renamed the whole system *The 4 Major Pathways*. I also started adding some side-pathways for more niche interests, ensuring there was something for everyone.
+
+---
+
+### **Second Idea: A Custom Website for My Discord Server**
+
+The second major idea came after I realized that simply creating a website to advertise my server wasn’t enough. What else could I do to make it more engaging, interactive, and meaningful? A website for a Discord server dedicated to casual chatting needed to offer something beyond a simple banner or static pages.
+
+I started brainstorming and came up with several ideas that I thought could really enhance the experience for my server members:
+
+* **Forms**: A staff application form, appeal form, and more to keep the community organized.
+* **Fun Features**: A music player, an MBTI personality test, and similar fun features to keep things lively.
+* **Discord Stats**: A dashboard where members could view their personal stats and achievements within the server.
+* **A Section for Mods & Admins**: A special area for moderators and admins to manage tasks and coordinate.
+* **An Art Gallery**: A place where members could showcase their artwork, memes, and creative content.
+* **Pathway Integration**: Integrating the *Pathways* system directly into the website for better engagement.
+* **A Custom Discord Bot**: I wanted to develop a bot specifically for my server, offering exclusive commands and features.
+
+With these ideas in mind, I set to work, knowing that it wouldn’t be an easy or quick task. AI could help with the heavy lifting, but when it came to creativity, logic and design, that’s where I had to put in the real effort. AI can assist with the *manual labor*, but it’s not a substitute for the human touch in terms of vision and originality.
+
+Building this website took weeks, and even though AI did much of the technical work, it was still a long process of refining, enhancing, experimenting, and sometimes dealing with the limitations of AI (such as errors, prompt nuances, and memory constraints).
+
+But despite the challenges, I pushed through. I didn’t give up, and eventually, I had a website I was proud of—a product of both AI and human ingenuity. This journey is part of the message in my book *"Will A.I. Take My Job?"*—learning how to adapt and collaborate with AI rather than fear it.
+
+---
+
+### **In Conclusion**
+
+The journey to create the *Conclave of the Noble Souls* website was a challenge, but it reinforced a key lesson: AI is a powerful tool, but it’s not a replacement for human creativity. As I continue to experiment with new ideas, I realize that it’s not about the technology taking over—it’s about how we use that technology to enhance our work, unlock new potential, and push boundaries.
+
+For anyone interested in AI, whether in website creation or beyond, my advice is simple: Don’t be afraid of AI. Embrace it, but remember that the true power lies in combining human creativity with AI’s capabilities.
+
+And ### **AI Needs an Expert:**
+
+Reflecting on my friend’s experiment, where he built a 50-line HTML project with AI, I realized that AI, while capable of doing a lot, still has limitations. Sure, he got the job done, but his project was very basic—a simple one-file calculator. The code itself was functional, but it wasn’t sophisticated or refined.
+
+I had to teach him the basics: how to run things in VSCode, how to write simple HTML, and how to structure a basic project. Even with the help of AI, it became clear that having knowledge of how things work made a big difference in the final product.
+
+As Jensen Huang, the CEO of NVIDIA, famously said:
+
+#### "AI can do someone's 30% of work, 50% for some, 70% for others, but never 100%. So what you need to have is the ability to write prompts and handle AI, a basic knowledge of what you're building, and the human touch to add your own creativity and logic."
+
+This perfectly sums up the crucial point: **AI needs an expert**. It may take care of a large portion of the workload, but it cannot replace the depth of understanding, creativity, and nuance that a human can bring. You still need to know the basics, understand what you’re building, and have the skills to tweak and refine the output. AI can assist, but it’s up to the human to direct the vision, inject personality into the work, and elevate the end result with the magic that only a human touch can bring.
+
+If you're curious to learn more about adapting to AI, or just want to explore the topic further, you can read more in my book *"Will A.I. Take My Job?"*—a guide on how to use AI to enhance your skills and future-proof your career.
+
+---
+
+## Source code guide
+
+visit [Documentation-Index](DOCS_INDEX.md)
