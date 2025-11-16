@@ -83,4 +83,6 @@ If you're curious to learn more about adapting to AI, or just want to explore th
 
 ## Source code guide
 
+the documentation of this website is highlyextensivefor it's size, hence, i am providing a documentation index file and some key docs
 visit [Documentation-Index](DOCS_INDEX.md)
+[Rough-Folder-Structure](blueprint/Folder.Structure/FOLDER_STRUCTURE.md)

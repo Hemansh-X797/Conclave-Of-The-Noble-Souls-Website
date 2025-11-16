@@ -1,0 +1,144 @@
+{
+  "light-novels": [
+    {
+      "id": "shadow-slave",
+      "title": "Shadow Slave",
+      "author": "Guiltythree",
+      "rating": 9.5,
+      "genre": ["Fantasy", "Action", "Dystopian"],
+      "status": "Ongoing",
+      "language": "English",
+      "description": "Epic tale of survival in a nightmare world",
+      "coverImage": "/Assets/Images/covers/shadow-slave.jpg",
+      "files": [
+        {
+          "name": "Chapters 1-1000",
+          "path": "/Assets/E-Books/Light-Novels/shadow-slave-c0001-1000-9kafe.com.epub",
+          "size": "2.5 MB",
+          "format": "epub"
+        },
+        {
+          "name": "Chapters 1001-1810",
+          "path": "/Assets/E-Books/Light-Novels/shadow-slave-c1001-1810-9kafe.com.epub",
+          "size": "1.8 MB",
+          "format": "epub"
+        }
+      ],
+      "tags": ["Regression", "System", "Character Growth"],
+      "addedDate": "2024-11-01",
+      "downloads": 0
+    },
+    {
+      "id": "lord-of-mysteries",
+      "title": "Lord of the Mysteries",
+      "author": "Cuttlefish That Loves Diving",
+      "rating": 10,
+      "genre": ["Mystery", "Fantasy", "Lovecraftian"],
+      "status": "Completed",
+      "language": "English",
+      "description": "Victorian-era mystery with cosmic horror elements",
+      "coverImage": "/Assets/Images/covers/lotm.jpg",
+      "files": [
+        {
+          "name": "Complete Novel",
+          "path": "/Assets/E-Books/Light-Novels/Lord Of The Mysteries.pdf",
+          "size": "8.2 MB",
+          "format": "pdf"
+        }
+      ],
+      "tags": ["Mystery", "Character Development", "World Building"],
+      "addedDate": "2024-11-01",
+      "downloads": 0
+    },
+    {
+      "id": "orv",
+      "title": "Omniscient Reader's Viewpoint",
+      "author": "singNsong",
+      "rating": 10,
+      "genre": ["Fantasy", "Action", "Apocalypse"],
+      "status": "Completed",
+      "language": "English",
+      "description": "A reader becomes part of his favorite web novel",
+      "coverImage": "/Assets/Images/covers/orv.jpg",
+      "files": [
+        {
+          "name": "Complete Novel",
+          "path": "/Assets/E-Books/Light-Novels/Omniscient Reader's Viewpoint.pdf",
+          "size": "12.1 MB",
+          "format": "pdf"
+        }
+      ],
+      "tags": ["Meta", "Character Growth", "Epic"],
+      "addedDate": "2024-11-01",
+      "downloads": 0
+    },
+    {
+      "id": "reverend-insanity",
+      "title": "Reverend Insanity",
+      "author": "Gu Zhen Ren",
+      "rating": 10,
+      "genre": ["Cultivation", "Dark", "Strategy"],
+      "status": "Ongoing",
+      "language": "English",
+      "description": "Ruthless protagonist seeks immortality through Gu cultivation",
+      "coverImage": "/Assets/Images/covers/ri.jpg",
+      "files": [
+        {
+          "name": "Complete Novel",
+          "path": "/Assets/E-Books/Light-Novels/Reverend Insanity.pdf",
+          "size": "15.3 MB",
+          "format": "pdf"
+        }
+      ],
+      "tags": ["Anti-Hero", "Strategy", "World Building"],
+      "addedDate": "2024-11-01",
+      "downloads": 0
+    }
+  ],
+  "self-help": [
+    {
+      "id": "48-laws-power",
+      "title": "48 Laws of Power",
+      "author": "Robert Greene",
+      "rating": 10.0,
+      "genre": ["Self-Help", "Strategy", "Psychology"],
+      "status": "Completed",
+      "language": "English",
+      "description": "Timeless lessons on power, strategy and influence",
+      "coverImage": "/Assets/Images/covers/48-laws.jpg",
+      "files": [
+        {
+          "name": "Complete Book",
+          "path": "/Assets/E-Books/Self-Help/48lawsofpower.pdf",
+          "size": "3.2 MB",
+          "format": "pdf"
+        }
+      ],
+      "tags": ["Power", "Strategy", "Influence"],
+      "addedDate": "2024-11-01",
+      "downloads": 0
+    },
+    {
+      "id": "zero-to-one",
+      "title": "Zero to One",
+      "author": "Peter Thiel",
+      "rating": 9.5,
+      "genre": ["Business", "Entrepreneurship", "Innovation"],
+      "status": "Completed",
+      "language": "English",
+      "description": "Notes on startups and building the future",
+      "coverImage": "/Assets/Images/covers/zero-to-one.jpg",
+      "files": [
+        {
+          "name": "Complete Book",
+          "path": "/Assets/E-Books/Self-Help/Zero to One - Peter Thiel and Blake Masters.pdf",
+          "size": "2.1 MB",
+          "format": "pdf"
+        }
+      ],
+      "tags": ["Startup", "Innovation", "Business"],
+      "addedDate": "2024-11-01",
+      "downloads": 0
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "lorebound": {
+    "anime": [
+      {
+        "id": "hianime",
+        "name": "HiAnime",
+        "url": "https://hianime.to",
+        "description": "Premium anime streaming with HD quality and no ads",
+        "logo": "/Assets/Images/sites/hianime.png",
+        "category": "Anime Streaming",
+        "rating": 9.5,
+        "lastChecked": "2024-11-16",
+        "features": ["HD Quality", "No Ads", "Fast Servers", "Dubbed & Subbed"]
+      },
+      {
+        "id": "aniwatch",
+        "name": "AniWatch",
+        "url": "https://aniwatch.to",
+        "description": "Watch anime online with a clean interface",
+        "logo": "/Assets/Images/sites/aniwatch.png",
+        "category": "Anime Streaming",
+        "rating": 9.0,
+        "lastChecked": "2024-11-16",
+        "features": ["HD Quality", "Multiple Servers", "Fast Loading"]
+      },
+      {
+        "id": "crunchyroll",
+        "name": "Crunchyroll",
+        "url": "https://www.crunchyroll.com",
+        "description": "Official anime streaming platform",
+        "logo": "/Assets/Images/sites/crunchyroll.png",
+        "category": "Anime Streaming (Premium)",
+        "rating": 8.5,
+        "lastChecked": "2024-11-16",
+        "features": ["Official", "Simulcasts", "Large Library"]
+      }
+    ],
+    "manga": [
+      {
+        "id": "asurascans",
+        "name": "Asura Scans",
+        "url": "https://asuracomic.net",
+        "description": "High-quality manga and manhwa scanlations",
+        "logo": "/Assets/Images/sites/asurascans.png",
+        "category": "Manga/Manhwa",
+        "rating": 9.5,
+        "lastChecked": "2024-11-16",
+        "features": ["High Quality", "Fast Updates", "Popular Titles"]
+      },
+      {
+        "id": "reaperscans",
+        "name": "Reaper Scans",
+        "url": "https://reaperscans.com",
+        "description": "Quality scanlations (Currently Down)",
+        "logo": "/Assets/Images/sites/reaperscans.png",
+        "category": "Manga/Manhwa",
+        "rating": 9.0,
+        "lastChecked": "2024-11-16",
+        "features": ["Quality Translations", "Popular Series"],
+        "status": "down"
+      }
+    ],
+    "novels": [
+      {
+        "id": "novelbin",
+        "name": "NovelBin",
+        "url": "https://novelbin.com",
+        "description": "Massive collection of light novels and web novels",
+        "logo": "/Assets/Images/sites/novelbin.png",
+        "category": "Light Novels",
+        "rating": 8.5,
+        "lastChecked": "2024-11-16",
+        "features": ["Huge Library", "Regular Updates", "Multiple Genres"]
+      },
+      {
+        "id": "webnovel",
+        "name": "WebNovel",
+        "url": "https://www.webnovel.com",
+        "description": "Official platform for web novels",
+        "logo": "/Assets/Images/sites/webnovel.png",
+        "category": "Web Novels (Premium)",
+        "rating": 8.0,
+        "lastChecked": "2024-11-16",
+        "features": ["Official", "Large Community", "Original Content"]
+      }
+    ]
+  },
+  "productive": {
+    "development": [
+      {
+        "id": "github",
+        "name": "GitHub",
+        "url": "https://github.com",
+        "description": "World's leading software development platform",
+        "logo": "/Assets/Images/sites/github.png",
+        "category": "Development",
+        "rating": 10,
+        "lastChecked": "2024-11-16",
+        "features": ["Version Control", "Collaboration", "CI/CD", "Free Hosting"]
+      },
+      {
+        "id": "vercel",
+        "name": "Vercel",
+        "url": "https://vercel.com",
+        "description": "Best platform for deploying Next.js applications",
+        "logo": "/Assets/Images/sites/vercel.png",
+        "category": "Deployment",
+        "rating": 9.5,
+        "lastChecked": "2024-11-16",
+        "features": ["Instant Deploy", "Edge Network", "Analytics", "Free Tier"]
+      },
+      {
+        "id": "netlify",
+        "name": "Netlify",
+        "url": "https://www.netlify.com",
+        "description": "Modern web deployment and hosting",
+        "logo": "/Assets/Images/sites/netlify.png",
+        "category": "Deployment",
+        "rating": 9.0,
+        "lastChecked": "2024-11-16",
+        "features": ["Continuous Deploy", "Forms", "Functions", "Free SSL"]
+      }
+    ],
+    "ai": [
+      {
+        "id": "claude",
+        "name": "Claude AI",
+        "url": "https://claude.ai",
+        "description": "Advanced AI assistant by Anthropic",
+        "logo": "/Assets/Images/sites/claude.png",
+        "category": "AI Assistant",
+        "rating": 10,
+        "lastChecked": "2024-11-16",
+        "features": ["Long Context", "Artifact Creation", "Ethical AI", "Pro Tier"]
+      }
+    ],
+    "productivity": [
+      {
+        "id": "notion",
+        "name": "Notion",
+        "url": "https://www.notion.so",
+        "description": "All-in-one workspace for notes, docs, and projects",
+        "logo": "/Assets/Images/sites/notion.png",
+        "category": "Productivity",
+        "rating": 9.5,
+        "lastChecked": "2024-11-16",
+        "features": ["Databases", "Wiki", "Projects", "Collaboration"]
+      }
+    ],
+    "design": [
+      {
+        "id": "pexels",
+        "name": "Pexels",
+        "url": "https://www.pexels.com",
+        "description": "Free stock photos and videos",
+        "logo": "/Assets/Images/sites/pexels.png",
+        "category": "Design Resources",
+        "rating": 9.0,
+        "lastChecked": "2024-11-16",
+        "features": ["Free", "High Quality", "No Attribution", "API Available"]
+      }
+    ]
+  }
+}
