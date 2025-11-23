@@ -7,6 +7,7 @@ module.exports = {
   words: [
     // Project-specific terms
     'lorebound',
+    'lore',
     'lorebounds',
     'luxury',
     'nobility',
@@ -61,8 +62,11 @@ module.exports = {
     'luxnav',
     'hoverable',
     'cardgrid',
-    'searchbar',
-    ''
+    'Searchbar',
+    'Sidebar',
+    'Navbar',
+    'Footer',
+    
   ],
   ignorePaths: [
     '**/node_modules/**',

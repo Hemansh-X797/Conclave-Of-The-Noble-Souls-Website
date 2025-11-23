@@ -348,7 +348,7 @@ const ALL_BADGES = [
     category: 'milestone',
     rarity: 'epic',
     description: 'Century of contributions. A pillar of the community.',
-    requirements: ['100 posts', '100 reactions given']
+    requirements: ['100 attachment posts(non-GIF)', '100 reactions given']
   },
   {
     id: 'ancient-noble',
@@ -357,13 +357,13 @@ const ALL_BADGES = [
     category: 'milestone',
     rarity: 'legendary',
     description: 'Ancient member of The Conclave. Your legacy is eternal.',
-    requirements: ['1 year membership', '1000+ contributions']
+    requirements: ['1 year membership', 'Duke Role']
   },
 
   // Special Badges
   {
-    id: 'founder',
-    name: 'Founder',
+    id: 'originals',
+    name: 'OG',
     icon: '🏛️',
     category: 'special',
     rarity: 'mythic',
@@ -389,13 +389,13 @@ const ALL_BADGES = [
     requirements: ['Organize 5 community events']
   },
   {
-    id: 'helper',
-    name: 'Noble Helper',
+    id: 'immortal-venerable',
+    name: 'Immortal Venerable',
     icon: '🤝',
     category: 'special',
     rarity: 'rare',
     description: 'Always ready to assist. Your kindness is valued.',
-    requirements: ['Help 50 members']
+    requirements: ['get reputation of 100 members + 3 mods + one admin']
   },
 
   // Admin Badges
@@ -409,8 +409,8 @@ const ALL_BADGES = [
     requirements: ['Moderator role']
   },
   {
-    id: 'grand-duke',
-    name: 'Grand Duke',
+    id: 'minister',
+    name: 'Minister',
     icon: '♖',
     category: 'admin',
     rarity: 'legendary',
@@ -422,7 +422,7 @@ const ALL_BADGES = [
     name: 'Sovereign',
     icon: '♔',
     category: 'admin',
-    rarity: 'mythic',
+    rarity: 'unique',
     description: 'Supreme ruler of The Conclave. The founder and leader.',
     requirements: ['Owner role']
   },

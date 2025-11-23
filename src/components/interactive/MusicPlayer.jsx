@@ -300,6 +300,11 @@ const DEFAULT_PLAYLIST = [
     title: 'Calm Waters',
     artist: 'Nature Sounds',
     url: 'https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3'
+  },
+  {
+    title: 'Chubina',
+    artist: 'East Duo (Dio Brando In Disguise)',
+    url: '@public/Audio/MusicPlayer/Chubina.mp3'
   }
 ];
 
