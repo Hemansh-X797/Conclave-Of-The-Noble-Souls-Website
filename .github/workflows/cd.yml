@@ -1,9 +1,9 @@
-name: Deploy to Staging
+name: CD - Deploy to Production
 
 on:
   push:
     branches:
-      - 'staging'
+      - main
 
 jobs:
   deploy:
@@ -22,14 +22,13 @@ jobs:
         run: npm install
 
       - name: Build the project
-        run: npm run build  # Build the project for production
+        run: npm run build  # Build the Next.js project
 
-    #   - name: Deploy to Vercel (Staging)
+    #   - name: Deploy to Vercel
     #     env:
-    #       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Vercel token for staging
+    #       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Set in GitHub secrets
     #       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     #       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     #     run: |
     #       npm i -g vercel
-    #       vercel --confirm  # Deploy to staging
-
+    #       vercel --prod --confirm  # Deploy to production

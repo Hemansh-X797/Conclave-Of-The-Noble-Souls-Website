@@ -1,24 +1,38 @@
-# name: Code Quality Check
+name: Code Quality - Linting and Formatting
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+  pull_request:
+    branches:
+      - main
 
-# jobs:
-#   lint:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: '14'
-#       - name: Install dependencies
-#         run: npm install
-#       - name: Run ESLint
-#         run: npm run lint
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint (Linting)
+        run: npm run lint  # ESLint
+
+      - name: Run Stylelint (CSS/SCSS Linting)
+        run: npm run stylelint  # Stylelint
+
+      - name: Run Prettier (Formatting Check)
+        run: npm run check-format  # Prettier
+
+      - name: Run Vitest (Unit Tests)
+        run: npm run vitest:watch  # Watch for changes (for dev use)
