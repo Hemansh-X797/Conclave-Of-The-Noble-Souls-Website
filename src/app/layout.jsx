@@ -177,9 +177,8 @@ import {
 import '@/styles/globals.css';
 import '@/styles/design_system.css';
 import '@/styles/typography.css';
-import '@/styles/luxury.css';
 import '@/styles/buttons.css';
-import '@/styles/glasscards.css';
+import '@/styles/glasscard.css';
 import '@/styles/inputs.css';
 import '@/styles/navbar.css';
 import '@/styles/superbuttons.css';
@@ -1604,4 +1603,6 @@ function GlobalStyles() {
 // ============================================================================
 // EXPORTS
 // ============================================================================
-export { viewport };
+// 'viewport' is already exported where it was declared as:
+// export const viewport = { ... };
+// No additional export here to avoid a duplicate export error.
