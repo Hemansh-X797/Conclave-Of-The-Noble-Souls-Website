@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { TextFlameButton, TextDimButton } from './LuxuryButton';
+import { TextFlameButton, TextDimButton } from '@/components/ui/LuxuryButton';
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
@@ -148,9 +148,7 @@ const PathRecommend = ({
   // MEMOIZED VALUES
   // ═══════════════════════════════════════════════════════════════════════
   
-  const pathwayConfig = useMemo(() => {
-    return PATHWAY_CONFIG[pathway] || PATHWAY_CONFIG.gaming;
-  }, [pathway]);
+  const pathwayConfig = useMemo(() => PATHWAY_CONFIG[pathway] || PATHWAY_CONFIG.gaming, [pathway]);
 
   const filteredRecommendations = useMemo(() => {
     let filtered = recommendations.filter(rec => !dismissedIds.has(rec.id));
@@ -228,7 +226,9 @@ const PathRecommend = ({
   // ═══════════════════════════════════════════════════════════════════════
   
   const renderFilters = () => {
-    if (!showFilters) return null;
+    if (!showFilters) {
+return null;
+}
 
     const filters = [
       { key: 'all', label: 'All', icon: '🎯' },
@@ -262,7 +262,9 @@ const PathRecommend = ({
   };
 
   const renderReasonBadge = (reason) => {
-    if (!showReasons || !reason) return null;
+    if (!showReasons || !reason) {
+return null;
+}
 
     const reasonConfig = REASON_LABELS[reason] || REASON_LABELS.recommended;
 
@@ -387,8 +389,7 @@ const PathRecommend = ({
     );
   };
 
-  const renderEmptyState = () => {
-    return (
+  const renderEmptyState = () => (
       <div className="path-recommend__empty" data-cursor="default">
         <div className="path-recommend__empty-icon">🎯</div>
         <h3 className="path-recommend__empty-title">No Recommendations Yet</h3>
@@ -397,10 +398,8 @@ const PathRecommend = ({
         </p>
       </div>
     );
-  };
 
-  const renderLoadingState = () => {
-    return (
+  const renderLoadingState = () => (
       <div className="path-recommend__loading" data-cursor="default">
         {[...Array(3)].map((_, i) => (
           <div key={i} className="path-recommend__skeleton">
@@ -414,7 +413,6 @@ const PathRecommend = ({
         ))}
       </div>
     );
-  };
 
   // ═══════════════════════════════════════════════════════════════════════
   // MAIN RENDER

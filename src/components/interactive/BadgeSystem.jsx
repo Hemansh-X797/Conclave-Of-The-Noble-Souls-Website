@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ' @/styles/interactive.css';
+import '@/styles/interactive.css';
 
 const BadgeSystem = ({
   earnedBadges = [],
@@ -487,19 +487,13 @@ const ALL_BADGES = [
 ];
 
 // Utility function to get badges by category
-export const getBadgesByCategory = (category) => {
-  return ALL_BADGES.filter(badge => badge.category === category);
-};
+export const getBadgesByCategory = (category) => ALL_BADGES.filter(badge => badge.category === category);
 
 // Utility function to get badges by rarity
-export const getBadgesByRarity = (rarity) => {
-  return ALL_BADGES.filter(badge => badge.rarity === rarity);
-};
+export const getBadgesByRarity = (rarity) => ALL_BADGES.filter(badge => badge.rarity === rarity);
 
 // Utility function to get badges by pathway
-export const getBadgesByPathway = (pathway) => {
-  return ALL_BADGES.filter(badge => badge.pathway === pathway);
-};
+export const getBadgesByPathway = (pathway) => ALL_BADGES.filter(badge => badge.pathway === pathway);
 
 export { ALL_BADGES };
 export default BadgeSystem;

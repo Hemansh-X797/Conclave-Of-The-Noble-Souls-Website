@@ -112,7 +112,9 @@ const ContentManager = ({
       setError(null);
 
       const res = await fetch('/api/admin/content?includeStats=true');
-      if (!res.ok) throw new Error('Failed to fetch content');
+      if (!res.ok) {
+throw new Error('Failed to fetch content');
+}
 
       const data = await res.json();
       setContents(data.contents || []);
@@ -198,7 +200,9 @@ const ContentManager = ({
           body: formData
         });
 
-        if (!res.ok) throw new Error('Upload failed');
+        if (!res.ok) {
+throw new Error('Upload failed');
+}
 
         const data = await res.json();
         uploadedMedia.push({
@@ -274,7 +278,9 @@ const ContentManager = ({
         }
       );
 
-      if (!res.ok) throw new Error('Failed to save content');
+      if (!res.ok) {
+throw new Error('Failed to save content');
+}
 
       const savedContent = await res.json();
 
@@ -302,14 +308,18 @@ const ContentManager = ({
 
   const handleDelete = async (contentId) => {
     const confirmed = confirm('Are you sure you want to delete this content? This action cannot be undone.');
-    if (!confirmed) return;
+    if (!confirmed) {
+return;
+}
 
     try {
       const res = await fetch(`/api/admin/content/${contentId}`, {
         method: 'DELETE'
       });
 
-      if (!res.ok) throw new Error('Failed to delete content');
+      if (!res.ok) {
+throw new Error('Failed to delete content');
+}
 
       setContents(prev => prev.filter(c => c.id !== contentId));
       alert('Content deleted successfully');

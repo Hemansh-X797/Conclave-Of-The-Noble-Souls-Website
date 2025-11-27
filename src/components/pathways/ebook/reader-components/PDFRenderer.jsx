@@ -99,13 +99,17 @@ export default function PDFRenderer({
   const applyBionicReading = useCallback(() => {
     try {
       const textLayer = document.querySelector('.react-pdf__Page__textContent');
-      if (!textLayer) return;
+      if (!textLayer) {
+return;
+}
 
       const textElements = textLayer.querySelectorAll('span');
       
       textElements.forEach(span => {
         const text = span.textContent;
-        if (!text || text.length < 2) return;
+        if (!text || text.length < 2) {
+return;
+}
 
         const boldLength = Math.ceil(text.length / 2);
         const boldPart = text.substring(0, boldLength);
@@ -123,7 +127,9 @@ export default function PDFRenderer({
   // ============================================
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+return;
+}
 
       if (e.key === 'PageUp' && currentPage > 0) {
         onPageChange?.(currentPage - 1);

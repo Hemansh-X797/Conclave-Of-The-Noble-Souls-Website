@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import '@/styles/content.css';
-import { TextFlameButton, TextDimButton, NobleButton } from '@/ui/Luxurybutton';
+import { TextFlameButton, TextDimButton, NobleButton } from '@/components/ui/Luxurybutton';
 
 const EventCard = ({
   event,
@@ -52,10 +52,14 @@ const EventCard = ({
 
   // 3D tilt effect on mouse move
   useEffect(() => {
-    if (!animated || !cardRef.current) return;
+    if (!animated || !cardRef.current) {
+return;
+}
 
     const handleMouseMove = (e) => {
-      if (!isHovered) return;
+      if (!isHovered) {
+return;
+}
       
       const card = cardRef.current;
       const rect = card.getBoundingClientRect();
@@ -212,14 +216,18 @@ const EventCard = ({
   };
 
   const formatDuration = (duration) => {
-    if (typeof duration === 'string') return duration;
+    if (typeof duration === 'string') {
+return duration;
+}
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
     return hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
   };
 
   const getParticipantLimit = () => {
-    if (!event.maxParticipants) return null;
+    if (!event.maxParticipants) {
+return null;
+}
     const percentage = (participantCount / event.maxParticipants) * 100;
     return { total: event.maxParticipants, percentage };
   };

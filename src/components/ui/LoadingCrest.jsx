@@ -10,7 +10,9 @@ const LoadingCrest = ({
   const spinnerRef = useRef(null);
 
   useEffect(() => {
-    if (!spinnerRef.current) return;
+    if (!spinnerRef.current) {
+return;
+}
     
     let rotation = 0;
     let animationId;
@@ -123,7 +125,9 @@ const LoadingCrest = ({
 };
 
 export const LoadingOverlay = ({ isVisible, ...props }) => {
-  if (!isVisible) return null;
+  if (!isVisible) {
+return null;
+}
   
   return (
     <div style={{

@@ -69,9 +69,15 @@ export default function SiteGrid({
         const savedSort = localStorage.getItem('site-grid-sort');
         const savedOrder = localStorage.getItem('site-grid-order');
         
-        if (savedView) setViewMode(savedView);
-        if (savedSort) setSortBy(savedSort);
-        if (savedOrder) setSortOrder(savedOrder);
+        if (savedView) {
+setViewMode(savedView);
+}
+        if (savedSort) {
+setSortBy(savedSort);
+}
+        if (savedOrder) {
+setSortOrder(savedOrder);
+}
         
         setLoading(false);
       } catch (error) {
@@ -197,7 +203,9 @@ export default function SiteGrid({
   // ============================================
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+return;
+}
 
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();

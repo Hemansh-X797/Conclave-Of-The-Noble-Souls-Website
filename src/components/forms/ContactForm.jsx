@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { TextFlameButton, TextDimButton } from '@/ui/LuxuryButton';
+import { TextFlameButton, TextDimButton } from '@/components/ui/LuxuryButton';
 
 /**
  * ContactForm Component
@@ -53,30 +53,52 @@ const ContactForm = ({
   const validateField = useCallback((name, value) => {
     switch (name) {
       case 'name':
-        if (!value.trim()) return 'Name is required';
-        if (value.length < 2) return 'Name must be at least 2 characters';
-        if (value.length > 100) return 'Name is too long';
+        if (!value.trim()) {
+return 'Name is required';
+}
+        if (value.length < 2) {
+return 'Name must be at least 2 characters';
+}
+        if (value.length > 100) {
+return 'Name is too long';
+}
         return null;
         
       case 'email':
-        if (!value.trim()) return 'Email is required';
+        if (!value.trim()) {
+return 'Email is required';
+}
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) return 'Invalid email format';
+        if (!emailRegex.test(value)) {
+return 'Invalid email format';
+}
         return null;
         
       case 'subject':
-        if (requireSubject && !value.trim()) return 'Subject is required';
-        if (value.length > 200) return 'Subject is too long';
+        if (requireSubject && !value.trim()) {
+return 'Subject is required';
+}
+        if (value.length > 200) {
+return 'Subject is too long';
+}
         return null;
         
       case 'message':
-        if (!value.trim()) return 'Message is required';
-        if (value.length < 10) return 'Message must be at least 10 characters';
-        if (value.length > maxMessageLength) return `Message exceeds ${maxMessageLength} characters`;
+        if (!value.trim()) {
+return 'Message is required';
+}
+        if (value.length < 10) {
+return 'Message must be at least 10 characters';
+}
+        if (value.length > maxMessageLength) {
+return `Message exceeds ${maxMessageLength} characters`;
+}
         return null;
         
       case 'discordUsername':
-        if (value && value.length > 37) return 'Discord username is too long';
+        if (value && value.length > 37) {
+return 'Discord username is too long';
+}
         return null;
         
       default:
@@ -195,7 +217,9 @@ const ContactForm = ({
   }, []);
   
   const getPathwayClass = () => {
-    if (!pathway) return '';
+    if (!pathway) {
+return '';
+}
     return `contact-form-${pathway}`;
   };
   

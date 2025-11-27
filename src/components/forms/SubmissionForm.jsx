@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { TextFlameButton, TextDimButton } from './LuxuryButton';
+import { TextFlameButton, TextDimButton } from '@/components/ui/LuxuryButton';
 
 /**
  * SubmissionForm Component
@@ -63,27 +63,47 @@ const SubmissionForm = ({
   const validateField = useCallback((name, value) => {
     switch (name) {
       case 'submitterName':
-        if (!value.trim()) return 'Name is required';
+        if (!value.trim()) {
+return 'Name is required';
+}
         return null;
       case 'submitterEmail':
-        if (!value.trim()) return 'Email is required';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Invalid email';
+        if (!value.trim()) {
+return 'Email is required';
+}
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+return 'Invalid email';
+}
         return null;
       case 'contentType':
-        if (!value) return 'Select content type';
+        if (!value) {
+return 'Select content type';
+}
         return null;
       case 'title':
-        if (!value.trim()) return 'Title is required';
-        if (value.length < 5) return 'Title too short';
+        if (!value.trim()) {
+return 'Title is required';
+}
+        if (value.length < 5) {
+return 'Title too short';
+}
         return null;
       case 'description':
-        if (!value.trim()) return 'Description is required';
-        if (value.length < 20) return 'Minimum 20 characters';
+        if (!value.trim()) {
+return 'Description is required';
+}
+        if (value.length < 20) {
+return 'Minimum 20 characters';
+}
         return null;
       case 'contentBody':
         if (formData.contentType === 'article' || formData.contentType === 'guide') {
-          if (!value.trim()) return 'Content is required';
-          if (value.length < 100) return 'Minimum 100 characters for articles/guides';
+          if (!value.trim()) {
+return 'Content is required';
+}
+          if (value.length < 100) {
+return 'Minimum 100 characters for articles/guides';
+}
         }
         return null;
       default:
@@ -94,7 +114,9 @@ const SubmissionForm = ({
   const handleChange = useCallback((e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }));
+    if (errors[name]) {
+setErrors(prev => ({ ...prev, [name]: null }));
+}
   }, [errors]);
   
   const handleFileSelect = useCallback((e) => {
@@ -127,14 +149,18 @@ const SubmissionForm = ({
     const newErrors = {};
     Object.keys(formData).forEach(key => {
       const error = validateField(key, formData[key]);
-      if (error) newErrors[key] = error;
+      if (error) {
+newErrors[key] = error;
+}
     });
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }, [formData, validateField]);
   
   const handleSubmit = async () => {
-    if (!validateForm()) return;
+    if (!validateForm()) {
+return;
+}
     
     setIsSubmitting(true);
     try {
@@ -156,13 +182,17 @@ const SubmissionForm = ({
       
       if (response.ok) {
         setSubmitStatus('success');
-        if (onSuccess) onSuccess(await response.json());
+        if (onSuccess) {
+onSuccess(await response.json());
+}
       } else {
         throw new Error('Failed to submit');
       }
     } catch (error) {
       setSubmitStatus('error');
-      if (onError) onError(error);
+      if (onError) {
+onError(error);
+}
     } finally {
       setIsSubmitting(false);
     }

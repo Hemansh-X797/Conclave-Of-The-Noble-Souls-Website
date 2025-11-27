@@ -35,10 +35,14 @@ export function ParticleTrail({
   }, []);
 
   useEffect(() => {
-    if (!enabled || isMobile) return;
+    if (!enabled || isMobile) {
+return;
+}
 
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+return;
+}
 
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -49,8 +53,7 @@ export function ParticleTrail({
       canvas.height = window.innerHeight;
     };
 
-    const createParticle = (x, y) => {
-      return {
+    const createParticle = (x, y) => ({
         x,
         y,
         vx: (Math.random() - 0.5) * 2,
@@ -58,11 +61,12 @@ export function ParticleTrail({
         life: particleLife,
         color: particleColors[Math.floor(Math.random() * particleColors.length)],
         size: particleSize * (0.5 + Math.random() * 0.5)
-      };
-    };
+      });
 
     const handleMouseMove = (e) => {
-      if (particles.current.length >= particleCount) return;
+      if (particles.current.length >= particleCount) {
+return;
+}
       
       for (let i = 0; i < 2; i++) {
         particles.current.push(createParticle(e.clientX, e.clientY));
@@ -78,7 +82,9 @@ export function ParticleTrail({
         particle.y += particle.vy;
         particle.vy += 0.1; // Gravity
 
-        if (particle.life <= 0) return false;
+        if (particle.life <= 0) {
+return false;
+}
 
         const alpha = particle.life / particleLife;
         ctx.fillStyle = particle.color + Math.floor(alpha * 255).toString(16).padStart(2, '0');
@@ -99,11 +105,15 @@ export function ParticleTrail({
     return () => {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('mousemove', handleMouseMove);
-      if (animationId.current) cancelAnimationFrame(animationId.current);
+      if (animationId.current) {
+cancelAnimationFrame(animationId.current);
+}
     };
   }, [enabled, isMobile, particleCount, particleSize, particleLife, particleColors]);
 
-  if (!enabled || isMobile) return null;
+  if (!enabled || isMobile) {
+return null;
+}
 
   return (
     <canvas
@@ -122,7 +132,6 @@ export function ParticleTrail({
     />
   );
 }
-
 
 // ============================================================================
 // USAGE EXAMPLES

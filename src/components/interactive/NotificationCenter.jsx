@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import ' @/styles/interactive.css';
+import '@styles/interactive.css';
 
 const NotificationCenter = ({
   position = 'bottom-right',
@@ -12,12 +12,12 @@ const NotificationCenter = ({
   const [hoveredId, setHoveredId] = useState(null);
   const timersRef = useRef({});
 
-  useEffect(() => {
+  useEffect(() => 
     // Cleanup timers on unmount
-    return () => {
+     () => {
       Object.values(timersRef.current).forEach(timer => clearTimeout(timer));
-    };
-  }, []);
+    }
+  , []);
 
   const addNotification = useCallback((notification) => {
     const id = Date.now() + Math.random();
@@ -65,7 +65,9 @@ const NotificationCenter = ({
 
   const resumeTimer = useCallback((id, remainingTime) => {
     const notification = notifications.find(n => n.id === id);
-    if (!notification || notification.duration <= 0) return;
+    if (!notification || notification.duration <= 0) {
+return;
+}
 
     timersRef.current[id] = setTimeout(() => {
       removeNotification(id);
@@ -133,7 +135,9 @@ const NotificationToast = ({
       classes.push(notification.type);
     }
     
-    if (isExiting) classes.push('exit');
+    if (isExiting) {
+classes.push('exit');
+}
     
     return classes.join(' ');
   };
@@ -263,78 +267,60 @@ const getNotificationInstance = () => {
 
 // Public API
 export const notify = {
-  success: (message, options = {}) => {
-    return addNotificationToQueue({
+  success: (message, options = {}) => addNotificationToQueue({
       type: 'success',
       message,
       ...options
-    });
-  },
+    }),
 
-  error: (message, options = {}) => {
-    return addNotificationToQueue({
+  error: (message, options = {}) => addNotificationToQueue({
       type: 'error',
       message,
       duration: options.duration || 7000,
       ...options
-    });
-  },
+    }),
 
-  warning: (message, options = {}) => {
-    return addNotificationToQueue({
+  warning: (message, options = {}) => addNotificationToQueue({
       type: 'warning',
       message,
       ...options
-    });
-  },
+    }),
 
-  info: (message, options = {}) => {
-    return addNotificationToQueue({
+  info: (message, options = {}) => addNotificationToQueue({
       type: 'info',
       message,
       ...options
-    });
-  },
+    }),
 
-  gaming: (message, options = {}) => {
-    return addNotificationToQueue({
+  gaming: (message, options = {}) => addNotificationToQueue({
       pathway: 'gaming',
       message,
       ...options
-    });
-  },
+    }),
 
-  lorebound: (message, options = {}) => {
-    return addNotificationToQueue({
+  lorebound: (message, options = {}) => addNotificationToQueue({
       pathway: 'lorebound',
       message,
       ...options
-    });
-  },
+    }),
 
-  productive: (message, options = {}) => {
-    return addNotificationToQueue({
+  productive: (message, options = {}) => addNotificationToQueue({
       pathway: 'productive',
       message,
       ...options
-    });
-  },
+    }),
 
-  news: (message, options = {}) => {
-    return addNotificationToQueue({
+  news: (message, options = {}) => addNotificationToQueue({
       pathway: 'news',
       message,
       ...options
-    });
-  },
+    }),
 
-  custom: (options) => {
-    return addNotificationToQueue(options);
-  }
+  custom: (options) => addNotificationToQueue(options)
 };
 
 // Queue system for notifications
-let notificationQueue = [];
+const notificationQueue = [];
 let queueProcessor = null;
 
 const addNotificationToQueue = (notification) => {
@@ -344,7 +330,9 @@ const addNotificationToQueue = (notification) => {
 };
 
 const processQueue = () => {
-  if (queueProcessor) return;
+  if (queueProcessor) {
+return;
+}
   
   queueProcessor = setInterval(() => {
     if (notificationQueue.length > 0) {
@@ -389,9 +377,7 @@ export const useNotifications = () => {
 export const useNotificationCenter = (centerRef) => {
   useEffect(() => {
     if (centerRef && centerRef.current) {
-      window.__notificationCenter = (notification) => {
-        return centerRef.current.addNotification(notification);
-      };
+      window.__notificationCenter = (notification) => centerRef.current.addNotification(notification);
     }
 
     return () => {
@@ -401,8 +387,7 @@ export const useNotificationCenter = (centerRef) => {
 };
 
 // Example usage component
-export const NotificationExample = () => {
-  return (
+export const NotificationExample = () => (
     <div style={{ padding: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
       <button onClick={() => notify.success('Operation completed successfully!')}>
         Success
@@ -441,6 +426,5 @@ export const NotificationExample = () => {
       </button>
     </div>
   );
-};
 
 export default NotificationCenter;

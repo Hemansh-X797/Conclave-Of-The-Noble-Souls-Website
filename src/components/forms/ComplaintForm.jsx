@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { TextFlameButton, TextDimButton } from './LuxuryButton';
+import { TextFlameButton, TextDimButton } from '@/components/ui/LuxuryButton';
 
 /**
  * ComplaintForm Component
@@ -55,21 +55,35 @@ const ComplaintForm = ({
   const validateField = useCallback((name, value) => {
     switch (name) {
       case 'reporterUsername':
-        if (!formData.anonymous && !value.trim()) return 'Username is required';
+        if (!formData.anonymous && !value.trim()) {
+return 'Username is required';
+}
         return null;
       case 'reporterEmail':
-        if (!value.trim()) return 'Email is required';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Invalid email';
+        if (!value.trim()) {
+return 'Email is required';
+}
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+return 'Invalid email';
+}
         return null;
       case 'reportedUsername':
-        if (!value.trim()) return 'Reported username is required';
+        if (!value.trim()) {
+return 'Reported username is required';
+}
         return null;
       case 'violationType':
-        if (!value) return 'Select violation type';
+        if (!value) {
+return 'Select violation type';
+}
         return null;
       case 'description':
-        if (!value.trim()) return 'Description is required';
-        if (value.length < 50) return 'Minimum 50 characters required';
+        if (!value.trim()) {
+return 'Description is required';
+}
+        if (value.length < 50) {
+return 'Minimum 50 characters required';
+}
         return null;
       default:
         return null;
@@ -79,7 +93,9 @@ const ComplaintForm = ({
   const handleChange = useCallback((e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }));
+    if (errors[name]) {
+setErrors(prev => ({ ...prev, [name]: null }));
+}
   }, [errors]);
   
   const handleFileSelect = useCallback((e) => {
@@ -99,14 +115,18 @@ const ComplaintForm = ({
     const newErrors = {};
     Object.keys(formData).forEach(key => {
       const error = validateField(key, formData[key]);
-      if (error) newErrors[key] = error;
+      if (error) {
+newErrors[key] = error;
+}
     });
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }, [formData, validateField]);
   
   const handleSubmit = async () => {
-    if (!validateForm()) return;
+    if (!validateForm()) {
+return;
+}
     
     setIsSubmitting(true);
     try {
@@ -122,13 +142,17 @@ const ComplaintForm = ({
       
       if (response.ok) {
         setSubmitStatus('success');
-        if (onSuccess) onSuccess(await response.json());
+        if (onSuccess) {
+onSuccess(await response.json());
+}
       } else {
         throw new Error('Failed to submit complaint');
       }
     } catch (error) {
       setSubmitStatus('error');
-      if (onError) onError(error);
+      if (onError) {
+onError(error);
+}
     } finally {
       setIsSubmitting(false);
     }

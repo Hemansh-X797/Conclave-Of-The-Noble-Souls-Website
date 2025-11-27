@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ' @/styles/interactive.css';
+import '@/styles/interactive.css';
 
 const MusicPlayer = ({
   playlist = DEFAULT_PLAYLIST,
@@ -139,7 +139,9 @@ const MusicPlayer = ({
   };
 
   const formatTime = (seconds) => {
-    if (!seconds || isNaN(seconds)) return '0:00';
+    if (!seconds || isNaN(seconds)) {
+return '0:00';
+}
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
@@ -150,19 +152,21 @@ const MusicPlayer = ({
   };
 
   const getVolumeIcon = () => {
-    if (volume === 0) return '🔇';
-    if (volume < 0.5) return '🔉';
+    if (volume === 0) {
+return '🔇';
+}
+    if (volume < 0.5) {
+return '🔉';
+}
     return '🔊';
   };
 
-  useEffect(() => {
-    return () => {
+  useEffect(() => () => {
       stopProgressTracking();
       if (audioRef.current) {
         audioRef.current.pause();
       }
-    };
-  }, []);
+    }, []);
 
   if (isMinimized) {
     return (

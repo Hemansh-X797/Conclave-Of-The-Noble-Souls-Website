@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { TextFlameButton, TextDimButton } from '@/ui/Luxurybutton';
+import { TextFlameButton, TextDimButton } from '@/components/ui/Luxurybutton';
 
 /**
  * AnnouncementBanner Component
@@ -51,7 +51,9 @@ const AnnouncementBanner = ({
   
   // Auto-dismiss timer
   useEffect(() => {
-    if (!autoDismiss || dismissed) return;
+    if (!autoDismiss || dismissed) {
+return;
+}
     
     timeoutRef.current = setTimeout(() => {
       handleDismiss();
@@ -94,7 +96,9 @@ const AnnouncementBanner = ({
   }, [id, onActionClick, handleDismiss]);
   
   // Don't render if dismissed
-  if (dismissed) return null;
+  if (dismissed) {
+return null;
+}
   
   // Generate classes
   const classes = [
@@ -103,7 +107,9 @@ const AnnouncementBanner = ({
     isExiting ? 'exit' : ''
   ];
   
-  if (className) classes.push(className);
+  if (className) {
+classes.push(className);
+}
   
   return (
     <div
@@ -188,7 +194,9 @@ export const AnnouncementBannerStack = ({
     }
   }, [onDismiss]);
   
-  if (activeAnnouncements.length === 0) return null;
+  if (activeAnnouncements.length === 0) {
+return null;
+}
   
   return (
     <div 
@@ -233,21 +241,13 @@ export const useAnnouncements = (initialAnnouncements = []) => {
   }, []);
   
   // Priority shortcuts
-  const info = useCallback((message, options = {}) => {
-    return addAnnouncement({ priority: 'info', message, ...options });
-  }, [addAnnouncement]);
+  const info = useCallback((message, options = {}) => addAnnouncement({ priority: 'info', message, ...options }), [addAnnouncement]);
   
-  const important = useCallback((message, options = {}) => {
-    return addAnnouncement({ priority: 'important', message, ...options });
-  }, [addAnnouncement]);
+  const important = useCallback((message, options = {}) => addAnnouncement({ priority: 'important', message, ...options }), [addAnnouncement]);
   
-  const critical = useCallback((message, options = {}) => {
-    return addAnnouncement({ priority: 'critical', message, ...options });
-  }, [addAnnouncement]);
+  const critical = useCallback((message, options = {}) => addAnnouncement({ priority: 'critical', message, ...options }), [addAnnouncement]);
   
-  const emergency = useCallback((message, options = {}) => {
-    return addAnnouncement({ priority: 'emergency', message, ...options });
-  }, [addAnnouncement]);
+  const emergency = useCallback((message, options = {}) => addAnnouncement({ priority: 'emergency', message, ...options }), [addAnnouncement]);
   
   return {
     announcements,

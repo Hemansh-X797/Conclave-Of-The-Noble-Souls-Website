@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { TextFlameButton, TextDimButton } from '@/ui/LuxuryButton';
+import { TextFlameButton, TextDimButton } from '@/components/ui/LuxuryButton';
 
 /**
  * ApplicationForm Component
@@ -121,8 +121,12 @@ const ApplicationForm = ({
     
     switch (step) {
       case 1: // Basic Information
-        if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
-        if (!formData.discordUsername.trim()) newErrors.discordUsername = 'Discord username is required';
+        if (!formData.fullName.trim()) {
+newErrors.fullName = 'Full name is required';
+}
+        if (!formData.discordUsername.trim()) {
+newErrors.discordUsername = 'Discord username is required';
+}
         if (!formData.email.trim()) {
           newErrors.email = 'Email is required';
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -135,12 +139,18 @@ const ApplicationForm = ({
         } else if (parseInt(formData.age) > 100) {
           newErrors.age = 'Invalid age';
         }
-        if (!formData.timezone) newErrors.timezone = 'Timezone is required';
+        if (!formData.timezone) {
+newErrors.timezone = 'Timezone is required';
+}
         break;
         
       case 2: // Role & Experience
-        if (!formData.desiredRole) newErrors.desiredRole = 'Please select a role';
-        if (!formData.experienceYears) newErrors.experienceYears = 'Experience level is required';
+        if (!formData.desiredRole) {
+newErrors.desiredRole = 'Please select a role';
+}
+        if (!formData.experienceYears) {
+newErrors.experienceYears = 'Experience level is required';
+}
         if (formData.previousStaffExp && !formData.previousServers.trim()) {
           newErrors.previousServers = 'Please provide details';
         }
@@ -296,9 +306,7 @@ const ApplicationForm = ({
   };
   
   // Progress calculation
-  const progress = useMemo(() => {
-    return (currentStep / totalSteps) * 100;
-  }, [currentStep]);
+  const progress = useMemo(() => (currentStep / totalSteps) * 100, [currentStep]);
   
   // Render step indicator
   const renderStepIndicator = () => (

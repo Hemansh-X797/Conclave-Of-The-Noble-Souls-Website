@@ -115,7 +115,9 @@ export default function BookmarkPanel({
   // HANDLERS
   // ============================================
   const handleAddBookmark = useCallback(() => {
-    if (!onAddBookmark) return;
+    if (!onAddBookmark) {
+return;
+}
 
     playClick();
     
@@ -137,7 +139,9 @@ export default function BookmarkPanel({
   }, [playClick, currentPage, newNote, newColor, onAddBookmark]);
 
   const handleUpdateBookmark = useCallback((bookmark) => {
-    if (!onUpdateBookmark) return;
+    if (!onUpdateBookmark) {
+return;
+}
 
     playClick();
 
@@ -154,7 +158,9 @@ export default function BookmarkPanel({
   }, [playClick, editNote, editColor, onUpdateBookmark]);
 
   const handleDeleteBookmark = useCallback((bookmarkId) => {
-    if (!onDeleteBookmark) return;
+    if (!onDeleteBookmark) {
+return;
+}
 
     playClick();
     

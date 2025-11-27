@@ -87,9 +87,15 @@ export default function EBookGrid({
         const savedSortBy = localStorage.getItem('ebook-sort-by');
         const savedSortOrder = localStorage.getItem('ebook-sort-order');
         
-        if (savedViewMode) setViewMode(savedViewMode);
-        if (savedSortBy) setSortBy(savedSortBy);
-        if (savedSortOrder) setSortOrder(savedSortOrder);
+        if (savedViewMode) {
+setViewMode(savedViewMode);
+}
+        if (savedSortBy) {
+setSortBy(savedSortBy);
+}
+        if (savedSortOrder) {
+setSortOrder(savedSortOrder);
+}
         
         setLoading(false);
       } catch (error) {
@@ -1241,17 +1247,23 @@ function Pagination({ currentPage, totalPages, onPageChange, playHover }) {
       }
     } else {
       if (currentPage <= 4) {
-        for (let i = 1; i <= 5; i++) pages.push(i);
+        for (let i = 1; i <= 5; i++) {
+pages.push(i);
+}
         pages.push('...');
         pages.push(totalPages);
       } else if (currentPage >= totalPages - 3) {
         pages.push(1);
         pages.push('...');
-        for (let i = totalPages - 4; i <= totalPages; i++) pages.push(i);
+        for (let i = totalPages - 4; i <= totalPages; i++) {
+pages.push(i);
+}
       } else {
         pages.push(1);
         pages.push('...');
-        for (let i = currentPage - 1; i <= currentPage + 1; i++) pages.push(i);
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+pages.push(i);
+}
         pages.push('...');
         pages.push(totalPages);
       }

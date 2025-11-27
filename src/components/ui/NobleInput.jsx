@@ -101,19 +101,35 @@ const NobleInput = forwardRef(({
     }
     
     let strength = 0;
-    if (password.length >= 8) strength++;
-    if (password.length >= 12) strength++;
-    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
-    if (/\d/.test(password)) strength++;
-    if (/[^a-zA-Z0-9]/.test(password)) strength++;
+    if (password.length >= 8) {
+strength++;
+}
+    if (password.length >= 12) {
+strength++;
+}
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) {
+strength++;
+}
+    if (/\d/.test(password)) {
+strength++;
+}
+    if (/[^a-zA-Z0-9]/.test(password)) {
+strength++;
+}
 
-    if (strength <= 2) setPasswordStrength('weak');
-    else if (strength <= 4) setPasswordStrength('medium');
-    else setPasswordStrength('strong');
+    if (strength <= 2) {
+setPasswordStrength('weak');
+} else if (strength <= 4) {
+setPasswordStrength('medium');
+} else {
+setPasswordStrength('strong');
+}
   };
 
   const applyMask = useCallback((value, maskPattern) => {
-    if (!maskPattern) return value;
+    if (!maskPattern) {
+return value;
+}
     
     const cleaned = value.replace(/\D/g, '');
     
@@ -195,8 +211,7 @@ const NobleInput = forwardRef(({
     
     if (previewFiles) {
       const previews = await Promise.all(
-        validFiles.map(file => {
-          return new Promise((resolve) => {
+        validFiles.map(file => new Promise((resolve) => {
             if (file.type.startsWith('image/')) {
               const reader = new FileReader();
               reader.onload = (e) => resolve({ file, preview: e.target.result, type: 'image' });
@@ -204,8 +219,7 @@ const NobleInput = forwardRef(({
             } else {
               resolve({ file, preview: null, type: 'file' });
             }
-          });
-        })
+          }))
       );
       setFilePreviews(previews);
     }
@@ -296,9 +310,15 @@ const NobleInput = forwardRef(({
   );
 
   const getStateClass = () => {
-    if (error) return 'error';
-    if (success) return 'success';
-    if (warning) return 'warning';
+    if (error) {
+return 'error';
+}
+    if (success) {
+return 'success';
+}
+    if (warning) {
+return 'warning';
+}
     return '';
   };
 
@@ -330,7 +350,9 @@ const NobleInput = forwardRef(({
   ].filter(Boolean).join(' ');
 
   const renderPasswordToggle = () => {
-    if (type !== 'password' || !showPasswordToggle) return null;
+    if (type !== 'password' || !showPasswordToggle) {
+return null;
+}
     
     return (
       <button
@@ -347,7 +369,9 @@ const NobleInput = forwardRef(({
   };
 
   const renderPasswordStrength = () => {
-    if (type !== 'password' || !showStrengthMeter || !internalValue) return null;
+    if (type !== 'password' || !showStrengthMeter || !internalValue) {
+return null;
+}
     
     return (
       <div className="noble-password-strength">
@@ -360,7 +384,9 @@ const NobleInput = forwardRef(({
   };
 
   const renderClearButton = () => {
-    if (!showClearButton || !hasValue || disabled || readOnly) return null;
+    if (!showClearButton || !hasValue || disabled || readOnly) {
+return null;
+}
     
     return (
       <button
@@ -377,7 +403,9 @@ const NobleInput = forwardRef(({
   };
 
   const renderCharacterCount = () => {
-    if (!showCharacterCount || !maxLength) return null;
+    if (!showCharacterCount || !maxLength) {
+return null;
+}
     
     const count = internalValue?.toString().length || 0;
     const percentage = (count / maxLength) * 100;
@@ -389,8 +417,7 @@ const NobleInput = forwardRef(({
     );
   };
 
-  const renderFileUpload = () => {
-    return (
+  const renderFileUpload = () => (
       <div
         className={`noble-file-upload ${isDragOver ? 'drag-over' : ''} ${files.length > 0 ? 'has-file' : ''}`}
         onDragOver={handleDragOver}
@@ -429,10 +456,11 @@ const NobleInput = forwardRef(({
         )}
       </div>
     );
-  };
 
   const renderFilePreviews = () => {
-    if (!previewFiles || filePreviews.length === 0) return null;
+    if (!previewFiles || filePreviews.length === 0) {
+return null;
+}
     
     return (
       <div className="noble-file-preview">
@@ -465,8 +493,7 @@ const NobleInput = forwardRef(({
     );
   };
 
-  const renderTagsInput = () => {
-    return (
+  const renderTagsInput = () => (
       <div className="noble-tags-container" onClick={() => inputRef.current?.focus()}>
         {internalTags.map((tag, index) => (
           <div key={index} className="noble-tag">
@@ -511,7 +538,6 @@ const NobleInput = forwardRef(({
         )}
       </div>
     );
-  };
 
   const renderInput = () => {
     if (type === 'file') {

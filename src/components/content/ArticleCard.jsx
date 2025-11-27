@@ -116,11 +116,21 @@ const ArticleCard = ({
     const diffTime = Math.abs(now - date);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     
-    if (diffDays === 0) return 'Today';
-    if (diffDays === 1) return 'Yesterday';
-    if (diffDays < 7) return `${diffDays} days ago`;
-    if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-    if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+    if (diffDays === 0) {
+return 'Today';
+}
+    if (diffDays === 1) {
+return 'Yesterday';
+}
+    if (diffDays < 7) {
+return `${diffDays} days ago`;
+}
+    if (diffDays < 30) {
+return `${Math.floor(diffDays / 7)} weeks ago`;
+}
+    if (diffDays < 365) {
+return `${Math.floor(diffDays / 30)} months ago`;
+}
     return date.toLocaleDateString('en-US', { 
       year: 'numeric', 
       month: 'long', 
@@ -130,15 +140,21 @@ const ArticleCard = ({
   
   // Format stats numbers
   const formatNumber = (num) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-    if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+    if (num >= 1000000) {
+return `${(num / 1000000).toFixed(1)}M`;
+}
+    if (num >= 1000) {
+return `${(num / 1000).toFixed(1)}K`;
+}
     return num.toString();
   };
   
   // Get pathway class
   const getPathwayClass = useCallback(() => {
     const articlePathway = pathway || a.pathway;
-    if (!articlePathway) return '';
+    if (!articlePathway) {
+return '';
+}
     
     const pathwayMap = {
       gaming: 'gaming-realm',
@@ -155,31 +171,55 @@ const ArticleCard = ({
     const classes = ['article-card'];
     
     // Variant classes
-    if (variant !== 'standard') classes.push(`ac-${variant}`);
+    if (variant !== 'standard') {
+classes.push(`ac-${variant}`);
+}
     
     // Size classes
-    if (size !== 'md') classes.push(`ac-size-${size}`);
+    if (size !== 'md') {
+classes.push(`ac-size-${size}`);
+}
     
     // Layout classes
-    if (layout === 'horizontal') classes.push('ac-horizontal');
+    if (layout === 'horizontal') {
+classes.push('ac-horizontal');
+}
     
     // State classes
-    if (loading) classes.push('ac-loading');
-    if (isHovered) classes.push('ac-hovered');
-    if (isExpanded) classes.push('ac-expanded');
-    if (a.featured) classes.push('featured');
+    if (loading) {
+classes.push('ac-loading');
+}
+    if (isHovered) {
+classes.push('ac-hovered');
+}
+    if (isExpanded) {
+classes.push('ac-expanded');
+}
+    if (a.featured) {
+classes.push('featured');
+}
     
     // Effect classes
-    if (animated) classes.push('ac-animated');
-    if (shimmer) classes.push('content-card-shimmer');
-    if (glow) classes.push('ac-glow');
+    if (animated) {
+classes.push('ac-animated');
+}
+    if (shimmer) {
+classes.push('content-card-shimmer');
+}
+    if (glow) {
+classes.push('ac-glow');
+}
     
     // Pathway theming
     const pathwayClass = getPathwayClass();
-    if (pathwayClass) classes.push(pathwayClass);
+    if (pathwayClass) {
+classes.push(pathwayClass);
+}
     
     // Custom className
-    if (className) classes.push(className);
+    if (className) {
+classes.push(className);
+}
     
     return classes.join(' ');
   }, [variant, size, layout, loading, isHovered, isExpanded, a.featured, 
@@ -187,7 +227,9 @@ const ArticleCard = ({
   
   // Handle mouse events
   const handleMouseEnter = useCallback(() => {
-    if (!hoverable) return;
+    if (!hoverable) {
+return;
+}
     setIsHovered(true);
   }, [hoverable]);
   
@@ -197,7 +239,9 @@ const ArticleCard = ({
   
   // Handle click
   const handleClick = useCallback((e) => {
-    if (!clickable) return;
+    if (!clickable) {
+return;
+}
     
     if (onClick) {
       onClick(a, e);
@@ -230,7 +274,9 @@ const ArticleCard = ({
   
   // Render thumbnail
   const renderThumbnail = () => {
-    if (!showThumbnail || !a.thumbnail) return null;
+    if (!showThumbnail || !a.thumbnail) {
+return null;
+}
     
     return (
       <div className="article-card-thumbnail" ref={thumbnailRef}>
@@ -258,7 +304,9 @@ const ArticleCard = ({
   
   // Render category badge
   const renderCategory = () => {
-    if (!showCategory || !a.category) return null;
+    if (!showCategory || !a.category) {
+return null;
+}
     
     return (
       <span
@@ -284,7 +332,9 @@ const ArticleCard = ({
   
   // Render excerpt
   const renderExcerpt = () => {
-    if (!showExcerpt || !a.excerpt) return null;
+    if (!showExcerpt || !a.excerpt) {
+return null;
+}
     
     return (
       <p className="article-card-excerpt">
@@ -295,7 +345,9 @@ const ArticleCard = ({
   
   // Render tags
   const renderTags = () => {
-    if (!showTags || !a.tags || a.tags.length === 0) return null;
+    if (!showTags || !a.tags || a.tags.length === 0) {
+return null;
+}
     
     return (
       <div className="article-card-tags">
@@ -315,7 +367,9 @@ const ArticleCard = ({
   
   // Render author info
   const renderAuthor = () => {
-    if (!showAuthor || !a.author) return null;
+    if (!showAuthor || !a.author) {
+return null;
+}
     
     return (
       <div 
@@ -346,7 +400,9 @@ const ArticleCard = ({
   
   // Render stats
   const renderStats = () => {
-    if (!showStats || !a.stats) return null;
+    if (!showStats || !a.stats) {
+return null;
+}
     
     const statIcons = {
       views: '👁️',
@@ -358,7 +414,9 @@ const ArticleCard = ({
     return (
       <div className="article-card-stats">
         {Object.entries(a.stats).map(([key, value]) => {
-          if (value === 0 && key !== 'views') return null;
+          if (value === 0 && key !== 'views') {
+return null;
+}
           
           return (
             <div key={key} className="article-card-stat">

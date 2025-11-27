@@ -50,15 +50,21 @@ const AdvancedNobleCursor = ({
 
   // Pathway detection system
   const detectPathway = useCallback((element) => {
-    if (!element) return 'default';
+    if (!element) {
+return 'default';
+}
     
     // Check for explicit pathway data attributes
     const pathwayAttr = element.dataset?.pathway || element.closest('[data-pathway]')?.dataset?.pathway;
-    if (pathwayAttr) return pathwayAttr;
+    if (pathwayAttr) {
+return pathwayAttr;
+}
     
     // Check for pathway class names
     const pathwayClass = element.className?.match(/pathway-(gaming|lorebound|productive|news)/)?.[1];
-    if (pathwayClass) return pathwayClass;
+    if (pathwayClass) {
+return pathwayClass;
+}
     
     // Check parent elements
     const pathwayParent = element.closest('.pathway-gaming, .pathway-lorebound, .pathway-productive, .pathway-news');
@@ -71,10 +77,14 @@ const AdvancedNobleCursor = ({
 
   // Enhanced particle creation system
   const createParticle = useCallback((x, y, pathway = 'default') => {
-    if (!enableParticles || isMobile || performanceMode) return;
+    if (!enableParticles || isMobile || performanceMode) {
+return;
+}
     
     const existingParticles = document.querySelectorAll('.cursor-particle-active');
-    if (existingParticles.length > particleCount) return;
+    if (existingParticles.length > particleCount) {
+return;
+}
 
     let particle;
     
@@ -101,7 +111,9 @@ const AdvancedNobleCursor = ({
       
       // Auto cleanup
       setTimeout(() => {
-        if (particle.parentNode) particle.remove();
+        if (particle.parentNode) {
+particle.remove();
+}
       }, 2500);
     }
   }, [enableParticles, particleCount, isMobile, performanceMode]);
@@ -295,7 +307,9 @@ const AdvancedNobleCursor = ({
 
   // Click feedback system
   const createClickFeedback = useCallback((x, y, pathway = 'default') => {
-    if (!enableClickFeedback || isMobile) return;
+    if (!enableClickFeedback || isMobile) {
+return;
+}
     
     const ring = document.createElement('div');
     ring.className = `cursor-click-ring ${pathway}`;
@@ -310,7 +324,9 @@ const AdvancedNobleCursor = ({
     
     // Auto cleanup
     setTimeout(() => {
-      if (ring.parentNode) ring.remove();
+      if (ring.parentNode) {
+ring.remove();
+}
     }, 600);
   }, [enableClickFeedback, isMobile]);
 
@@ -325,10 +341,12 @@ const AdvancedNobleCursor = ({
 
   // Enhanced cursor position and state management
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobile) {
+return;
+}
 
-    let targetPos = { x: 0, y: 0 };
-    let currentPos = { x: 0, y: 0 };
+    const targetPos = { x: 0, y: 0 };
+    const currentPos = { x: 0, y: 0 };
     let particleTimer = 0;
     let trailTimer = 0;
 
@@ -463,12 +481,24 @@ const AdvancedNobleCursor = ({
     };
 
     const hideAllCursors = () => {
-      if (defaultDotRef.current) defaultDotRef.current.style.opacity = '0';
-      if (defaultRingRef.current) defaultRingRef.current.style.opacity = '0';
-      if (gamingCursorRef.current) gamingCursorRef.current.style.opacity = '0';
-      if (loreboundCursorRef.current) loreboundCursorRef.current.style.opacity = '0';
-      if (productiveCursorRef.current) productiveCursorRef.current.style.opacity = '0';
-      if (newsCursorRef.current) newsCursorRef.current.style.opacity = '0';
+      if (defaultDotRef.current) {
+defaultDotRef.current.style.opacity = '0';
+}
+      if (defaultRingRef.current) {
+defaultRingRef.current.style.opacity = '0';
+}
+      if (gamingCursorRef.current) {
+gamingCursorRef.current.style.opacity = '0';
+}
+      if (loreboundCursorRef.current) {
+loreboundCursorRef.current.style.opacity = '0';
+}
+      if (productiveCursorRef.current) {
+productiveCursorRef.current.style.opacity = '0';
+}
+      if (newsCursorRef.current) {
+newsCursorRef.current.style.opacity = '0';
+}
     };
 
     const updateDefaultCursor = (immediate, smooth) => {
@@ -492,8 +522,12 @@ const AdvancedNobleCursor = ({
         
         // Apply state classes
         let className = 'conclave-cursor-gaming';
-        if (isHoveringButton) className += ' hover-button';
-        if (isClicking) className += ' clicking';
+        if (isHoveringButton) {
+className += ' hover-button';
+}
+        if (isClicking) {
+className += ' clicking';
+}
         
         gamingCursorRef.current.className = className;
       }
@@ -506,7 +540,9 @@ const AdvancedNobleCursor = ({
         
         // Apply state classes
         let className = 'conclave-cursor-lorebound';
-        if (cursorState === 'hover' || isHoveringButton) className += ' hover';
+        if (cursorState === 'hover' || isHoveringButton) {
+className += ' hover';
+}
         
         loreboundCursorRef.current.className = className;
       }
@@ -519,8 +555,12 @@ const AdvancedNobleCursor = ({
         
         // Apply state classes
         let className = 'conclave-cursor-productive';
-        if (cursorState === 'hover' || isHoveringButton) className += ' hover';
-        if (isClicking) className += ' clicking';
+        if (cursorState === 'hover' || isHoveringButton) {
+className += ' hover';
+}
+        if (isClicking) {
+className += ' clicking';
+}
         
         productiveCursorRef.current.className = className;
       }
@@ -533,8 +573,12 @@ const AdvancedNobleCursor = ({
         
         // Apply state classes
         let className = 'conclave-cursor-news';
-        if (cursorState === 'hover' || isHoveringButton) className += ' hover';
-        if (isClicking) className += ' clicking';
+        if (cursorState === 'hover' || isHoveringButton) {
+className += ' hover';
+}
+        if (isClicking) {
+className += ' clicking';
+}
         
         newsCursorRef.current.className = className;
       }
@@ -575,7 +619,9 @@ const AdvancedNobleCursor = ({
 
   // Cleanup particles periodically
   useEffect(() => {
-    if (isMobile || performanceMode) return;
+    if (isMobile || performanceMode) {
+return;
+}
     
     const cleanupInterval = setInterval(() => {
       const particles = document.querySelectorAll('.cursor-particle-active');
@@ -591,7 +637,9 @@ const AdvancedNobleCursor = ({
   }, [isMobile, performanceMode]);
 
   // Don't render on mobile
-  if (isMobile) return null;
+  if (isMobile) {
+return null;
+}
 
   return (
     <>

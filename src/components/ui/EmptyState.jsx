@@ -60,7 +60,9 @@ const EmptyState = ({
   // RENDER ACTION BUTTON
   // ==========================================================================
   const renderAction = () => {
-    if (!action) return null;
+    if (!action) {
+return null;
+}
 
     if (action.href) {
       return (

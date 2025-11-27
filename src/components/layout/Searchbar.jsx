@@ -158,7 +158,9 @@ const Searchbar = ({
           { signal: abortController.current.signal }
         );
         
-        if (!response.ok) throw new Error('Search failed');
+        if (!response.ok) {
+throw new Error('Search failed');
+}
         
         const data = await response.json();
         setResults(data.results || []);
@@ -215,20 +217,26 @@ const Searchbar = ({
   
   const handleInputFocus = useCallback(() => {
     setIsOpen(true);
-    if (onFocus) onFocus();
+    if (onFocus) {
+onFocus();
+}
   }, [onFocus]);
   
   const handleInputBlur = useCallback(() => {
     // Delay to allow click on results
     setTimeout(() => {
-      if (onBlur) onBlur();
+      if (onBlur) {
+onBlur();
+}
     }, 200);
   }, [onBlur]);
   
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     
-    if (!query.trim()) return;
+    if (!query.trim()) {
+return;
+}
     
     // Save to recent searches
     const newRecent = [query, ...recentSearches.filter(s => s !== query)].slice(0, 5);
@@ -271,7 +279,9 @@ const Searchbar = ({
   }, [onClear]);
   
   const handleKeyDown = useCallback((e) => {
-    if (!isOpen || results.length === 0) return;
+    if (!isOpen || results.length === 0) {
+return;
+}
     
     switch (e.key) {
       case 'ArrowDown':
@@ -319,7 +329,9 @@ const Searchbar = ({
   );
   
   const renderClearButton = () => {
-    if (!query) return null;
+    if (!query) {
+return null;
+}
     
     return (
       <button
@@ -336,7 +348,9 @@ const Searchbar = ({
   };
   
   const renderShortcut = () => {
-    if (!showShortcut || query) return null;
+    if (!showShortcut || query) {
+return null;
+}
     
     const isMac = typeof window !== 'undefined' && navigator.platform.toUpperCase().indexOf('MAC') >= 0;
     
@@ -349,13 +363,17 @@ const Searchbar = ({
   };
   
   const renderResults = () => {
-    if (!isOpen) return null;
+    if (!isOpen) {
+return null;
+}
     
     const showRecent = !query && recentSearches.length > 0;
     const showResults = query && results.length > 0;
     const showEmpty = query && !isLoading && results.length === 0;
     
-    if (!showRecent && !showResults && !showEmpty) return null;
+    if (!showRecent && !showResults && !showEmpty) {
+return null;
+}
     
     return (
       <div className="searchbar-dropdown">
@@ -391,7 +409,7 @@ const Searchbar = ({
         
         {isLoading && (
           <div className="searchbar-loading">
-            <div className="spinner"></div>
+            <div className="spinner" />
             <span>Searching...</span>
           </div>
         )}

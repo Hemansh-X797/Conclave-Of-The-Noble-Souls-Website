@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { TextFlameButton, GamingButton, LoreboundButton, ProductiveButton, NewsButton } from './LuxuryButton';
+import { TextFlameButton, GamingButton, LoreboundButton, ProductiveButton, NewsButton } from '@/components/ui/LuxuryButton';
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
@@ -103,8 +103,12 @@ const BADGE_TYPES = {
 // ═══════════════════════════════════════════════════════════════════════════
 
 const formatNumber = (num) => {
-  if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-  if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+  if (num >= 1000000) {
+return `${(num / 1000000).toFixed(1)}M`;
+}
+  if (num >= 1000) {
+return `${(num / 1000).toFixed(1)}K`;
+}
   return num?.toString() || '0';
 };
 
@@ -170,31 +174,25 @@ const PathwayCard = ({
   // MEMOIZED VALUES
   // ═══════════════════════════════════════════════════════════════════════
   
-  const pathwayConfig = useMemo(() => {
-    return PATHWAY_CONFIG[pathway] || PATHWAY_CONFIG.gaming;
-  }, [pathway]);
+  const pathwayConfig = useMemo(() => PATHWAY_CONFIG[pathway] || PATHWAY_CONFIG.gaming, [pathway]);
 
-  const activityConfig = useMemo(() => {
-    return ACTIVITY_LEVELS[activityLevel] || ACTIVITY_LEVELS.medium;
-  }, [activityLevel]);
+  const activityConfig = useMemo(() => ACTIVITY_LEVELS[activityLevel] || ACTIVITY_LEVELS.medium, [activityLevel]);
 
   const badgeConfig = useMemo(() => {
-    if (customBadge) return customBadge;
-    if (badge && BADGE_TYPES[badge]) return BADGE_TYPES[badge];
+    if (customBadge) {
+return customBadge;
+}
+    if (badge && BADGE_TYPES[badge]) {
+return BADGE_TYPES[badge];
+}
     return null;
   }, [badge, customBadge]);
 
-  const displayTitle = useMemo(() => {
-    return title || pathwayConfig.name;
-  }, [title, pathwayConfig]);
+  const displayTitle = useMemo(() => title || pathwayConfig.name, [title, pathwayConfig]);
 
-  const displayDescription = useMemo(() => {
-    return description || pathwayConfig.tagline;
-  }, [description, pathwayConfig]);
+  const displayDescription = useMemo(() => description || pathwayConfig.tagline, [description, pathwayConfig]);
 
-  const displayIcon = useMemo(() => {
-    return icon || pathwayConfig.icon;
-  }, [icon, pathwayConfig]);
+  const displayIcon = useMemo(() => icon || pathwayConfig.icon, [icon, pathwayConfig]);
 
   const ButtonComponent = pathwayConfig.buttonComponent;
 
@@ -251,7 +249,9 @@ const PathwayCard = ({
   // ═══════════════════════════════════════════════════════════════════════
   
   const renderBadge = () => {
-    if (!badgeConfig) return null;
+    if (!badgeConfig) {
+return null;
+}
 
     return (
       <div 
@@ -266,7 +266,9 @@ const PathwayCard = ({
   };
 
   const renderImage = () => {
-    if (!image) return null;
+    if (!image) {
+return null;
+}
 
     return (
       <div className="pathway-card__image-container">
@@ -282,16 +284,16 @@ const PathwayCard = ({
     );
   };
 
-  const renderIcon = () => {
-    return (
+  const renderIcon = () => (
       <div className="pathway-card__icon" data-cursor="default">
         <span className="pathway-card__icon-inner">{displayIcon}</span>
       </div>
     );
-  };
 
   const renderActivity = () => {
-    if (!showActivity) return null;
+    if (!showActivity) {
+return null;
+}
 
     return (
       <div 
@@ -306,7 +308,9 @@ const PathwayCard = ({
   };
 
   const renderStats = () => {
-    if (!showStats) return null;
+    if (!showStats) {
+return null;
+}
 
     const stats = [
       { label: 'Members', value: memberCount, icon: '👥', show: memberCount > 0 },
@@ -314,7 +318,9 @@ const PathwayCard = ({
       { label: 'Events', value: eventCount, icon: '📅', show: eventCount > 0 },
     ].filter(stat => stat.show);
 
-    if (stats.length === 0) return null;
+    if (stats.length === 0) {
+return null;
+}
 
     return (
       <div className="pathway-card__stats" data-cursor="default">
@@ -330,7 +336,9 @@ const PathwayCard = ({
   };
 
   const renderButton = () => {
-    if (!showButton) return null;
+    if (!showButton) {
+return null;
+}
 
     return (
       <div className="pathway-card__button-container">
@@ -346,8 +354,7 @@ const PathwayCard = ({
     );
   };
 
-  const renderContent = () => {
-    return (
+  const renderContent = () => (
       <div className="pathway-card__content">
         {/* Badge */}
         {renderBadge()}
@@ -383,7 +390,6 @@ const PathwayCard = ({
         {renderButton()}
       </div>
     );
-  };
 
   // ═══════════════════════════════════════════════════════════════════════
   // MAIN RENDER

@@ -148,7 +148,9 @@ const Footer = ({
   // ============================================================================
   
   useEffect(() => {
-    if (!footerRef.current) return;
+    if (!footerRef.current) {
+return;
+}
     
     observerRef.current = new IntersectionObserver(
       ([entry]) => {
@@ -170,7 +172,9 @@ const Footer = ({
   // ============================================================================
   
   useEffect(() => {
-    if (!showBackToTop) return;
+    if (!showBackToTop) {
+return;
+}
     
     const handleScroll = () => {
       setShowBackToTopBtn(window.scrollY > 300);
@@ -347,7 +351,9 @@ v
   );
   
   const renderBackToTop = () => {
-    if (!showBackToTop || !showBackToTopBtn) return null;
+    if (!showBackToTop || !showBackToTopBtn) {
+return null;
+}
     
     return (
       <button

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { TextFlameButton } from './LuxuryButton';
+import { TextFlameButton } from '@/components/ui/LuxuryButton';
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
@@ -98,22 +98,22 @@ const MILESTONES = [
 // UTILITY FUNCTIONS
 // ═══════════════════════════════════════════════════════════════════════════
 
-const calculateProgressPercent = (current, required) => {
-  return Math.min((current / required) * 100, 100);
-};
+const calculateProgressPercent = (current, required) => Math.min((current / required) * 100, 100);
 
 const getRankTitle = (level, ranks) => {
   const index = Math.min(Math.floor(level / 20), ranks.length - 1);
   return ranks[index];
 };
 
-const getNextMilestone = (currentLevel) => {
-  return MILESTONES.find(m => m.level > currentLevel) || MILESTONES[MILESTONES.length - 1];
-};
+const getNextMilestone = (currentLevel) => MILESTONES.find(m => m.level > currentLevel) || MILESTONES[MILESTONES.length - 1];
 
 const formatNumber = (num) => {
-  if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-  if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+  if (num >= 1000000) {
+return `${(num / 1000000).toFixed(1)}M`;
+}
+  if (num >= 1000) {
+return `${(num / 1000).toFixed(1)}K`;
+}
   return num?.toString() || '0';
 };
 
@@ -172,30 +172,22 @@ const PathProgress = ({
   // MEMOIZED VALUES
   // ═══════════════════════════════════════════════════════════════════════
   
-  const pathwayConfig = useMemo(() => {
-    return PATHWAY_CONFIG[pathway] || PATHWAY_CONFIG.gaming;
-  }, [pathway]);
+  const pathwayConfig = useMemo(() => PATHWAY_CONFIG[pathway] || PATHWAY_CONFIG.gaming, [pathway]);
 
-  const progressPercent = useMemo(() => {
-    return calculateProgressPercent(displayXP, requiredXP);
-  }, [displayXP, requiredXP]);
+  const progressPercent = useMemo(() => calculateProgressPercent(displayXP, requiredXP), [displayXP, requiredXP]);
 
-  const rankTitle = useMemo(() => {
-    return getRankTitle(level, pathwayConfig.ranks);
-  }, [level, pathwayConfig]);
+  const rankTitle = useMemo(() => getRankTitle(level, pathwayConfig.ranks), [level, pathwayConfig]);
 
-  const nextMilestone = useMemo(() => {
-    return getNextMilestone(level);
-  }, [level]);
+  const nextMilestone = useMemo(() => getNextMilestone(level), [level]);
 
-  const earnedAchievements = useMemo(() => {
-    return achievements
+  const earnedAchievements = useMemo(() => achievements
       .map(id => ACHIEVEMENT_LIBRARY[id])
-      .filter(Boolean);
-  }, [achievements]);
+      .filter(Boolean), [achievements]);
 
   const rankPercentile = useMemo(() => {
-    if (!rank || !totalMembers) return 0;
+    if (!rank || !totalMembers) {
+return 0;
+}
     return Math.round((1 - rank / totalMembers) * 100);
   }, [rank, totalMembers]);
 
@@ -268,7 +260,9 @@ const PathProgress = ({
   // ═══════════════════════════════════════════════════════════════════════
   
   const renderLevel = () => {
-    if (!showLevel) return null;
+    if (!showLevel) {
+return null;
+}
 
     return (
       <div className="path-progress__level-section" data-cursor="default">
@@ -307,7 +301,9 @@ const PathProgress = ({
   };
 
   const renderStreak = () => {
-    if (!showStreak || streak === 0) return null;
+    if (!showStreak || streak === 0) {
+return null;
+}
 
     return (
       <div className="path-progress__streak" data-cursor="default">
@@ -321,7 +317,9 @@ const PathProgress = ({
   };
 
   const renderAchievements = () => {
-    if (!showAchievements || earnedAchievements.length === 0) return null;
+    if (!showAchievements || earnedAchievements.length === 0) {
+return null;
+}
 
     return (
       <div className="path-progress__achievements" data-cursor="default">
@@ -361,7 +359,9 @@ const PathProgress = ({
   };
 
   const renderRank = () => {
-    if (!showRank || !rank || !totalMembers) return null;
+    if (!showRank || !rank || !totalMembers) {
+return null;
+}
 
     return (
       <div className="path-progress__rank" data-cursor="default">
@@ -387,7 +387,9 @@ const PathProgress = ({
   };
 
   const renderMilestone = () => {
-    if (!showMilestone || !nextMilestone) return null;
+    if (!showMilestone || !nextMilestone) {
+return null;
+}
 
     const levelsRemaining = nextMilestone.level - level;
 
@@ -406,7 +408,9 @@ const PathProgress = ({
   };
 
   const renderStats = () => {
-    if (!showStats) return null;
+    if (!showStats) {
+return null;
+}
 
     return (
       <div className="path-progress__stats" data-cursor="default">
@@ -427,7 +431,9 @@ const PathProgress = ({
   };
 
   const renderCelebration = () => {
-    if (!isCelebrating) return null;
+    if (!isCelebrating) {
+return null;
+}
 
     return (
       <div className="path-progress__celebration" aria-hidden="true">

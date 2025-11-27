@@ -72,12 +72,10 @@ const StatusBadge = ({
   // ==========================================================================
   // STATUS TEXT FORMATTING
   // ==========================================================================
-  const formatStatus = (text) => {
-    return text
+  const formatStatus = (text) => text
       .split(/[-_]/)
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
-  };
 
   // ==========================================================================
   // AUTO-DETECT VARIANT FROM STATUS

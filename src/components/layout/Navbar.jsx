@@ -74,10 +74,18 @@ const Navbar = ({
   // ============================================================================
   
   const currentPathway = useMemo(() => {
-    if (pathname.includes('/gaming')) return 'gaming';
-    if (pathname.includes('/lorebound')) return 'lorebound';
-    if (pathname.includes('/productive')) return 'productive';
-    if (pathname.includes('/news')) return 'news';
+    if (pathname.includes('/gaming')) {
+return 'gaming';
+}
+    if (pathname.includes('/lorebound')) {
+return 'lorebound';
+}
+    if (pathname.includes('/productive')) {
+return 'productive';
+}
+    if (pathname.includes('/news')) {
+return 'news';
+}
     return 'default';
   }, [pathname]);
   
@@ -236,13 +244,13 @@ const Navbar = ({
   // ============================================================================
   
   const isActive = useCallback((href) => {
-    if (href === '/') return pathname === '/';
+    if (href === '/') {
+return pathname === '/';
+}
     return pathname.startsWith(href);
   }, [pathname]);
   
-  const isPathwayActive = useMemo(() => {
-    return pathname.startsWith('/pathways');
-  }, [pathname]);
+  const isPathwayActive = useMemo(() => pathname.startsWith('/pathways'), [pathname]);
   
   // ============================================================================
   // EVENT HANDLERS
@@ -278,12 +286,24 @@ const Navbar = ({
   
   const navbarClasses = useMemo(() => {
     const classes = ['navbar-divine'];
-    if (currentPathway !== 'default') classes.push(`pathway-${currentPathway}`);
-    if (scrolled) classes.push('scrolled');
-    if (hidden) classes.push('hidden');
-    if (transparentOnTop && !scrolled) classes.push('nav-transparent');
-    if (mobileOpen) classes.push('mobile-open');
-    if (className) classes.push(className);
+    if (currentPathway !== 'default') {
+classes.push(`pathway-${currentPathway}`);
+}
+    if (scrolled) {
+classes.push('scrolled');
+}
+    if (hidden) {
+classes.push('hidden');
+}
+    if (transparentOnTop && !scrolled) {
+classes.push('nav-transparent');
+}
+    if (mobileOpen) {
+classes.push('mobile-open');
+}
+    if (className) {
+classes.push(className);
+}
     return classes.join(' ');
   }, [currentPathway, scrolled, hidden, transparentOnTop, mobileOpen, className]);
   
@@ -292,7 +312,9 @@ const Navbar = ({
   // ============================================================================
   
   const renderProgressBar = () => {
-    if (!showProgressBar) return null;
+    if (!showProgressBar) {
+return null;
+}
     return (
       <div
         className="navbar-scroll-progress"
@@ -452,9 +474,9 @@ const Navbar = ({
       aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
       aria-expanded={mobileOpen}
     >
-      <span className="navbar-mobile-toggle-bar" aria-hidden="true"></span>
-      <span className="navbar-mobile-toggle-bar" aria-hidden="true"></span>
-      <span className="navbar-mobile-toggle-bar" aria-hidden="true"></span>
+      <span className="navbar-mobile-toggle-bar" aria-hidden="true" />
+      <span className="navbar-mobile-toggle-bar" aria-hidden="true" />
+      <span className="navbar-mobile-toggle-bar" aria-hidden="true" />
     </button>
   );
   

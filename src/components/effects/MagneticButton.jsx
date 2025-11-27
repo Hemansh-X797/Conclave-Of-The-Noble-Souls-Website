@@ -92,7 +92,9 @@ export default function MagneticButton({
   // ========================================================================
 
   useEffect(() => {
-    if (!gsap || !buttonRef.current || disabled || (isMobile && !enableOnMobile)) return;
+    if (!gsap || !buttonRef.current || disabled || (isMobile && !enableOnMobile)) {
+return;
+}
 
     const button = buttonRef.current;
     let rect = button.getBoundingClientRect();
@@ -179,7 +181,9 @@ export default function MagneticButton({
   // ========================================================================
 
   const handleClick = (e) => {
-    if (disabled) return;
+    if (disabled) {
+return;
+}
 
     playClick?.();
 
@@ -194,7 +198,9 @@ export default function MagneticButton({
   };
 
   const handleMouseEnter = () => {
-    if (disabled) return;
+    if (disabled) {
+return;
+}
     setIsHovering(true);
     playHover?.();
   };

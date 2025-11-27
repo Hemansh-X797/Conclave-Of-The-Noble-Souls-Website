@@ -128,7 +128,9 @@ const PathwayNav = ({
   // ============================================================================
   
   const breadcrumbs = useMemo(() => {
-    if (customBreadcrumbs) return customBreadcrumbs;
+    if (customBreadcrumbs) {
+return customBreadcrumbs;
+}
     
     const segments = pathname.split('/').filter(Boolean);
     const crumbs = [
@@ -179,7 +181,9 @@ const PathwayNav = ({
   // ============================================================================
   
   useEffect(() => {
-    if (!sticky) return;
+    if (!sticky) {
+return;
+}
     
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
@@ -213,9 +217,15 @@ const PathwayNav = ({
   
   const pathwayNavClasses = useMemo(() => {
     const classes = ['pathway-nav-divine', `pathway-nav-${pathway}`];
-    if (sticky) classes.push('pathway-nav-sticky');
-    if (scrolled) classes.push('pathway-nav-scrolled');
-    if (className) classes.push(className);
+    if (sticky) {
+classes.push('pathway-nav-sticky');
+}
+    if (scrolled) {
+classes.push('pathway-nav-scrolled');
+}
+    if (className) {
+classes.push(className);
+}
     return classes.join(' ');
   }, [pathway, sticky, scrolled, className]);
   
@@ -224,7 +234,9 @@ const PathwayNav = ({
   // ============================================================================
   
   const renderBackButton = () => {
-    if (!showBackButton) return null;
+    if (!showBackButton) {
+return null;
+}
     
     return (
       <button
@@ -241,7 +253,9 @@ const PathwayNav = ({
   };
   
   const renderBreadcrumbs = () => {
-    if (!showBreadcrumbs || breadcrumbs.length === 0) return null;
+    if (!showBreadcrumbs || breadcrumbs.length === 0) {
+return null;
+}
     
     return (
       <nav className="pathway-nav-breadcrumbs" aria-label="Breadcrumb">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import LoadingCrest from './LoadingCrest';
-import { TextFlameButton, TextDimButton } from './LuxuryButton';
+import LoadingCrest from '@/components/ui/LoadingCrest';
+import { TextFlameButton, TextDimButton } from '@/components/ui/LuxuryButton';
 import {
   hasPermission,
   hasAnyPermission,
@@ -139,11 +139,15 @@ const ERROR_MESSAGES = {
  * Get session from localStorage
  */
 const getSession = () => {
-  if (typeof window === 'undefined') return null;
+  if (typeof window === 'undefined') {
+return null;
+}
   
   try {
     const sessionData = localStorage.getItem(AUTH_CONFIG.sessionKey);
-    if (!sessionData) return null;
+    if (!sessionData) {
+return null;
+}
     
     return JSON.parse(sessionData);
   } catch (error) {
@@ -156,7 +160,9 @@ const getSession = () => {
  * Validate session expiry
  */
 const isSessionValid = (session) => {
-  if (!session || !session.expiresAt) return false;
+  if (!session || !session.expiresAt) {
+return false;
+}
   
   const expiresAt = new Date(session.expiresAt);
   return expiresAt > new Date();
@@ -166,7 +172,9 @@ const isSessionValid = (session) => {
  * Check if session needs refresh
  */
 const needsRefresh = (session) => {
-  if (!session || !session.expiresAt) return false;
+  if (!session || !session.expiresAt) {
+return false;
+}
   
   const expiresAt = new Date(session.expiresAt);
   const now = new Date();
@@ -198,8 +206,12 @@ const getRouteRequirements = (pathname) => {
  * Validate user access
  */
 const validateAccess = (session, requirements) => {
-  if (!session) return ERROR_TYPES.NO_SESSION;
-  if (!isSessionValid(session)) return ERROR_TYPES.SESSION_EXPIRED;
+  if (!session) {
+return ERROR_TYPES.NO_SESSION;
+}
+  if (!isSessionValid(session)) {
+return ERROR_TYPES.SESSION_EXPIRED;
+}
   
   const userRoles = session.roles || [];
   
@@ -310,7 +322,9 @@ const AuthGuard = ({
   const requirements = useMemo(() => {
     // Use route-specific requirements if available
     const routeReqs = getRouteRequirements(pathname);
-    if (routeReqs) return routeReqs;
+    if (routeReqs) {
+return routeReqs;
+}
     
     // Use component prop requirements
     return {
@@ -336,7 +350,9 @@ const AuthGuard = ({
   ]);
 
   const errorInfo = useMemo(() => {
-    if (!error) return null;
+    if (!error) {
+return null;
+}
     return ERROR_MESSAGES[error] || ERROR_MESSAGES[ERROR_TYPES.INSUFFICIENT_PERMISSIONS];
   }, [error]);
 
@@ -412,7 +428,9 @@ const AuthGuard = ({
   ]);
 
   const refreshSession = useCallback(async () => {
-    if (isRefreshing) return;
+    if (isRefreshing) {
+return;
+}
     
     setIsRefreshing(true);
     
@@ -464,7 +482,9 @@ const AuthGuard = ({
 
   // Periodic access check
   useEffect(() => {
-    if (!checkInterval || checkInterval <= 0) return;
+    if (!checkInterval || checkInterval <= 0) {
+return;
+}
     
     const interval = setInterval(() => {
       checkAccess();
@@ -475,7 +495,9 @@ const AuthGuard = ({
 
   // Listen for storage changes (logout in other tabs)
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+return;
+}
     
     const handleStorageChange = (e) => {
       if (e.key === AUTH_CONFIG.sessionKey) {
@@ -492,7 +514,9 @@ const AuthGuard = ({
   // ═══════════════════════════════════════════════════════════════════════
   
   const renderLoading = () => {
-    if (loadingComponent) return loadingComponent;
+    if (loadingComponent) {
+return loadingComponent;
+}
     
     return (
       <div className="auth-guard auth-guard--loading" data-cursor="default">
@@ -510,7 +534,9 @@ const AuthGuard = ({
   };
 
   const renderError = () => {
-    if (errorComponent) return errorComponent;
+    if (errorComponent) {
+return errorComponent;
+}
     
     if (!showError) {
       // Silent redirect
@@ -590,7 +616,9 @@ const AuthGuard = ({
   
   // Error state (access denied)
   if (error) {
-    if (fallback) return fallback;
+    if (fallback) {
+return fallback;
+}
     return renderError();
   }
   

@@ -21,27 +21,29 @@ export function TextScramble({
   const Tag = as;
 
   const scramble = () => {
-    if (isScrambling) return;
+    if (isScrambling) {
+return;
+}
     
     setIsScrambling(true);
     let iteration = 0;
     const textLength = text.length;
 
     const interval = setInterval(() => {
-      setDisplayText((prev) => {
-        return text.split('').map((char, index) => {
+      setDisplayText((prev) => text.split('').map((char, index) => {
           if (index < iteration) {
             return text[index];
           }
           return characters[Math.floor(Math.random() * characters.length)];
-        }).join('');
-      });
+        }).join(''));
 
       if (iteration >= textLength) {
         clearInterval(interval);
         setDisplayText(text);
         setIsScrambling(false);
-        if (onComplete) onComplete();
+        if (onComplete) {
+onComplete();
+}
       }
 
       iteration += 1 / 3;
@@ -179,7 +181,6 @@ export function SlideInSection({ children, ...props }) {
     </BackgroundMaskReveal>
   );
 }
-
 
 // ============================================================================
 // USAGE EXAMPLES

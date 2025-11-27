@@ -79,20 +79,18 @@ const SuperButton = ({
   }, [variant, galleryImages.length]);
   
   // Cleanup on unmount
-  useEffect(() => {
-    return () => {
+  useEffect(() => () => {
       if (slideTimeoutRef.current) {
         clearTimeout(slideTimeoutRef.current);
       }
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
-    };
-  }, [animationId]);
+    }, [animationId]);
   
   // Generate class names based on props
   const generateClassName = useCallback(() => {
-    let classes = ['conclave-superbutton'];
+    const classes = ['conclave-superbutton'];
     
     // Variant-specific classes
     switch (variant) {
@@ -101,14 +99,22 @@ const SuperButton = ({
         break;
       case 'feature':
         classes.push('sb-feature-showcase');
-        if (pathway === 'event') classes.push('sb-feature-event');
-        else if (pathway === 'achievement') classes.push('sb-feature-achievement');
-        else if (pathway === 'gallery') classes.push('sb-feature-gallery');
+        if (pathway === 'event') {
+classes.push('sb-feature-event');
+} else if (pathway === 'achievement') {
+classes.push('sb-feature-achievement');
+} else if (pathway === 'gallery') {
+classes.push('sb-feature-gallery');
+}
         break;
       case 'interactive':
-        if (memberCount !== undefined) classes.push('sb-interactive-discord');
-        else if (stats) classes.push('sb-interactive-stats');
-        else if (galleryImages.length > 0) classes.push('sb-interactive-gallery');
+        if (memberCount !== undefined) {
+classes.push('sb-interactive-discord');
+} else if (stats) {
+classes.push('sb-interactive-stats');
+} else if (galleryImages.length > 0) {
+classes.push('sb-interactive-gallery');
+}
         break;
       case 'compact':
         classes.push('sb-compact');
@@ -126,26 +132,46 @@ const SuperButton = ({
     }
     
     // State classes
-    if (isLoading) classes.push('sb-loading');
-    if (disabled) classes.push('disabled');
+    if (isLoading) {
+classes.push('sb-loading');
+}
+    if (disabled) {
+classes.push('disabled');
+}
     
     // Modifier classes
-    if (fullWidth) classes.push('sb-full-width');
-    if (centered) classes.push('sb-centered');
-    if (noShadow) classes.push('sb-no-shadow');
-    if (noHover) classes.push('sb-no-hover');
-    if (magnetic) classes.push('sb-magnetic');
-    if (debug) classes.push('sb-debug');
+    if (fullWidth) {
+classes.push('sb-full-width');
+}
+    if (centered) {
+classes.push('sb-centered');
+}
+    if (noShadow) {
+classes.push('sb-no-shadow');
+}
+    if (noHover) {
+classes.push('sb-no-hover');
+}
+    if (magnetic) {
+classes.push('sb-magnetic');
+}
+    if (debug) {
+classes.push('sb-debug');
+}
     
     // Custom className
-    if (className) classes.push(className);
+    if (className) {
+classes.push(className);
+}
     
     return classes.join(' ');
   }, [variant, pathway, size, isLoading, disabled, fullWidth, centered, noShadow, noHover, magnetic, debug, className]);
   
   // Handle click events
   const handleClick = useCallback((e) => {
-    if (disabled || isLoading) return;
+    if (disabled || isLoading) {
+return;
+}
     
     if (onClick) {
       onClick(e);
@@ -154,14 +180,20 @@ const SuperButton = ({
   
   // Handle mouse events
   const handleMouseEnter = useCallback((e) => {
-    if (disabled || isLoading) return;
+    if (disabled || isLoading) {
+return;
+}
     setIsHovered(true);
-    if (onMouseEnter) onMouseEnter(e);
+    if (onMouseEnter) {
+onMouseEnter(e);
+}
   }, [disabled, isLoading, onMouseEnter]);
   
   const handleMouseLeave = useCallback((e) => {
     setIsHovered(false);
-    if (onMouseLeave) onMouseLeave(e);
+    if (onMouseLeave) {
+onMouseLeave(e);
+}
   }, [onMouseLeave]);
   
   // Generate data attributes for cursor integration
@@ -185,7 +217,7 @@ const SuperButton = ({
   
   // Generate dynamic styles
   const generateStyle = useCallback(() => {
-    let dynamicStyle = { ...style };
+    const dynamicStyle = { ...style };
     
     // Apply background image if provided
     if (backgroundImage && variant !== 'interactive') {
@@ -329,9 +361,15 @@ const SuperButton = ({
       case 'feature':
         return renderFeatureContent();
       case 'interactive':
-        if (memberCount !== undefined) return renderDiscordContent();
-        if (stats) return renderStatsContent();
-        if (galleryImages.length > 0) return renderGalleryContent();
+        if (memberCount !== undefined) {
+return renderDiscordContent();
+}
+        if (stats) {
+return renderStatsContent();
+}
+        if (galleryImages.length > 0) {
+return renderGalleryContent();
+}
         return renderFeatureContent();
       case 'compact':
         return renderCompactContent();

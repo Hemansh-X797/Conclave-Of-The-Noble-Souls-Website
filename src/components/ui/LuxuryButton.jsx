@@ -62,17 +62,15 @@ const LuxuryButton = ({
   }, [loading]);
   
   // Cleanup ripple timeout
-  useEffect(() => {
-    return () => {
+  useEffect(() => () => {
       if (rippleTimeoutRef.current) {
         clearTimeout(rippleTimeoutRef.current);
       }
-    };
-  }, []);
+    }, []);
   
   // Generate class names based on props
   const generateClassName = () => {
-    let classes = ['conclave-btn'];
+    const classes = ['conclave-btn'];
     
     // Add cursor integration
     classes.push('cursor-hover-target');
@@ -84,21 +82,34 @@ const LuxuryButton = ({
       // Pathway-specific buttons
       switch (pathway) {
         case 'gaming':
-          if (variant.includes('primary')) classes.push('btn-gaming-primary');
-          else if (variant.includes('secondary')) classes.push('btn-gaming-secondary');
-          else if (variant === 'accent') classes.push('btn-gaming-accent');
+          if (variant.includes('primary')) {
+classes.push('btn-gaming-primary');
+} else if (variant.includes('secondary')) {
+classes.push('btn-gaming-secondary');
+} else if (variant === 'accent') {
+classes.push('btn-gaming-accent');
+}
           break;
         case 'lorebound':
-          if (variant.includes('primary')) classes.push('btn-lorebound-primary');
-          else if (variant.includes('secondary')) classes.push('btn-lorebound-secondary');
-          else if (variant === 'mystical') classes.push('btn-lorebound-mystical');
+          if (variant.includes('primary')) {
+classes.push('btn-lorebound-primary');
+} else if (variant.includes('secondary')) {
+classes.push('btn-lorebound-secondary');
+} else if (variant === 'mystical') {
+classes.push('btn-lorebound-mystical');
+}
           break;
         case 'news':
-          if (variant.includes('primary')) classes.push('btn-news-primary');
-          else if (variant.includes('secondary')) classes.push('btn-news-secondary');
+          if (variant.includes('primary')) {
+classes.push('btn-news-primary');
+} else if (variant.includes('secondary')) {
+classes.push('btn-news-secondary');
+}
           break;
         case 'productive':
-          if (variant.includes('primary')) classes.push('btn-primary-productive');
+          if (variant.includes('primary')) {
+classes.push('btn-primary-productive');
+}
           break;
         default:
           classes.push(`btn-${variant}`);
@@ -124,31 +135,57 @@ const LuxuryButton = ({
     }
     
     // State classes
-    if (isLoading) classes.push('btn-loading');
-    if (disabled) classes.push('disabled');
+    if (isLoading) {
+classes.push('btn-loading');
+}
+    if (disabled) {
+classes.push('disabled');
+}
     
     // Modifier classes
-    if (fullWidth) classes.push('btn-full-width');
-    if (noHover) classes.push('btn-no-hover');
-    if (noShadow) classes.push('btn-no-shadow');
-    if (forceUppercase) classes.push('btn-force-caps');
-    if (forceNormal) classes.push('btn-force-normal');
-    if (debug) classes.push('btn-debug');
+    if (fullWidth) {
+classes.push('btn-full-width');
+}
+    if (noHover) {
+classes.push('btn-no-hover');
+}
+    if (noShadow) {
+classes.push('btn-no-shadow');
+}
+    if (forceUppercase) {
+classes.push('btn-force-caps');
+}
+    if (forceNormal) {
+classes.push('btn-force-normal');
+}
+    if (debug) {
+classes.push('btn-debug');
+}
     
     // Icon classes
-    if (icon && iconPosition === 'left') classes.push('btn-icon-left');
-    if (icon && iconPosition === 'right') classes.push('btn-icon-right');
-    if (icon && iconPosition === 'only') classes.push('btn-icon-only');
+    if (icon && iconPosition === 'left') {
+classes.push('btn-icon-left');
+}
+    if (icon && iconPosition === 'right') {
+classes.push('btn-icon-right');
+}
+    if (icon && iconPosition === 'only') {
+classes.push('btn-icon-only');
+}
     
     // Custom className
-    if (className) classes.push(className);
+    if (className) {
+classes.push(className);
+}
     
     return classes.join(' ');
   };
   
   // Handle click with ripple effect
   const handleClick = (e) => {
-    if (disabled || isLoading) return;
+    if (disabled || isLoading) {
+return;
+}
     
     // Create ripple effect
     if (clickEffect === 'ripple' && buttonRef.current) {
@@ -173,31 +210,45 @@ const LuxuryButton = ({
   
   // Handle mouse events with state management
   const handleMouseEnter = (e) => {
-    if (disabled || isLoading) return;
+    if (disabled || isLoading) {
+return;
+}
     setIsHovered(true);
-    if (onMouseEnter) onMouseEnter(e);
+    if (onMouseEnter) {
+onMouseEnter(e);
+}
   };
   
   const handleMouseLeave = (e) => {
     setIsHovered(false);
     setIsPressed(false);
-    if (onMouseLeave) onMouseLeave(e);
+    if (onMouseLeave) {
+onMouseLeave(e);
+}
   };
   
   const handleMouseDown = (e) => {
-    if (disabled || isLoading) return;
+    if (disabled || isLoading) {
+return;
+}
     setIsPressed(true);
-    if (onMouseDown) onMouseDown(e);
+    if (onMouseDown) {
+onMouseDown(e);
+}
   };
   
   const handleMouseUp = (e) => {
     setIsPressed(false);
-    if (onMouseUp) onMouseUp(e);
+    if (onMouseUp) {
+onMouseUp(e);
+}
   };
   
   // Handle keyboard events for accessibility
   const handleKeyDown = (e) => {
-    if (disabled || isLoading) return;
+    if (disabled || isLoading) {
+return;
+}
     
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -214,7 +265,9 @@ const LuxuryButton = ({
   
   // Render icon
   const renderIcon = () => {
-    if (!icon) return null;
+    if (!icon) {
+return null;
+}
     
     if (typeof icon === 'string') {
       return <span className="conclave-btn-icon" aria-hidden="true">{icon}</span>;
@@ -225,7 +278,7 @@ const LuxuryButton = ({
   
   // Generate dynamic styles
   const generateStyle = () => {
-    let dynamicStyle = { ...style };
+    const dynamicStyle = { ...style };
     
     // Apply glow intensity
     if (glowIntensity === 'subtle' && isHovered) {
@@ -527,9 +580,4 @@ if (typeof window !== 'undefined' && !document.getElementById('conclave-button-r
 }
 
 export default LuxuryButton;
-
-
-
-
-
 

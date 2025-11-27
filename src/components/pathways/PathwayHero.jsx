@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { TextFlameButton, TextDimButton, GamingButton, LoreboundButton, ProductiveButton, NewsButton } from './LuxuryButton';
+import { TextFlameButton, TextDimButton, GamingButton, LoreboundButton, ProductiveButton, NewsButton } from '@/components/ui/LuxuryButton';
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
@@ -97,8 +97,12 @@ const HEIGHT_VARIANTS = {
 // ═══════════════════════════════════════════════════════════════════════════
 
 const formatNumber = (num) => {
-  if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-  if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+  if (num >= 1000000) {
+return `${(num / 1000000).toFixed(1)}M`;
+}
+  if (num >= 1000) {
+return `${(num / 1000).toFixed(1)}K`;
+}
   return num.toString();
 };
 
@@ -170,25 +174,15 @@ const PathwayHero = ({
   // MEMOIZED VALUES
   // ═══════════════════════════════════════════════════════════════════════
   
-  const pathwayConfig = useMemo(() => {
-    return PATHWAY_CONFIG[pathway] || PATHWAY_CONFIG.gaming;
-  }, [pathway]);
+  const pathwayConfig = useMemo(() => PATHWAY_CONFIG[pathway] || PATHWAY_CONFIG.gaming, [pathway]);
 
-  const displayTitle = useMemo(() => {
-    return title || `${pathway.charAt(0).toUpperCase() + pathway.slice(1)} Realm`;
-  }, [title, pathway]);
+  const displayTitle = useMemo(() => title || `${pathway.charAt(0).toUpperCase() + pathway.slice(1)} Realm`, [title, pathway]);
 
-  const displaySubtitle = useMemo(() => {
-    return subtitle || pathwayConfig.tagline;
-  }, [subtitle, pathwayConfig]);
+  const displaySubtitle = useMemo(() => subtitle || pathwayConfig.tagline, [subtitle, pathwayConfig]);
 
-  const activityConfig = useMemo(() => {
-    return ACTIVITY_LEVELS[activityLevel] || ACTIVITY_LEVELS.medium;
-  }, [activityLevel]);
+  const activityConfig = useMemo(() => ACTIVITY_LEVELS[activityLevel] || ACTIVITY_LEVELS.medium, [activityLevel]);
 
-  const heightValue = useMemo(() => {
-    return HEIGHT_VARIANTS[height] || HEIGHT_VARIANTS.full;
-  }, [height]);
+  const heightValue = useMemo(() => HEIGHT_VARIANTS[height] || HEIGHT_VARIANTS.full, [height]);
 
   const ButtonComponent = pathwayConfig.buttonComponent;
 
@@ -223,7 +217,9 @@ const PathwayHero = ({
 
   // Scroll tracking for parallax
   useEffect(() => {
-    if (!parallax) return;
+    if (!parallax) {
+return;
+}
     
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -235,7 +231,9 @@ const PathwayHero = ({
 
   // Mouse tracking for parallax
   useEffect(() => {
-    if (!parallax) return;
+    if (!parallax) {
+return;
+}
     
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
@@ -329,7 +327,9 @@ const PathwayHero = ({
   };
 
   const renderParticles = () => {
-    if (!showParticles || !animated) return null;
+    if (!showParticles || !animated) {
+return null;
+}
 
     return (
       <div className="pathway-hero__particles" aria-hidden="true">
@@ -351,7 +351,9 @@ const PathwayHero = ({
   };
 
   const renderBreadcrumb = () => {
-    if (!showBreadcrumb || breadcrumbItems.length === 0) return null;
+    if (!showBreadcrumb || breadcrumbItems.length === 0) {
+return null;
+}
 
     return (
       <nav className="pathway-hero__breadcrumb" aria-label="Breadcrumb" data-cursor="default">
@@ -381,8 +383,7 @@ const PathwayHero = ({
     );
   };
 
-  const renderTitle = () => {
-    return (
+  const renderTitle = () => (
       <div className="pathway-hero__header">
         <h1 className={`pathway-hero__title ${pathwayConfig.titleClass}`} data-cursor="default">
           {displayTitle}
@@ -399,10 +400,11 @@ const PathwayHero = ({
         )}
       </div>
     );
-  };
 
   const renderStats = () => {
-    if (!showStats) return null;
+    if (!showStats) {
+return null;
+}
 
     const stats = [
       { label: 'Members', value: memberCount, icon: '👥' },
@@ -444,8 +446,7 @@ const PathwayHero = ({
     );
   };
 
-  const renderActions = () => {
-    return (
+  const renderActions = () => (
       <div className="pathway-hero__actions">
         {primaryButton && (
           <ButtonComponent
@@ -478,10 +479,11 @@ const PathwayHero = ({
         )}
       </div>
     );
-  };
 
   const renderScrollIndicator = () => {
-    if (!showScrollIndicator) return null;
+    if (!showScrollIndicator) {
+return null;
+}
 
     return (
       <button

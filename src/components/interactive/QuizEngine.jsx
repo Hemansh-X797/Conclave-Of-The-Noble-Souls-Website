@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ' @/styles/interactive.css';
+import '@/styles/interactive.css';
 
 const QuizEngine = ({
   quizData,

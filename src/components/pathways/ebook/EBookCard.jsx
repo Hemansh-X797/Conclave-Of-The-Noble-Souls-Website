@@ -70,7 +70,9 @@ const EBookCard = ({
   // RATING DISPLAY
   // ==========================================================================
   const renderRating = () => {
-    if (!rating || rating === 0) return null;
+    if (!rating || rating === 0) {
+return null;
+}
 
     const stars = Math.floor(rating / 2); // Convert 10-point to 5-star
     const hasHalfStar = (rating % 2) >= 1;
@@ -122,7 +124,9 @@ const EBookCard = ({
   // RENDER ACTIONS
   // ==========================================================================
   const renderActions = () => {
-    if (variant === 'compact') return null;
+    if (variant === 'compact') {
+return null;
+}
 
     return (
       <div className="ebook-actions">

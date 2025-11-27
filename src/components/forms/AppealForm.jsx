@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { TextFlameButton, TextDimButton } from './LuxuryButton';
+import { TextFlameButton, TextDimButton } from '@/components/ui/LuxuryButton';
 
 /**
  * AppealForm Component
@@ -76,39 +76,63 @@ const AppealForm = ({
   const validateField = useCallback((name, value) => {
     switch (name) {
       case 'discordUsername':
-        if (!value.trim()) return 'Discord username is required';
+        if (!value.trim()) {
+return 'Discord username is required';
+}
         return null;
         
       case 'email':
-        if (!value.trim()) return 'Email is required';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Invalid email format';
+        if (!value.trim()) {
+return 'Email is required';
+}
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+return 'Invalid email format';
+}
         return null;
         
       case 'appealType':
-        if (!value) return 'Please select appeal type';
+        if (!value) {
+return 'Please select appeal type';
+}
         return null;
         
       case 'punishmentDate':
-        if (!value) return 'Punishment date is required';
+        if (!value) {
+return 'Punishment date is required';
+}
         return null;
         
       case 'reason':
-        if (!value.trim()) return 'Original reason is required';
+        if (!value.trim()) {
+return 'Original reason is required';
+}
         return null;
         
       case 'whatHappened':
-        if (!value.trim()) return 'This field is required';
-        if (value.length < 50) return 'Please provide at least 50 characters';
+        if (!value.trim()) {
+return 'This field is required';
+}
+        if (value.length < 50) {
+return 'Please provide at least 50 characters';
+}
         return null;
         
       case 'whyUnfair':
-        if (!value.trim()) return 'This field is required';
-        if (value.length < 30) return 'Please provide at least 30 characters';
+        if (!value.trim()) {
+return 'This field is required';
+}
+        if (value.length < 30) {
+return 'Please provide at least 30 characters';
+}
         return null;
         
       case 'whatChanged':
-        if (!value.trim()) return 'This field is required';
-        if (value.length < 30) return 'Please provide at least 30 characters';
+        if (!value.trim()) {
+return 'This field is required';
+}
+        if (value.length < 30) {
+return 'Please provide at least 30 characters';
+}
         return null;
         
       default:

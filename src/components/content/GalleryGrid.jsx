@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import Image from 'next/image';
-import { TextFlameButton, TextDimButton } from '@/ui/Luxurybutton';
+import { TextFlameButton, TextDimButton } from '@/components/ui/Luxurybutton';
 
 /**
  * GalleryGrid Component
@@ -95,7 +95,9 @@ const GalleryGrid = ({
   
   // Infinite scroll
   useEffect(() => {
-    if (!enableInfiniteScroll || !gridRef.current) return;
+    if (!enableInfiniteScroll || !gridRef.current) {
+return;
+}
     
     const options = {
       root: null,
@@ -127,7 +129,9 @@ const GalleryGrid = ({
   
   // Load more items
   const loadMoreItems = useCallback(() => {
-    if (visibleItems.length >= filteredItems.length) return;
+    if (visibleItems.length >= filteredItems.length) {
+return;
+}
     
     setIsLoading(true);
     
@@ -147,7 +151,9 @@ const GalleryGrid = ({
   
   // Keyboard navigation for lightbox
   useEffect(() => {
-    if (!lightboxOpen) return;
+    if (!lightboxOpen) {
+return;
+}
     
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -165,7 +171,9 @@ const GalleryGrid = ({
   
   // Open lightbox
   const openLightbox = useCallback((index) => {
-    if (!enableLightbox) return;
+    if (!enableLightbox) {
+return;
+}
     setCurrentIndex(index);
     setLightboxOpen(true);
     document.body.style.overflow = 'hidden';
@@ -205,23 +213,35 @@ const GalleryGrid = ({
   const getGridClasses = useCallback(() => {
     const classes = ['gallery-grid-container'];
     
-    if (layout === 'masonry') classes.push('gallery-masonry');
-    else if (layout === 'grid') classes.push(`content-grid content-grid-${columns}`);
-    else if (layout === 'justified') classes.push('gallery-justified');
+    if (layout === 'masonry') {
+classes.push('gallery-masonry');
+} else if (layout === 'grid') {
+classes.push(`content-grid content-grid-${columns}`);
+} else if (layout === 'justified') {
+classes.push('gallery-justified');
+}
     
     const gapClasses = { sm: 'gap-4', md: 'gap-6', lg: 'gap-8' };
     classes.push(gapClasses[gap] || 'gap-6');
     
-    if (pathway) classes.push(`gallery-pathway-${pathway}`);
-    if (className) classes.push(className);
+    if (pathway) {
+classes.push(`gallery-pathway-${pathway}`);
+}
+    if (className) {
+classes.push(className);
+}
     
     return classes.join(' ');
   }, [layout, columns, gap, pathway, className]);
   
   // Get aspect ratio class
   const getAspectClass = useCallback((item) => {
-    if (aspectRatio !== 'auto') return `gallery-item-${aspectRatio}`;
-    if (item.aspectRatio) return `gallery-item-${item.aspectRatio}`;
+    if (aspectRatio !== 'auto') {
+return `gallery-item-${aspectRatio}`;
+}
+    if (item.aspectRatio) {
+return `gallery-item-${item.aspectRatio}`;
+}
     return 'gallery-item-auto';
   }, [aspectRatio]);
   
@@ -267,7 +287,9 @@ const GalleryGrid = ({
                       className="gallery-item-author"
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (onAuthorClick) onAuthorClick(item.author);
+                        if (onAuthorClick) {
+onAuthorClick(item.author);
+}
                       }}
                     >
                       {item.author.avatar && (
@@ -312,7 +334,9 @@ const GalleryGrid = ({
   
   // Render lightbox
   const renderLightbox = () => {
-    if (!lightboxOpen || !filteredItems[currentIndex]) return null;
+    if (!lightboxOpen || !filteredItems[currentIndex]) {
+return null;
+}
     
     const item = filteredItems[currentIndex];
     
@@ -411,7 +435,9 @@ const GalleryGrid = ({
     const pathways = ['gaming', 'lorebound', 'productive', 'news'];
     const categories = [...new Set(items.map(item => item.category).filter(Boolean))];
     
-    if (pathways.length === 0 && categories.length === 0) return null;
+    if (pathways.length === 0 && categories.length === 0) {
+return null;
+}
     
     return (
       <div className="gallery-filters">

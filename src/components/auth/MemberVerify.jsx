@@ -1,7 +1,7 @@
 export default MemberVerify;import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
-import LoadingCrest from './LoadingCrest';
-import { TextFlameButton, TextDimButton } from './LuxuryButton';
+import LoadingCrest from '@/components/ui/LoadingCrest';
+import { TextFlameButton, TextDimButton } from '@/components/ui/LuxuryButton';
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
@@ -51,7 +51,6 @@ import { TextFlameButton, TextDimButton } from './LuxuryButton';
 // ═══════════════════════════════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════════════════════════════
-
 
 const VERIFICATION_STATUS = {
   CHECKING: 'checking',
@@ -109,16 +108,22 @@ const STATUS_MESSAGES = {
  * Get cached membership status
  */
 const getCachedStatus = (userId) => {
-  if (typeof window === 'undefined') return null;
+  if (typeof window === 'undefined') {
+return null;
+}
   
   try {
     const cacheData = localStorage.getItem(VERIFY_CONFIG.cacheKey);
-    if (!cacheData) return null;
+    if (!cacheData) {
+return null;
+}
     
     const cache = JSON.parse(cacheData);
     const userCache = cache[userId];
     
-    if (!userCache) return null;
+    if (!userCache) {
+return null;
+}
     
     const cacheAge = Date.now() - userCache.timestamp;
     if (cacheAge > VERIFY_CONFIG.cacheDuration) {
@@ -136,7 +141,9 @@ const getCachedStatus = (userId) => {
  * Set cached membership status
  */
 const setCachedStatus = (userId, isMember) => {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') {
+return;
+}
   
   try {
     const cacheData = localStorage.getItem(VERIFY_CONFIG.cacheKey) || '{}';
@@ -157,7 +164,9 @@ const setCachedStatus = (userId, isMember) => {
  * Clear membership cache
  */
 const clearCache = (userId = null) => {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') {
+return;
+}
   
   if (userId) {
     try {
@@ -177,11 +186,15 @@ const clearCache = (userId = null) => {
  * Get session from localStorage
  */
 const getSession = () => {
-  if (typeof window === 'undefined') return null;
+  if (typeof window === 'undefined') {
+return null;
+}
   
   try {
     const sessionData = localStorage.getItem('conclave_session');
-    if (!sessionData) return null;
+    if (!sessionData) {
+return null;
+}
     
     const session = JSON.parse(sessionData);
     const expiresAt = new Date(session.expiresAt);
@@ -201,9 +214,7 @@ const getSession = () => {
 /**
  * Calculate retry delay with exponential backoff
  */
-const getRetryDelay = (attempt) => {
-  return VERIFY_CONFIG.retryDelay * Math.pow(2, attempt);
-};
+const getRetryDelay = (attempt) => VERIFY_CONFIG.retryDelay * Math.pow(2, attempt);
 
 // ═══════════════════════════════════════════════════════════════════════════
 // MAIN COMPONENT
@@ -264,9 +275,7 @@ const MemberVerify = ({
   // MEMOIZED VALUES
   // ═══════════════════════════════════════════════════════════════════════
   
-  const statusInfo = useMemo(() => {
-    return STATUS_MESSAGES[status] || STATUS_MESSAGES[VERIFICATION_STATUS.ERROR];
-  }, [status]);
+  const statusInfo = useMemo(() => STATUS_MESSAGES[status] || STATUS_MESSAGES[VERIFICATION_STATUS.ERROR], [status]);
 
   const containerClasses = useMemo(() => {
     const base = 'member-verify';
@@ -276,9 +285,7 @@ const MemberVerify = ({
     return [base, modeClass, statusClass, className].filter(Boolean).join(' ');
   }, [mode, status, className]);
 
-  const canRetry = useMemo(() => {
-    return retryCount < retryAttempts && status === VERIFICATION_STATUS.ERROR;
-  }, [retryCount, retryAttempts, status]);
+  const canRetry = useMemo(() => retryCount < retryAttempts && status === VERIFICATION_STATUS.ERROR, [retryCount, retryAttempts, status]);
 
   // ═══════════════════════════════════════════════════════════════════════
   // HANDLERS
@@ -420,7 +427,9 @@ const MemberVerify = ({
   ]);
 
   const handleAutoInvite = useCallback(async (userSession) => {
-    if (!autoInvite || status === VERIFICATION_STATUS.INVITING) return;
+    if (!autoInvite || status === VERIFICATION_STATUS.INVITING) {
+return;
+}
     
     setStatus(VERIFICATION_STATUS.INVITING);
     
@@ -508,7 +517,9 @@ const MemberVerify = ({
 
   // Periodic recheck
   useEffect(() => {
-    if (!checkInterval || checkInterval <= 0) return;
+    if (!checkInterval || checkInterval <= 0) {
+return;
+}
     
     const interval = setInterval(() => {
       clearCache(session?.userId);
@@ -520,7 +531,9 @@ const MemberVerify = ({
 
   // Listen for storage changes
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+return;
+}
     
     const handleStorageChange = (e) => {
       if (e.key === 'conclave_session') {
@@ -537,7 +550,9 @@ const MemberVerify = ({
   // ═══════════════════════════════════════════════════════════════════════
   
   const renderBadge = () => {
-    if (!showBadge && mode !== 'badge') return null;
+    if (!showBadge && mode !== 'badge') {
+return null;
+}
     
     return (
       <div className="member-verify__badge" data-cursor="default">
@@ -550,7 +565,9 @@ const MemberVerify = ({
   };
 
   const renderLoading = () => {
-    if (loadingContent) return loadingContent;
+    if (loadingContent) {
+return loadingContent;
+}
     
     return (
       <div className="member-verify__loading" data-cursor="default">
@@ -566,7 +583,9 @@ const MemberVerify = ({
   };
 
   const renderVerified = () => {
-    if (verifiedContent) return verifiedContent;
+    if (verifiedContent) {
+return verifiedContent;
+}
     
     return (
       <div className="member-verify__verified" data-cursor="default">
@@ -587,7 +606,9 @@ const MemberVerify = ({
   };
 
   const renderNonMember = () => {
-    if (nonMemberContent) return nonMemberContent;
+    if (nonMemberContent) {
+return nonMemberContent;
+}
     
     return (
       <div className="member-verify__non-member" data-cursor="default">
@@ -616,7 +637,9 @@ const MemberVerify = ({
   };
 
   const renderError = () => {
-    if (errorContent) return errorContent;
+    if (errorContent) {
+return errorContent;
+}
     
     return (
       <div className="member-verify__error" data-cursor="default">
@@ -647,8 +670,7 @@ const MemberVerify = ({
     );
   };
 
-  const renderNoSession = () => {
-    return (
+  const renderNoSession = () => (
       <div className="member-verify__no-session" data-cursor="default">
         <div className="member-verify__no-session-icon">{statusInfo.icon}</div>
         <div className="member-verify__no-session-content">
@@ -662,19 +684,15 @@ const MemberVerify = ({
         </div>
       </div>
     );
-  };
 
-  const renderInviting = () => {
-    return (
+  const renderInviting = () => (
       <div className="member-verify__inviting" data-cursor="default">
         <LoadingCrest size={60} />
         <p className="member-verify__inviting-message">{statusInfo.message}</p>
       </div>
     );
-  };
 
-  const renderInvited = () => {
-    return (
+  const renderInvited = () => (
       <div className="member-verify__invited" data-cursor="default">
         <div className="member-verify__invited-icon">{statusInfo.icon}</div>
         <div className="member-verify__invited-content">
@@ -686,7 +704,6 @@ const MemberVerify = ({
         </div>
       </div>
     );
-  };
 
   // ═══════════════════════════════════════════════════════════════════════
   // MAIN RENDER

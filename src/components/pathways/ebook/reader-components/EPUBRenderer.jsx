@@ -48,7 +48,9 @@ export default function EPUBRenderer({
   // INITIALIZE EPUB
   // ============================================
   useEffect(() => {
-    if (!file?.path || !viewerRef.current) return;
+    if (!file?.path || !viewerRef.current) {
+return;
+}
 
     const initEpub = async () => {
       try {
@@ -156,7 +158,9 @@ export default function EPUBRenderer({
   // APPLY STYLES
   // ============================================
   const applyStyles = useCallback((rend, size, height) => {
-    if (!rend) return;
+    if (!rend) {
+return;
+}
 
     rend.themes.fontSize(`${size}px`);
     
@@ -221,7 +225,9 @@ export default function EPUBRenderer({
   const applyBionicReading = useCallback((rend) => {
     try {
       const iframe = rend.manager.container.querySelector('iframe');
-      if (!iframe || !iframe.contentDocument) return;
+      if (!iframe || !iframe.contentDocument) {
+return;
+}
 
       const doc = iframe.contentDocument;
       const paragraphs = doc.querySelectorAll('p, span, div');
@@ -243,7 +249,9 @@ export default function EPUBRenderer({
         textNodes.forEach(textNode => {
           const words = textNode.textContent.split(/\s+/);
           const newContent = words.map(word => {
-            if (word.length < 2) return word;
+            if (word.length < 2) {
+return word;
+}
             const boldLength = Math.ceil(word.length / 2);
             const boldPart = word.substring(0, boldLength);
             const normalPart = word.substring(boldLength);
@@ -280,7 +288,9 @@ export default function EPUBRenderer({
   // ============================================
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+return;
+}
 
       if (e.key === 'PageUp') {
         e.preventDefault();
@@ -294,7 +304,9 @@ export default function EPUBRenderer({
       } else if (e.key === 'End' && book) {
         e.preventDefault();
         const lastCfi = book.locations.cfiFromLocation(totalLocations - 1);
-        if (lastCfi) rendition?.display(lastCfi);
+        if (lastCfi) {
+rendition?.display(lastCfi);
+}
       }
     };
 

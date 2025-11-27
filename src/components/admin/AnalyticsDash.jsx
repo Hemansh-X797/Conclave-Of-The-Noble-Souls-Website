@@ -98,12 +98,16 @@ const AnalyticsDash = ({
       
       // Fetch Discord stats
       const statsRes = await fetch(`/api/discord/stats?timeRange=${timeRange}`);
-      if (!statsRes.ok) throw new Error('Failed to fetch stats');
+      if (!statsRes.ok) {
+throw new Error('Failed to fetch stats');
+}
       const stats = await statsRes.json();
       
       // Fetch member data
       const membersRes = await fetch(`/api/discord/members?detailed=true`);
-      if (!membersRes.ok) throw new Error('Failed to fetch members');
+      if (!membersRes.ok) {
+throw new Error('Failed to fetch members');
+}
       const members = await membersRes.json();
       
       // Process and set data
@@ -211,13 +215,19 @@ const AnalyticsDash = ({
   // ============================================================================
   
   const formatNumber = (num) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-    if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+    if (num >= 1000000) {
+return `${(num / 1000000).toFixed(1)}M`;
+}
+    if (num >= 1000) {
+return `${(num / 1000).toFixed(1)}K`;
+}
     return num.toString();
   };
   
   const calculatePercentage = (current, previous) => {
-    if (!previous) return 0;
+    if (!previous) {
+return 0;
+}
     return ((current - previous) / previous * 100).toFixed(1);
   };
   
@@ -357,7 +367,9 @@ const AnalyticsDash = ({
   );
   
   const renderModerationStats = () => {
-    if (permissionLevel < PERMISSION_LEVELS.MODERATOR) return null;
+    if (permissionLevel < PERMISSION_LEVELS.MODERATOR) {
+return null;
+}
     
     return (
       <section className="moderation-stats fade-in-up delay-300" style={{ marginTop: '3rem' }}>

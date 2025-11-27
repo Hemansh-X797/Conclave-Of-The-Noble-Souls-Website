@@ -62,30 +62,38 @@ export default function ReadingProgress({
   // ============================================
   // CALCULATIONS
   // ============================================
-  const progressPercentage = useMemo(() => {
-    return Math.min(Math.round((currentPage / totalPages) * 100), 100);
-  }, [currentPage, totalPages]);
+  const progressPercentage = useMemo(() => Math.min(Math.round((currentPage / totalPages) * 100), 100), [currentPage, totalPages]);
 
-  const pagesRemaining = useMemo(() => {
-    return Math.max(totalPages - currentPage, 0);
-  }, [currentPage, totalPages]);
+  const pagesRemaining = useMemo(() => Math.max(totalPages - currentPage, 0), [currentPage, totalPages]);
 
   const estimatedTimeRemaining = useMemo(() => {
-    if (currentPage === 0 || timeSpent === 0) return null;
+    if (currentPage === 0 || timeSpent === 0) {
+return null;
+}
     const avgTimePerPage = timeSpent / currentPage;
     return Math.round(avgTimePerPage * pagesRemaining);
   }, [currentPage, timeSpent, pagesRemaining]);
 
   const readingSpeed = useMemo(() => {
-    if (timeSpent === 0) return 0;
+    if (timeSpent === 0) {
+return 0;
+}
     return Math.round((currentPage / timeSpent) * 60); // pages per hour
   }, [currentPage, timeSpent]);
 
   const readingMood = useMemo(() => {
-    if (readingSpeed === 0) return { label: 'Start Reading', color: '#808080', emoji: '📖' };
-    if (readingSpeed < 20) return { label: 'Deep Focus', color: '#9D4EDD', emoji: '🟣' }; // Violet
-    if (readingSpeed >= 20 && readingSpeed < 40) return { label: 'Normal Pace', color: '#50C878', emoji: '🟢' }; // Green
-    if (readingSpeed >= 40 && readingSpeed < 60) return { label: 'Fast Reader', color: '#00BFFF', emoji: '🔵' }; // Blue
+    if (readingSpeed === 0) {
+return { label: 'Start Reading', color: '#808080', emoji: '📖' };
+}
+    if (readingSpeed < 20) {
+return { label: 'Deep Focus', color: '#9D4EDD', emoji: '🟣' };
+} // Violet
+    if (readingSpeed >= 20 && readingSpeed < 40) {
+return { label: 'Normal Pace', color: '#50C878', emoji: '🟢' };
+} // Green
+    if (readingSpeed >= 40 && readingSpeed < 60) {
+return { label: 'Fast Reader', color: '#00BFFF', emoji: '🔵' };
+} // Blue
     return { label: 'Speed Reading', color: '#FF4500', emoji: '🔴' }; // Red
   }, [readingSpeed]);
 
@@ -102,7 +110,7 @@ export default function ReadingProgress({
     today.setHours(0, 0, 0, 0);
     
     let currentStreak = 0;
-    let checkDate = new Date(today);
+    const checkDate = new Date(today);
     
     const sessionDates = readingSessions
       .map(session => {
@@ -160,7 +168,9 @@ export default function ReadingProgress({
   // CANVAS CONSTELLATION RENDERER
   // ============================================
   useEffect(() => {
-    if (!animationsEnabled || !canvasRef.current || activeView !== 'constellation') return;
+    if (!animationsEnabled || !canvasRef.current || activeView !== 'constellation') {
+return;
+}
     
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -682,7 +692,9 @@ function OverviewView({
   const formatTime = (minutes) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    if (hours > 0) return `${hours}h ${mins}m`;
+    if (hours > 0) {
+return `${hours}h ${mins}m`;
+}
     return `${mins}m`;
   };
 
@@ -928,15 +940,25 @@ function StatsView({
   const formatTime = (minutes) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    if (hours > 0) return `${hours}h ${mins}m`;
+    if (hours > 0) {
+return `${hours}h ${mins}m`;
+}
     return `${mins}m`;
   };
 
   const getReadingLevel = () => {
-    if (currentPage < totalPages * 0.25) return { level: 'Beginner', color: '#808080', icon: '🌱' };
-    if (currentPage < totalPages * 0.5) return { level: 'Progressing', color: '#50C878', icon: '🌿' };
-    if (currentPage < totalPages * 0.75) return { level: 'Advanced', color: '#00BFFF', icon: '🌳' };
-    if (currentPage < totalPages) return { level: 'Master', color: '#9D4EDD', icon: '🎯' };
+    if (currentPage < totalPages * 0.25) {
+return { level: 'Beginner', color: '#808080', icon: '🌱' };
+}
+    if (currentPage < totalPages * 0.5) {
+return { level: 'Progressing', color: '#50C878', icon: '🌿' };
+}
+    if (currentPage < totalPages * 0.75) {
+return { level: 'Advanced', color: '#00BFFF', icon: '🌳' };
+}
+    if (currentPage < totalPages) {
+return { level: 'Master', color: '#9D4EDD', icon: '🎯' };
+}
     return { level: 'Champion', color: '#FFD700', icon: '👑' };
   };
 

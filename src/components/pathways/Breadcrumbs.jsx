@@ -41,7 +41,9 @@ const Breadcrumbs = ({
   // AUTO-GENERATE BREADCRUMB ITEMS FROM PATHNAME
   // ==========================================================================
   const breadcrumbItems = useMemo(() => {
-    if (items) return items;
+    if (items) {
+return items;
+}
 
     // Split pathname into segments
     const segments = pathname.split('/').filter(Boolean);
@@ -114,7 +116,9 @@ const Breadcrumbs = ({
   // ==========================================================================
   
   // Don't show on homepage
-  if (pathname === '/') return null;
+  if (pathname === '/') {
+return null;
+}
 
   // Don't show on main pathway pages (only subpages)
   const isMainPathwayPage = pathname.match(/^\/pathways\/(gaming|lorebound|productive|news)$/);
@@ -128,7 +132,9 @@ const Breadcrumbs = ({
   }
 
   // Must have at least 2 items
-  if (breadcrumbItems.length < 2) return null;
+  if (breadcrumbItems.length < 2) {
+return null;
+}
 
   // ==========================================================================
   // RENDER

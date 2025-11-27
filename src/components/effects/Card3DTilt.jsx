@@ -79,7 +79,9 @@ export default function Card3DTilt({
   // ========================================================================
 
   const calculateTilt = useCallback((e) => {
-    if (!cardRef.current) return { tiltX: 0, tiltY: 0, percentX: 0, percentY: 0 };
+    if (!cardRef.current) {
+return { tiltX: 0, tiltY: 0, percentX: 0, percentY: 0 };
+}
 
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
@@ -106,7 +108,9 @@ export default function Card3DTilt({
   // ========================================================================
 
   const applyTilt = useCallback((tiltX, tiltY, percentX, percentY) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current) {
+return;
+}
 
     // Apply 3D transform
     cardRef.current.style.transform = `
@@ -154,7 +158,9 @@ export default function Card3DTilt({
   // ========================================================================
 
   const resetTilt = useCallback(() => {
-    if (!cardRef.current) return;
+    if (!cardRef.current) {
+return;
+}
 
     cardRef.current.style.transition = `all ${resetSpeed}ms ${easing}`;
     cardRef.current.style.transform = `
@@ -184,14 +190,18 @@ export default function Card3DTilt({
   // ========================================================================
 
   const handleMouseMove = useCallback((e) => {
-    if (isMobile && !enableOnMobile) return;
+    if (isMobile && !enableOnMobile) {
+return;
+}
 
     const { tiltX, tiltY, percentX, percentY } = calculateTilt(e);
     applyTilt(tiltX, tiltY, percentX, percentY);
   }, [isMobile, enableOnMobile, calculateTilt, applyTilt]);
 
   const handleMouseEnter = useCallback((e) => {
-    if (isMobile && !enableOnMobile) return;
+    if (isMobile && !enableOnMobile) {
+return;
+}
 
     setIsHovering(true);
     playHover?.();
@@ -206,7 +216,9 @@ export default function Card3DTilt({
   }, [isMobile, enableOnMobile, speed, easing, playHover, onHoverStart]);
 
   const handleMouseLeave = useCallback((e) => {
-    if (isMobile && !enableOnMobile) return;
+    if (isMobile && !enableOnMobile) {
+return;
+}
 
     setIsHovering(false);
 

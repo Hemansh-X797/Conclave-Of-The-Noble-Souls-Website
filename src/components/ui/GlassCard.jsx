@@ -5,8 +5,8 @@ import Link from 'next/link';
 import '@/styles/glasscard.css';
 
 // Import button systems for integration
-import LuxuryButton, { TextFlameButton, TextDimButton } from '@/ui/Luxurybutton';
-import SuperButton from './SuperButton';
+import LuxuryButton, { TextFlameButton, TextDimButton } from '@/components/ui/Luxurybutton';
+import SuperButton from '@/components/ui/SuperButton';
 
 const GlassCard = ({
   // Core Props
@@ -129,7 +129,7 @@ const GlassCard = ({
   
   // Generate class names
   const generateClassName = useCallback(() => {
-    let classes = ['conclave-glass-card'];
+    const classes = ['conclave-glass-card'];
     
     // Variant classes
     if (variant !== 'default') {
@@ -152,38 +152,82 @@ const GlassCard = ({
     }
     
     // State classes
-    if (isLoading) classes.push('gc-loading');
-    if (hasError) classes.push('gc-error');
-    if (success) classes.push('gc-success');
-    if (disabled) classes.push('gc-disabled');
-    if (isSelected) classes.push('gc-selected');
-    if (isExpanded) classes.push('expanded');
-    if (isDragging) classes.push('gc-dragging');
+    if (isLoading) {
+classes.push('gc-loading');
+}
+    if (hasError) {
+classes.push('gc-error');
+}
+    if (success) {
+classes.push('gc-success');
+}
+    if (disabled) {
+classes.push('gc-disabled');
+}
+    if (isSelected) {
+classes.push('gc-selected');
+}
+    if (isExpanded) {
+classes.push('expanded');
+}
+    if (isDragging) {
+classes.push('gc-dragging');
+}
     
     // Type classes
-    if (type === 'expandable' || expandable) classes.push('gc-expandable');
-    if (draggable) classes.push('gc-draggable');
-    if (type === 'clickable') classes.push('gc-clickable');
+    if (type === 'expandable' || expandable) {
+classes.push('gc-expandable');
+}
+    if (draggable) {
+classes.push('gc-draggable');
+}
+    if (type === 'clickable') {
+classes.push('gc-clickable');
+}
     
     // Visual effect classes
-    if (floating) classes.push('gc-floating');
-    if (glow) classes.push('gc-glow');
-    if (glowIntense) classes.push('gc-glow-intense');
-    if (shimmer) classes.push('gc-shimmer');
-    if (pulse) classes.push('gc-pulse');
-    if (magnetic) classes.push('gc-magnetic');
-    if (tilt) classes.push('gc-tilt');
-    if (parallax) classes.push('gc-parallax');
+    if (floating) {
+classes.push('gc-floating');
+}
+    if (glow) {
+classes.push('gc-glow');
+}
+    if (glowIntense) {
+classes.push('gc-glow-intense');
+}
+    if (shimmer) {
+classes.push('gc-shimmer');
+}
+    if (pulse) {
+classes.push('gc-pulse');
+}
+    if (magnetic) {
+classes.push('gc-magnetic');
+}
+    if (tilt) {
+classes.push('gc-tilt');
+}
+    if (parallax) {
+classes.push('gc-parallax');
+}
     
     // Layout classes
-    if (fullWidth) classes.push('gc-full-width');
-    if (fullHeight) classes.push('gc-full-height');
+    if (fullWidth) {
+classes.push('gc-full-width');
+}
+    if (fullHeight) {
+classes.push('gc-full-height');
+}
     
     // Debug class
-    if (debug) classes.push('gc-debug');
+    if (debug) {
+classes.push('gc-debug');
+}
     
     // Custom className
-    if (className) classes.push(className);
+    if (className) {
+classes.push(className);
+}
     
     return classes.join(' ');
   }, [variant, pathway, size, aspectRatio, isLoading, hasError, success, disabled, 
@@ -193,12 +237,16 @@ const GlassCard = ({
   
   // Handle click events
   const handleClick = useCallback((e) => {
-    if (disabled || isLoading) return;
+    if (disabled || isLoading) {
+return;
+}
     
     if (type === 'expandable' || expandable) {
       const newExpanded = !isExpanded;
       setIsExpanded(newExpanded);
-      if (onExpand) onExpand(newExpanded);
+      if (onExpand) {
+onExpand(newExpanded);
+}
     }
     
     if (onClick) {
@@ -208,31 +256,43 @@ const GlassCard = ({
   
   // Handle mouse events
   const handleMouseEnter = useCallback((e) => {
-    if (disabled || isLoading) return;
+    if (disabled || isLoading) {
+return;
+}
     setIsHovered(true);
-    if (onMouseEnter) onMouseEnter(e);
+    if (onMouseEnter) {
+onMouseEnter(e);
+}
   }, [disabled, isLoading, onMouseEnter]);
   
   const handleMouseLeave = useCallback((e) => {
     setIsHovered(false);
-    if (onMouseLeave) onMouseLeave(e);
+    if (onMouseLeave) {
+onMouseLeave(e);
+}
   }, [onMouseLeave]);
   
   // Handle drag events
   const handleDragStart = useCallback((e) => {
-    if (!draggable || disabled) return;
+    if (!draggable || disabled) {
+return;
+}
     setIsDragging(true);
-    if (onDragStart) onDragStart(e);
+    if (onDragStart) {
+onDragStart(e);
+}
   }, [draggable, disabled, onDragStart]);
   
   const handleDragEnd = useCallback((e) => {
     setIsDragging(false);
-    if (onDragEnd) onDragEnd(e);
+    if (onDragEnd) {
+onDragEnd(e);
+}
   }, [onDragEnd]);
   
   // Generate dynamic styles
   const generateStyle = useCallback(() => {
-    let dynamicStyle = { ...style };
+    const dynamicStyle = { ...style };
     
     // Background image handling
     if (backgroundImage) {
@@ -269,7 +329,9 @@ const GlassCard = ({
   
   // Render card header
   const renderHeader = () => {
-    if (!title && !subtitle && !badge) return null;
+    if (!title && !subtitle && !badge) {
+return null;
+}
     
     return (
       <div className="gc-header">
@@ -367,7 +429,9 @@ const GlassCard = ({
     const hasActions = primaryAction || secondaryActions.length > 0;
     const hasMeta = author || timestamp;
     
-    if (!hasActions && !hasMeta) return null;
+    if (!hasActions && !hasMeta) {
+return null;
+}
     
     return (
       <div className="gc-footer">
@@ -439,7 +503,9 @@ const GlassCard = ({
   
   // Render media content for media cards
   const renderMediaContent = () => {
-    if (variant !== 'media' || !image) return null;
+    if (variant !== 'media' || !image) {
+return null;
+}
     
     return (
       <div className="gc-media-container">
@@ -463,7 +529,9 @@ const GlassCard = ({
   
   // Render profile content for profile cards
   const renderProfileContent = () => {
-    if (variant !== 'profile') return null;
+    if (variant !== 'profile') {
+return null;
+}
     
     return (
       <div className="gc-profile-content">
@@ -487,7 +555,9 @@ const GlassCard = ({
   
   // Render navigation content for navigation cards
   const renderNavigationContent = () => {
-    if (variant !== 'navigation') return null;
+    if (variant !== 'navigation') {
+return null;
+}
     
     return (
       <div className="gc-navigation-content">
@@ -503,7 +573,9 @@ const GlassCard = ({
   
   // Render expand button
   const renderExpandButton = () => {
-    if (!expandable && type !== 'expandable') return null;
+    if (!expandable && type !== 'expandable') {
+return null;
+}
     
     return (
       <button
@@ -512,7 +584,9 @@ const GlassCard = ({
           e.stopPropagation();
           const newExpanded = !isExpanded;
           setIsExpanded(newExpanded);
-          if (onExpand) onExpand(newExpanded);
+          if (onExpand) {
+onExpand(newExpanded);
+}
         }}
         data-cursor="hover"
         aria-label={isExpanded ? 'Collapse card' : 'Expand card'}
@@ -524,7 +598,9 @@ const GlassCard = ({
   
   // Render parallax background
   const renderParallaxBackground = () => {
-    if (!parallax || !backgroundImage) return null;
+    if (!parallax || !backgroundImage) {
+return null;
+}
     
     return (
       <div
@@ -540,7 +616,9 @@ const GlassCard = ({
   
   // Render feature indicator
   const renderFeatureIndicator = () => {
-    if (variant !== 'feature') return null;
+    if (variant !== 'feature') {
+return null;
+}
     
     return <div className="gc-feature-indicator" aria-hidden="true" />;
   };
@@ -883,9 +961,15 @@ export const useCardCollection = (initialCards = []) => {
     // Apply sorting
     if (sortBy !== 'default') {
       filtered.sort((a, b) => {
-        if (sortBy === 'title') return (a.title || '').localeCompare(b.title || '');
-        if (sortBy === 'date') return new Date(b.timestamp || 0) - new Date(a.timestamp || 0);
-        if (sortBy === 'rating') return (b.rating || 0) - (a.rating || 0);
+        if (sortBy === 'title') {
+return (a.title || '').localeCompare(b.title || '');
+}
+        if (sortBy === 'date') {
+return new Date(b.timestamp || 0) - new Date(a.timestamp || 0);
+}
+        if (sortBy === 'rating') {
+return (b.rating || 0) - (a.rating || 0);
+}
         return 0;
       });
     }
@@ -912,9 +996,4 @@ export const useCardCollection = (initialCards = []) => {
 };
 
 export default GlassCard;
-
-
-
-
-
 

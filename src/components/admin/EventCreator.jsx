@@ -165,7 +165,9 @@ const EventCreator = ({
       setError(null);
 
       const res = await fetch('/api/admin/events?includeStats=true');
-      if (!res.ok) throw new Error('Failed to fetch events');
+      if (!res.ok) {
+throw new Error('Failed to fetch events');
+}
 
       const data = await res.json();
       setEvents(data.events || []);
@@ -252,12 +254,24 @@ const EventCreator = ({
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.title.trim()) errors.title = 'Title is required';
-    if (!formData.description.trim()) errors.description = 'Description is required';
-    if (!formData.startDate) errors.startDate = 'Start date is required';
-    if (!formData.startTime) errors.startTime = 'Start time is required';
-    if (!formData.endDate) errors.endDate = 'End date is required';
-    if (!formData.endTime) errors.endTime = 'End time is required';
+    if (!formData.title.trim()) {
+errors.title = 'Title is required';
+}
+    if (!formData.description.trim()) {
+errors.description = 'Description is required';
+}
+    if (!formData.startDate) {
+errors.startDate = 'Start date is required';
+}
+    if (!formData.startTime) {
+errors.startTime = 'Start time is required';
+}
+    if (!formData.endDate) {
+errors.endDate = 'End date is required';
+}
+    if (!formData.endTime) {
+errors.endTime = 'End time is required';
+}
 
     const start = new Date(`${formData.startDate}T${formData.startTime}`);
     const end = new Date(`${formData.endDate}T${formData.endTime}`);
@@ -298,7 +312,9 @@ const EventCreator = ({
         }
       );
 
-      if (!res.ok) throw new Error('Failed to save event');
+      if (!res.ok) {
+throw new Error('Failed to save event');
+}
 
       const savedEvent = await res.json();
 
@@ -335,14 +351,18 @@ const EventCreator = ({
 
   const handleDelete = async (eventId) => {
     const confirmed = confirm('Are you sure you want to delete this event? This action cannot be undone.');
-    if (!confirmed) return;
+    if (!confirmed) {
+return;
+}
 
     try {
       const res = await fetch(`/api/admin/events/${eventId}`, {
         method: 'DELETE'
       });
 
-      if (!res.ok) throw new Error('Failed to delete event');
+      if (!res.ok) {
+throw new Error('Failed to delete event');
+}
 
       setEvents(prev => prev.filter(e => e.id !== eventId));
       alert('Event deleted successfully');
@@ -354,7 +374,9 @@ const EventCreator = ({
 
   const handleCancel = async (eventId) => {
     const reason = prompt('Please provide a reason for cancelling this event:');
-    if (!reason) return;
+    if (!reason) {
+return;
+}
 
     try {
       const res = await fetch(`/api/admin/events/${eventId}/cancel`, {
@@ -363,7 +385,9 @@ const EventCreator = ({
         body: JSON.stringify({ reason })
       });
 
-      if (!res.ok) throw new Error('Failed to cancel event');
+      if (!res.ok) {
+throw new Error('Failed to cancel event');
+}
 
       setEvents(prev => prev.map(e =>
         e.id === eventId ? { ...e, status: 'cancelled' } : e
@@ -1103,7 +1127,9 @@ const EventCreator = ({
         year: 'numeric', 
         month: 'long' 
       });
-      if (!acc[month]) acc[month] = [];
+      if (!acc[month]) {
+acc[month] = [];
+}
       acc[month].push(event);
       return acc;
     }, {});

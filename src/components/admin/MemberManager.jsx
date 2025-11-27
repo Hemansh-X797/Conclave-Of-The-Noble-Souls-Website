@@ -108,7 +108,9 @@ const MemberManager = ({
       setError(null);
 
       const res = await fetch('/api/discord/members?detailed=true&includeRoles=true');
-      if (!res.ok) throw new Error('Failed to fetch members');
+      if (!res.ok) {
+throw new Error('Failed to fetch members');
+}
 
       const data = await res.json();
       setMembers(data.members || []);
@@ -170,9 +172,15 @@ const MemberManager = ({
     // Status filter
     if (statusFilter !== 'all') {
       filtered = filtered.filter(m => {
-        if (statusFilter === 'online') return m.status === 'online' || m.status === 'idle' || m.status === 'dnd';
-        if (statusFilter === 'offline') return m.status === 'offline';
-        if (statusFilter === 'banned') return m.banned === true;
+        if (statusFilter === 'online') {
+return m.status === 'online' || m.status === 'idle' || m.status === 'dnd';
+}
+        if (statusFilter === 'offline') {
+return m.status === 'offline';
+}
+        if (statusFilter === 'banned') {
+return m.banned === true;
+}
         return true;
       });
     }
@@ -257,7 +265,9 @@ const MemberManager = ({
         })
       });
 
-      if (!res.ok) throw new Error('Moderation action failed');
+      if (!res.ok) {
+throw new Error('Moderation action failed');
+}
 
       const result = await res.json();
 
@@ -300,18 +310,24 @@ const MemberManager = ({
         })
       });
 
-      if (!res.ok) throw new Error('Role update failed');
+      if (!res.ok) {
+throw new Error('Role update failed');
+}
 
       // Update local state
       setMembers(prev => prev.map(m => {
-        if (m.id !== member.id) return m;
+        if (m.id !== member.id) {
+return m;
+}
 
         const roles = [...(m.roles || [])];
         if (action === 'add' && !roles.includes(roleId)) {
           roles.push(roleId);
         } else if (action === 'remove') {
           const idx = roles.indexOf(roleId);
-          if (idx > -1) roles.splice(idx, 1);
+          if (idx > -1) {
+roles.splice(idx, 1);
+}
         }
 
         return { ...m, roles };
@@ -345,7 +361,9 @@ const MemberManager = ({
       `Are you sure you want to ${bulkAction} ${selectedMembers.length} member(s)?`
     );
 
-    if (!confirmed) return;
+    if (!confirmed) {
+return;
+}
 
     try {
       setActionLoading(true);
@@ -360,7 +378,9 @@ const MemberManager = ({
         })
       });
 
-      if (!res.ok) throw new Error('Bulk action failed');
+      if (!res.ok) {
+throw new Error('Bulk action failed');
+}
 
       await fetchMembers();
       setSelectedMembers([]);
@@ -416,7 +436,9 @@ const MemberManager = ({
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return 'Unknown';
+    if (!dateString) {
+return 'Unknown';
+}
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
       year: 'numeric', 
@@ -716,7 +738,9 @@ const MemberManager = ({
   );
 
   const renderModModal = () => {
-    if (!showModModal) return null;
+    if (!showModModal) {
+return null;
+}
 
     return (
       <div className="modal-overlay backdrop-fade" onClick={() => setShowModModal(false)}>

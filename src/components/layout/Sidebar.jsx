@@ -165,7 +165,9 @@ const Sidebar = ({
   // ============================================================================
   
   useEffect(() => {
-    if (!showStats || !isOpen) return;
+    if (!showStats || !isOpen) {
+return;
+}
     
     const fetchStats = async () => {
       try {
@@ -259,7 +261,9 @@ const Sidebar = ({
   // ============================================================================
   
   const isActive = useCallback((href) => {
-    if (href === '/') return pathname === '/';
+    if (href === '/') {
+return pathname === '/';
+}
     return pathname.startsWith(href);
   }, [pathname]);
   
@@ -295,10 +299,18 @@ const Sidebar = ({
   
   const sidebarClasses = useMemo(() => {
     const classes = ['sidebar-divine'];
-    if (isOpen) classes.push('open');
-    if (collapsed) classes.push('collapsed');
-    if (position === 'left') classes.push('sidebar-left');
-    if (className) classes.push(className);
+    if (isOpen) {
+classes.push('open');
+}
+    if (collapsed) {
+classes.push('collapsed');
+}
+    if (position === 'left') {
+classes.push('sidebar-left');
+}
+    if (className) {
+classes.push(className);
+}
     return classes.join(' ');
   }, [isOpen, collapsed, position, className]);
   
@@ -357,7 +369,9 @@ const Sidebar = ({
   );
   
   const renderStats = () => {
-    if (!showStats || collapsed) return null;
+    if (!showStats || collapsed) {
+return null;
+}
     
     return (
       <div className="sidebar-stats-card" onClick={onStatsClick}>
@@ -368,7 +382,7 @@ const Sidebar = ({
         <div className="sidebar-stats-content">
           {memberStats.loading ? (
             <div className="sidebar-stats-loading">
-              <div className="spinner-small"></div>
+              <div className="spinner-small" />
               <span>Loading...</span>
             </div>
           ) : (
@@ -376,9 +390,9 @@ const Sidebar = ({
               <div className="sidebar-stat">
                 <span className="sidebar-stat-value">{memberStats.online}</span>
                 <span className="sidebar-stat-label">Online</span>
-                <span className="sidebar-stat-indicator online"></span>
+                <span className="sidebar-stat-indicator online" />
               </div>
-              <div className="sidebar-stat-divider"></div>
+              <div className="sidebar-stat-divider" />
               <div className="sidebar-stat">
                 <span className="sidebar-stat-value">{memberStats.total}</span>
                 <span className="sidebar-stat-label">Total</span>
@@ -501,7 +515,9 @@ const Sidebar = ({
   );
   
   const renderQuickLinks = () => {
-    if (!showQuickActions || collapsed) return null;
+    if (!showQuickActions || collapsed) {
+return null;
+}
     
     return quickLinks.map((section) => (
       <div key={section.id} className="sidebar-section">
@@ -544,7 +560,9 @@ const Sidebar = ({
   };
   
   const renderQuickActions = () => {
-    if (!showQuickActions || collapsed) return null;
+    if (!showQuickActions || collapsed) {
+return null;
+}
     
     return (
       <div className="sidebar-section">
@@ -579,7 +597,9 @@ const Sidebar = ({
   // MAIN RENDER
   // ============================================================================
   
-  if (!mounted) return null;
+  if (!mounted) {
+return null;
+}
   
   return (
     <>

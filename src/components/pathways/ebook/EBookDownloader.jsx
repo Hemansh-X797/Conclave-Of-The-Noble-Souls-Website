@@ -59,7 +59,9 @@ export default function EBookDownloader({
   // LOAD DOWNLOAD STATS
   // ============================================
   useEffect(() => {
-    if (!book?.id || !showStats) return;
+    if (!book?.id || !showStats) {
+return;
+}
 
     try {
       const savedStats = localStorage.getItem(`download-stats-${book.id}`);
@@ -75,7 +77,9 @@ export default function EBookDownloader({
   // PARTICLE ANIMATION
   // ============================================
   useEffect(() => {
-    if (!animationsEnabled || !canvasRef.current || !downloadComplete) return;
+    if (!animationsEnabled || !canvasRef.current || !downloadComplete) {
+return;
+}
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -152,7 +156,9 @@ export default function EBookDownloader({
   // DOWNLOAD HANDLER
   // ============================================
   const handleDownload = useCallback(async (file) => {
-    if (!file) return;
+    if (!file) {
+return;
+}
 
     playClick();
     setDownloading(true);
@@ -261,7 +267,9 @@ export default function EBookDownloader({
   // FORMAT SIZE
   // ============================================
   const formatFileSize = (bytes) => {
-    if (!bytes) return 'Unknown size';
+    if (!bytes) {
+return 'Unknown size';
+}
     const mb = bytes / (1024 * 1024);
     return `${mb.toFixed(2)} MB`;
   };

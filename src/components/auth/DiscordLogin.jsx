@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { TextFlameButton, TextDimButton, NobleButton } from './LuxuryButton';
-import LoadingCrest from './LoadingCrest';
-
+import { TextFlameButton, TextDimButton, NobleButton } from '@/components/ui/LuxuryButton';
+import LoadingCrest from '@/components/ui/LoadingCrest';
+ 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * DISCORD LOGIN COMPONENT - THE CONCLAVE REALM
@@ -107,11 +107,15 @@ const storeOAuthState = (state, variant) => {
  * Check for existing session
  */
 const checkExistingSession = () => {
-  if (typeof window === 'undefined') return null;
+  if (typeof window === 'undefined') {
+return null;
+}
   
   try {
     const sessionData = localStorage.getItem('conclave_session');
-    if (!sessionData) return null;
+    if (!sessionData) {
+return null;
+}
 
     const session = JSON.parse(sessionData);
     const expiresAt = new Date(session.expiresAt);
@@ -132,7 +136,9 @@ const checkExistingSession = () => {
  * Parse URL error parameters
  */
 const parseURLError = () => {
-  if (typeof window === 'undefined') return null;
+  if (typeof window === 'undefined') {
+return null;
+}
   
   const params = new URLSearchParams(window.location.search);
   return params.get('error');
@@ -197,7 +203,9 @@ const DiscordLogin = ({
   // ═══════════════════════════════════════════════════════════════════════
   
   const displayTitle = useMemo(() => {
-    if (title) return title;
+    if (title) {
+return title;
+}
     
     switch (variant) {
       case 'hero':
@@ -214,7 +222,9 @@ const DiscordLogin = ({
   }, [title, variant]);
 
   const displaySubtitle = useMemo(() => {
-    if (subtitle) return subtitle;
+    if (subtitle) {
+return subtitle;
+}
     
     switch (variant) {
       case 'hero':
@@ -227,8 +237,12 @@ const DiscordLogin = ({
   }, [subtitle, variant]);
 
   const displayButtonText = useMemo(() => {
-    if (buttonText) return buttonText;
-    if (isLoading) return 'Authenticating...';
+    if (buttonText) {
+return buttonText;
+}
+    if (isLoading) {
+return 'Authenticating...';
+}
     
     switch (variant) {
       case 'hero':
@@ -301,7 +315,9 @@ const DiscordLogin = ({
   // ═══════════════════════════════════════════════════════════════════════
   
   const handleLogin = useCallback(async () => {
-    if (isLoading) return;
+    if (isLoading) {
+return;
+}
 
     setIsLoading(true);
     setError(null);
@@ -360,7 +376,9 @@ const DiscordLogin = ({
   // ═══════════════════════════════════════════════════════════════════════
   
   const renderLogo = () => {
-    if (!showLogo) return null;
+    if (!showLogo) {
+return null;
+}
 
     return (
       <div 
@@ -387,7 +405,9 @@ const DiscordLogin = ({
   };
 
   const renderTitle = () => {
-    if (!displayTitle && !displaySubtitle) return null;
+    if (!displayTitle && !displaySubtitle) {
+return null;
+}
 
     return (
       <div className="discord-login__header">
@@ -482,7 +502,9 @@ const DiscordLogin = ({
   };
 
   const renderError = () => {
-    if (!error) return null;
+    if (!error) {
+return null;
+}
 
     return (
       <div className="discord-login__error" data-cursor="default">
@@ -518,7 +540,9 @@ const DiscordLogin = ({
   };
 
   const renderAuthenticatedState = () => {
-    if (!session) return null;
+    if (!session) {
+return null;
+}
 
     return (
       <div className="discord-login__authenticated" data-cursor="default">
@@ -549,7 +573,9 @@ const DiscordLogin = ({
   };
 
   const renderParticles = () => {
-    if (!particles || !animated || variant !== 'hero') return null;
+    if (!particles || !animated || variant !== 'hero') {
+return null;
+}
 
     return (
       <div className="discord-login__particles" aria-hidden="true">

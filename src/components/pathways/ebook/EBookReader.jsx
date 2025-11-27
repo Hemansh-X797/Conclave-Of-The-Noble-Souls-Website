@@ -94,15 +94,25 @@ export default function EBookReader({
   // ============================================
   const fileType = useMemo(() => {
     const file = book?.files?.[0];
-    if (!file) return null;
+    if (!file) {
+return null;
+}
     
     const format = file.format?.toLowerCase();
-    if (format === 'pdf') return 'pdf';
-    if (format === 'epub') return 'epub';
+    if (format === 'pdf') {
+return 'pdf';
+}
+    if (format === 'epub') {
+return 'epub';
+}
     
     const path = file.path?.toLowerCase();
-    if (path?.endsWith('.pdf')) return 'pdf';
-    if (path?.endsWith('.epub')) return 'epub';
+    if (path?.endsWith('.pdf')) {
+return 'pdf';
+}
+    if (path?.endsWith('.epub')) {
+return 'epub';
+}
     
     return null;
   }, [book]);
@@ -127,10 +137,18 @@ export default function EBookReader({
   // READING MOOD COLOR
   // ============================================
   const readingMoodColor = useMemo(() => {
-    if (readingSpeed === 0) return '#808080'; // Gray
-    if (readingSpeed < 20) return '#9D4EDD'; // Violet - Deep Focus
-    if (readingSpeed >= 20 && readingSpeed < 40) return '#50C878'; // Green - Normal
-    if (readingSpeed >= 40 && readingSpeed < 60) return '#00BFFF'; // Blue - Fast
+    if (readingSpeed === 0) {
+return '#808080';
+} // Gray
+    if (readingSpeed < 20) {
+return '#9D4EDD';
+} // Violet - Deep Focus
+    if (readingSpeed >= 20 && readingSpeed < 40) {
+return '#50C878';
+} // Green - Normal
+    if (readingSpeed >= 40 && readingSpeed < 60) {
+return '#00BFFF';
+} // Blue - Fast
     return '#FF4500'; // Red - Intense
   }, [readingSpeed]);
 
@@ -148,10 +166,18 @@ export default function EBookReader({
         const savedLineHeight = localStorage.getItem(`reader-line-height-${book.id}`);
         const savedBookmarks = localStorage.getItem(`bookmarks-${book.id}`);
         
-        if (savedTheme) setReadingTheme(savedTheme);
-        if (savedFontSize) setFontSize(parseInt(savedFontSize));
-        if (savedLineHeight) setLineHeight(parseFloat(savedLineHeight));
-        if (savedBookmarks) setBookmarks(JSON.parse(savedBookmarks));
+        if (savedTheme) {
+setReadingTheme(savedTheme);
+}
+        if (savedFontSize) {
+setFontSize(parseInt(savedFontSize));
+}
+        if (savedLineHeight) {
+setLineHeight(parseFloat(savedLineHeight));
+}
+        if (savedBookmarks) {
+setBookmarks(JSON.parse(savedBookmarks));
+}
         
         // Simulate loading (actual loading handled by PDF/EPUB renderers)
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -211,7 +237,9 @@ export default function EBookReader({
   useEffect(() => {
     const handleKeyPress = (e) => {
       // Prevent shortcuts if typing in input
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+return;
+}
       
       switch (e.key) {
         case 'ArrowLeft':
@@ -223,8 +251,11 @@ export default function EBookReader({
           handleNextPage();
           break;
         case 'Escape':
-          if (isFullscreen) handleToggleFullscreen();
-          else handleClose();
+          if (isFullscreen) {
+handleToggleFullscreen();
+} else {
+handleClose();
+}
           break;
         case 'b':
         case 'B':
@@ -407,16 +438,16 @@ export default function EBookReader({
   // PROGRESS PERCENTAGE
   // ============================================
   const progressPercentage = useMemo(() => {
-    if (totalPages === 0) return 0;
+    if (totalPages === 0) {
+return 0;
+}
     return Math.round((currentPage / totalPages) * 100);
   }, [currentPage, totalPages]);
 
   // ============================================
   // CHECK IF PAGE IS BOOKMARKED
   // ============================================
-  const isBookmarked = useMemo(() => {
-    return bookmarks.some(b => b.page === currentPage);
-  }, [bookmarks, currentPage]);
+  const isBookmarked = useMemo(() => bookmarks.some(b => b.page === currentPage), [bookmarks, currentPage]);
 
   // ============================================
   // THEME STYLES

@@ -88,7 +88,9 @@ const PathwayBackground = ({
   // SMOOTH TRANSITION ON PATHWAY CHANGE
   // ==========================================================================
   useEffect(() => {
-    if (!backgroundRef.current) return;
+    if (!backgroundRef.current) {
+return;
+}
 
     // Smooth fade transition when pathway changes
     backgroundRef.current.style.opacity = '0';

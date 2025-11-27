@@ -158,10 +158,14 @@ const MemberSpotlight = ({
   
   // Mouse move tracking for tilt and parallax
   useEffect(() => {
-    if (!tilt && !parallax && !magnetic) return;
+    if (!tilt && !parallax && !magnetic) {
+return;
+}
     
     const handleMouseMove = (e) => {
-      if (!spotlightRef.current) return;
+      if (!spotlightRef.current) {
+return;
+}
       
       const rect = spotlightRef.current.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
@@ -193,22 +197,32 @@ const MemberSpotlight = ({
   
   // Handle hover state
   const handleMouseEnter = useCallback((e) => {
-    if (!hoverable) return;
+    if (!hoverable) {
+return;
+}
     setIsHovered(true);
     setAnimationPhase('hover-enter');
-    if (onHover) onHover(true, e);
+    if (onHover) {
+onHover(true, e);
+}
   }, [hoverable, onHover]);
   
   const handleMouseLeave = useCallback((e) => {
-    if (!hoverable) return;
+    if (!hoverable) {
+return;
+}
     setIsHovered(false);
     setAnimationPhase('hover-exit');
-    if (onHover) onHover(false, e);
+    if (onHover) {
+onHover(false, e);
+}
   }, [hoverable, onHover]);
   
   // Handle click
   const handleClick = useCallback((e) => {
-    if (!clickable) return;
+    if (!clickable) {
+return;
+}
     
     if (expandable) {
       setIsExpanded(!isExpanded);
@@ -229,20 +243,48 @@ const MemberSpotlight = ({
       `ms-theme-${theme}`
     ];
     
-    if (animated) classes.push('ms-animated');
-    if (parallax) classes.push('ms-parallax');
-    if (floating) classes.push('ms-floating');
-    if (glow) classes.push('ms-glow');
-    if (shimmer) classes.push('ms-shimmer');
-    if (tilt) classes.push('ms-tilt');
-    if (magnetic) classes.push('ms-magnetic');
-    if (clickable) classes.push('ms-clickable');
-    if (isHovered) classes.push('ms-hovered');
-    if (isExpanded) classes.push('ms-expanded');
-    if (m.isPremium) classes.push('ms-premium');
-    if (m.isVerified) classes.push('ms-verified');
-    if (pathway) classes.push(`ms-pathway-${pathway}`);
-    if (className) classes.push(className);
+    if (animated) {
+classes.push('ms-animated');
+}
+    if (parallax) {
+classes.push('ms-parallax');
+}
+    if (floating) {
+classes.push('ms-floating');
+}
+    if (glow) {
+classes.push('ms-glow');
+}
+    if (shimmer) {
+classes.push('ms-shimmer');
+}
+    if (tilt) {
+classes.push('ms-tilt');
+}
+    if (magnetic) {
+classes.push('ms-magnetic');
+}
+    if (clickable) {
+classes.push('ms-clickable');
+}
+    if (isHovered) {
+classes.push('ms-hovered');
+}
+    if (isExpanded) {
+classes.push('ms-expanded');
+}
+    if (m.isPremium) {
+classes.push('ms-premium');
+}
+    if (m.isVerified) {
+classes.push('ms-verified');
+}
+    if (pathway) {
+classes.push(`ms-pathway-${pathway}`);
+}
+    if (className) {
+classes.push(className);
+}
     
     return classes.join(' ');
   }, [variant, size, layout, theme, animated, parallax, floating, glow, shimmer, 
@@ -251,8 +293,12 @@ const MemberSpotlight = ({
   
   // Format large numbers
   const formatNumber = (num) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-    if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+    if (num >= 1000000) {
+return `${(num / 1000000).toFixed(1)}M`;
+}
+    if (num >= 1000) {
+return `${(num / 1000).toFixed(1)}K`;
+}
     return num.toString();
   };
   
@@ -263,8 +309,12 @@ const MemberSpotlight = ({
     const diffTime = Math.abs(now - d);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     
-    if (diffDays < 30) return `${diffDays} days ago`;
-    if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+    if (diffDays < 30) {
+return `${diffDays} days ago`;
+}
+    if (diffDays < 365) {
+return `${Math.floor(diffDays / 30)} months ago`;
+}
     return `${Math.floor(diffDays / 365)} years ago`;
   };
   
@@ -381,7 +431,9 @@ const MemberSpotlight = ({
   
   // Render pathway badges
   const renderPathwayBadges = () => {
-    if (!showPathways || !m.pathways || m.pathways.length === 0) return null;
+    if (!showPathways || !m.pathways || m.pathways.length === 0) {
+return null;
+}
     
     const pathwayIcons = {
       gaming: '🎮',
@@ -412,7 +464,9 @@ const MemberSpotlight = ({
   
   // Render stats grid
   const renderStats = () => {
-    if (!showStats || !m.stats) return null;
+    if (!showStats || !m.stats) {
+return null;
+}
     
     const statIcons = {
       messages: '💬',
@@ -456,7 +510,9 @@ const MemberSpotlight = ({
   
   // Render achievement badges
   const renderBadges = () => {
-    if (!showBadges || !m.badges || m.badges.length === 0) return null;
+    if (!showBadges || !m.badges || m.badges.length === 0) {
+return null;
+}
     
     return (
       <div className="ms-badges-container">
@@ -489,7 +545,9 @@ const MemberSpotlight = ({
   
   // Render XP progress bar
   const renderXPBar = () => {
-    if (!m.xp && m.level === undefined) return null;
+    if (!m.xp && m.level === undefined) {
+return null;
+}
     
     const xpForNextLevel = m.level * 100;
     const currentXP = m.xp % xpForNextLevel;
@@ -519,7 +577,9 @@ const MemberSpotlight = ({
   
   // Render activity indicators
   const renderActivity = () => {
-    if (!showActivity) return null;
+    if (!showActivity) {
+return null;
+}
     
     return (
       <div className="ms-activity-section">

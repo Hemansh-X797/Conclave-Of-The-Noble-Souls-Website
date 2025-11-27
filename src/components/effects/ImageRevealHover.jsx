@@ -140,7 +140,9 @@ export default function ImageRevealHover({
   // ========================================================================
 
   const handleMouseEnter = (e) => {
-    if (!gsap || (isMobile && !enableOnMobile)) return;
+    if (!gsap || (isMobile && !enableOnMobile)) {
+return;
+}
 
     setIsHovering(true);
     playHover?.();
@@ -160,7 +162,9 @@ export default function ImageRevealHover({
   };
 
   const handleMouseLeave = (e) => {
-    if (!gsap || (isMobile && !enableOnMobile)) return;
+    if (!gsap || (isMobile && !enableOnMobile)) {
+return;
+}
 
     setIsHovering(false);
 
@@ -183,8 +187,12 @@ export default function ImageRevealHover({
   // ========================================================================
 
   const handleMouseMove = (e) => {
-    if (!followCursor || !gsap || !isHovering) return;
-    if (!containerRef.current || !imageRef.current) return;
+    if (!followCursor || !gsap || !isHovering) {
+return;
+}
+    if (!containerRef.current || !imageRef.current) {
+return;
+}
 
     const rect = containerRef.current.getBoundingClientRect();
     centerPos.current = {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ' @/styles/interactive.css';
+import '@/styles/interactive.css';
 
 const LiveStats = ({
   stats = {},
@@ -211,7 +211,9 @@ export const useLiveStats = (apiEndpoint, updateInterval = 30000) => {
       try {
         setLoading(true);
         const response = await fetch(apiEndpoint);
-        if (!response.ok) throw new Error('Failed to fetch stats');
+        if (!response.ok) {
+throw new Error('Failed to fetch stats');
+}
         const data = await response.json();
         setStats(data);
         setError(null);

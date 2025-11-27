@@ -80,7 +80,9 @@ export default function CursorFlashlight({
   // ========================================================================
 
   const updateMaskPosition = useCallback(() => {
-    if (!layer2Ref.current || !isActive) return;
+    if (!layer2Ref.current || !isActive) {
+return;
+}
 
     // Smooth lerp towards target position
     currentPos.current.x += (mousePos.current.x - currentPos.current.x) * followSpeed;
@@ -109,10 +111,14 @@ export default function CursorFlashlight({
   // ========================================================================
 
   useEffect(() => {
-    if (!isActive || isMobile) return;
+    if (!isActive || isMobile) {
+return;
+}
 
     const handleMouseMove = (e) => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) {
+return;
+}
 
       const rect = containerRef.current.getBoundingClientRect();
       mousePos.current = {
@@ -161,7 +167,9 @@ export default function CursorFlashlight({
   // ========================================================================
 
   useEffect(() => {
-    if (!containerRef.current || !layer2Ref.current) return;
+    if (!containerRef.current || !layer2Ref.current) {
+return;
+}
 
     const rect = containerRef.current.getBoundingClientRect();
     
