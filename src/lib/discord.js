@@ -383,10 +383,18 @@ export async function deleteScheduledEvent(eventId, reason = '') {
  */
 export async function getScheduledEventUsers(eventId, options = {}) {
   const params = new URLSearchParams();
-  if (options.limit) params.append('limit', options.limit);
-  if (options.withMember) params.append('with_member', options.withMember);
-  if (options.before) params.append('before', options.before);
-  if (options.after) params.append('after', options.after);
+  if (options.limit) {
+params.append('limit', options.limit);
+}
+  if (options.withMember) {
+params.append('with_member', options.withMember);
+}
+  if (options.before) {
+params.append('before', options.before);
+}
+  if (options.after) {
+params.append('after', options.after);
+}
 
   const query = params.toString() ? `?${params.toString()}` : '';
   return discordRequest(
@@ -489,10 +497,18 @@ export async function getCurrentUser() {
  */
 export async function getAuditLog(options = {}) {
   const params = new URLSearchParams();
-  if (options.userId) params.append('user_id', options.userId);
-  if (options.actionType) params.append('action_type', options.actionType);
-  if (options.before) params.append('before', options.before);
-  if (options.limit) params.append('limit', options.limit);
+  if (options.userId) {
+params.append('user_id', options.userId);
+}
+  if (options.actionType) {
+params.append('action_type', options.actionType);
+}
+  if (options.before) {
+params.append('before', options.before);
+}
+  if (options.limit) {
+params.append('limit', options.limit);
+}
 
   const query = params.toString() ? `?${params.toString()}` : '';
   return discordRequest(`/guilds/${GUILD_ID}/audit-logs${query}`);

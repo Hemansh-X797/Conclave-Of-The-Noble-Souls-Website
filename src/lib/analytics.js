@@ -597,7 +597,9 @@ export async function getPathwayStats(pathway, timeRange = '7d') {
       .eq('pathway', pathway)
       .gte('timestamp', since.toISOString());
 
-    if (error) throw error;
+    if (error) {
+throw error;
+}
 
     return {
       totalActivity: data.length,
@@ -665,9 +667,15 @@ function getTimeRangeSince(timeRange) {
 }
 
 function getDeviceType(userAgent) {
-  if (!userAgent) return 'unknown';
-  if (/mobile|android|iphone/i.test(userAgent)) return 'mobile';
-  if (/tablet|ipad/i.test(userAgent)) return 'tablet';
+  if (!userAgent) {
+return 'unknown';
+}
+  if (/mobile|android|iphone/i.test(userAgent)) {
+return 'mobile';
+}
+  if (/tablet|ipad/i.test(userAgent)) {
+return 'tablet';
+}
   return 'desktop';
 }
 
@@ -828,7 +836,9 @@ async function getMemberReactionsCount(userId, since) {
  * Initialize client-side analytics
  */
 export function initAnalytics(userId) {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') {
+return;
+}
 
   // Track page views
   trackPageView({
@@ -843,7 +853,7 @@ export function initAnalytics(userId) {
   });
 
   // Track time on page
-  let startTime = Date.now();
+  const startTime = Date.now();
   window.addEventListener('beforeunload', () => {
     const duration = Date.now() - startTime;
     trackTimeOnPage(window.location.pathname, userId, duration);

@@ -61,7 +61,9 @@ export const supabaseAdmin = supabaseServiceKey
 export async function getSupabaseUser() {
   try {
     const { data: { user }, error } = await supabase.auth.getUser();
-    if (error) throw error;
+    if (error) {
+throw error;
+}
     return user;
   } catch (error) {
     console.error('Error getting Supabase user:', error);

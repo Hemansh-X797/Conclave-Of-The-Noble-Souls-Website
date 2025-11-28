@@ -12,7 +12,9 @@
  * Truncate string to specified length
  */
 export function truncate(str, length = 100, suffix = '...') {
-  if (!str || str.length <= length) return str;
+  if (!str || str.length <= length) {
+return str;
+}
   return str.substring(0, length).trim() + suffix;
 }
 
@@ -20,7 +22,9 @@ export function truncate(str, length = 100, suffix = '...') {
  * Capitalize first letter of string
  */
 export function capitalize(str) {
-  if (!str) return '';
+  if (!str) {
+return '';
+}
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
@@ -75,7 +79,9 @@ export function randomString(length = 10) {
  * Format number with commas
  */
 export function formatNumber(num) {
-  if (num === null || num === undefined) return '0';
+  if (num === null || num === undefined) {
+return '0';
+}
   return num.toLocaleString('en-US');
 }
 
@@ -83,7 +89,9 @@ export function formatNumber(num) {
  * Format number to compact form (1K, 1M, etc.)
  */
 export function formatCompactNumber(num) {
-  if (num === null || num === undefined) return '0';
+  if (num === null || num === undefined) {
+return '0';
+}
   
   const absNum = Math.abs(num);
   
@@ -118,7 +126,9 @@ export function randomInt(min, max) {
  * Calculate percentage
  */
 export function percentage(value, total) {
-  if (!total) return 0;
+  if (!total) {
+return 0;
+}
   return ((value / total) * 100).toFixed(1);
 }
 
@@ -130,7 +140,9 @@ export function percentage(value, total) {
  * Format date to readable string
  */
 export function formatDate(date, options = {}) {
-  if (!date) return '';
+  if (!date) {
+return '';
+}
   
   const defaultOptions = {
     year: 'numeric',
@@ -146,7 +158,9 @@ export function formatDate(date, options = {}) {
  * Format date with time
  */
 export function formatDateTime(date) {
-  if (!date) return '';
+  if (!date) {
+return '';
+}
   
   return new Date(date).toLocaleString('en-US', {
     year: 'numeric',
@@ -161,7 +175,9 @@ export function formatDateTime(date) {
  * Get relative time (e.g., "2 hours ago")
  */
 export function timeAgo(date) {
-  if (!date) return '';
+  if (!date) {
+return '';
+}
   
   const seconds = Math.floor((new Date() - new Date(date)) / 1000);
   
@@ -203,11 +219,15 @@ export function isFuture(date) {
  * Get time until date
  */
 export function timeUntil(date) {
-  if (!date) return '';
+  if (!date) {
+return '';
+}
   
   const seconds = Math.floor((new Date(date) - new Date()) / 1000);
   
-  if (seconds < 0) return 'started';
+  if (seconds < 0) {
+return 'started';
+}
   
   const intervals = {
     day: 86400,
@@ -294,8 +314,12 @@ export function deepClone(obj) {
  * Check if object is empty
  */
 export function isEmpty(obj) {
-  if (obj === null || obj === undefined) return true;
-  if (Array.isArray(obj) || typeof obj === 'string') return obj.length === 0;
+  if (obj === null || obj === undefined) {
+return true;
+}
+  if (Array.isArray(obj) || typeof obj === 'string') {
+return obj.length === 0;
+}
   return Object.keys(obj).length === 0;
 }
 
@@ -386,7 +410,9 @@ export function rgbToHex(r, g, b) {
  */
 export function addOpacity(hex, opacity) {
   const rgb = hexToRgb(hex);
-  if (!rgb) return hex;
+  if (!rgb) {
+return hex;
+}
   return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
 }
 
@@ -398,7 +424,9 @@ export function addOpacity(hex, opacity) {
  * Format file size to human readable
  */
 export function formatFileSize(bytes) {
-  if (bytes === 0) return '0 Bytes';
+  if (bytes === 0) {
+return '0 Bytes';
+}
   
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
@@ -455,7 +483,9 @@ export async function retry(fn, options = {}) {
     try {
       return await fn();
     } catch (error) {
-      if (i === retries - 1) throw error;
+      if (i === retries - 1) {
+throw error;
+}
       await sleep(delay * Math.pow(backoff, i));
     }
   }
@@ -531,7 +561,9 @@ export function isBrowser() {
  * Check if user prefers reduced motion
  */
 export function prefersReducedMotion() {
-  if (!isBrowser()) return false;
+  if (!isBrowser()) {
+return false;
+}
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
@@ -543,7 +575,7 @@ export function prefersReducedMotion() {
  * Generate UUID v4
  */
 export function generateUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = Math.random() * 16 | 0;
     const v = c === 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
