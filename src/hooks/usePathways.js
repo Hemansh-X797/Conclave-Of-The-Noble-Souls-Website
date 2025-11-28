@@ -25,28 +25,20 @@ export function usePathways(userRoles = []) {
   const allPathways = useMemo(() => getAllPathways(), []);
 
   // Get user's current pathways based on roles
-  const userPathways = useMemo(() => {
-    return userRoles
+  const userPathways = useMemo(() => userRoles
       .map(roleId => getPathwayByRoleId(roleId))
-      .filter(Boolean);
-  }, [userRoles]);
+      .filter(Boolean), [userRoles]);
 
   // Get available pathways user can join
-  const availablePathways = useMemo(() => {
-    return allPathways.filter(pathway => 
+  const availablePathways = useMemo(() => allPathways.filter(pathway => 
       canJoinPathway(pathway.id, userRoles)
-    );
-  }, [allPathways, userRoles]);
+    ), [allPathways, userRoles]);
 
   // Check if user has specific pathway
-  const hasPathway = useCallback((pathwayId) => {
-    return userPathways.some(p => p.id === pathwayId);
-  }, [userPathways]);
+  const hasPathway = useCallback((pathwayId) => userPathways.some(p => p.id === pathwayId), [userPathways]);
 
   // Get pathway by ID
-  const getPathway = useCallback((pathwayId) => {
-    return getPathwayById(pathwayId);
-  }, []);
+  const getPathway = useCallback((pathwayId) => getPathwayById(pathwayId), []);
 
   return {
     allPathways,

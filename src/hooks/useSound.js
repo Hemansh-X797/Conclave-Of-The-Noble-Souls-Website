@@ -29,7 +29,9 @@ export function useSound(soundsEnabled = true) {
 
   // Preload sound
   const preloadSound = useCallback((soundName) => {
-    if (!soundsEnabled || !SOUND_FILES[soundName]) return;
+    if (!soundsEnabled || !SOUND_FILES[soundName]) {
+return;
+}
 
     if (!audioCache.has(soundName)) {
       const audio = new Audio(SOUND_FILES[soundName]);
@@ -40,7 +42,9 @@ export function useSound(soundsEnabled = true) {
 
   // Play sound
   const playSound = useCallback((soundName, volume = 0.3) => {
-    if (!soundsEnabled || !SOUND_FILES[soundName]) return;
+    if (!soundsEnabled || !SOUND_FILES[soundName]) {
+return;
+}
 
     try {
       let audio = audioCache.get(soundName);
@@ -103,15 +107,13 @@ export function useSound(soundsEnabled = true) {
   }, [soundsEnabled, preloadSound]);
 
   // Cleanup
-  useEffect(() => {
-    return () => {
+  useEffect(() => () => {
       audioCache.forEach(audio => {
         audio.pause();
         audio.src = '';
       });
       audioCache.clear();
-    };
-  }, []);
+    }, []);
 
   return {
     playSound,

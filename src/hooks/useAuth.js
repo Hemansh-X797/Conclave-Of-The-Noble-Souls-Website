@@ -52,7 +52,9 @@ export function useAuth() {
 
   // Auto-refresh token
   useEffect(() => {
-    if (!isAuthenticated) return;
+    if (!isAuthenticated) {
+return;
+}
 
     const interval = setInterval(async () => {
       try {
@@ -153,7 +155,9 @@ export function useAuth() {
   const refreshUser = useCallback(async () => {
     try {
       const stored = localStorage.getItem(AUTH_STORAGE_KEY);
-      if (!stored) return;
+      if (!stored) {
+return;
+}
       
       const authData = JSON.parse(stored);
       
@@ -174,20 +178,22 @@ export function useAuth() {
 
   // Check if user has specific role
   const hasRole = useCallback((roleId) => {
-    if (!user?.roles) return false;
+    if (!user?.roles) {
+return false;
+}
     return user.roles.includes(roleId);
   }, [user]);
 
   // Check if user has any of specified roles
   const hasAnyRole = useCallback((roleIds) => {
-    if (!user?.roles) return false;
+    if (!user?.roles) {
+return false;
+}
     return roleIds.some(roleId => user.roles.includes(roleId));
   }, [user]);
 
   // Check if user is in server
-  const isInServer = useCallback(() => {
-    return user?.inServer === true;
-  }, [user]);
+  const isInServer = useCallback(() => user?.inServer === true, [user]);
 
   return {
     user,
