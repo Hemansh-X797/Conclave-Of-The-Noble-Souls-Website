@@ -161,7 +161,9 @@ export {
  */
 export function getCompletePathwayData(pathwayId) {
   const pathway = getPathwayById(pathwayId);
-  if (!pathway) return null;
+  if (!pathway) {
+return null;
+}
   
   return {
     ...pathway,

@@ -507,7 +507,9 @@ export function getPathwayIcon(pathwayId) {
  */
 export function canJoinPathway(pathwayId, userRoles = []) {
   const pathway = getPathwayById(pathwayId);
-  if (!pathway || !pathway.isActive) return false;
+  if (!pathway || !pathway.isActive) {
+return false;
+}
   
   // Check if user already has this pathway role
   return !userRoles.includes(pathway.roleId);

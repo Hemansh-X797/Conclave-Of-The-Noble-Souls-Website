@@ -257,7 +257,9 @@ export function getUpcomingEvents() {
   const weekFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
   
   RECURRING_EVENTS.forEach(event => {
-    if (!event.isActive) return;
+    if (!event.isActive) {
+return;
+}
     
     const nextDate = getNextOccurrence(event);
     if (nextDate && nextDate >= now && nextDate <= weekFromNow) {
@@ -274,7 +276,9 @@ export function getUpcomingEvents() {
 
 export function createEventFromTemplate(templateId, customData = {}) {
   const template = EVENT_TEMPLATES[templateId];
-  if (!template) return null;
+  if (!template) {
+return null;
+}
   
   return {
     ...template,
@@ -311,7 +315,9 @@ export function getEventStats() {
 
 export function formatEventTime(event) {
   const nextDate = getNextOccurrence(event);
-  if (!nextDate) return 'Schedule TBD';
+  if (!nextDate) {
+return 'Schedule TBD';
+}
   
   const options = {
     weekday: 'long',
@@ -326,15 +332,15 @@ export function formatEventTime(event) {
 }
 
 export function canJoinEvent(event, userRoles = []) {
-  if (!event.requirements || event.requirements.length === 0) return true;
+  if (!event.requirements || event.requirements.length === 0) {
+return true;
+}
   
   if (event.maxParticipants && event.participants?.length >= event.maxParticipants) {
     return false;
   }
   
-  const hasRequiredRole = event.requirements.some(req => {
-    return userRoles.some(role => role.name === req);
-  });
+  const hasRequiredRole = event.requirements.some(req => userRoles.some(role => role.name === req));
   
   return hasRequiredRole;
 }
